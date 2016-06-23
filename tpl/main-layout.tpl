@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-    <title>TheDocs - </title>
+    <title>Ice framework for goosman.lei</title>
 
     <!-- Styles -->
     <link href="{%$path_info.static_base_url%}/css/theDocs.all.min.css" rel="stylesheet">
