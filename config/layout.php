@@ -201,7 +201,7 @@ $sidenav = array(
             array(
                 'sn'     => '/specification/name',
                 'link'   => '/ice/specification-name.html',
-                'text'   => 'Github主页',
+                'text'   => '命名规范',
                 'class'  => '',
                 'target' => '_blank',
                 'page'   => array(
@@ -211,7 +211,7 @@ $sidenav = array(
             array(
                 'sn'     => '/specification/develop',
                 'link'   => '/ice/specification-develop.html',
-                'text'   => 'zip包下载',
+                'text'   => '开发规范',
                 'class'  => '',
                 'target' => '_blank',
                 'page'   => array(
