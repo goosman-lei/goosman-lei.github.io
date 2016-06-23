@@ -57,7 +57,7 @@ function render_main_layout($curr_topnav, $curr_sidenav, $target_file) {
     file_put_contents($target_file, $smarty->fetch('main-layout.tpl'));
 }
 
-// 预处理markdown文件: 处理Header和code
+// 预处理markdown文件: 处理Header
 function prepare_markdown($md_file) {
     $src_md_file = MARKDOWN_PATH . '/' . ltrim($md_file, '/');
     $dst_md_file = TMP_MARKDOWN_PATH . '/' . ltrim($md_file, '/');
@@ -76,7 +76,20 @@ function render_markdown($md_file) {
     }
     prepare_markdown($md_file);
     $md_file = TMP_MARKDOWN_PATH . '/' . ltrim($md_file, '/');
-    $html = `github-markup $md_file`;
+    $html = `github-markup $md_file | awk '{
+    if (match($0, "^<pre><code(\\\\s+class=\\"([^\\"]+)\\")?>", matched) > 0) {
+        language = substr($0, matched[2, "start"], matched[2, "length"])
+        language_class = language ? "language-" language : ""
+
+        print "<pre class=\\"line-numbers " language_class "\\" data-language=\\"" language "\\">";
+        print "<a class=\\"btn btn-sm btn-purple clipboard-copy\\" data-original-title=\\"Copied!\\">Copy</a>";
+        print "<span class=\\"language-name\\">" language "</span>";
+        print "<code class=\\"" language_class "\\">";
+        print substr($0, matched[0, "length"] + 1);
+    } else {
+        print $0;
+    }
+}'`;
     echo $html;
 }
 // 渲染markdown文件的目录
