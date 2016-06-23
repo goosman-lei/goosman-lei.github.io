@@ -2,7 +2,7 @@
 
 ##  整体架构图
 
-![整体架构图](https://raw.githubusercontent.com/goosman-lei/ice/master/doc/resource/images/0001.ice-core-arch.png)
+![整体架构图](https://goosman-lei.github.io/static/post-img/0001.ice-core-arch.png)
 
 ##  目录结构介绍
 
@@ -63,7 +63,7 @@ src/
 
 ##  核心类层次结构
 
-![核心类层次结构](https://raw.githubusercontent.com/goosman-lei/ice/master/doc/resource/images/0002.ice-core-class-hiberarchy.png)
+![核心类层次结构](https://goosman-lei.github.io/static/post-img/0002.ice-core-class-hiberarchy.png)
 
 * 三种启动方式的入口, 均持有$ice句柄
 

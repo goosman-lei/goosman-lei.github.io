@@ -1,6 +1,6 @@
 # Service运行方式
 
-![Service应用结构图](https://raw.githubusercontent.com/goosman-lei/ice/master/doc/resource/images/0006.ice-core-func-runner-service.png)
+![Service应用结构图](https://goosman-lei.github.io/static/post-img/0006.ice-core-func-runner-service.png)
 
 ## Service
 
