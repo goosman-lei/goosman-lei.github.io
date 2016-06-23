@@ -1,0 +1,47 @@
+#!/bin/bash
+awk 'BEGIN {
+    in_code = 0;
+	ref_idx = 1;
+	prev_level = 1;
+	print "<ol class=\"toc\">"
+}
+substr($1, 1, 3) == "```" {
+    in_code = (in_code + 1) % 2;
+}
+substr($1, 1, 1) == "#" && in_code == 0{
+	match($0, "[^# ]", match_ret);
+    curr_level = length($1);
+
+	if (prev_level >= curr_level && ref_idx != 1) {
+		print "</li>"
+	}
+
+	# 补充前置的结尾标签
+	if (prev_level > curr_level) {
+		n_prev = prev_level - curr_level;
+		while (n_prev > 0) {
+			print "</ol>\n</li>";
+			n_prev --;
+		}
+	}
+
+	# 填充当前层级的开始标签
+	if (prev_level < curr_level) {
+		n_prev = curr_level - prev_level;
+		while (n_prev > 0) {
+			print "<ol><li>";
+			n_prev --;
+		}
+	} else {
+		printf "%s", "<li>";
+	}
+
+
+	printf "%s", "<a href=\"#ref-" (ref_idx ++) "\">" substr($0, match_ret[0, "start"]) "</a>";
+
+	prev_level = curr_level;
+}
+END {
+	print "</li></ol>"
+}
+' $1

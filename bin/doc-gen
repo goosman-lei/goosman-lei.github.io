@@ -1,0 +1,109 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+define('ROOT_PATH', __DIR__ . '/..');
+define('MARKDOWN_PATH', ROOT_PATH . '/markdown');
+define('OUTPUT_PATH', ROOT_PATH . '/output');
+define('TMP_MARKDOWN_PATH', OUTPUT_PATH . '/markdown');
+
+define('TPL_COMPILER_PATH', OUTPUT_PATH . '/doc-smarty-template-compile');
+define('TPL_PATH', ROOT_PATH . '/tpl');
+
+define('HTML_OUTPUT_PATH', OUTPUT_PATH . '/html');
+
+$html_output_path = HTML_OUTPUT_PATH;
+$srcDir = ROOT_PATH . '/static';
+$dstDir = HTML_OUTPUT_PATH . '/static';
+`rm -rf $html_output_path`;
+`mkdir -p $html_output_path`;
+`cp -rf $srcDir $dstDir`;
+
+$render_list = array(
+    array('topnav'   => 'ice', 'sidenav'  => '/overview', 'dst_html' => '/ice/index.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/arch', 'dst_html' => '/ice/arch.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner', 'dst_html' => '/ice/core-func-runner.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner/daemon', 'dst_html' => '/ice/core-func-runner-daemon.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner/embeded', 'dst_html' => '/ice/core-func-runner-embeded.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner/service', 'dst_html' => '/ice/core-func-runner-service.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner/web', 'dst_html' => '/ice/core-func-runner-web.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/input-output', 'dst_html' => '/ice/core-func-input-output.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/resource', 'dst_html' => '/ice/core-func-resource.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/filter', 'dst_html' => '/ice/core-func-filter.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/feature', 'dst_html' => '/ice/core-func-feature.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/logger', 'dst_html' => '/ice/core-func-logger.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/db', 'dst_html' => '/ice/core-func-db.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/specification/develop', 'dst_html' => '/ice/specification-develop.html'),
+    array('topnav'   => 'ice', 'sidenav'  => '/manual/specification/name', 'dst_html' => '/ice/specification-name.html'),
+);
+
+foreach ($render_list as $page) {
+    render_main_layout($page['topnav'], $page['sidenav'], HTML_OUTPUT_PATH . $page['dst_html']);
+}
+
+function render_main_layout($curr_topnav, $curr_sidenav, $target_file) {
+    $tpl_datas = get_layout_config('main');
+
+    $tpl_datas['curr_sidenav'] = $curr_sidenav;
+    $tpl_datas['curr_topnav'] = $curr_topnav;
+
+    $smarty = get_smarty();
+    $smarty->assign($tpl_datas);
+
+    if (!is_dir(dirname($target_file))) {
+        mkdir(dirname($target_file), 0777, TRUE);
+    }
+
+    file_put_contents($target_file, $smarty->fetch('main-layout.tpl'));
+}
+
+// 预处理markdown文件: 处理Header和code
+function prepare_markdown($md_file) {
+    $src_md_file = MARKDOWN_PATH . '/' . ltrim($md_file, '/');
+    $dst_md_file = TMP_MARKDOWN_PATH . '/' . ltrim($md_file, '/');
+
+    if (!is_dir(dirname($dst_md_file))) {
+        mkdir(dirname($dst_md_file), 0777, TRUE);
+    }
+
+    $prepare_command = ROOT_PATH . '/bin/prepare_markdown';
+    `$prepare_command $src_md_file $dst_md_file`;
+}
+// 渲染markdown文件为html
+function render_markdown($md_file) {
+    if (empty($md_file) || !is_file(MARKDOWN_PATH . '/' . ltrim($md_file, '/'))) {
+        return ;
+    }
+    prepare_markdown($md_file);
+    $md_file = TMP_MARKDOWN_PATH . '/' . ltrim($md_file, '/');
+    $html = `github-markup $md_file`;
+    echo $html;
+}
+// 渲染markdown文件的目录
+function render_toc($md_file) {
+    if (empty($md_file) || !is_file(MARKDOWN_PATH . '/' . ltrim($md_file, '/'))) {
+        return ;
+    }
+    $md_file = MARKDOWN_PATH . '/' . ltrim($md_file, '/');
+    $toc_command = ROOT_PATH . '/bin/toc-gen';
+    $html = `$toc_command $md_file`;
+    echo $html;
+}
+
+
+function get_smarty() {
+    static $smarty;
+    if (!isset($smarty)) {
+        $smarty = new \SmartyBC();
+        $smarty->setTemplateDir(TPL_PATH);
+        $smarty->setCompileDir(TPL_COMPILER_PATH);
+        $smarty->left_delimiter = '{%';
+        $smarty->right_delimiter = '%}';
+    }
+    return $smarty;
+}
+
+function get_layout_config($name) {
+    include ROOT_PATH . '/config/layout.php';
+    return $$name;
+}

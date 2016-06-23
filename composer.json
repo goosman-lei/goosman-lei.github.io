@@ -1,0 +1,20 @@
+{
+    "name": "goosman-lei/github.io",
+    "description": "Github pages tool",
+    "version": "0.0.1-dev",
+    "type": "library",
+    "require": {
+        "smarty/smarty": "3.1.28"
+    },
+    "autoload": {
+    },
+    "repositories": [
+        {
+            "packagist": false
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    ]
+}
