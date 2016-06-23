@@ -83,6 +83,7 @@ function render_markdown($md_file) {
 
         print "<pre class=\\"line-numbers " language_class "\\" data-language=\\"" language "\\">";
         print "<span class=\\"language-name\\">" language "</span>";
+        print "<a class=\\"btn btn-sm btn-purple clipboard-copy\\" data-original-title=\\"Copied!\\">Copy</a>";
         print "<code class=\\"" language_class "\\">";
         print substr($0, matched[0, "length"] + 1);
     } else {
