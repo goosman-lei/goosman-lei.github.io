@@ -20,21 +20,21 @@ $dstDir = HTML_OUTPUT_PATH . '/static';
 `cp -rf $srcDir $dstDir`;
 
 $render_list = array(
-    array('topnav'   => 'ice', 'sidenav'  => '/overview', 'dst_html' => '/ice/index.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/arch', 'dst_html' => '/ice/arch.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner', 'dst_html' => '/ice/core-func-runner.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner/daemon', 'dst_html' => '/ice/core-func-runner-daemon.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner/embeded', 'dst_html' => '/ice/core-func-runner-embeded.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner/service', 'dst_html' => '/ice/core-func-runner-service.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/runner/web', 'dst_html' => '/ice/core-func-runner-web.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/input-output', 'dst_html' => '/ice/core-func-input-output.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/resource', 'dst_html' => '/ice/core-func-resource.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/filter', 'dst_html' => '/ice/core-func-filter.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/feature', 'dst_html' => '/ice/core-func-feature.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/logger', 'dst_html' => '/ice/core-func-logger.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/db', 'dst_html' => '/ice/core-func-db.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/specification/develop', 'dst_html' => '/ice/specification-develop.html'),
-    array('topnav'   => 'ice', 'sidenav'  => '/manual/specification/name', 'dst_html' => '/ice/specification-name.html'),
+    array('topnav' => 'ice', 'sidenav' => '/overview',              'dst_html' => '/ice/index.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/arch',           'dst_html' => '/ice/arch.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/runner',         'dst_html' => '/ice/core-func-runner.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/runner/daemon',  'dst_html' => '/ice/core-func-runner-daemon.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/runner/embeded', 'dst_html' => '/ice/core-func-runner-embeded.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/runner/service', 'dst_html' => '/ice/core-func-runner-service.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/runner/web',     'dst_html' => '/ice/core-func-runner-web.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/input-output',   'dst_html' => '/ice/core-func-input-output.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/resource',       'dst_html' => '/ice/core-func-resource.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/filter',         'dst_html' => '/ice/core-func-filter.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/feature',        'dst_html' => '/ice/core-func-feature.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/logger',         'dst_html' => '/ice/core-func-logger.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/db',             'dst_html' => '/ice/core-func-db.html'),
+    array('topnav' => 'ice', 'sidenav' => '/specification/develop', 'dst_html' => '/ice/specification-develop.html'),
+    array('topnav' => 'ice', 'sidenav' => '/specification/name',    'dst_html' => '/ice/specification-name.html'),
 );
 
 foreach ($render_list as $page) {
