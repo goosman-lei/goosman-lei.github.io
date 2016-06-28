@@ -33,6 +33,7 @@ $render_list = array(
     array('topnav' => 'ice', 'sidenav' => '/manual/feature',        'dst_html' => '/ice/core-func-feature.html'),
     array('topnav' => 'ice', 'sidenav' => '/manual/logger',         'dst_html' => '/ice/core-func-logger.html'),
     array('topnav' => 'ice', 'sidenav' => '/manual/db',             'dst_html' => '/ice/core-func-db.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/ut',             'dst_html' => '/ice/core-func-ut.html'),
     array('topnav' => 'ice', 'sidenav' => '/specification/develop', 'dst_html' => '/ice/specification-develop.html'),
     array('topnav' => 'ice', 'sidenav' => '/specification/name',    'dst_html' => '/ice/specification-name.html'),
 );

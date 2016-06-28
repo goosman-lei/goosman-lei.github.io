@@ -189,6 +189,16 @@ $sidenav = array(
                     'md' => '/ice/core-func-db.md',
                 ),
             ),
+            array(
+                'sn'     => '/manual/ut',
+                'link'   => '/ice/core-func-ut.html',
+                'text'   => '单元测试',
+                'class'  => '',
+                'target' => '',
+                'page'   => array(
+                    'md' => '/ice/core-func-ut.md',
+                ),
+            ),
         ),
     ),
     array(
