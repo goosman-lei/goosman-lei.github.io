@@ -4,7 +4,7 @@ PHP-Web开发框架.
 
 ##  基于Ice的项目开发过程
 
-![整体架构图](https://goosman-lei.github.io/static/post-img/0009.ice-core-development-progress.png)
+![项目开发过程](https://goosman-lei.github.io/static/post-img/0009.ice-core-development-progress.png)
 
 ##  应用示例
 
