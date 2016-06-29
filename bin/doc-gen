@@ -36,6 +36,7 @@ $render_list = array(
     array('topnav' => 'ice', 'sidenav' => '/manual/ut',             'dst_html' => '/ice/core-func-ut.html'),
     array('topnav' => 'ice', 'sidenav' => '/specification/develop', 'dst_html' => '/ice/specification-develop.html'),
     array('topnav' => 'ice', 'sidenav' => '/specification/name',    'dst_html' => '/ice/specification-name.html'),
+    array('topnav' => 'ice', 'sidenav' => '/specification/doc',     'dst_html' => '/ice/specification-doc.html'),
 );
 
 foreach ($render_list as $page) {

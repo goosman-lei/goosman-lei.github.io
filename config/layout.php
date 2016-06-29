@@ -228,6 +228,16 @@ $sidenav = array(
                     'md' => '/ice/specification-develop.md',
                 ),
             ),
+            array(
+                'sn'     => '/specification/doc',
+                'link'   => '/ice/specification-doc.html',
+                'text'   => '注解规范',
+                'class'  => '',
+                'target' => '_blank',
+                'page'   => array(
+                    'md' => '/ice/specification-doc.md',
+                ),
+            ),
         ),
     ),
 );
