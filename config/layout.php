@@ -213,7 +213,7 @@ $sidenav = array(
                 'link'   => '/ice/specification-name.html',
                 'text'   => '命名规范',
                 'class'  => '',
-                'target' => '_blank',
+                'target' => '',
                 'page'   => array(
                     'md' => '/ice/specification-name.md',
                 ),
@@ -223,7 +223,7 @@ $sidenav = array(
                 'link'   => '/ice/specification-develop.html',
                 'text'   => '开发规范',
                 'class'  => '',
-                'target' => '_blank',
+                'target' => '',
                 'page'   => array(
                     'md' => '/ice/specification-develop.md',
                 ),
@@ -233,7 +233,7 @@ $sidenav = array(
                 'link'   => '/ice/specification-doc.html',
                 'text'   => '注解规范',
                 'class'  => '',
-                'target' => '_blank',
+                'target' => '',
                 'page'   => array(
                     'md' => '/ice/specification-doc.md',
                 ),
