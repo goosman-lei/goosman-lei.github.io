@@ -31,6 +31,13 @@ $sidenav = array(
         ),
     ),
     array(
+        'sn'     => '/slide',
+        'link'   => '/static/pdf/001.ice-use-slide.pdf',
+        'text'   => 'Ice介绍PPT',
+        'class'  => '',
+        'target' => '_blank',
+    ),
+    array(
         'sn'   => '/project',
         'link' => '#',
         'text' => '项目',
