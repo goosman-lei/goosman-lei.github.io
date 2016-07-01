@@ -135,7 +135,7 @@ while (!empty($sidenav_stack)) {
 
         <div class="row">
           <div class="col-md-6 col-sm-6">
-            <p>Copyright &copy; 2016. All right reserved</p>
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
           </div>
           <div class="col-md-6 col-sm-6">
 <script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
