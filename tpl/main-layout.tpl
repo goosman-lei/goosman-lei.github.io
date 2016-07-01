@@ -20,6 +20,9 @@
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{%$path_info.static_base_url%}/apple-touch-icon.png">
     <link rel="icon" href="{%$path_info.static_base_url%}/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
 
   <body>
@@ -68,6 +71,10 @@
 
         <!-- Sidebar -->
         <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+<a class="github-button" href="https://github.com/goosman-lei/ice" data-icon="octicon-eye" data-style="mega" data-count-href="/goosman-lei/ice/watchers" data-count-api="/repos/goosman-lei/ice#subscribers_count" data-count-aria-label="# watchers on GitHub" aria-label="Watch goosman-lei/ice on GitHub">Watch</a><br />
+<a class="github-button" href="https://github.com/goosman-lei/ice" data-icon="octicon-star" data-style="mega" data-count-href="/goosman-lei/ice/stargazers" data-count-api="/repos/goosman-lei/ice#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star goosman-lei/ice on GitHub">Star</a><br />
+<a class="github-button" href="https://github.com/goosman-lei/ice/fork" data-icon="octicon-repo-forked" data-style="mega" data-count-href="/goosman-lei/ice/network" data-count-api="/repos/goosman-lei/ice#forks_count" data-count-aria-label="# forks on GitHub" aria-label="Fork goosman-lei/ice on GitHub">Fork</a><br />
 
 <!-- TODO 解递归当场遍历出树结构菜单 -->
 {%php%}
