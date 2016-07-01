@@ -1,13 +1,38 @@
+{%php%}
+$sidenav_stack = array(
+    array(-1, $_smarty_tpl->tpl_vars['sidenav_infos']->value)
+);
+while (!empty($sidenav_stack)) {
+    $stack_depth    = count($sidenav_stack);
+    $current_info   = array_pop($sidenav_stack);
+    $internal_index = $current_info[0];
+    $internal_datas = $current_info[1];
+
+    while ($internal_index + 1 < count($internal_datas)) {
+        $internal_index ++;
+        $tmp_data = $internal_datas[$internal_index];
+        if ($tmp_data['sn'] == $_smarty_tpl->tpl_vars['curr_sidenav']) {
+            $tmp_data['class'] = isset($tmp_data['class']) && $tmp_data['class'] ? $tmp_data['class'] . ' active' : 'active';
+            $_smarty_tpl->assign('page', isset($tmp_data['page']) ? $tmp_data['page'] : array());
+        }
+        if (!empty($tmp_data['children'])) {
+            array_push($sidenav_stack, array($internal_index, $internal_datas));
+            array_push($sidenav_stack, array(-1, $tmp_data['children']));
+        }
+    }
+}
+{%/php%}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="{%$page.seo_desc|default:'移动端API开发有奇效的PHP Web开发框架'%}">
+    <meta name="keywords" content="{%$page.seo_keywords|default:'PHP Web开发,PHP,PHP 框架,移动端API开发,客户端API开发,API版本兼容'%}">
 
-    <title>Ice framework By Goosman.lei</title>
+    <title>{%$page.seo_title|default:'PHP Web开发框架'%}- Ice Framework(PHP Web开发框架)</title>
 
     <!-- Styles -->
     <link href="{%$path_info.static_base_url%}/css/theDocs.all.min.css" rel="stylesheet">
@@ -95,7 +120,6 @@ while (!empty($sidenav_stack)) {
         $tmp_data = $internal_datas[$internal_index];
         if ($tmp_data['sn'] == $_smarty_tpl->tpl_vars['curr_sidenav']) {
             $tmp_data['class'] = isset($tmp_data['class']) && $tmp_data['class'] ? $tmp_data['class'] . ' active' : 'active';
-            $_smarty_tpl->assign('page', isset($tmp_data['page']) ? $tmp_data['page'] : array());
         }
         echo str_repeat($sidenav_space, $stack_depth) . '<li><a href="' . $tmp_data['link'] . '"'
             . ($tmp_data['class'] ? ' class="' . $tmp_data['class'] . '"' : '')

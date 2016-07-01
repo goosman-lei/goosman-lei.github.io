@@ -82,6 +82,7 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/arch.md',
+                    'seo_title' => 'PHP Ice框架整体架构介绍',
                 ),
             ),
             array(
@@ -92,6 +93,8 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/core-func-feature.md',
+                    'seo_title' => 'PHP Ice框架Feature介绍',
+                    'seo_keywords' => '客户端API开发,版本兼容,API版本,API兼容',
                 ),
             ),
             array(
@@ -102,6 +105,8 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/core-func-resource.md',
+                    'seo_title' => 'PHP Ice框架资源管理介绍',
+                    'seo_keywords' => '高可用,自动化降级,降级,PHP框架,PHP开发',
                 ),
             ),
             array(
@@ -112,6 +117,8 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/core-func-filter.md',
+                    'seo_title' => 'PHP Ice框架数据过滤层介绍',
+                    'seo_keywords' => '数据校验,数据过滤,数据验证,PHP框架,PHP开发',
                 ),
             ),
             array(
@@ -122,6 +129,7 @@ $sidenav = array(
                 'target'   => '',
                 'page'   => array(
                     'md' => '/ice/core-func-runner.md',
+                    'seo_title' => 'PHP Ice框架运行方式介绍',
                 ),
                 'children' => array(
                     array(
@@ -132,6 +140,7 @@ $sidenav = array(
                         'target' => '',
                         'page'   => array(
                             'md'     => '/ice/core-func-runner-web.md',
+                            'seo_title' => 'PHP Ice框架运行方式介绍',
                         ),
                     ),
                     array(
@@ -142,6 +151,7 @@ $sidenav = array(
                         'target' => '',
                         'page'   => array(
                             'md' => '/ice/core-func-runner-service.md',
+                            'seo_title' => 'PHP Ice框架运行方式介绍',
                         ),
                     ),
                     array(
@@ -152,6 +162,7 @@ $sidenav = array(
                         'target' => '',
                         'page'   => array(
                             'md' => '/ice/core-func-runner-daemon.md',
+                            'seo_title' => 'PHP Ice框架运行方式介绍',
                         ),
                     ),
                     array(
@@ -162,6 +173,7 @@ $sidenav = array(
                         'target' => '',
                         'page'   => array(
                             'md' => '/ice/core-func-runner-embeded.md',
+                            'seo_title' => 'PHP Ice框架运行方式介绍',
                         ),
                     ),
                 ),
@@ -174,6 +186,7 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/core-func-input-output.md',
+                    'seo_title' => 'PHP Ice框架交互数据封装',
                 ),
             ),
             array(
@@ -184,6 +197,7 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/core-func-logger.md',
+                    'seo_title' => 'PHP Ice框架日志处理',
                 ),
             ),
             array(
@@ -194,6 +208,8 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/core-func-db.md',
+                    'seo_title' => 'PHP Ice框架数据库访问层',
+                    'seo_keywords' => 'PHP框架,PHP开发,PHP 数据库访问,数据库访问代码,mysql查询',
                 ),
             ),
             array(
@@ -204,6 +220,8 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/core-func-ut.md',
+                    'seo_title' => 'PHP Ice框架单元测试介绍',
+                    'seo_keywords' => 'PHP框架,PHP开发,PHP单元测试,PHP Unit,覆盖率',
                 ),
             ),
         ),
@@ -223,6 +241,8 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/specification-name.md',
+                    'seo_title' => 'PHP Ice框架命名规范',
+                    'seo_keywords' => 'PHP框架,PHP开发,PHP 命名规范,规范,PSR-4',
                 ),
             ),
             array(
@@ -233,6 +253,8 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/specification-develop.md',
+                    'seo_title' => 'PHP Ice框架开发规范',
+                    'seo_keywords' => 'PHP框架,PHP开发,开发规范',
                 ),
             ),
             array(
@@ -243,6 +265,8 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/specification-doc.md',
+                    'seo_title' => 'PHP Ice框架注解规范',
+                    'seo_keywords' => 'PHP框架,PHP开发,注解,PHPDoc,PHP文档',
                 ),
             ),
         ),
