@@ -85,6 +85,36 @@ $sidenav = array(
                 ),
             ),
             array(
+                'sn'     => '/manual/feature',
+                'link'   => '/ice/core-func-feature.html',
+                'text'   => 'Feature机制',
+                'class'  => '',
+                'target' => '',
+                'page'   => array(
+                    'md' => '/ice/core-func-feature.md',
+                ),
+            ),
+            array(
+                'sn'     => '/manual/resource',
+                'link'   => '/ice/core-func-resource.html',
+                'text'   => '资源管理',
+                'class'  => '',
+                'target' => '',
+                'page'   => array(
+                    'md' => '/ice/core-func-resource.md',
+                ),
+            ),
+            array(
+                'sn'     => '/manual/filter',
+                'link'   => '/ice/core-func-filter.html',
+                'text'   => '过滤器',
+                'class'  => '',
+                'target' => '',
+                'page'   => array(
+                    'md' => '/ice/core-func-filter.md',
+                ),
+            ),
+            array(
                 'sn'       => '/manual/runner',
                 'link'     => '/ice/core-func-runner.html',
                 'text'     => '运行方式',
@@ -144,36 +174,6 @@ $sidenav = array(
                 'target' => '',
                 'page'   => array(
                     'md' => '/ice/core-func-input-output.md',
-                ),
-            ),
-            array(
-                'sn'     => '/manual/resource',
-                'link'   => '/ice/core-func-resource.html',
-                'text'   => '资源管理',
-                'class'  => '',
-                'target' => '',
-                'page'   => array(
-                    'md' => '/ice/core-func-resource.md',
-                ),
-            ),
-            array(
-                'sn'     => '/manual/filter',
-                'link'   => '/ice/core-func-filter.html',
-                'text'   => '过滤器',
-                'class'  => '',
-                'target' => '',
-                'page'   => array(
-                    'md' => '/ice/core-func-filter.md',
-                ),
-            ),
-            array(
-                'sn'     => '/manual/feature',
-                'link'   => '/ice/core-func-feature.html',
-                'text'   => 'Feature机制',
-                'class'  => '',
-                'target' => '',
-                'page'   => array(
-                    'md' => '/ice/core-func-feature.md',
                 ),
             ),
             array(
