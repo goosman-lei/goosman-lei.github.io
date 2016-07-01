@@ -1,11 +1,11 @@
+#  Ice有什么价值?
+
+* 移动端API开发, 面对<font color="orange" size="4"><b>复杂的客户端环境和版本适配</b></font>, 你痛苦吗? [[Feature组件](/ice/core-func-feature.html)]
+* 如何避免<font color="orange" size="4"><b>繁琐而重复</b></font>的工作? 比如: 输入数据校验, 输出数据处理. 而且还能在这中间做些有价值的东西? 比如: 所有输出URL要统一经过CDN调度. [[Filter组件](/ice/core-func-filter.html)]
+* 后端资源(MYSQL, REDIS等)难道不能<font color="orange" size="4"><b>统一调度</b></font>, 统一做应用层可用性控制? [[资源管理组件](/ice/core-func-resource.html)]
+* 服务化? 我业务很小/刚起步, 如何在<font color="orange" size="4"><b>不损失开发灵活性的同时对服务层解耦</b></font>? [[服务管理层](/ice/core-func-runner-service.html)]
+
 # 概览
-
-##  为什么要用Ice开发?
-
-* 移动端API开发, 面对<font color="red" size="18px"><b>复杂的客户端环境和版本适配</b></font>, 你痛苦吗? [Feature组件](/ice/core-func-feature.html)
-* 请求的输入<font color="red" size="18px"><b>数据校验</b></font>, 如何<font color="red" size="18px"><b>定义并确保</b></font>API按照协议输出, 某项数据如何<font color="red" size="18px"><b>统一处理</b></font>(比如所有输出URL要统一经过CDN调度)? [Filter组件](/ice/core-func-filter.html)
-* 后端资源(MYSQL, REDIS等)难道不能<font color="red" size="18px"><b>统一调度</b></font>, 统一做应用层可用性控制? [资源管理组件](/ice/core-func-resource.html)
-* 服务化? 我业务很小/刚起步, 如何在<font color="red" size="18px"><b>不损失开发灵活性的同时对服务层解耦</b></font>? [服务管理层](/ice/core-func-runner-service.html)
 
 ##  基于Ice的项目开发过程
 
