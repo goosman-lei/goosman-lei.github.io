@@ -274,7 +274,7 @@ $sidenav = array(
 );
 $main = array(
     'path_info' => array(
-        'static_base_url' => '/static'
+        'static_base_url' => 'http://static-cdn.tec-inf.com'
     ),
     'topnav_infos' => $topnav,
     'sidenav_infos' => $sidenav,
