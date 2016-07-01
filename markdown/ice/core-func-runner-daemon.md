@@ -1,6 +1,6 @@
 # Daemon运行方式
 
-![Daemon应用结构图](https://goosman-lei.github.io/static/post-img/0005.ice-core-func-runner-daemon.png)
+![Daemon应用结构图](http://static-cdn.tec-inf.com/post-img/0005.ice-core-func-runner-daemon.png)
 
 ## Daemon
 

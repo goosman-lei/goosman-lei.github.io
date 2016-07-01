@@ -4,7 +4,7 @@ Feature组件是一个实现简单, 应用简单, 但在App的API开发中, 针�
 
 ## Feature要解决的问题
 
-![Feature要解决的问题](https://goosman-lei.github.io/static/post-img/0010.use-case-slide.017.png)
+![Feature要解决的问题](http://static-cdn.tec-inf.com/post-img/0010.use-case-slide.017.png)
 
 ## Feature组件的设计思路
 

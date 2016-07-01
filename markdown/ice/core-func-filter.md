@@ -1,6 +1,6 @@
 # Filter模块
 
-![Filter模块设计图](https://goosman-lei.github.io/static/post-img/0003.ice-core-filter-design.png)
+![Filter模块设计图](http://static-cdn.tec-inf.com/post-img/0003.ice-core-filter-design.png)
 
 ##  设计目标
 
