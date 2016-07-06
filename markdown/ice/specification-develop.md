@@ -15,9 +15,8 @@ workApp是当前调用上下文所在的项目. (在以local方式调用service�
 * 不允许产生跨层调用, 合法的调用层次关系如下
 
 ```
-action => service
-daemon => service
 service => model
+[ action | daemon | service ] => service
 [ action | daemon | service | model ] => lib
 [ action | daemon | service | model | lib ] => 框架
 ```
