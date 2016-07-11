@@ -11,7 +11,7 @@ tags: []
 ```php
 //author: selfimpr
 //blog: http://blog.csdn.net/lgg201
-//mail: lgg860911@yahoo.com.cn
+//mail: goosman.lei@gmail.com
 //EF BB BF这三个字节称为bom头
 function hasbom(&amp;$content) {
 	$firstline = $content[0];

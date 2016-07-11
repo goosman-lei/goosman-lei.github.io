@@ -211,7 +211,7 @@ function getCurrentMemory() {
  * Mysql工具类
  * @author selfimpr
  * @blog http://blog.csdn.net/lgg201
- * @email lgg860911@yahoo.com.cn
+ * @email goosman.lei@gmail.com
  *
  */
 class Mysql {

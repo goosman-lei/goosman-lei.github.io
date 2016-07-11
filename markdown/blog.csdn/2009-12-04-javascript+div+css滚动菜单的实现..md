@@ -195,7 +195,7 @@
 			&lt;div class="author-information"&gt;
 				&lt;div class="author-information-label"&gt;网络昵称:&lt;/div&gt;&lt;div class="author-information-information"&gt;selfimpr&lt;/div&gt;
 				&lt;div class="author-information-label"&gt;个人博客:&lt;/div&gt;&lt;div class="author-information-information"&gt;&lt;a href="http://blog.csdn.net/lgg201" mce_href="http://blog.csdn.net/lgg201"&gt;http://blog.csdn.net/lgg201&lt;/a&gt;&lt;/div&gt;
-				&lt;div class="author-information-label"&gt;E-mail:&lt;/div&gt;&lt;div class="author-information-information"&gt;&lt;a href="mailto:lgg860911@yahoo.com.cn" mce_href="mailto:lgg860911@yahoo.com.cn"&gt;lgg860911@yahoo.com.cn&lt;/a&gt;&lt;/div&gt;
+				&lt;div class="author-information-label"&gt;E-mail:&lt;/div&gt;&lt;div class="author-information-information"&gt;&lt;a href="mailto:goosman.lei@gmail.com" mce_href="mailto:goosman.lei@gmail.com"&gt;goosman.lei@gmail.com&lt;/a&gt;&lt;/div&gt;
 				&lt;div class="author-information-label"&gt;声明:&lt;/div&gt;&lt;div class="author-information-information"&gt;任何形式的转载请保留原作者信息.&lt;/div&gt;
 				&lt;div class="author-information-label"&gt;欢迎访问:&lt;/div&gt;&lt;div class="author-information-information"&gt;&lt;a href="http://www.heyjava.com" mce_href="http://www.heyjava.com"&gt;http://www.heyjava.com&lt;/a&gt;&lt;/div&gt;
 			&lt;/div&gt;

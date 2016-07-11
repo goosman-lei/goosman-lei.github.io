@@ -3,7 +3,7 @@
 /**
  * auhtor: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  * 输出整数类型边界值及其大小(K&R <The C programming language> exer 2-1)
  */
 

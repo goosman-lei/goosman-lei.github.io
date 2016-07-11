@@ -13,7 +13,7 @@ tags: []
 版本: ThinkPHP_3.0RC2_Core
 作者: selfimpr
 Blog: [http://blog.csdn.net/lgg201](http://blog.csdn.net/lgg201)
-Mail: [lgg860911@yahoo.com.cn](mailto:lgg860911@yahoo.com.cn)
+Mail: [goosman.lei@gmail.com](mailto:goosman.lei@gmail.com)
 环境/工具:
 •    php-5.3.5-fpm
 •    nginx-1.0.14

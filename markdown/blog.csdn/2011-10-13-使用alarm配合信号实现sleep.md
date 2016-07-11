@@ -1,6 +1,6 @@
 author: selfimpr
 blog: http://blog.csdn.net/lgg201
-mail: lgg860911@yahoo.com.cn
+mail: goosman.lei@gmail.com
 
 APUE中描述Solaris 9是使用alarm实现的sleep, 其语义如下:
 如果在sleep之前有一个未到期的alarm时钟, 则中断时钟

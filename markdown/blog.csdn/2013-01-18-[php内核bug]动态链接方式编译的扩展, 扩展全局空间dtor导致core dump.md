@@ -1,4 +1,4 @@
-author: goosman.lei(雷果国)blog: http://blog.csdn.net/lgg201mail: lgg860911@yahoo.com.cn
+author: goosman.lei(雷果国)blog: http://blog.csdn.net/lgg201mail: goosman.lei@gmail.com
 相关代码可以参考<php extending and embedding>一书第12章, "Extension Globals"一节.
 
 注册扩展的全局空间代码如下:#ifdef ZTS    ts_allocate_id(&sample_globals_id, sizeof(zend_sample_globals), (ts_allocate_ctor)ZEND_MODULE_GLOBALS_CTOR_N(sample), (ts_allocate_dtor)ZEND_MODULE_GLOBALS_DTOR_N(sample));#else    sample_globals_ctor(&sample_globals TSRMLS_CC);#endif

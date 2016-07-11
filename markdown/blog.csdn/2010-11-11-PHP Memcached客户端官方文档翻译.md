@@ -1,7 +1,7 @@
 呵呵， 项目要换memcache客户端了，今天看了看Memcached文档，顺便简单翻译了。。不足之处请指教
 translator：selfimpr
 blog: http://blog.csdn.net/lgg201
-mail: lgg860911@yahoo.com.cn
+mail: goosman.lei@gmail.com
  
 
 ```php

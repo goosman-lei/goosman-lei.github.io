@@ -16,7 +16,7 @@ package selfimpr.datastruct.binarysearchtree;
 /**
  * 
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  */
 public class Node {
@@ -42,7 +42,7 @@ package selfimpr.datastruct.binarysearchtree;
 /**
  * 
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  */
 public class BinarySearchTree {
@@ -226,7 +226,7 @@ import selfimpr.datastruct.binarysearchtree.BinarySearchTree;
 /**
  * 
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  */
 public class BinarySearchTreeTest extends TestCase {

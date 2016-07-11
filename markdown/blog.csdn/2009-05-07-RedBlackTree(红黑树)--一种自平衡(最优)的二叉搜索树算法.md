@@ -22,7 +22,7 @@ package selfimpr.datastruct.redblacktree;
 /**
  * 
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  */
 public class Node {
@@ -50,7 +50,7 @@ package selfimpr.datastruct.redblacktree;
 /**
  * 
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  */
 public class RedBlackTree {
@@ -66,7 +66,7 @@ public class RedBlackTree {
 	 * 向树中插入一个值为value的节点.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 7, 2009-1:39:23 PM
 	 * @param value 要插入的值.
@@ -262,7 +262,7 @@ public class RedBlackTree {
 	 * 判断指定节点是祖父节点的外侧子孙节点还是内侧子孙节点.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 7, 2009-1:37:43 PM
 	 * @param current 需要判断的节点.
@@ -280,7 +280,7 @@ public class RedBlackTree {
 	 * 改变指定节点的颜色
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 7, 2009-1:37:19 PM
 	 * @param node 指定的节点.
@@ -293,7 +293,7 @@ public class RedBlackTree {
 	 * current为根的子树进行右转.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 7, 2009-12:49:39 PM
 	 * @param current 旋转的子树的根
@@ -345,7 +345,7 @@ public class RedBlackTree {
 	 * current为根的子树进行左旋
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 7, 2009-1:19:42 PM
 	 * @param current 子树的根
@@ -410,7 +410,7 @@ import selfimpr.datastruct.redblacktree.RedBlackTree;
 /**
  * 
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  */
 public class RedBlackTreeTest extends TestCase {

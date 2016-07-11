@@ -11,7 +11,7 @@ package selfimpr.datastruct.highsort;
  * 
  * @announce Keep all copyright, if you want to reprint, please announce source.
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  * @data May 14, 2009-9:33:58 PM
  */
@@ -53,7 +53,7 @@ package selfimpr.datastruct.highsort;
  * 快速排序算法
  * @announce Keep all copyright, if you want to reprint, please announce source.
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  * @data May 14, 2009-9:39:09 PM
  */
@@ -70,7 +70,7 @@ public class QuickSort {
 	 * 排序算法
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 14, 2009-9:39:43 PM
 	 * @param array 要排序的数组
@@ -83,7 +83,7 @@ public class QuickSort {
 	 * 快速排序的递归算法.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 14, 2009-9:40:10 PM
 	 * @param array 要排序的数组
@@ -116,7 +116,7 @@ public class QuickSort {
 	 * 分治算法.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 14, 2009-9:37:30 PM
 	 * @param array 要分治的数组
@@ -149,7 +149,7 @@ public class QuickSort {
 	 * 交换数组内leftPointer和rightPointer的数据.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data May 14, 2009-9:38:44 PM
 	 * @param array
@@ -182,7 +182,7 @@ import junit.framework.TestCase;
  * 
  * @announce Keep all copyright, if you want to reprint, please announce source.
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  * @data May 14, 2009-9:45:55 PM
  */

@@ -31,7 +31,7 @@ ALTER TABLE ITEM ADD FOREIGN KEY(USER_ID) REFERENCES USER(ID) ON DELETE CASCADE;
  * 实体基类
  * @author selfimpr
  * @blog http://blog.csdn.net/lgg201
- * @email lgg860911@yahoo.com.cn
+ * @email goosman.lei@gmail.com
  *
  */
 class Entity {
@@ -61,7 +61,7 @@ require_once './Entity.php';
  * 用户实体类
  * @author selfimpr
  * @blog http://blog.csdn.net/lgg201
- * @email lgg860911@yahoo.com.cn
+ * @email goosman.lei@gmail.com
  *
  */
 class User extends Entity {
@@ -101,7 +101,7 @@ require_once './Entity.php';
  * 订餐订单
  * @author selfimpr
  * @blog http://blog.csdn.net/lgg201
- * @email lgg860911@yahoo.com.cn
+ * @email goosman.lei@gmail.com
  *
  */
 class Item extends Entity {
@@ -157,7 +157,7 @@ class Item extends Entity {
  * Mysql工具类
  * @author selfimpr
  * @blog http://blog.csdn.net/lgg201
- * @email lgg860911@yahoo.com.cn
+ * @email goosman.lei@gmail.com
  *
  */
 class Mysql {
@@ -348,7 +348,7 @@ require_once './bussiness.php';
  * 本程序业务逻辑之下部分的单元测试
  * @author selfimpr
  * @blog http://blog.csdn.net/lgg201
- * @email lgg860911@yahoo.com.cn
+ * @email goosman.lei@gmail.com
  */
 
 /**
@@ -492,7 +492,7 @@ require_once './bussiness.php';
  * 系统中用户的管理界面
  * @author selfimpr
  * @blog http://blog.csdn.net/lgg201
- * @email lgg860911@yahoo.com.cn
+ * @email goosman.lei@gmail.com
  */
 $users = getUsers();
 ?&gt;

@@ -30,7 +30,7 @@ package selfimpr.datastruct.simplesort.insertsort;
  * 插入排序算法.希尔排序初步.
  * @announce Keep all copyright, if you want to reprint, please announce source.
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  * @data Apr 19, 2009-1:13:57 PM
  */
@@ -43,7 +43,7 @@ public class InsertSort {
 	 * 插入排序的扩展, 本方法可以提供给希尔排序直接使用.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data Apr 19, 2009-1:13:30 PM
 	 * @param arr
@@ -71,7 +71,7 @@ public class InsertSort {
 	 * 去除数组中重复的数据.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data Apr 19, 2009-1:12:08 PM
 	 * @param arr
@@ -90,7 +90,7 @@ public class InsertSort {
 	 * 删除数组中从start到end的数据.
 	 * @announce Keep all copyright, if you want to reprint, please announce source.
 	 * @author selfimpr
-	 * @mail lgg860911@yahoo.com.cn
+	 * @mail goosman.lei@gmail.com
 	 * @blog http://blog.csdn.net/lgg201
 	 * @data Apr 19, 2009-1:12:46 PM
 	 * @param arr
@@ -125,7 +125,7 @@ import selfimpr.datastruct.simplesort.insertsort.InsertSort;
  * 适应数据量: 1万条以内.
  * @announce Keep all copyright, if you want to reprint, please announce source.
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  * @data Apr 19, 2009-1:16:44 PM
  */
@@ -167,7 +167,7 @@ package selfimpr.datastruct.highsort;
  * 
  * @announce Keep all copyright, if you want to reprint, please announce source.
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  * @data Apr 19, 2009-1:36:47 PM
  */

@@ -11,7 +11,7 @@ tags: []
  
 
 @author: selfimpr
-@mail: lgg860911@yahoo.com.cn
+@mail: goosman.lei@gmail.com
 @blog: http://blog.csdn.net/lgg201
  
 

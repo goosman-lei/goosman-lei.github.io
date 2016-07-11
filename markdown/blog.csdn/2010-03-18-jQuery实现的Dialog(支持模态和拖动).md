@@ -34,7 +34,7 @@
 /**
  * @author: selfimpr
  * @blog: http://blog.csdn.net/lgg201
- * @email: lgg860911@yahoo.com.cn
+ * @email: goosman.lei@gmail.com
  * 使用方法:
  * var dialog = new Dialog({
  * 	target: '#dialog', 

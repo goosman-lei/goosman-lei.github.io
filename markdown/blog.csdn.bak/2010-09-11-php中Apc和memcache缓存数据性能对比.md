@@ -18,7 +18,7 @@ apc.user_entries_hint这个配置用来调整用户缓存变量数量, 当此值
 /**
  * @author: selfimpr
  * @blog: http://blog.csdn.net/lgg201
- * @mail: lgg860911@yahoo.com.cn
+ * @mail: goosman.lei@gmail.com
  */
  
 系统现有APC存储数据量: 70万条左右.

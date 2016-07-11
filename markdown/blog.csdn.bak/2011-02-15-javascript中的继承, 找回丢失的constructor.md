@@ -5,7 +5,7 @@ date: 2011-02-15 14:03:00
 categories: [constructor, javascript, function, user, authentication, login]
 tags: []
 ---
-autho: selfimprblog: [http://blog.csdn.net/lgg201](http://blog.csdn.net/lgg201)mail: lgg860911@yahoo.com.cnjavascript的继承方案: 1. 子类构造器中以自身对象作为宿主对象对父类进行调用.
+autho: selfimprblog: [http://blog.csdn.net/lgg201](http://blog.csdn.net/lgg201)mail: goosman.lei@gmail.comjavascript的继承方案: 1. 子类构造器中以自身对象作为宿主对象对父类进行调用.
 ```javascript
 function User(username, password) {
     this.username = username;

@@ -7,7 +7,7 @@ tags: []
 ---
 author: selfimpr
 blog: http://blog.csdn.net/lgg201
-mail: lgg860911@yahoo.com.cn
+mail: goosman.lei@gmail.com
 
 事情的起源, 是同事使用下面的代码, 得到了一个诡异的结果, 而且是稳定的产生我们不期望的结果.
 

@@ -9,7 +9,7 @@ tags: []
 下载地址：[http://www.thomasfrank.se/sessvars.js](http://www.thomasfrank.se/sessvars.js)
 @译者: selfimpr
 @blog: http://blog.csdn.net/lgg201
-@mail: lgg860911@yahoo.com.cn
+@mail: goosman.lei@gmail.com
 @转载请声明出处
  
 插件文档翻译：[http://blog.csdn.net/lgg201/archive/2010/09/23/5902321.aspx](http://blog.csdn.net/lgg201/archive/2010/09/23/5902321.aspx)
@@ -31,7 +31,7 @@ sanitizer added to toObject-method &amp; includeFunctions flag now defaults to f
 @url: http://www.thomasfrank.se/sessionvars.html
 @译者: selfimpr
 @blog: http://blog.csdn.net/lgg201
-@mail: lgg860911@yahoo.com.cn
+@mail: goosman.lei@gmail.com
 sessvars是一款利用window.name实现前台跨窗口(跨域)会话对象的javascript插件.
 */
 sessvars=function(){

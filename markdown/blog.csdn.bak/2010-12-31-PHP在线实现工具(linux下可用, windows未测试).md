@@ -13,7 +13,7 @@ tags: []
 /**
  * author: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  */
 header("Content-Type: text/html; charset=utf-8;");
 function user_cputime() {

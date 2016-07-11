@@ -19,7 +19,7 @@ Created on 2009-10-21
 
 @author: selfimpr
 @blog: http://blog.csdn.net/lgg201
-@E-mail: lgg860911@yahoo.com.cn
+@E-mail: goosman.lei@gmail.com
 @function: 测试过FreeBSD下可以使用. 是一个小练习, 作用是将系统命令作为参数传入, 执行.  接受的参数支持管道操作, 管道操作符使用|.
 '''
 

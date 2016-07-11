@@ -7,7 +7,7 @@ tags: []
 ---
 author: selfimpr
 blog: http://blog.csdn.net/lgg201
-mail: lgg860911@yahoo.com.cn
+mail: goosman.lei@gmail.com
  
 1. 系统级锁定支持:
 memcache客户端不支持锁相关的功能，而服务端又支持并发，这样其实就会带来数据混乱的问题，我们之前的做法是实现一个应用层的锁：
@@ -17,7 +17,7 @@ memcache客户端不支持锁相关的功能，而服务端又支持并发，这
 /**
  * author: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  */
 $m = new Memcache();
 $m-&gt;addServer(......);

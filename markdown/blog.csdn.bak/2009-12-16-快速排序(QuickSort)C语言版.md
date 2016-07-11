@@ -14,7 +14,7 @@ tags: []
  
 作者: selfimpr
 博客:[http://blog.csdn.net/lgg201](http://blog.csdn.net/lgg201)
-邮箱:[lgg860911@yahoo.com.cn](mailto:lgg860911@yahoo.com.cn)
+邮箱:[goosman.lei@gmail.com](mailto:goosman.lei@gmail.com)
  
  
 
@@ -45,7 +45,7 @@ void sort(int array[], int left, int right);
 /*
  * @author: selfimpr
  * @blog: http://blog.csdn.net/lgg201
- * @email: lgg860911@yahoo.com.cn
+ * @email: goosman.lei@gmail.com
  */
 int main() {
    int array[LENGTH];

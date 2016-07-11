@@ -14,7 +14,7 @@ tags: []
  * 			按照原顺序传递给回调函数callback使用
  * @author selfimpr
  * @blog http://blog.csdn.net/lgg201
- * @mail lgg860911@yahoo.com.cn 
+ * @mail goosman.lei@gmail.com 
  */
 window._setTimeout = window.setTimeout;
 window.setTimeout = function() {

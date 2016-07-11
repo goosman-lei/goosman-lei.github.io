@@ -1,7 +1,7 @@
 
 author: selfimpr
 date: 2010-07-12
-email: lgg860911@yahoo.com.cn
+email: goosman.lei@gmail.com
 blog: http://blog.csdn.net/lgg201
 注: 这里会公布所有的测试脚本, 测试脚本有不足指出还请指教学习, 如果有朋友有跑出来新的数据, 烦请发一份给我, 谢谢.
 测试脚本共享地址:[http://blog.csdn.net/lgg201/archive/2010/07/17/5742763.aspx](http://blog.csdn.net/lgg201/archive/2010/07/17/5742763.aspx)

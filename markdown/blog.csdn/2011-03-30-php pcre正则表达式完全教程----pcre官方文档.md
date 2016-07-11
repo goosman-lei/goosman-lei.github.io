@@ -2,7 +2,7 @@
 	翻译有不正确的地方, 恳请指正......本翻译过段时间录入php官方文档
 	translator: slefimpr
 	blog: [http://blog.csdn.net/lgg201](http://blog.csdn.net/lgg201)
-	mail: [lgg860911@yahoo.com.cn](mailto: lgg860911@yahoo.com.cn)
+	mail: [goosman.lei@gmail.com](mailto: goosman.lei@gmail.com)
 #PCRE
 ##简介
 PCRE          扩展的正则表达式会有一个每个线程都可用的全局缓存用来缓存编译后的正则表达式.

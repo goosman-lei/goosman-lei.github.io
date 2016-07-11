@@ -3,7 +3,7 @@
  * 有翻译不合适或错误的地方, 请纠正,
  * 希望不要因为我的错误误导您, 希望您的智慧可以加入.
  * @translator: selfimpr
- * @mail: lgg860911@yahoo.com.cn
+ * @mail: goosman.lei@gmail.com
  * @blog: http://blog.csdn.net/lgg201
  */
  

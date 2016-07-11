@@ -1,7 +1,7 @@
  
 author: selfimpr
 blog:[http://blog.csdn.net/lgg201](http://blog.csdn.net/lgg201)
-mail:[lgg860911@yahoo.com.cn](mailto:lgg860911@yahoo.com.cn)
+mail:[goosman.lei@gmail.com](mailto:goosman.lei@gmail.com)
  
 四种语法的差异
 在PHP中,包含一个文件有4种方式:require,require_once,include,include_once.其中require_once/include_once与require/include相比,在功能上,仅仅是增加了一个是否已经加载过的检测,require_once/include_once在一次PHP执行过程中,保证一个文件只被加载一次.
@@ -23,7 +23,7 @@ main.php
 /**
  * author: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  * require/require_once性能测试
  */
 /**

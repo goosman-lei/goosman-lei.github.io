@@ -8,7 +8,7 @@ tags: []
 原文地址:[http://www.thomasfrank.se/sessionvars.html](http://www.thomasfrank.se/sessionvars.html)
 译者： selfimpr
 博客： http://blog.csdn.net/lgg201
-邮箱： lgg860911@yahoo.com.cn
+邮箱： goosman.lei@gmail.com
  
 插件源代码解析：[http://blog.csdn.net/lgg201/archive/2010/09/23/5902274.aspx](http://blog.csdn.net/lgg201/archive/2010/09/23/5902274.aspx)
  

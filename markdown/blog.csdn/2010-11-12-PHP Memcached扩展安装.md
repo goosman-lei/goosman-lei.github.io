@@ -1,6 +1,6 @@
 author: selfimpr
 blog: http://blog.csdn.net/lgg201
-mail: lgg860911@yahoo.com.cn
+mail: goosman.lei@gmail.com
  
 注意:
     以下所有操作如果提示无权限, 则加sudo

@@ -1,6 +1,6 @@
 author: selfimpr
 blog: http://blog.csdn.net/lgg201
-mail: lgg860911@yahoo.com.cn
+mail: goosman.lei@gmail.com
 
 上一篇文档见
 [libmemcached一致性hash算法详解(1)----php-memcached客户端一致性哈希与crc算法共用产生的bug分析](http://blog.csdn.net/lgg201/article/details/6856112)

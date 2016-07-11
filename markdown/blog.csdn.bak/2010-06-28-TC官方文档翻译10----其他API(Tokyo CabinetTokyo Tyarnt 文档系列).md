@@ -10,7 +10,7 @@ tags: []
  * 有翻译不合适或错误的地方, 请纠正,
  * 希望不要因为我的错误误导您, 希望您的智慧可以加入.
  * @translator: selfimpr
- * @mail: lgg860911@yahoo.com.cn
+ * @mail: goosman.lei@gmail.com
  * @blog: http://blog.csdn.net/lgg201
  */
  
@@ -21,7 +21,7 @@ long tclmax(long a, long b);
 long tclmin(long a, long b);
          返回a和b中的小值
 unsigned long tclrand();
-         返回一个无符号长整型的随机数. 内部是通过/dev/urandom生成随机数然后与时间戳进行计算(没看懂, 有懂的朋友有空的话发邮件lgg860911@yahoo.com.cn讲讲, 学习学习, 谢谢).
+         返回一个无符号长整型的随机数. 内部是通过/dev/urandom生成随机数然后与时间戳进行计算(没看懂, 有懂的朋友有空的话发邮件goosman.lei@gmail.com讲讲, 学习学习, 谢谢).
 double tcdrand();
          生成double型的随机数.
 int tcstricmp(const char *astr, const char

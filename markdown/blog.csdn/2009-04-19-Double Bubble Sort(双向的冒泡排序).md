@@ -15,7 +15,7 @@ package selfimpr.datastruct.simplesort.doublebubblesort;
  * 
  * @announce Keep all copyright, if you want to reprint, please announce source.
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  * @data Apr 19, 2009-12:59:44 PM
  */
@@ -78,7 +78,7 @@ import selfimpr.datastruct.simplesort.doublebubblesort.Sort;
  * 
  * @announce Keep all copyright, if you want to reprint, please announce source.
  * @author selfimpr
- * @mail lgg860911@yahoo.com.cn
+ * @mail goosman.lei@gmail.com
  * @blog http://blog.csdn.net/lgg201
  * @data Apr 19, 2009-1:00:06 PM
  */

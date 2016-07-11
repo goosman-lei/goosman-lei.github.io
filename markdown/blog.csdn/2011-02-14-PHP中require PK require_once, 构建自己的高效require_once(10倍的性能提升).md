@@ -1,6 +1,6 @@
 author: selfimpr
 blog:[http://blog.csdn.net/lgg201](http://blog.csdn.net/lgg201)
-mail: lgg860911@yahoo.com.cn
+mail: goosman.lei@gmail.com
  
 经过测试, require_once是一个性能低下的语法结构, 当然, 这个性能低下是相对于require而言的, 本文阐述我们项目目前使用的require方式, 通过实验代码证明其高效性, 同时, 描述我们在使用过程中遇到的问题, 避免他人在同一个石头上绊倒....
 如果有更好的建议和本文有不正确观点, 还望指正, 谢谢.

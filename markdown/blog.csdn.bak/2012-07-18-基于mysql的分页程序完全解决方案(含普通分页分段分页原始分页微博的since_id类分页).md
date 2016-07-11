@@ -7,7 +7,7 @@ tags: []
 ---
 Author: selfimpr
 Blog: http://blog.csdn.net/lgg201
-Mail: lgg860911@yahoo.com.cn
+Mail: goosman.lei@gmail.com
 Copyright: 转载请注明出处
 
 0. 下载:
@@ -236,7 +236,7 @@ page.lib.php
  * 5. 自动的分页支持
  * author: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  */
 #分页术语
 define('TERM_DATAS',						'datas');			#分页得到数据
@@ -1750,7 +1750,7 @@ test_base.php
  * 2. 定义mysql的错误处理
  * author: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  */
 require dirname(__FILE__) . '/page0.lib.php';
 assert_options(ASSERT_ACTIVE, TRUE);
@@ -1782,7 +1782,7 @@ test_convert.php
  * 分页程序 分页之间的转换测试
  * author: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  */
 require dirname(__FILE__) . '/test_base.php';
 #ping_to_offset单元测试
@@ -1881,7 +1881,7 @@ test_parse.php
  * 分页程序 SQL解析测试(由于处理简单, 可能会有某些SQL处理不了, 需要使用此工具先确认可用)
  * author: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  */
 require dirname(__FILE__) . '/test_base.php';
 
@@ -1932,7 +1932,7 @@ test_page.php
  * 分页程序 分页测试
  * author: selfimpr
  * blog: http://blog.csdn.net/lgg201
- * mail: lgg860911@yahoo.com.cn
+ * mail: goosman.lei@gmail.com
  */
 require dirname(__FILE__) . '/test_base.php';
 
