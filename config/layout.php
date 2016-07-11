@@ -7,10 +7,14 @@ $topnav = array(
         'class' => '',
     ),
     array(
-        'sn'    => 'blog',
-        'link'  => '',
-        'text'  => 'Blog',
+        'sn'    => 'blog-history',
+        'link'  => '/blog-history',
+        'text'  => 'CSDN-BLOG',
         'class' => '',
+        'page' => array (
+          'md' => '/blog.csdn/index.md',
+          'seo_title' => 'Goosman.lei 博客',
+        ),
     ),
     array(
         'sn'    => 'contact',
@@ -32,7 +36,7 @@ $sidenav = array(
     ),
     array(
         'sn'     => '/slide',
-        'link'   => '/static/pdf/001.ice-use-slide.pdf',
+        'link'   => 'http://static-cdn.tec-inf.com/pdf/001.ice-use-slide.pdf',
         'text'   => 'Ice介绍PPT',
         'class'  => '',
         'target' => '_blank',
