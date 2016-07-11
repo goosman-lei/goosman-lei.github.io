@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="goosman-lei的博客">
+    <meta name="keywords" content="PHP Web开发,PHP,PHP 框架,高可用,分布式">
+
+    <title>与PHP5.3.5的战斗----记php5.3.5安装过程- By Goosman-lei(goosman.lei@gmail.com</title>
+
+    <!-- Styles -->
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="http://static-cdn.tec-inf.com/apple-touch-icon.png">
+    <link rel="icon" href="http://static-cdn.tec-inf.com/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="">Goosman.lei</a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+                              <li class=""><a href="/ice">Ice</a></li>
+                              <li class=" active"><a href="/blog-history">CSDN-BLOG</a></li>
+                              <li class="hero"><a href="mailto:goosman.lei@gmail.com">Contact</a></li>
+                          </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+      
+    </header>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+
+<!-- TODO 解递归当场遍历出树结构菜单 -->
+<ul class="sidenav">
+  <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">2016年</a>
+  <ul>
+    <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">[分享]面向中大型应用的PHPWeb开发框架Ice</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">2013年</a>
+  <ul>
+    <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html">[翻译][php扩展开发和嵌入式]第19章-设置宿主环境</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html">[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html">[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">[翻译][php扩展开发和嵌入式]第16章-有趣的流</a>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html">[翻译][php扩展开发和嵌入式]第15章-php中流的实现</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">[翻译][php扩展开发和嵌入式]第14章-php中流的访问</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html">[翻译][php扩展开发和嵌入式]第13章-php的INI设置</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html">[翻译][php扩展开发和嵌入式]第12章-php的启动过程</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html">[翻译][php扩展开发和嵌入式]第11章-php5对象</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html">[翻译][php扩展开发和嵌入式]第10章-php4的对象</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">[翻译][php扩展开发和嵌入式]第9章-资源数据类型</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html">[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html">[翻译][php扩展开发和嵌入式]第7章-接受参数</a>
+      <li><a href="/blog-history/2013/03/从1.5k到18k,一个程序员的5年成长之路.html">从1.5k到18k,一个程序员的5年成长之路</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">[翻译][php扩展开发和嵌入式]第6章-返回值</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html">[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html">[翻译][php扩展开发和嵌入式]第4章-安装构建环境</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">[翻译][php扩展开发和嵌入式]第3章-内存管理</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html">[翻译][php扩展开发和嵌入式]第2章-变量的里里外外</a>
+      <li><a href="/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump.html">[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html">[翻译][php扩展开发和嵌入式]第1章-php的生命周期</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html">[翻译][php扩展开发和嵌入式]第0章-译序</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">2012年</a>
+  <ul>
+    <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">从N个数中选取最大的前10个[堆排序版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[php版].html">从N个数中选取最大的前10个[php版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html">从N个数中选取最大的前10个[C语言版]</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">php截取字符串保留完整xml标签</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">[mysql-manual-5.5]7.1优化概览</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html">php-mysql扩展mysql_querymysql_unbuffered_query对比</a>
+      <li><a href="/blog-history/2012/10/简单游戏场景用户模拟.html">简单游戏场景用户模拟</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html">php-mysql扩展的mysql_connectmysql_pconnect比较</a>
+      <li><a href="/blog-history/2012/10/模拟新浪微博自动登陆.html">模拟新浪微博自动登陆</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">php-curl封装[避免上传文件二义性Bug]</a>
+      <li><a href="/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html">[漏洞]ThinkSNS严重漏洞--将全站崩溃</a>
+      <li><a href="/blog-history/2012/09/无限递归树展示.html">无限递归树展示</a>
+      <li><a href="/blog-history/2012/09/[快速记忆]C语言php的运算符优先级结合性.html">[快速记忆]C语言php的运算符优先级结合性</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">[软件工程]一个故事,分析陷入焦油坑的软件项目</a>
+      <li><a href="/blog-history/2012/06/输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1.html">输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1</a>
+      <li><a href="/blog-history/2012/06/算法分析从N条成绩单信息选择M位不重复同学发奖.html">算法分析从N条成绩单信息选择M位不重复同学发奖</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">ThinkPHPCore3.0源代码review文档</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">2011年</a>
+  <ul>
+    <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">正则表达式分析提取XMLXHTML标签属性</a>
+      <li><a href="/blog-history/2011/12/封装的一个mysql_lib.php,主要是一个分页模型.html">封装的一个mysql_lib.php,主要是一个分页模型</a>
+      <li><a href="/blog-history/2011/12/爱因斯坦的思考题.html">爱因斯坦的思考题</a>
+      <li><a href="/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html">从浏览器操作系统市场占有率分析国人</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">[php内核]----文件系统函数用于普通文件时的一些情况</a>
+      <li><a href="/blog-history/2011/10/某地自动评论脚本备份.html">某地自动评论脚本备份</a>
+      <li><a href="/blog-history/2011/10/使用alarm配合信号实现sleep.html">使用alarm配合信号实现sleep</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现.html">libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html">libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析</a>
+      <li><a href="/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html">由信号集联想----位域授权模式的不限长扩展</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">PHP位域操作函数封装</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">基于dup实现linux的dup2函数APUE练习题3.2</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">日志分析工具（二分法分段查找处理）</a>
+      <li><a href="/blog-history/2011/07/从dl函数分析PHP模块开发.html">从dl函数分析PHP模块开发</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/04/php中的引用传值分析.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2011/04/php中的引用传值分析.html">php中的引用传值分析</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">phppcre正则表达式完全教程----pcre官方文档</a>
+      <li><a href="/blog-history/2011/03/Ubuntu中利用Grub2修复移动硬盘引导.html">Ubuntu中利用Grub2修复移动硬盘引导</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结</a>
+      <li><a href="/blog-history/2011/02/javascript中的继承,找回丢失的constructor.html">javascript中的继承,找回丢失的constructor</a>
+      <li><a href="/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定.html">浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定</a>
+      <li><a href="/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html">PHP操作符优先级列表及一个优先级带来的灵异事件</a>
+      <li><a href="/blog-history/2011/02/PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升.html">PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">php5.3新增的闭包语法介绍functionuse{}</a>
+      <li><a href="/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html" class="active">与PHP5.3.5的战斗----记php5.3.5安装过程</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">2010年</a>
+  <ul>
+    <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2010/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2010/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2010/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2010/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2010/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2010/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2010/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2010/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2010/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2010/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2010/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2010/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2010/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2010/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">2009年</a>
+  <ul>
+    <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2009/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2009/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2009/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2009/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2009/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2009/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2009/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2009/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2009/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2009/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2009/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2009/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2009/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2009/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+</ul>
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1></h1>
+            <p></p>
+<ol class="toc">
+</li></ol>
+
+          </header>
+
+          <section>
+<p> </p>
+
+<p>author: selfimpr
+mail: <a href="mailto:goosman.lei@gmail.com">goosman.lei@gmail.com</a>
+blog: <a href="http://blog.csdn.net/lgg201">http://blog.csdn.net/lgg201</a>
+ 
+最近想过一遍PHP的手册, 刚开始就遇到了困难, PHP5.3开始对于fpm的SAPI开始支持.user.ini样式的配置文件(也就是扫描每个目录下的.user.ini来决定使用的配置项), 原来装的是PHP5.2的版本, 在安装5.3的时候遇到了N多问题, 干耗了9个小时, 终于搞定了...写出来分享下, 顺便备忘.
+ 
+目标: PHP 5.3.5 fpm和cli的SAPI方式都可用.
+另安装apc, svn, memcache, memcached, php_libxslt几个扩展
+ 
+首先是PHP的安装
+wget <a href="http://cn2.php.net/get/php-5.3.5.tar.gz/from/this/mirror">http://cn2.php.net/get/php-5.3.5.tar.gz/from/this/mirror</a>
+tar zxvf php-5.3.5.tar.gz
+cd php-5.3.5
+ 
+./configure --prefix=/usr/local --enable-fpm --with-fpm-user=oo-www --with-fpm-group=oo-www --with-pcre-regex --with-zlib --with-bz2 --enable-calendar --with-curl --enable-dba --with-libxml-dir --enable-ftp --with-gd --with-jpeg-dir --with-png-dir --with-zlib-dir --with-freetype-dir --enable-gd-native-ttf --enable-gd-jis-conv --with-mhash --enable-mbstring --with-mysql --with-mysql-sock --with-mysqli --enable-pcntl --with-pdo-mysql --enable-shmop --enable-sockets --enable-sqlite-utf8 --enable-zip --with-pear=/usr/local/lib/php/pear
+ 
+make ZEND_EXTRA_LIBS=&#39;-liconv&#39;
+ 
+make test
+ 
+make install
+在上面安装PHP的过程中, 我被折磨了超过6个小时, 一开始都是网上找现成的./configure选项还有用原来5.2时候用过的, 总是会有各种问题...
+后来, 实在没办法, ./configure --help 把configure的参数逐个看一遍, 大概了解下自己需要的
+没有想到的是一次成功了...
+make的时候加参数ZEND_EXTRA_LIBS=&#39;-liconv&#39;是因为编译时需要iconv库, 但是configure的时候没有写到Makefile中, 还有一种方法是直接修改Makefile, 在链接库的地方(应该在100行左右)加上-liconv
+ 
+好了, php装好了, 在/usr/local下
+make install完成后给出的安装信息如下
+Installing PHP SAPI module:       fpm//安装的SAPI
+Installing PHP CLI binary:        /usr/local/bin///cli可执行文件
+Installing PHP CLI man page:      /usr/local/man/man1/
+Installing PHP FPM binary:        /usr/local/sbin///fpm的可执行文件
+Installing PHP FPM config:        /usr/local/etc///fpm配置文件
+Installing PHP FPM man page:      /usr/local/man/man8/
+Installing build environment:     /usr/local/lib/php/build///构建路径(这个和phpize是编译扩展必须的, 而且此目录必须和phpzie中的路径一致, 注: 可以用文本编辑器打开phpize查看, 我曾经遇到过路径不一致导致扩展不能被编译的情况)
+Installing header files:          /usr/local/include/php/
+Installing helper programs:       /usr/local/bin/
+  program: phpize//编译扩展需要的可执行程序
+  program: php-config
+Installing man pages:             /usr/local/man/man1/
+  page: phpize.1
+  page: php-config.1
+Installing PEAR environment:      /usr/local/lib/php/pear///pear扩展安装路径
+[PEAR] Archive_Tar    - already installed: 1.3.7
+[PEAR] Console_Getopt - already installed: 1.2.3
+[PEAR] Structures_Graph- already installed: 1.0.3
+[PEAR] XML_Util       - already installed: 1.2.1
+[PEAR] PEAR           - already installed: 1.9.1
+ 
+ 
+接下来, 配置FPM
+fpm会在/usr/local/etc下生成一个php-fpm.conf.default文件, 但是, 实际用的文件名为php-fpm.conf, 需要把这个文件拷贝一份, 修改一下
+cp /usr/local/etc/php-fpm.conf.default /usr/local/etc/php-fpm.conf
+主要是打开下面三项(我是开发机, 所以就开的小)
+pm.start_servers = 5 
+pm.min_spare_servers = 5 
+pm.max_spare_servers = 10
+ 
+然后拷贝ini文件, ini文件在源码目录下有两份
+php.ini-development和php.ini-production, 顾名思义, 一个是开发版的, 一个是产品版的..
+将其中一个拷贝到/usr/local/lib, 命名为php.ini
+cp SOURCE_ROOT/php.ini-development /usr/local/lib/php.ini
+由于我是原有项目, 所以, php.ini也带来了一点小纠结
+error_reportsplit方法在5.3中过期了, 会报错....另外, 通知级别的错误是不需要报告的...error_reporting = E_ALL &amp; ~E_DEPRECATED &amp; ~E_NOTICE
+short_open_tag有哥们儿用了短标签
+register_argc_argv我们有CLI下的应用
+enable_dl需要使用动态链接库
+date.timezone = &quot;Asia/Chongqing&quot;不知道是不是因为装了calendar, 不设置这东西, 就有警告消息
+allow_call_time_pass_reference有哥们调用时传了引用参数
+上面是我碰到的一些问题
+当然, 其实有两个非常重要的指令需要提一下
+include_path = &quot;.:/usr/local/lib/php/pear&quot;包含路径, 这里我用了当前目录和安装时的pear目录, 应用中可能会需要包含自己的项目路径
+extension_dir = &quot;/usr/local/lib/php/extensions/no-debug-non-zts-20090626&quot;扩展包路径, 下面提到的扩展配置, 如果没有给定路径, 都是基于这个路径来的.(注意: 看清楚那个20090626, 下面会提到我被它也纠结不少时间)
+ 
+配置基本上就这样完成了, 接下来就是php-fpm程序的启动管理.
+源码包中的sapi/fpm提供了init.d.php-fpm, 将它拷贝到/etc/init.d/, 命名为php-fpm
+cp SOURCE_ROOT/sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
+好了, 接下来就可以使用/etc/init.d/php-fpm {start|stop|force-quit|restart|reload}来管理PHP-FPM了
+ 
+完成了php的安装, 开始扩展的安装吧
+我原来用php5.2的时候, 就编译好了扩展的, 直接把so文件拷贝过去, 启动fpm, 报错, 无法加载(这里的报错是因为上面提到的那个20090626, phpize在编译的时候, 会给扩展打上记号, 用php5.2的phpize编译的, php5.3中不能用了哦~~~, 怎么知道一个扩展的这个号呢, 很简单, phpize之后的输出内容中有)
+无奈...
+只好重新编译
+编译的过程中手贱了一下, 用了pecl install apc, 结果又不知道咋了, 用不了....
+只好老老实实的从源码重新编译
+tar zxvf APC-3.1.6.tgz
+cd APC-3.1.6
+phpize
+./configure
+make
+make install
+其他的扩展安装方式都是一样的, 这里就不再罗嗦了....有一点需要注意的是memcached扩展是依赖于libmemcached的, 所以, 在安装memcached之前, 首先需要安装libmemcached, 并在安装memcached扩展的./configure阶段增加选项--with-libmemcached-dir指定libmemcached的路径
+ 
+就这么多了....希望可以帮助到大家...上述过程及观点如有错误, 请指正, 以免误导其他朋友...谢谢
+ </p>
+
+          </section>
+
+          
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
+<noscript><a href="http://www.51.la/?18906058" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18906058.asp" style="border:none" /></a></noscript>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.all.min.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/custom.js"></script>
+
+  </body>
+</html>

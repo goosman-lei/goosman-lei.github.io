@@ -1,0 +1,1165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="goosman-lei的博客">
+    <meta name="keywords" content="PHP Web开发,PHP,PHP 框架,高可用,分布式">
+
+    <title>[翻译][php扩展开发和嵌入式]第9章-资源数据类型- By Goosman-lei(goosman.lei@gmail.com</title>
+
+    <!-- Styles -->
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="http://static-cdn.tec-inf.com/apple-touch-icon.png">
+    <link rel="icon" href="http://static-cdn.tec-inf.com/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="">Goosman.lei</a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+                              <li class=""><a href="/ice">Ice</a></li>
+                              <li class=" active"><a href="/blog-history">CSDN-BLOG</a></li>
+                              <li class="hero"><a href="mailto:goosman.lei@gmail.com">Contact</a></li>
+                          </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+      
+    </header>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+
+<!-- TODO 解递归当场遍历出树结构菜单 -->
+<ul class="sidenav">
+  <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">2016年</a>
+  <ul>
+    <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">[分享]面向中大型应用的PHPWeb开发框架Ice</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">2013年</a>
+  <ul>
+    <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html">[翻译][php扩展开发和嵌入式]第19章-设置宿主环境</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html">[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html">[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">[翻译][php扩展开发和嵌入式]第16章-有趣的流</a>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html">[翻译][php扩展开发和嵌入式]第15章-php中流的实现</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">[翻译][php扩展开发和嵌入式]第14章-php中流的访问</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html">[翻译][php扩展开发和嵌入式]第13章-php的INI设置</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html">[翻译][php扩展开发和嵌入式]第12章-php的启动过程</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html">[翻译][php扩展开发和嵌入式]第11章-php5对象</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html">[翻译][php扩展开发和嵌入式]第10章-php4的对象</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html" class="active">[翻译][php扩展开发和嵌入式]第9章-资源数据类型</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html">[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html">[翻译][php扩展开发和嵌入式]第7章-接受参数</a>
+      <li><a href="/blog-history/2013/03/从1.5k到18k,一个程序员的5年成长之路.html">从1.5k到18k,一个程序员的5年成长之路</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">[翻译][php扩展开发和嵌入式]第6章-返回值</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html">[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html">[翻译][php扩展开发和嵌入式]第4章-安装构建环境</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">[翻译][php扩展开发和嵌入式]第3章-内存管理</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html">[翻译][php扩展开发和嵌入式]第2章-变量的里里外外</a>
+      <li><a href="/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump.html">[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html">[翻译][php扩展开发和嵌入式]第1章-php的生命周期</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html">[翻译][php扩展开发和嵌入式]第0章-译序</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">2012年</a>
+  <ul>
+    <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">从N个数中选取最大的前10个[堆排序版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[php版].html">从N个数中选取最大的前10个[php版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html">从N个数中选取最大的前10个[C语言版]</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">php截取字符串保留完整xml标签</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">[mysql-manual-5.5]7.1优化概览</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html">php-mysql扩展mysql_querymysql_unbuffered_query对比</a>
+      <li><a href="/blog-history/2012/10/简单游戏场景用户模拟.html">简单游戏场景用户模拟</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html">php-mysql扩展的mysql_connectmysql_pconnect比较</a>
+      <li><a href="/blog-history/2012/10/模拟新浪微博自动登陆.html">模拟新浪微博自动登陆</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">php-curl封装[避免上传文件二义性Bug]</a>
+      <li><a href="/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html">[漏洞]ThinkSNS严重漏洞--将全站崩溃</a>
+      <li><a href="/blog-history/2012/09/无限递归树展示.html">无限递归树展示</a>
+      <li><a href="/blog-history/2012/09/[快速记忆]C语言php的运算符优先级结合性.html">[快速记忆]C语言php的运算符优先级结合性</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">[软件工程]一个故事,分析陷入焦油坑的软件项目</a>
+      <li><a href="/blog-history/2012/06/输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1.html">输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1</a>
+      <li><a href="/blog-history/2012/06/算法分析从N条成绩单信息选择M位不重复同学发奖.html">算法分析从N条成绩单信息选择M位不重复同学发奖</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">ThinkPHPCore3.0源代码review文档</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">2011年</a>
+  <ul>
+    <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">正则表达式分析提取XMLXHTML标签属性</a>
+      <li><a href="/blog-history/2011/12/封装的一个mysql_lib.php,主要是一个分页模型.html">封装的一个mysql_lib.php,主要是一个分页模型</a>
+      <li><a href="/blog-history/2011/12/爱因斯坦的思考题.html">爱因斯坦的思考题</a>
+      <li><a href="/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html">从浏览器操作系统市场占有率分析国人</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">[php内核]----文件系统函数用于普通文件时的一些情况</a>
+      <li><a href="/blog-history/2011/10/某地自动评论脚本备份.html">某地自动评论脚本备份</a>
+      <li><a href="/blog-history/2011/10/使用alarm配合信号实现sleep.html">使用alarm配合信号实现sleep</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现.html">libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html">libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析</a>
+      <li><a href="/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html">由信号集联想----位域授权模式的不限长扩展</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">PHP位域操作函数封装</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">基于dup实现linux的dup2函数APUE练习题3.2</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">日志分析工具（二分法分段查找处理）</a>
+      <li><a href="/blog-history/2011/07/从dl函数分析PHP模块开发.html">从dl函数分析PHP模块开发</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/04/php中的引用传值分析.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2011/04/php中的引用传值分析.html">php中的引用传值分析</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">phppcre正则表达式完全教程----pcre官方文档</a>
+      <li><a href="/blog-history/2011/03/Ubuntu中利用Grub2修复移动硬盘引导.html">Ubuntu中利用Grub2修复移动硬盘引导</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结</a>
+      <li><a href="/blog-history/2011/02/javascript中的继承,找回丢失的constructor.html">javascript中的继承,找回丢失的constructor</a>
+      <li><a href="/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定.html">浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定</a>
+      <li><a href="/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html">PHP操作符优先级列表及一个优先级带来的灵异事件</a>
+      <li><a href="/blog-history/2011/02/PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升.html">PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">php5.3新增的闭包语法介绍functionuse{}</a>
+      <li><a href="/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html">与PHP5.3.5的战斗----记php5.3.5安装过程</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">2010年</a>
+  <ul>
+    <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2010/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2010/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2010/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2010/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2010/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2010/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2010/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2010/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2010/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2010/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2010/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2010/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2010/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2010/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">2009年</a>
+  <ul>
+    <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2009/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2009/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2009/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2009/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2009/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2009/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2009/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2009/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2009/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2009/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2009/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2009/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2009/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2009/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+</ul>
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1></h1>
+            <p></p>
+<ol class="toc">
+</li></ol>
+
+          </header>
+
+          <section>
+<p><strong>全部翻译内容pdf文档下载地址: </strong><a href="http://download.csdn.net/detail/lgg201/5107012"><strong>http://download.csdn.net/detail/lgg201/5107012</strong></a>
+本书目前在github上由laruence(<a href="http://www.laruence.com)%E5%92%8Cwalu(http://www.walu.cc)%E4%B8%A4%E4%BD%8D%E5%A4%A7%E7%89%9B%E7%BB%84%E7%BB%87%E7%BF%BB%E8%AF%91">http://www.laruence.com)和walu(http://www.walu.cc)两位大牛组织翻译</a>. 该翻译项目地址为: <a href="https://github.com/walu/phpbook">https://github.com/walu/phpbook</a>
+本书在github上的地址: <a href="https://github.com/goosman-lei/php-eae">https://github.com/goosman-lei/php-eae</a>
+未来本书将可能部分合并到phpbook项目中, 同时保留一份独立版本.</p>
+
+<p>原书名: <Extending and Embedding PHP>
+原作者: Sara Golemon
+译者: goosman.lei(雷果国)
+译者Email: <a href="mailto:goosman.lei@gmail.com">goosman.lei@gmail.com</a>
+译者Blog: <a href="http://blog.csdn.net/lgg201">http://blog.csdn.net/lgg201</a>
+<strong>资源数据类型</strong>
+迄今为止, 你都是工作在非常基础的用户空间数据类型上, 字符串, 数值, TRUE/FALSE等值. 即便上一章你已经开始接触数组了, 但也只是收集这些基础数据类型的数组.
+<strong>复杂的结构体</strong>
+现实世界中, 你通常需要在更加复杂的数据集合下工作, 通常涉及到晦涩的结构体指针. 一个常见的晦涩的结构体指针示例就是stdio的文件描述符, 即便是在C语言中也只是一个指针.</p>
+
+<pre lang="cpp"><code>#include &lt;stdio.h&gt;
+int main(void)
+{
+    FILE *fd;
+    fd = fopen(&quot;/home/jdoe/.plan&quot;, &quot;r&quot;);
+    fclose(fd);
+    return 0;
+}
+</code></pre>
+
+<p>stdio的文件描述符和其他多数文件描述符一致, 都像是一个书签. 你扩展的调用应用仅需要在feof(), fread(), fwrite(), fclose()这样的实现函数调用时传递这个值. 有时, 这个书签必须是用户空间代码可访问的; 因此, 就需要在标准的php变量或者说zval <em>中有表示它的方法.
+这里就需要一种新的数据类型. RESOURCE数据类型在zval *中存储一个简单的整型值, 使用作为已注册资源的索引用来查找. 资源条目包含了资源索引所表示的内部数据类型, 以及存储资源数据的指针等信息.
+*</em>定义资源类型**
+为了使注册的资源条目所包含的资源信息更加明确, 需要定义资源的类型. 首先在你的sample.c中已有的函数实现下增加下面的代码片段</p>
+
+<pre lang="cpp"><code>static int le_sample_descriptor;
+PHP_MINIT_FUNCTION(sample)
+{
+    le_sample_descriptor = zend_register_list_destructors_ex(
+                NULL, NULL, PHP_SAMPLE_DESCRIPTOR_RES_NAME,
+                module_number);
+    return SUCCESS;
+}
+</code></pre>
+
+<p>接下来, 滚动到你的代码文件末尾, 修改sample_module_entry结构体, 将NULL, /* MINIT */一行替换为下面的内容. 就像你给这个结构中增加函数列表结构时一样, 你需要确认在这一行末尾保留一个逗号.</p>
+
+<pre lang="cpp"><code>PHP_MINIT(sample), /* MINIT */
+
+</code></pre>
+
+<p>最后, 你需要在php_sample.h中定义PHP_SAMPLE_DESCRIPTOR_RES_NAME, 将下面的代码放到你的其他常量定义下面:</p>
+
+<pre lang="cpp"><code>#define PHP_SAMPLE_DESCRIPTOR_RES_NAME &quot;File Descriptor&quot;
+
+</code></pre>
+
+<p>PHP_MINIT_FUNCTION()代表第1章&quot;PHP生命周期&quot;中介绍的4个特殊的启动和终止操作中的第一个, 关于生命周期, 在第12章&quot;启动, 终止以及之间的几个关键点&quot;和第13章&quot;INI设置&quot;中还将深入讨论.
+这里需要知道的非常重要的一点是MINIT函数在你的扩展第一次加载时执行一次, 它会在所有请求到达之前被执行. 这里我们利用这个机会注册了析构函数, 不过它们是NULL值, 不过在通过一个唯一整型ID足以知道一个资源类型时, 你很快就会修改它.
+<strong>注册资源</strong>
+现在引擎已经知道了你要存储一些资源数据, 是时候给用户空间的代码一种方式去产生实际的资源了. 要做到这一点, 需要如下重新实现fopen()命令:</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_fopen)
+{
+    FILE *fp;
+    char *filename, *mode;
+    int filename_len, mode_len;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;ss&quot;,
+                        &amp;filename, &amp;filename_len,
+                        &amp;mode, &amp;mode_len) == FAILURE) {
+        RETURN_NULL();
+    }
+    if (!filename_len || !mode_len) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                &quot;Invalid filename or mode length&quot;);
+        RETURN_FALSE;
+    }
+    fp = fopen(filename, mode);
+    if (!fp) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                &quot;Unable to open %s using mode %s&quot;,
+                filename, mode);
+        RETURN_FALSE;
+    }
+    ZEND_REGISTER_RESOURCE(return_value, fp,
+                                le_sample_descriptor);
+}
+</code></pre>
+
+<p><em>为了让编译器知道什么是FILE *, 你需要包含stdio.h. 这可以放在sample.c中, 但是为了本章后面部分做准备, 我还是要求你放到php_sample.h中.</em>
+如果你对前面的章节付出了努力, 最后一行前面的所有内容都应该可以读懂. 这一行代码执行的任务是将fp指针存储到资源的索引中, 将它和MINIT中定义的类型关联起来, 并存储一个可用于查找的key到return_value中.
+<em>如果需要存储多于一个指针的值, 或者存储一个直接量, 则必须新分配一段内存用来存储数据, 接着将指向这段内存的指针注册为资源.</em>
+<em>译注: </em>
+<em>1. 资源数据类型的注册实际上是在list_destructors(Zend/zend_list.c中定义的静态全局变量HashTable)中插入一个新构建的zend_rsrc_list_dtors_entry结构体, 这个结构体描述了这个资源类型的信息.</em>
+<em>2. 资源数据的注册(ZEND_REGISTER_RESOURCE)实际上是在EG(regular_list)中使用zend_hash_next_free_element()得到下一个数值下标, 作为资源的ID, 并将传入的资源指针(封装为zend_rsrc_list_entry结构体)存储到EG(regular_list)中这个下标对应的元素中.</em>
+<em>3. EG(regular_list)的初始化是在请求初始化阶段完成的, 通过跟踪代码, 可以看到其函数调用流程如下: php_request_startup(main/main.c) --&gt; zend_active(Zend/zend.c) --&gt; init_compiler(Zend/zend_compile.c) --&gt; zend_init_rsrc_list(Zend/zend_list.c). 通过观察zend_init_rsrc_list()函数可以看出EG(regular_list)的析构函数是list_entry_destructor(Zend/zend_list.c).
+ 而list_entry_destructor()的逻辑是从list_destructors(上面第一步所述的静态全局变量)中查找要释放的资源对象类型的信息, 接着按照注册资源类型时所指定的析构器进行析构.</em>
+<em>4. 按照上面几点, 可以很容易理清本章前面所述内容. 首先注册一个资源类型, 这个资源类型中包含了诸如所属模块编号, 析构器句柄这样的信息. 接着, 在创建具体的资源对象时, 将资源对象和资源类型做了一个关联.</em>
+<strong>释放资源</strong>
+现在你已经有办法附加内部数据块到用户空间. 因为大多数你附加到用户空间的资源变量都需要在某个时刻去清理(这里是调用fclose()), 因此你可能需要一个匹配的sample_fclose()函数接受资源变量, 处理它的销毁并从注册的资源列表(EG(regular_list))中删除它.
+如果变量被简单的unset()会怎么样呢? 没有到原来的FILE *指针的引用, 就没有办法去fclose()它, 它就会保持打开状态直到php进程终止. 因为单进程将服务多个请求, 这可能需要很长时间.
+答案就是你传递给zend_register_list_destructors_ex的NULL指针. 顾名思义, 你注册的是析构函数. 第一个指针指向的函数在一个请求生命周期内注册资源的最后一个引用被破坏时调用. 实际上就是我们所说的在已存储的资源变量上调用unset().
+传递给zend_register_list_destructors_ex的第二个指针指向另外一个回调函数, 它用于持久化资源, 当一个进程或线程终止时被调用. 本章后面将会介绍持久化资源.
+现在我们来定义第一个析构函数. 将下面的代码放到你的PHP_MINIT_FUNCTION上面:</p>
+
+<pre lang="cpp"><code>static void php_sample_descriptor_dtor(
+                    zend_rsrc_list_entry *rsrc TSRMLS_DC)
+{
+    FILE *fp = (FILE*)rsrc-&gt;ptr;
+    fclose(fp);
+}
+</code></pre>
+
+<p>下一步是将zend_register_list_destructors_ex调用中的第一个NULL替换为php_sample_destriptor_dtor:</p>
+
+<pre lang="cpp"><code>le_sample_descriptor = zend_register_list_destructors_ex(
+        php_sample_descriptor_dtor, NULL,
+        PHP_SAMPLE_DESCRIPTOR_RES_NAME, module_number);
+</code></pre>
+
+<p>现在, 当变量被赋值为sample_fopen()注册的资源值时, 当变量通过unset()或到达函数结束隐式的结束其生命周期时, 将自动的调用fclose()释放FILE *指针. 不再需要sample_fclose()的实现了.</p>
+
+<pre lang="php"><code>&lt;?php
+  $fp = sample_fopen(&quot;/home/jdoe/notes.txt&quot;, &quot;r&quot;);
+  unset($fp);
+?&gt;
+</code></pre>
+
+<p>当unset($fp)被调用时, 引擎会自动的调用php_sample_descriptor_dtor去处理资源的清理.
+<strong>资源解码</strong>
+创建资源仅仅是第一步, 因为书签的作用只是让你可以回到原来的那一页. 这里是另外一个函数:</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_fwrite)
+{
+    FILE *fp;
+    zval *file_resource;
+    char *data;
+    int data_len;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;rs&quot;,
+            &amp;file_resource, &amp;data, &amp;data_len) == FAILURE ) {
+        RETURN_NULL();
+    }
+    /* 使用zval *验证资源类型, 并从注册资源表中取回它的指针 */
+    ZEND_FETCH_RESOURCE(fp, FILE*, &amp;file_resource, -1,
+        PHP_SAMPLE_DESCRIPTOR_RES_NAME, le_sample_descriptor);
+    /* 写数据并返回实际写入到文件的字节数 */
+    RETURN_LONG(fwrite(data, 1, data_len, fp));
+}
+</code></pre>
+
+<p>在zend_parse_parameters()中使用&quot;r&quot;格式描述符相对比较新, 不过, 在你阅读完第7章&quot;接受参数&quot;后应该可以理解. 这里真正新鲜的是ZEND_FETCH_RESOURCE()的使用.
+展开ZEND_FETCH_RESOURCE()宏, 代码如下:</p>
+
+<pre lang="cpp"><code>#define ZEND_FETCH_RESOURCE(rsrc, rsrc_type, passed_id,
+            default_id, resource_type_name, resource_type)
+    rsrc = (rsrc_type) zend_fetch_resource(passed_id TSRMLS_CC,
+                    default_id, resource_type_name, NULL,
+                    1, resource_type);
+    ZEND_VERIFY_RESOURCE(rsrc);
+</code></pre>
+
+<p>套用当前示例则如下:</p>
+
+<pre lang="cpp"><code>fp = (FILE*) zend_fetch_resource(&amp;file_descriptor TSRMLS_CC, -1,
+                    PHP_SAMPLE_DESCRIPTOR_RES_NAME, NULL,
+                    1, le_sample_descriptor);
+if (!fp) {
+    RETURN_FALSE;
+}
+</code></pre>
+
+<p>就像上一章学习的zend_hash_find()函数一样, zend_fetch_resource()实际上是使用索引在一个HashTable集合中找出之前存储的数据. 与zend_hash_find()的不同在于这个函数执行了额外的数据完整性检查, 比如确保资源表中的条目是正确的资源类型.
+现在, 你请求的zend_fetch_resource()是和在le_sample_descriptor中存储的资源类型匹配的. 如果提供的资源ID不存在, 或者是不正确的类型, zend_fetch_resource()将返回NULL, 并自动的产生一个错误.
+通过在ZEND_FETCH_RESOURCE()宏内部包含ZEND_VERIFY_RESOURCE()宏, 函数实现可以自动的返回, 使得函数自身的代码可以聚焦条件正确时对资源数据值的处理上. 现在你的函数得到了原来的FILE <em>指针, 直接和普通程序一样调用内部的fwrite()函数.
+*为了避免zend_fetch_resource()在失败时产生错误, 可以将resource_type_name参数传递为NULL. 由于无法产生有意义的错误消息, zend_fetch_resoure()将会静默的失败.</em>
+还有一种将资源变量ID翻译成所存储的资源指针的方法是使用zend_list_find()函数:</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_fwrite)
+{
+    FILE *fp;
+    zval *file_resource;
+    char *data;
+    int data_len, rsrc_type;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;rs&quot;,
+            &amp;file_resource, &amp;data, &amp;data_len) == FAILURE ) {
+        RETURN_NULL();
+    }
+    fp = (FILE*)zend_list_find(Z_RESVAL_P(file_resource),
+                                        &amp;rsrc_type);
+    if (!fp || rsrc_type != le_sample_descriptor) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                        &quot;Invalid resource provided&quot;);
+        RETURN_FALSE;
+    }
+    RETURN_LONG(fwrite(data, 1, data_len, fp));
+}
+</code></pre>
+
+<p>虽然对于一般的C语言背景程序员, 这种方式更加容易理解, 但它相比ZEND_FETCH_RESOURCE()更加冗长. 你可以根据自己的编码风格选择合适的方法, 但是还是希望你可以去看看php内核中的其他扩展, 更多的还是使用了ZEND_FETCH_RESOURCE()宏.
+<strong>强制析构</strong>
+前面你看到了使用unset()让一个变量结束其生命周期可以触发资源的析构, 并导致其下的资源被以你注册的析构函数清理. 现在想想一个资源变量被拷贝到了其他变量中:</p>
+
+<pre lang="php"><code>&lt;?php
+  $fp = sample_fopen(&quot;/home/jdoe/world_domination.log&quot;, &quot;a&quot;);
+  $evil_log = $fp;
+  unset($fp);
+?&gt;
+</code></pre>
+
+<p>此时, $fp并不是注册资源的唯一引用, 因此该资源并没有结束它的生命周期, 不会被释放. 这表示$evil_log仍然可以写. 当你真正的需要一个资源不再被使用时, 为了避免四处找寻引用它的代码, 就需要一个sample_fclose()实现:</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_fclose)
+{
+    FILE *fp;
+    zval *file_resource;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;r&quot;,
+                        &amp;file_resource) == FAILURE ) {
+        RETURN_NULL();
+    }
+    /* 虽然并不需要真的取回FILE *资源, 但执行这个宏可以去检查我们关闭资源类型是否正确 */
+    ZEND_FETCH_RESOURCE(fp, FILE*, &amp;file_resource, -1,
+        PHP_SAMPLE_DESCRIPTOR_RES_NAME, le_sample_descriptor);
+    /* 强制资源进入自解模式 */
+    zend_hash_index_del(&amp;EG(regular_list),
+                    Z_RESVAL_P(file_resource));
+    RETURN_TRUE;
+}
+</code></pre>
+
+<p>这个删除方法更有力的说明了资源变量是注册在一个全局的HashTable中的. 使用资源ID作为索引在regular_list中查找并删除这个资源条目是很简单的. 虽然其他的HashTable直接操作函数, 比如zend_hash_index_find()/zend_hash_next_index_insert()可以用来替代FETCH和REGISTER宏, 但是这种做法是不鼓励的, 因为这可能使得Zend API在发生变更时影响已有的扩展.
+和用户空间的HashTable变量(数组)一样, EG(regular_list)这个HashTable有一个自动的dtor函数, 每当一条记录被移除或覆盖时都会调用该函数. 这个方法会检查你的资源类型, 调用在MINIT中调用zend_register_list_destructors_ex()提供的析构函数.
+<em>在php内核和Zend引擎中, 你可以看到很多地方在现在这种情况时使用的是zend_list_delete(), 而不是zend_hash_index_del(). 这是因为zend_list_delete()中有对引用计数的维护, 这一点你将在本章后面看到.</em>
+<strong>持久化资源</strong>
+对于存储资源变量的复杂数据类型通常需要可观的内存分配, CPU时间, 或网络通信去初始化. 对于每个调用都需要重新建立的资源类型, 比如数据库连接, 让它们可以在多个请求之间共享是很有用的.
+<strong>内存分配</strong>
+通过前面章节的学习我们知道, emalloc()以及它的同族函数是在php中分配内存时的首选, 因为它们能够做到系统的malloc()函数所不能的垃圾回收, 使得在脚本意外终止时通过它们分配的内存可以被回收. 如果一个持久化的资源要跨请求逗留, 这样的垃圾回收很显然不是一件好事.
+想象一下, 现在还需要和FILE *指针一起保存打开文件的文件名. 现在, 你就需要在php_sample.h中创建一个自定义结构体来保存这个联合信息:</p>
+
+<pre lang="cpp"><code>typedef struct _php_sample_descriptor_data {
+    char *filename;
+    FILE *fp;
+} php_sample_descriptor_data;
+
+</code></pre>
+
+<p>sample.c中所有你处理文件资源的代码都需要修改:</p>
+
+<pre lang="cpp"><code>static void php_sample_descriptor_dtor(
+                    zend_rsrc_list_entry *rsrc TSRMLS_DC)
+{
+    php_sample_descriptor_data *fdata =
+                (php_sample_descriptor_data*)rsrc-&gt;ptr;
+    fclose(fdata-&gt;fp);
+    efree(fdata-&gt;filename);
+    efree(fdata);
+}
+PHP_FUNCTION(sample_fopen)
+{
+    php_sample_descriptor_data *fdata;
+    FILE *fp;
+    char *filename, *mode;
+    int filename_len, mode_len;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;ss&quot;,
+                        &amp;filename, &amp;filename_len,
+                        &amp;mode, &amp;mode_len) == FAILURE) {
+        RETURN_NULL();
+    }
+    if (!filename_len || !mode_len) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                &quot;Invalid filename or mode length&quot;);
+        RETURN_FALSE;
+    }
+    fp = fopen(filename, mode);
+    if (!fp) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                &quot;Unable to open %s using mode %s&quot;,
+                filename, mode);
+        RETURN_FALSE;
+    }
+    fdata = emalloc(sizeof(php_sample_descriptor_data));
+    fdata-&gt;fp = fp;
+    fdata-&gt;filename = estrndup(filename, filename_len);
+    ZEND_REGISTER_RESOURCE(return_value, fdata,
+                                le_sample_descriptor);
+}
+PHP_FUNCTION(sample_fwrite)
+{
+    php_sample_descriptor_data *fdata;
+    zval *file_resource;
+    char *data;
+    int data_len;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;rs&quot;,
+            &amp;file_resource, &amp;data, &amp;data_len) == FAILURE ) {
+        RETURN_NULL();
+    }
+    ZEND_FETCH_RESOURCE(fdata, php_sample_descriptor_data*,
+        &amp;file_resource, -1,
+        PHP_SAMPLE_DESCRIPTOR_RES_NAME, le_sample_descriptor);
+    RETURN_LONG(fwrite(data, 1, data_len, fdata-&gt;fp));
+}
+</code></pre>
+
+<p><em>从技术角度来说, sample_fclose()可以不用修改, 因为它并不会真的直接处理资源数据. 如果你有信心, 可以自己去更新它.</em>
+迄今为止, 一切都是完美的, 因为你仍然只是注册了一个非持久化的描述符资源. 此时, 可以增加一个新的函数去获取已经打开的资源的文件名.</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_fname)
+{
+    php_sample_descriptor_data *fdata;
+    zval *file_resource;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;r&quot;,
+            &amp;file_resource) == FAILURE ) {
+        RETURN_NULL();
+    }
+    ZEND_FETCH_RESOURCE(fdata, php_sample_descriptor_data*,
+        &amp;file_resource, -1,
+        PHP_SAMPLE_DESCRIPTOR_RES_NAME, le_sample_descriptor);
+    RETURN_STRING(fdata-&gt;filename, 1);
+}
+</code></pre>
+
+<p>然而, 在你开始注册持久化版本的描述符资源时, 问题很快就会显现.
+<strong>延后析构</strong>
+你已经能够看到了, 非持久化资源一旦所有持有该资源ID引用的变量都被unset()或结束其生命周期, 它们都会从EG(regular_list)(它是包含所有每个请求注册的资源的HashTable)中被移除.
+本章后面你将看到的持久化资源, 也存储在一个HashTable中: EG(persistent_list). 它跟EG(regular_list)有所不同, 使用的索引是关联形式的, 元素不会在请求结束后自动的从HashTable中移除. EG(persistent_list)中的条目只有通过手动调用zend_hash_del()或在线程/进程完全终止(通常是在webserver停止时)时才会被移除.
+与EG(regular_list)类似, EG(persistent_list)也有自己的dtor函数. 类似于regular_list, 这个函数也是使用资源类型查找对应的析构函数并调用. 但这里它调用的是调用zend_register_list_destructors_ex()注册资源类型时提供的第二个参数.
+实际上, 持久化和非持久化资源注册为两种完全分开的类型是为了避免非持久化析构代码在本应为持久化的资源上再调用一次. 具体依赖于你的实现, 你可以选择在同一个类型中组合非持久化和持久化两种析构函数. 现在, 在sample.c中增加另外一个静态的int变量用于新的持久化资源:</p>
+
+<pre lang="cpp"><code>static int le_sample_descriptor_persist;
+
+</code></pre>
+
+<p>接着扩充你的MINIT函数, 增加一个资源注册, 使用新的用于持久化分配结构的dtor函数:</p>
+
+<pre lang="cpp"><code>static void php_sample_descriptor_dtor_persistent(
+                    zend_rsrc_list_entry *rsrc TSRMLS_DC)
+{
+    php_sample_descriptor_data *fdata =
+                (php_sample_descriptor_data*)rsrc-&gt;ptr;
+    fclose(fdata-&gt;fp);
+    pefree(fdata-&gt;filename, 1);
+    pefree(fdata, 1);
+}
+PHP_MINIT_FUNCTION(sample)
+{
+    le_sample_descriptor =     zend_register_list_destructors_ex(
+            php_sample_descriptor_dtor, NULL,
+            PHP_SAMPLE_DESCRIPTOR_RES_NAME, module_number);
+    le_sample_descriptor_persist =
+                        zend_register_list_destructors_ex(
+            NULL, php_sample_descriptor_dtor_persistent,
+            PHP_SAMPLE_DESCRIPTOR_RES_NAME, module_number);
+    return SUCCESS;
+}
+</code></pre>
+
+<p>通过给这两个资源类型相同的名字, 它们的不同对于终端用户就是透明的. 在内部, 只有一种在请求清理过程会调用php_sample_descriptor_dtor; 另外一个, 你马上会看到, 它将和webserver的进程或线程保持相同的生命周期.
+<strong>持久化注册</strong>
+现在相应的清理函数已经到位了, 是时候创建一些可用的资源结构了. 通常会使用两个独立的函数, 在内部映射到同一个实现上, 但是这可能会使得已经很混杂的主题更加混乱, 所以我们这里只是在sample_fopen()中增加一个布尔类型的参数来完成这件事.</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_fopen)
+{
+    php_sample_descriptor_data *fdata;
+    FILE *fp;
+    char *filename, *mode;
+    int filename_len, mode_len;
+    zend_bool persist = 0;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,&quot;ss|b&quot;,
+                &amp;filename, &amp;filename_len, &amp;mode, &amp;mode_len,
+                &amp;persist) == FAILURE) {
+        RETURN_NULL();
+    }
+    if (!filename_len || !mode_len) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                &quot;Invalid filename or mode length&quot;);
+        RETURN_FALSE;
+    }
+    fp = fopen(filename, mode);
+    if (!fp) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                &quot;Unable to open %s using mode %s&quot;,
+                filename, mode);
+        RETURN_FALSE;
+    }
+    if (!persist) {
+        fdata = emalloc(sizeof(php_sample_descriptor_data));
+        fdata-&gt;filename = estrndup(filename, filename_len);
+        fdata-&gt;fp = fp;
+        ZEND_REGISTER_RESOURCE(return_value, fdata,
+                                le_sample_descriptor);
+    } else {
+        list_entry le;
+        char *hash_key;
+        int hash_key_len;
+
+        fdata =pemalloc(sizeof(php_sample_descriptor_data),1);
+        fdata-&gt;filename = pemalloc(filename_len + 1, 1);
+        memcpy(data-&gt;filename, filename, filename_len + 1);
+        fdata-&gt;fp = fp;
+        ZEND_REGISTER_RESOURCE(return_value, fdata,
+                        le_sample_descriptor_persist);
+
+        /* 在persistent_list中保存一份拷贝 */
+        le.type = le_sample_descriptor_persist;
+        le.ptr = fdata;
+        hash_key_len = spprintf(&amp;hash_key, 0,
+                &quot;sample_descriptor:%s:%s&quot;, filename, mode);
+        zend_hash_update(&amp;EG(persistent_list),
+            hash_key, hash_key_len + 1,
+            (void*)&amp;le, sizeof(list_entry), NULL);
+        efree(hash_key);
+    }
+}
+</code></pre>
+
+<p>这个函数的核心部分现在你应该已经很熟悉了. 打开一个文件, 将它的名字存储到新分配的内存中, 将它注册为请求特有的资源ID并设置到return_value中. 这一次新的知识点是第二部分, 但它也并不完全陌生.
+这里, 你实际上做的事情和ZEND_REGISTER_RESOURCE()所做的基本一致; 不过, 这里不再是获取一个数值索引放到每个请求特有的列表(EG(regular_list))中, 而是赋值给了一个关联key(可以使用它在未来的请求中重新获取资源), 将它放到了持久化列表中, 这个持久化列表(EG(persistent_list))并不会在每个请求结束后被清理.
+当这样的一个持久化描述符资源结束其生命周期时, EG(regular_list)的dtor函数将会检查已注册的析构器列表, 发现le_sample_descriptor_persist的(非持久化)析构器为NULL, 因此不做任何事(即不进行释放操作). 这使得FILE <em>指针和它的char *名字字符串可以在下一个请求中安全的使用.
+当资源最终从EG(persistent_list)中移除时(由于进程或线程终止, 或者由于你的扩展有意的移除), 引擎会查找持久化析构器. 由于这个资源类型定义了持久化析构器, 因此它将会被正确的调用pefree()释放原来由pemalloc()分配的内存.
+*</em>重用**
+将一个资源条目的拷贝放到persistent_list中, 除了延长执行时间, 占用内存以及文件锁资源, 不会有任何好处, 除非你在后续的请求中以某种方式重用它.
+这就是hash_key的来由. 当sample_fopen()被调用时, 无论是持久化或非持久化方式, 你的函数都可以使用请求的文件名和模式参数重新创建hash_key, 并在打开文件之前尝试从persistent_list中使用hash_key查找该资源.</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_fopen)
+{
+    php_sample_descriptor_data *fdata;
+    FILE *fp;
+    char *filename, *mode, *hash_key;
+    int filename_len, mode_len, hash_key_len;
+    zend_bool persist = 0;
+    list_entry *existing_file;
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,&quot;ss|b&quot;,
+                &amp;filename, &amp;filename_len, &amp;mode, &amp;mode_len,
+                &amp;persist) == FAILURE) {
+        RETURN_NULL();
+    }
+    if (!filename_len || !mode_len) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                &quot;Invalid filename or mode length&quot;);
+        RETURN_FALSE;
+    }
+    /* 尝试查找已经打开的文件 */
+    hash_key_len = spprintf(&amp;hash_key, 0,
+            &quot;sample_descriptor:%s:%s&quot;, filename, mode);
+    if (zend_hash_find(&amp;EG(persistent_list), hash_key,
+            hash_key_len + 1, (void **)&amp;existing_file) == SUCCESS) {
+        /* There&#39;s already a file open, return that! */
+        ZEND_REGISTER_RESOURCE(return_value,
+            existing_file-&gt;ptr, le_sample_descriptor_persist);
+        efree(hash_key);
+        return;
+    }
+    fp = fopen(filename, mode);
+    if (!fp) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                &quot;Unable to open %s using mode %s&quot;,
+                filename, mode);
+        RETURN_FALSE;
+    }
+    if (!persist) {
+        fdata = emalloc(sizeof(php_sample_descriptor_data));
+        fdata-&gt;filename = estrndup(filename, filename_len);
+        fdata-&gt;fp = fp;
+        ZEND_REGISTER_RESOURCE(return_value, fdata,
+                                le_sample_descriptor);
+    } else {
+        list_entry le;
+        fdata =pemalloc(sizeof(php_sample_descriptor_data),1);
+        fdata-&gt;filename = pemalloc(filename_len + 1, 1);
+        memcpy(data-&gt;filename, filename, filename_len + 1);
+        fdata-&gt;fp = fp;
+        ZEND_REGISTER_RESOURCE(return_value, fdata,
+                        le_sample_descriptor_persist);
+        /* 存储一份拷贝到persistent_list */
+        le.type = le_sample_descriptor_persist;
+        le.ptr = fdata;
+        /* hash_key现在已经创建了 */
+        zend_hash_update(&amp;EG(persistent_list),
+            hash_key, hash_key_len + 1,
+            (void*)&amp;le, sizeof(list_entry), NULL);
+    }
+    efree(hash_key);
+}
+</code></pre>
+
+<p>因为所有的扩展都使用同一个持久化HashTable存储它们的资源, 因此选择唯一的可复现的hash_key非常重要. sample_fopen()中使用了一种常见的方式: 使用扩展和资源类型名字作为前缀, 接着是创建的资源的关键信息.
+<strong>活性检查和提前离开</strong>
+尽管你打开一个文件并无限期的保持打开是安全的, 但是对于其他资源类型则不然, 尤其是远程网络资源可能会变得不可用, 尤其是在请求间长时间不使用时.
+因此在取回一个持久化资源时, 对它的可用性检查就非常重要. 如果资源不再可用, 就必须从持久化列表中移除, 并且应该继续以没有找到已分配资源(持久化)的逻辑执行.
+下面的假想代码块在持久化列表中的套接字上执行了一个活性检查:</p>
+
+<pre lang="cpp"><code>if (zend_hash_find(&amp;EG(persistent_list), hash_key,
+        hash_key_len + 1, (void**)&amp;socket) == SUCCESS) {
+    if (php_sample_socket_is_alive(socket-&gt;ptr)) {
+        ZEND_REGISTER_RESOURCE(return_value,
+                    socket-&gt;ptr, le_sample_socket);
+        return;
+    }
+    zend_hash_del(&amp;EG(persistent_list),
+                            hash_key, hash_key_len + 1);
+}
+</code></pre>
+
+<p>如你所见, 这里所做的只是在运行时手动的从持久化资源列表中移除. 这个行为会触发调用zend_register_list_destructors_ex()注册的持久化dtor函数. 在这段代码完成后, 函数所处的状态和没有从持久化列表中找到资源时的状态一致.
+<strong>未知类型的取回</strong>
+此刻你可以创建文件描述符资源, 将它们持久化存储, 并可以透明的获取它们, 但是你试试用sample_fwrite()函数使用你的持久化资源对象? 很无奈, 它不能工作. 回顾一下, 数值ID怎样转换成资源指针:</p>
+
+<pre lang="cpp"><code>ZEND_FETCH_RESOURCE(fdata, php_sample_descriptor_data*,
+    &amp;file_resource, -1, PHP_SAMPLE_DESCRIPTOR_RES_NAME,
+    le_sample_descriptor);
+</code></pre>
+
+<p>le_sample_descriptor明确指定了类型名, 因此资源的类型将被验证. 这样做就可以确保你在希望得到php_sample_descriptor_data *结构的资源时, 不会得到mysql_connection_handler *或其他类型的资源. 但这对于混合匹配类型来说就不是一件好事. 我们知道, 在le_sample_descriptor和le_sample_descriptor_persist两种资源类型中存储了相同的数据结构,
+ 这样做是为了保证用户空间的简单性, 因此, 理想的情况是sample_fwrite()可以公平的接受两种类型.
+这可以通过ZEND_FETCH_RESOURCE()的兄弟宏: ZEND_FETCH_RESOURCE2()来解决. 这两个宏唯一的不同是后者允许指定两种资源类型. 这样, 我们就可以对上面的代码进行修改:</p>
+
+<pre lang="cpp"><code>ZEND_FETCH_RESOURCE2(fdata, php_sample_descriptor_data*,
+    &amp;file_resource, -1, PHP_SAMPLE_DESCRIPTOR_RES_NAME,
+    le_sample_descriptor, le_sample_descriptor_persist);
+
+</code></pre>
+
+<p>现在, file_resource中包含的资源ID就可以指向持久化以及非持久化的Sample Descriptor资源了, 并且它们都能够通过验证.
+要允许多个资源类型需要使用原生的zend_fetch_resource()实现. 回顾前面, ZEND_FETCH_RESOURCE()宏展开如下:</p>
+
+<pre lang="cpp"><code>fp = (FILE*) zend_fetch_resource(&amp;file_descriptor TSRMLS_CC, -1,
+    PHP_SAMPLE_DESCRIPTOR_RES_NAME, NULL,
+    1, le_sample_descriptor);
+ZEND_VERIFY_RESOURCE(fp);
+</code></pre>
+
+<p>类似的, ZEND_FETCH_RESOURCE2()宏展开后也使用了相同的原生函数:</p>
+
+<pre lang="cpp"><code>fp = (FILE*) zend_fetch_resource(&amp;file_descriptor TSRMLS_CC, -1,
+    PHP_SAMPLE_DESCRIPTOR_RES_NAME, NULL,
+    2, le_sample_descriptor, le_sample_descriptor_persist);
+ZEND_VERIFY_RESOURCE(fp);
+</code></pre>
+
+<p>看到规律了吗? zend_fetch_resource()第6个以及后面的参数的含义是&quot;我将要匹配N种可能的资源类型, 它们分别是...&quot;, 因此, 如果要匹配第三种资源类型(比如: le_sample_othertype), 就可以如下编码:</p>
+
+<pre lang="cpp"><code>fp = (FILE*) zend_fetch_resource(&amp;file_descriptor TSRMLS_CC, -1,
+    PHP_SAMPLE_DESCRIPTOR_RES_NAME, NULL,
+    3, le_sample_descriptor, le_sample_descriptor_persist,
+    le_sample_othertype);
+ZEND_VERIFY_RESOURCE(fp);
+</code></pre>
+
+<p>如果要四个, 就依此类推.
+<em>译注: 译者使用的php-5.4.9下, 原著的示例不能正常使用, 因此贴出译者自己环境下可编译的代码, 需要的读者可以参考这个示例.</em></p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_fopen)
+{
+    sample_descriptor_data_t    *sddp;
+    FILE                        *fp;
+    char                        *filename, *mode;
+    int                         filename_len, mode_len;
+    zend_bool                   persist = 1;
+    char                        *hash_key;
+    int                         hash_key_len;
+    int                         rsrc_l;
+    zend_rsrc_list_entry        *le_p;
+
+    if ( zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;ss|b&quot;, 
+            &amp;filename, &amp;filename_len, 
+            &amp;mode, &amp;mode_len, &amp;persist) == FAILURE ) { 
+        RETURN_NULL();
+    }   
+
+    if ( !filename_len || !mode_len ) { 
+        php_error_docref(NULL TSRMLS_CC, E_WARNING, &quot;Invalid filename or mode length&quot;);
+        RETURN_FALSE;
+    }   
+
+    hash_key_len    = spprintf(&amp;hash_key, 0, &quot;sample_descriptor:%s:%s&quot;, filename, mode);
+    if ( zend_hash_find(&amp;EG(persistent_list), hash_key, hash_key_len + 1, (void **)&amp;le_p) == SUCCESS ) { 
+        rsrc_l  = ZEND_REGISTER_RESOURCE(return_value, le_p-&gt;ptr, le_sample_descriptor_persist);
+    } else {
+        fp  = fopen(filename, mode);
+        if ( !fp ) { 
+            efree(hash_key);
+            php_error_docref(NULL TSRMLS_CC, E_WARNING, &quot;Unable to open %s using mode %s&quot;, 
+                    filename, mode);
+            RETURN_FALSE;
+        }   
+
+        sddp        = pemalloc(sizeof(sample_descriptor_data_t), persist);
+        sddp-&gt;fname = pestrdup(filename, persist);
+        sddp-&gt;fp    = fp; 
+        rsrc_l      = ZEND_REGISTER_RESOURCE(return_value, sddp, persist ? le_sample_descriptor_persist : le_sample_descriptor);
+        if ( persist ) { 
+            zend_rsrc_list_entry    le; 
+
+            le.type = le_sample_descriptor_persist;
+            le.ptr  = sddp;
+            zend_hash_update(&amp;EG(persistent_list), hash_key, hash_key_len + 1, (void *)&amp;le, sizeof(zend_rsrc_list_entry), NULL);
+        }   
+    }   
+    efree(hash_key);
+    RETURN_RESOURCE(rsrc_l);
+}
+
+PHP_FUNCTION(sample_fwrite)
+{
+    sample_descriptor_data_t    *sddp;
+    zval                        *file_resource;
+    char                        *data;
+    int                         data_len;
+
+    if ( zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;rs&quot;, 
+            &amp;file_resource, &amp;data, &amp;data_len) == FAILURE ) { 
+        RETURN_FALSE;
+    }   
+    ZEND_FETCH_RESOURCE2(sddp, sample_descriptor_data_t *, &amp;file_resource, -1, 
+        SAMPLE_DESCRIPTOR_RES_NAME, le_sample_descriptor, le_sample_descriptor_persist);
+#if ZEND_DEBUG
+php_printf(&quot;FILE * pointer: %p\n&quot;, sddp-&gt;fp);
+#endif
+    RETURN_LONG(fwrite(data, 1, data_len, sddp-&gt;fp));
+}
+
+PHP_FUNCTION(sample_fclose)
+{
+    sample_descriptor_data_t    *sddp;
+    zval                        *file_resource;
+
+    if ( zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;r&quot;, &amp;file_resource) == FAILURE ) { 
+        RETURN_FALSE;
+    }   
+
+    ZEND_FETCH_RESOURCE2(sddp, sample_descriptor_data_t *, &amp;file_resource, -1, SAMPLE_DESCRIPTOR_RES_NAME, le_sample_descriptor, le_sample_descriptor_persist);
+    zend_hash_index_del(&amp;EG(regular_list), Z_RESVAL_P(file_resource));
+
+    RETURN_TRUE;
+}
+
+PHP_FUNCTION(sample_fname)
+{
+    sample_descriptor_data_t    *sddp;
+    zval    *file_resource;
+
+    if ( zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;r&quot;, &amp;file_resource) == FAILURE ) { 
+        RETURN_FALSE;
+    }   
+
+    ZEND_FETCH_RESOURCE2(sddp, sample_descriptor_data_t *, &amp;file_resource, -1, SAMPLE_DESCRIPTOR_RES_NAME, le_sample_descriptor, le_sample_descriptor_persist);
+    RETURN_STRING(sddp-&gt;fname, 1); 
+}
+</code></pre>
+
+<p><strong>其他引用计数器</strong>
+和用户空间变量类似, 已注册资源也有引用计数. 这里, 引用计数指有多少容器结构知道这个资源ID.
+现在我们已经知道, 当用户空间变量(zval *)的类型是IS_RESOURCE时, 它并不会真正的持有任何结构的指针, 只是简单的保存一个HashTable的索引值, 通过这个索引值可以在EG(regular_list) HashTable中查找到真正的资源指针.
+当一个资源第一次被创建时, 比如通过调用sample_fopen(), 它被放到一个zval *容器中, 并将它的refcount初始化为1, 因为只有一个变量持有它.</p>
+
+<pre lang="cpp"><code>$a = sample_fopen(&#39;notes.txt&#39;, &#39;r&#39;);
+/* var-&gt;refcount = 1, rsrc-&gt;refcount = 1 */
+</code></pre>
+
+<p>如果变量被拷贝, 通过第3章&quot;内存管理&quot;的学习可以知道, 并不会创建新的zval *. 而是两个变量共享同一个写时复制的zval *. 这种情况下, zval *的refcount被增加到2; 然而, 此时资源的refcount值仍然为1, 因为它仅被一个zval *持有.</p>
+
+<pre lang="cpp"><code>$b = $a;
+/* var-&gt;refcount = 2, rsrc-&gt;refcount = 1 */
+
+</code></pre>
+
+<p>当这两个变量中的一个被unset()时, zval *的refcount减小, 但是它并不会被真的销毁, 因为还有其他变量仍然指向它.</p>
+
+<pre lang="cpp"><code>unset($b);
+/* var-&gt;refcount = 1, rsrc-&gt;refcount = 1 */
+
+</code></pre>
+
+<p>现在你还应该知道, 混合引用赋值和写时复制将强制隔离并拷贝到新的zval *中. 当发生这件事时, 资源的引用计数将会增加, 因为它现在被两个zval *持有.</p>
+
+<pre lang="cpp"><code>$b = $a;
+$c = &amp;$a;
+/* bvar-&gt;refcount = 1, bvar-&gt;is_ref = 0
+   acvar-&gt;refcount = 2, acvar-&gt;is_ref = 1
+   rsrc-&gt;refcount = 2 */
+
+</code></pre>
+
+<p>现在, 卸载$b将会完全释放它的zval <em>, 将rsrc-&gt;refcount修改为1. 卸载$a或$c但不两者都卸载则不会减小资源的refcount, 因为它们的zval *(acvar)实际上还是存在的. 直到所有三个变量(涉及到两个zval *)都被unset()后, 资源的refcount才会减小到0, 它的析构函数才会被触发.
+*</em>小结**
+使用本章涉及的主题, 你就可以开始应用php著名的粘合性了. 资源数据类型使得你的扩展可以很容易的将第三方库的透明指针这样的抽象概念, 连接到用户空间脚本语言中, 使得php更加强大.
+接下来两章你将深入php词法中最后但很重要的数据类型. 你将首先探究简单的基于Zend引擎1的类, 接着就要把它迁移到更强大的Zend引擎2中.</p>
+
+<p><a href="http://blog.csdn.net/lgg201/article/details/8493725">目录</a>
+上一章: <a href="http://blog.csdn.net/lgg201/article/details/8662738">在数组和哈希表上工作</a>下一章: <a href="http://blog.csdn.net/lgg201/article/details/8748785">php4的对象</a></p>
+
+          </section>
+
+          
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
+<noscript><a href="http://www.51.la/?18906058" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18906058.asp" style="border:none" /></a></noscript>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.all.min.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/custom.js"></script>
+
+  </body>
+</html>

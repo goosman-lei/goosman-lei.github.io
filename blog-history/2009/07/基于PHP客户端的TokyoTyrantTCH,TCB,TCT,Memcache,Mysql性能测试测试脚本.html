@@ -1,0 +1,1704 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="goosman-lei的博客">
+    <meta name="keywords" content="PHP Web开发,PHP,PHP 框架,高可用,分布式">
+
+    <title>基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本- By Goosman-lei(goosman.lei@gmail.com</title>
+
+    <!-- Styles -->
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="http://static-cdn.tec-inf.com/apple-touch-icon.png">
+    <link rel="icon" href="http://static-cdn.tec-inf.com/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="">Goosman.lei</a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+                              <li class=""><a href="/ice">Ice</a></li>
+                              <li class=" active"><a href="/blog-history">CSDN-BLOG</a></li>
+                              <li class="hero"><a href="mailto:goosman.lei@gmail.com">Contact</a></li>
+                          </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+      
+    </header>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+
+<!-- TODO 解递归当场遍历出树结构菜单 -->
+<ul class="sidenav">
+  <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">2016年</a>
+  <ul>
+    <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">[分享]面向中大型应用的PHPWeb开发框架Ice</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">2013年</a>
+  <ul>
+    <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html">[翻译][php扩展开发和嵌入式]第19章-设置宿主环境</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html">[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html">[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">[翻译][php扩展开发和嵌入式]第16章-有趣的流</a>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html">[翻译][php扩展开发和嵌入式]第15章-php中流的实现</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">[翻译][php扩展开发和嵌入式]第14章-php中流的访问</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html">[翻译][php扩展开发和嵌入式]第13章-php的INI设置</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html">[翻译][php扩展开发和嵌入式]第12章-php的启动过程</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html">[翻译][php扩展开发和嵌入式]第11章-php5对象</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html">[翻译][php扩展开发和嵌入式]第10章-php4的对象</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">[翻译][php扩展开发和嵌入式]第9章-资源数据类型</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html">[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html">[翻译][php扩展开发和嵌入式]第7章-接受参数</a>
+      <li><a href="/blog-history/2013/03/从1.5k到18k,一个程序员的5年成长之路.html">从1.5k到18k,一个程序员的5年成长之路</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">[翻译][php扩展开发和嵌入式]第6章-返回值</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html">[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html">[翻译][php扩展开发和嵌入式]第4章-安装构建环境</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">[翻译][php扩展开发和嵌入式]第3章-内存管理</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html">[翻译][php扩展开发和嵌入式]第2章-变量的里里外外</a>
+      <li><a href="/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump.html">[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html">[翻译][php扩展开发和嵌入式]第1章-php的生命周期</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html">[翻译][php扩展开发和嵌入式]第0章-译序</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">2012年</a>
+  <ul>
+    <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">从N个数中选取最大的前10个[堆排序版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[php版].html">从N个数中选取最大的前10个[php版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html">从N个数中选取最大的前10个[C语言版]</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">php截取字符串保留完整xml标签</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">[mysql-manual-5.5]7.1优化概览</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html">php-mysql扩展mysql_querymysql_unbuffered_query对比</a>
+      <li><a href="/blog-history/2012/10/简单游戏场景用户模拟.html">简单游戏场景用户模拟</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html">php-mysql扩展的mysql_connectmysql_pconnect比较</a>
+      <li><a href="/blog-history/2012/10/模拟新浪微博自动登陆.html">模拟新浪微博自动登陆</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">php-curl封装[避免上传文件二义性Bug]</a>
+      <li><a href="/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html">[漏洞]ThinkSNS严重漏洞--将全站崩溃</a>
+      <li><a href="/blog-history/2012/09/无限递归树展示.html">无限递归树展示</a>
+      <li><a href="/blog-history/2012/09/[快速记忆]C语言php的运算符优先级结合性.html">[快速记忆]C语言php的运算符优先级结合性</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">[软件工程]一个故事,分析陷入焦油坑的软件项目</a>
+      <li><a href="/blog-history/2012/06/输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1.html">输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1</a>
+      <li><a href="/blog-history/2012/06/算法分析从N条成绩单信息选择M位不重复同学发奖.html">算法分析从N条成绩单信息选择M位不重复同学发奖</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">ThinkPHPCore3.0源代码review文档</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">2011年</a>
+  <ul>
+    <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">正则表达式分析提取XMLXHTML标签属性</a>
+      <li><a href="/blog-history/2011/12/封装的一个mysql_lib.php,主要是一个分页模型.html">封装的一个mysql_lib.php,主要是一个分页模型</a>
+      <li><a href="/blog-history/2011/12/爱因斯坦的思考题.html">爱因斯坦的思考题</a>
+      <li><a href="/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html">从浏览器操作系统市场占有率分析国人</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">[php内核]----文件系统函数用于普通文件时的一些情况</a>
+      <li><a href="/blog-history/2011/10/某地自动评论脚本备份.html">某地自动评论脚本备份</a>
+      <li><a href="/blog-history/2011/10/使用alarm配合信号实现sleep.html">使用alarm配合信号实现sleep</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现.html">libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html">libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析</a>
+      <li><a href="/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html">由信号集联想----位域授权模式的不限长扩展</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">PHP位域操作函数封装</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">基于dup实现linux的dup2函数APUE练习题3.2</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">日志分析工具（二分法分段查找处理）</a>
+      <li><a href="/blog-history/2011/07/从dl函数分析PHP模块开发.html">从dl函数分析PHP模块开发</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/04/php中的引用传值分析.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2011/04/php中的引用传值分析.html">php中的引用传值分析</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">phppcre正则表达式完全教程----pcre官方文档</a>
+      <li><a href="/blog-history/2011/03/Ubuntu中利用Grub2修复移动硬盘引导.html">Ubuntu中利用Grub2修复移动硬盘引导</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结</a>
+      <li><a href="/blog-history/2011/02/javascript中的继承,找回丢失的constructor.html">javascript中的继承,找回丢失的constructor</a>
+      <li><a href="/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定.html">浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定</a>
+      <li><a href="/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html">PHP操作符优先级列表及一个优先级带来的灵异事件</a>
+      <li><a href="/blog-history/2011/02/PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升.html">PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">php5.3新增的闭包语法介绍functionuse{}</a>
+      <li><a href="/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html">与PHP5.3.5的战斗----记php5.3.5安装过程</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">2010年</a>
+  <ul>
+    <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2010/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2010/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2010/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html" class="active">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2010/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2010/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2010/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2010/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2010/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2010/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2010/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2010/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2010/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2010/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2010/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">2009年</a>
+  <ul>
+    <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2009/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2009/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2009/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html" class="active">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2009/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2009/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2009/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2009/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2009/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2009/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2009/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2009/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2009/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2009/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2009/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+</ul>
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1></h1>
+            <p></p>
+<ol class="toc">
+</li></ol>
+
+          </header>
+
+          <section>
+<p><strong>Mysql测试表创建</strong></p>
+
+<pre lang="vb"><code>DROP TABLE IF EXISTS userinfo;
+CREATE TABLE userinfo
+(
+    id INT PRIMARY KEY AUTO_INCREMENT, 
+    name VARCHAR(20), 
+    sex VARCHAR(10), 
+    province VARCHAR(30), 
+    city VARCHAR(30)
+);
+ALTER TABLE userinfo ADD INDEX name_index (name);
+ALTER TABLE userinfo ADD INDEX sex_index (sex);
+ALTER TABLE userinfo ADD INDEX province_index (province);
+ALTER TABLE userinfo ADD INDEX city_index (city);
+DROP PROCEDURE IF EXISTS autoinsert;
+DELIMITER /
+CREATE PROCEDURE autoinsert(in num int, in base int)
+    begin
+        declare name_seed char(63) default &amp;quot;_0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&amp;quot;;
+        declare sex_seed char(2) default &amp;quot;mw&amp;quot;;
+        declare province_seed char(10) default &amp;quot;ABCDEFGHIJ&amp;quot;;
+        declare city_seed char(10) default &amp;quot;qrstuvwxyz&amp;quot;;
+        declare i int default base;
+        declare name_rd int default 0;
+        declare sex_rd int default 0;
+        declare province_rd int default 0;
+        declare city_rd int default 0;
+        while(i &amp;lt; num) do
+            set name_rd = floor(rand() * 63) + 1;
+            set sex_rd = floor(rand() * 2) + 1;
+            set province_rd = floor(rand() * 10) + 1;
+            set city_rd = floor(rand() * 10) + 1;
+            INSERT INTO userinfo VALUES(i, 
+                concat(substring(name_seed, floor(rand() * 63), 1), substring(name_seed, floor(rand() * 63), 1), substring(name_seed, floor(rand() * 63), 1), substring(name_seed, floor(rand() * 63), 1), substring(name_seed, floor(rand() * 63), 1), substring(name_seed, floor(rand() * 63), 1)), 
+                substring(sex_seed, sex_rd, 1), 
+                substring(province_seed, province_rd, 1), 
+                substring(city_seed, city_rd, 1)
+            );
+            set i = i + 1;
+        end while;
+    end
+/
+DELIMITER ;
+</code></pre>
+
+<p> 
+<strong>TT使用tcrtest write -port 9001 localhost 200000000插入测试数据</strong>
+ </p>
+
+<hr>
+
+<p><strong>基础功能函数</strong>
+**</p>
+
+<pre lang="php"><code>&amp;lt;?php
+require &#39;jpgraph/jpgraph.php&#39;;
+require &#39;jpgraph/jpgraph_line.php&#39;;
+function randChar() {
+    static $chars = array(
+    &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;, 
+    &#39;k&#39;, &#39;l&#39;, &#39;m&#39;, &#39;n&#39;, &#39;o&#39;, &#39;p&#39;, &#39;q&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;, 
+    &#39;u&#39;, &#39;v&#39;, &#39;w&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;, 
+    &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;, 
+    &#39;K&#39;, &#39;L&#39;, &#39;M&#39;, &#39;N&#39;, &#39;O&#39;, &#39;P&#39;, &#39;Q&#39;, &#39;R&#39;, &#39;S&#39;, &#39;T&#39;, 
+    &#39;U&#39;, &#39;V&#39;, &#39;W&#39;, &#39;X&#39;, &#39;Y&#39;, &#39;Z&#39;, 
+    &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;, 
+    );
+    return $chars[rand(0, 61)];
+}
+function createKey($length = 20) {
+    $str = &#39;&#39;;
+    while($length -- &amp;gt; 0) $str .= randChar();
+    return $str;
+}
+function createValue($length = 200) {
+    $str = &#39;&#39;;
+    while($length -- &amp;gt; 0) $str .= randChar();
+    return $str;
+}
+function createNumberValue() {
+    return rand(0, 2147483647);
+}
+function generateSeed($length) {
+    $length = $length * $length;
+    $result = &amp;quot;&amp;quot;;
+    while($length -- &amp;gt; 0) $result .= randChar();
+    return $result;
+}
+function randString($length, &amp;amp;$seed, $n = 10) {
+    return substr($seed, rand(0, strlen($seed) - $length - 1), $length);    
+}
+function drawline($data1, $legend1, $data2, $legend2, $title, $xtitle, $ytitle) {
+
+    // Create the graph and specify the scale for both Y-axis
+    $graph = new Graph(800,600);
+    $graph-&amp;gt;SetScale(&#39;textlin&#39;);
+    $graph-&amp;gt;SetY2Scale(&#39;lin&#39;);
+    $graph-&amp;gt;SetShadow();
+
+    // Adjust the margin
+    $graph-&amp;gt;img-&amp;gt;SetMargin(40,140,20,40);
+
+    // Create the two linear plot
+    $lineplot=new LinePlot($data1);
+    $lineplot2=new LinePlot($data2);
+
+    // Add the plot to the graph
+    $graph-&amp;gt;Add($lineplot);
+    $graph-&amp;gt;AddY2($lineplot2);
+    $lineplot2-&amp;gt;SetColor(&#39;orange&#39;);
+    $lineplot2-&amp;gt;SetWeight(2);
+
+    // Adjust the axis color
+    $graph-&amp;gt;y2axis-&amp;gt;SetColor(&#39;orange&#39;);
+    $graph-&amp;gt;yaxis-&amp;gt;SetColor(&#39;blue&#39;);
+
+    $graph-&amp;gt;title-&amp;gt;Set($title);
+    $graph-&amp;gt;xaxis-&amp;gt;title-&amp;gt;Set($xtitle);
+    $graph-&amp;gt;yaxis-&amp;gt;title-&amp;gt;Set($ytitle);
+
+    $graph-&amp;gt;title-&amp;gt;SetFont(FF_FONT1,FS_BOLD);
+    $graph-&amp;gt;yaxis-&amp;gt;title-&amp;gt;SetFont(FF_FONT1,FS_BOLD);
+    $graph-&amp;gt;xaxis-&amp;gt;title-&amp;gt;SetFont(FF_FONT1,FS_BOLD);
+
+    // Set the colors for the plots
+    $lineplot-&amp;gt;SetColor(&#39;blue&#39;);
+    $lineplot-&amp;gt;SetWeight(2);
+    $lineplot2-&amp;gt;SetColor(&#39;orange&#39;);
+    $lineplot2-&amp;gt;SetWeight(2);
+
+    // Set the legends for the plots
+    $lineplot-&amp;gt;SetLegend($legend1);
+    $lineplot2-&amp;gt;SetLegend($legend2);
+
+    // Adjust the legend position
+    $graph-&amp;gt;legend-&amp;gt;Pos(0.05,0.5,&#39;right&#39;,&#39;center&#39;);
+
+    // Display the graph
+    $graph-&amp;gt;Stroke();
+}
+function drawline1($datas) {
+    $width = 800;
+    $height = 600;
+    $graph = new Graph($width, $height);
+    $graph-&amp;gt;SetScale(&#39;intlin&#39;);
+    $lineplot = new LinePlot($datas);
+    $graph-&amp;gt;Add($lineplot);
+    $graph-&amp;gt;Stroke();
+}
+function drawline2($title, $xtitle, $ytitle) {
+
+    $width = 1200;
+    $height = 600;
+
+    // Create the graph and set a scale.
+    // These two calls are always required
+    $graph = new Graph($width,$height);
+    $graph-&amp;gt;SetScale(&#39;intlin&#39;);
+    $graph-&amp;gt;SetShadow();
+
+    $graph-&amp;gt;img-&amp;gt;SetMargin(60,350,20,40);
+
+    // Setup margin and titles
+    $graph-&amp;gt;title-&amp;gt;Set($title);
+    $graph-&amp;gt;xaxis-&amp;gt;title-&amp;gt;Set($xtitle);
+    $graph-&amp;gt;yaxis-&amp;gt;title-&amp;gt;Set($ytitle);
+
+    $graph-&amp;gt;yaxis-&amp;gt;title-&amp;gt;SetFont( FF_FONT1 , FS_BOLD );
+    $graph-&amp;gt;xaxis-&amp;gt;title-&amp;gt;SetFont( FF_FONT1 , FS_BOLD );
+
+    $arg_num = func_num_args();
+    $i = 3;
+    while($i &amp;lt; $arg_num) {
+        $data = func_get_arg($i);
+        $legend = $data[&#39;legend&#39;];
+        $data = $data[&#39;data&#39;];
+        $lineplot = new LinePlot($data);
+        $lineplot-&amp;gt;SetWeight(1);
+        $lineplot-&amp;gt;SetLegend($legend);
+        $graph-&amp;gt;Add($lineplot);
+        $i ++;
+    }
+    $graph-&amp;gt;legend-&amp;gt;SetPos(0.05, 0.5, &#39;right&#39;, &#39;center&#39;);
+
+    // Display the graph
+    $graph-&amp;gt;Stroke();
+}
+function getCurrentMemoryStr() {
+    $a = system(&#39;free -m&#39;);
+    $matches = NULL;
+    preg_match(&#39;/(/d+)/D+(/d+)/D+(/d+)/&#39;, $a, $matches);
+    return &amp;quot;内存总量(M): &amp;quot;.$matches[1].&amp;quot;, 已使用(M): &amp;quot;.$matches[2].&amp;quot;, 空闲(M): &amp;quot;.$matches[3].&amp;quot;;&amp;quot;;
+}
+function getCurrentMemory() {
+    $a = NULL;
+    exec(&#39;free -m&#39;, $a);
+    $matches = NULL;
+    preg_match(&#39;/(/d+)/D+(/d+)/D+(/d+)/&#39;, $a[1], $matches);
+    return (int)$matches[2];
+}
+?&amp;gt;
+</code></pre>
+
+<p>**
+<strong>Mysql工具类</strong>
+**</p>
+
+<pre lang="php"><code>&amp;lt;?php
+/**
+ * Mysql工具类
+ * @author selfimpr
+ * @blog http://blog.csdn.net/lgg201
+ * @email goosman.lei@gmail.com
+ *
+ */
+class Mysql {
+    private $host;
+    private $username;
+    private $password;
+    private $db_name;
+    private $character_set;
+
+    private $conn;
+
+    public function __construct(
+            $host = &amp;quot;localhost&amp;quot;,
+            $username = &amp;quot;root&amp;quot;, 
+            $password = &amp;quot;root&amp;quot;, 
+            $db_name = &amp;quot;test&amp;quot;, 
+            $character_set = &amp;quot;GBK&amp;quot;) {
+        $this-&amp;gt;host = $host;
+        $this-&amp;gt;username = $username;
+        $this-&amp;gt;password = $password;
+        $this-&amp;gt;db_name = $db_name;
+        $this-&amp;gt;character_set = $character_set;
+        $this-&amp;gt;createConn();
+    }
+
+    public function createConn() {
+        $this-&amp;gt;conn = mysql_connect($this-&amp;gt;host, $this-&amp;gt;username, $this-&amp;gt;password) or die(&#39;数据库连接失败&#39;);
+        mysql_select_db($this-&amp;gt;db_name, $this-&amp;gt;conn);
+        mysql_set_charset($this-&amp;gt;character_set, $this-&amp;gt;conn);
+    }
+
+    public function getConn() {
+        return $this-&amp;gt;getConn();
+    }
+
+    /**
+     * 
+     * @param $sql 查询用的sql
+     * @param $flag 标记是否把查询结果集遍历到数组
+     * @return 
+     */
+    public function execute($sql, $flag = true) {
+        $resultset = mysql_query($sql, $this-&amp;gt;conn) or die(mysql_error($this-&amp;gt;conn));
+        if($flag) return ;
+        if(!is_bool($resultset)) {
+            while($line = mysql_fetch_assoc($resultset)) {
+                $result[] = $line;
+            }
+        } else {
+            $result = $resultset;
+        }
+//      echo &amp;quot;【&amp;quot;.$sql.&amp;quot;】 excute success!&amp;lt;br /&amp;gt;&amp;quot;;
+
+        return $result;
+    }
+
+    public function explain($sql) {
+        return $this-&amp;gt;execute(&#39;EXPLAIN &#39;.$sql, false);
+    }
+}
+?&amp;gt;
+
+</code></pre>
+
+<p>**
+<strong>TCT
+设置索引</strong>
+**</p>
+
+<pre lang="php"><code>&amp;lt;?php
+function getClientTct($host = &#39;localhost&#39;, $port = 9003) {
+    $tt = new TokyoTyrantTable();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+$client = getClientTct();
+$client-&amp;gt;setIndex(&#39;name&#39;, TokyoTyrant::RDBIT_LEXICAL);
+$client-&amp;gt;setIndex(&#39;sex&#39;, TokyoTyrant::RDBIT_LEXICAL);
+$client-&amp;gt;setIndex(&#39;province&#39;, TokyoTyrant::RDBIT_LEXICAL);
+$client-&amp;gt;setIndex(&#39;city&#39;, TokyoTyrant::RDBIT_LEXICAL);
+echo &#39;索引设置成功&#39;;
+?&amp;gt;
+</code></pre>
+
+<p>**
+<strong>所有产品写
+入性能对比</strong>
+**</p>
+
+<pre lang="php"><code>&amp;lt;?php
+set_time_limit(0);
+require_once &#39;mysql_util.php&#39;;
+require &#39;basic_funcs.php&#39;;
+$current_test = $_GET[&#39;case&#39;];
+$num = (int)$_GET[&#39;num&#39;];
+$length = (int)$_GET[&#39;length&#39;];
+function getClientMemcache($host = &#39;localhost&#39;, $port = 11211) {
+    $memcache = new Memcache();
+    $memcache-&amp;gt;connect($host, $port);
+    return $memcache;
+}
+function getClientTch($host = &#39;localhost&#39;, $port = 9001) {
+    $tt = new TokyoTyrant();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientTcb($host = &#39;localhost&#39;, $port = 9002) {
+    $tt = new TokyoTyrant();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientTct($host = &#39;localhost&#39;, $port = 9003) {
+    $tt = new TokyoTyrantTable();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientMysql($host = &amp;quot;localhost&amp;quot;,
+            $username = &amp;quot;root&amp;quot;, 
+            $password = &amp;quot;root&amp;quot;, 
+            $db_name = &amp;quot;test&amp;quot;, 
+            $character_set = &amp;quot;GBK&amp;quot;) {
+    $client = new Mysql($host, $username, $password, $db_name, $character_set);
+    return $client;
+}
+function test_tch($num, $length) {
+    $limit = floor($num / 20);
+    $client = getClientTch();
+    $value = createValue($length);
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;put($num, $value);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCH set test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_tcb($num, $length) {
+    $limit = floor($num / 20);
+    $client = getClientTcb();
+    $value = createValue($length);
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;put($num, $value);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCB set test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_tct($num, $length) {
+    $limit = floor($num / 20);
+    $client = getClientTct();
+    $sexies = array(&#39;m&#39;, &#39;w&#39;);
+    $provinces = array(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;);
+    $cities = array(&#39;q&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;, &#39;u&#39;, &#39;v&#39;, &#39;w&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;);
+    $value = array(&#39;name&#39; =&amp;gt; createValue(6), &#39;sex&#39; =&amp;gt; $sexies[rand(0, 1)], &#39;province&#39; =&amp;gt; $provinces[rand(0, 9)], &#39;city&#39; =&amp;gt; $cities[rand(0, 9)]);
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;put($num, $value);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCT set test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_memcache($num, $length) {
+    $limit = floor($num / 20);
+    $client = getClientMemcache();
+    $value = createValue($length);
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;set($num, $value);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Memcache set test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_mysql($num, $length) {
+    $limit = floor($num / 20);
+    $client = getClientMysql();
+    $name = createValue($length);
+    $sexies = array(&#39;m&#39;, &#39;w&#39;);
+    $provinces = array(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;);
+    $cities = array(&#39;q&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;, &#39;u&#39;, &#39;v&#39;, &#39;w&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;);
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;execute(&amp;quot;INSERT INTO userinfo VALUES(NULL, &#39;&amp;quot;.$name.&amp;quot;&#39;, &#39;&amp;quot;.$sexies[rand(0, 1)].&amp;quot;&#39;, &#39;&amp;quot;.$provinces[rand(0, 9)].&amp;quot;&#39;, &#39;&amp;quot;.$cities[rand(0, 9)].&amp;quot;&#39;)&amp;quot;);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Mysql set test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test($num, $length) {
+    $limit = floor($num / 20);
+    drawline2(&amp;quot;Mysql, TCT, TCB, TCH, Memcache compare in set&amp;quot;, 
+        &amp;quot;Test case number&amp;quot;, 
+        &amp;quot;run time per $limit record(S)&amp;quot;, 
+        test_tch($num, $length), 
+        test_tcb($num, $length), 
+        test_tct($num, $length), 
+        test_memcache($num, $length), 
+        test_mysql($num, $length)
+    );
+}
+if(!$current_test) {
+    test($num, $length);
+} else {
+    $limit = floor($num / 20);
+    drawline2(&amp;quot;Mysql, TCT, TCB, TCH, Memcache compare in set&amp;quot;, 
+        &amp;quot;Test case number&amp;quot;, 
+        &amp;quot;run time per $limit record(S)&amp;quot;, 
+        $current_test($num, $length)
+    );
+}
+?&amp;gt;
+</code></pre>
+
+<p>**
+<strong>所有产品读取性能对比</strong>
+**</p>
+
+<pre lang="php"><code>&amp;lt;?php
+set_time_limit(0);
+require_once &#39;mysql_util.php&#39;;
+require &#39;basic_funcs.php&#39;;
+$current_test = $_GET[&#39;case&#39;];
+$num = (int)$_GET[&#39;num&#39;];
+function getClientMemcache($host = &#39;localhost&#39;, $port = 11211) {
+    $memcache = new Memcache();
+    $memcache-&amp;gt;connect($host, $port);
+    return $memcache;
+}
+function getClientTch($host = &#39;localhost&#39;, $port = 9001) {
+    $tt = new TokyoTyrant();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientTcb($host = &#39;localhost&#39;, $port = 9002) {
+    $tt = new TokyoTyrant();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientTct($host = &#39;localhost&#39;, $port = 9003) {
+    $tt = new TokyoTyrantTable();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientMysql($host = &amp;quot;localhost&amp;quot;,
+            $username = &amp;quot;root&amp;quot;, 
+            $password = &amp;quot;root&amp;quot;, 
+            $db_name = &amp;quot;test&amp;quot;, 
+            $character_set = &amp;quot;GBK&amp;quot;) {
+    $client = new Mysql($host, $username, $password, $db_name, $character_set);
+    return $client;
+}
+function test_tch($num) {
+    $limit = floor($num / 20);
+    $client = getClientTch();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;get($num);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCH get test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_tcb($num) {
+    $limit = floor($num / 20);
+    $client = getClientTcb();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;get($num);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCB get test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_tct($num) {
+    $limit = floor($num / 20);
+    $client = getClientTct();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;get($num);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCT get test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_memcache($num) {
+    $limit = floor($num / 20);
+    $client = getClientMemcache();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;get($num);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Memcache get test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_mysql($num) {
+    $limit = floor($num / 20);
+    $client = getClientMysql();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;execute(&amp;quot;SELECT * FROM userinfo WHERE id = &amp;quot;.$num);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Mysql get test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test($num) {
+    $limit = floor($num / 20);
+    drawline2(&amp;quot;Mysql, TCT, TCB, TCH, Memcache compare in get&amp;quot;, 
+        &amp;quot;Test case number&amp;quot;, 
+        &amp;quot;run time per $limit record(S)&amp;quot;, 
+        test_tch($num), 
+        test_tcb($num), 
+        test_tct($num), 
+        test_memcache($num), 
+        test_mysql($num)
+    );
+}
+test($num);
+?&amp;gt;
+</code></pre>
+
+<p>**
+<strong>搜索比较</strong>
+**</p>
+
+<pre lang="php"><code>&amp;lt;?php
+set_time_limit(0);
+require_once &#39;mysql_util.php&#39;;
+require &#39;basic_funcs.php&#39;;
+$current_test = $_GET[&#39;case&#39;];
+$num = (int)$_GET[&#39;num&#39;];
+$debug = $_GET[&#39;debug&#39;];
+
+function getClientTct($host = &#39;192.168.2.22&#39;, $port = 9003) {
+    $tt = new TokyoTyrantTable();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientMysql($host = &amp;quot;localhost&amp;quot;,
+            $username = &amp;quot;root&amp;quot;, 
+            $password = &amp;quot;root&amp;quot;, 
+            $db_name = &amp;quot;test&amp;quot;, 
+            $character_set = &amp;quot;GBK&amp;quot;) {
+    $client = new Mysql($host, $username, $password, $db_name, $character_set);
+    return $client;
+}
+function test_tct_name($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientTct();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $query = $client-&amp;gt;getQuery();
+        $query-&amp;gt;addCond(&#39;name&#39;, TokyoTyrant::RDBQC_STRINC, createValue(rand(1, 5)));
+        $query-&amp;gt;setLimit(10, 0);
+        $begin = microtime(true);
+        $query-&amp;gt;search();
+        $end = microtime(true);
+        if($debug) echo $query-&amp;gt;hint().&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCT search by name test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_mysql_name($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientMysql();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $name = createValue(rand(1, 5));
+        $sql = &amp;quot;SELECT * FROM userinfo WHERE name LIKE &#39;%$name%&#39; limit 0, 10&amp;quot;;
+        $begin = microtime(true);
+        $client-&amp;gt;execute($sql);
+        $end = microtime(true);
+        if($debug) echo $sql.&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Mysql search by name test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_tct_sex($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientTct();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    $sexies = array(&#39;m&#39;, &#39;w&#39;);
+    while($num -- &amp;gt;= 0) {
+        $query = $client-&amp;gt;getQuery();
+        $query-&amp;gt;addCond(&#39;sex&#39;, TokyoTyrant::RDBQC_STREQ, $sexies[rand(0, 1)]);
+        $query-&amp;gt;setLimit(10, 0);
+        $begin = microtime(true);
+        $query-&amp;gt;search();
+        $end = microtime(true);
+        if($debug) echo $query-&amp;gt;hint().&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCT search by sex test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_mysql_sex($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientMysql();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    $sexies = array(&#39;m&#39;, &#39;w&#39;);
+    while($num -- &amp;gt;= 0) {
+        $sex = $sexies[rand(0, 1)];
+        $sql = &amp;quot;SELECT * FROM userinfo WHERE sex = &#39;$sex&#39; limit 0, 10&amp;quot;;
+        $begin = microtime(true);
+        $client-&amp;gt;execute($sql);
+        $end = microtime(true);
+        if($debug) echo $sql.&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Mysql search by sex test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_tct_location($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientTct();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    $provinces = array(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;);
+    $cities = array(&#39;q&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;, &#39;u&#39;, &#39;v&#39;, &#39;w&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;);
+    while($num -- &amp;gt;= 0) {
+        $query = $client-&amp;gt;getQuery();
+        $query-&amp;gt;addCond(&#39;province&#39;, TokyoTyrant::RDBQC_STREQ, $provinces[rand(0, 9)]);
+        $query-&amp;gt;addCond(&#39;city&#39;, TokyoTyrant::RDBQC_STREQ, $cities[rand(0, 9)]);
+        $query-&amp;gt;setLimit(10, 0);
+        $begin = microtime(true);
+        $query-&amp;gt;search();
+        $end = microtime(true);
+        if($debug) echo $query-&amp;gt;hint().&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCT search by location test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_mysql_location($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientMysql();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    $provinces = array(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;);
+    $cities = array(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;);
+    while($num -- &amp;gt;= 0) {
+        $province = $provinces[rand(0, 9)];
+        $city = $cities[rand(0, 9)];
+        $sql = &amp;quot;SELECT * FROM userinfo WHERE province = &#39;$province&#39; AND city = &#39;$city&#39; limit 0, 10&amp;quot;;
+        $begin = microtime(true);
+        $client-&amp;gt;execute($sql);
+        $end = microtime(true);
+        if($debug) echo $sql.&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Mysql search by location test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_tct_all($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientTct();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    $sexies = array(&#39;m&#39;, &#39;w&#39;);
+    $provinces = array(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;);
+    $cities = array(&#39;q&#39;, &#39;r&#39;, &#39;s&#39;, &#39;t&#39;, &#39;u&#39;, &#39;v&#39;, &#39;w&#39;, &#39;x&#39;, &#39;y&#39;, &#39;z&#39;);
+    while($num -- &amp;gt;= 0) {
+        $query = $client-&amp;gt;getQuery();
+        $query-&amp;gt;addCond(&#39;province&#39;, TokyoTyrant::RDBQC_STREQ, $provinces[rand(0, 9)]);
+        $query-&amp;gt;addCond(&#39;city&#39;, TokyoTyrant::RDBQC_STREQ, $cities[rand(0, 9)]);
+        $query-&amp;gt;addCond(&#39;sex&#39;, TokyoTyrant::RDBQC_STREQ, $sexies[rand(0, 1)]);
+        $query-&amp;gt;addCond(&#39;name&#39;, TokyoTyrant::RDBQC_STRINC, createValue(rand(1, 5)));
+        $query-&amp;gt;setLimit(10, 0);
+        $begin = microtime(true);
+        $query-&amp;gt;search();
+        $end = microtime(true);
+        if($debug) echo $query-&amp;gt;hint().&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCT search by all test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_mysql_all($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientMysql();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    $sexies = array(&#39;m&#39;, &#39;w&#39;);
+    $provinces = array(&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;);
+    $cities = array(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;);
+    while($num -- &amp;gt;= 0) {
+        $province = $provinces[rand(0, 9)];
+        $city = $cities[rand(0, 9)];
+        $sex = $sexies[rand(0, 1)];
+        $name = createValue(rand(1, 5));
+        $sql = &amp;quot;SELECT * FROM userinfo WHERE province = &#39;$province&#39; AND city = &#39;$city&#39; AND sex = &#39;$sex&#39; AND name like &#39;%$name%&#39; limit 0, 10&amp;quot;;
+        $begin = microtime(true);
+        $client-&amp;gt;execute($sql);
+        $end = microtime(true);
+        if($debug) echo $sql.&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Mysql search by location test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_tct_regexp($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientTct();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $query = $client-&amp;gt;getQuery();
+        $query-&amp;gt;addCond(&#39;name&#39;, TokyoTyrant::RDBQC_STRRX, &#39;.*&#39;.createValue(rand(1, 5)).&#39;.*&#39;);
+        $query-&amp;gt;setLimit(10, 0);
+        $begin = microtime(true);
+        $query-&amp;gt;search();
+        $end = microtime(true);
+        if($debug) echo $query-&amp;gt;hint().&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;TCT search by regexp test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_mysql_regexp($num) {
+    global $debug;
+    $limit = floor($num / 20);
+    $client = getClientMysql();
+    $times = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $name = createValue(rand(1, 5));
+        $sql = &amp;quot;SELECT * FROM userinfo WHERE name REGEXP &#39;.*$name.*&#39; limit 0, 10&amp;quot;;
+        $begin = microtime(true);
+        $client-&amp;gt;execute($sql);
+        $end = microtime(true);
+        if($debug) echo $sql.&#39;&amp;lt;br /&amp;gt;&#39;;
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            $total = 0;
+        }
+    }
+    return array(
+        &#39;legend&#39; =&amp;gt; &amp;quot;Mysql search by regexp test result &amp;quot;.(array_sum($times) / $tmp),
+        &#39;data&#39; =&amp;gt; $times, 
+    );
+}
+function test_name($num) {
+    $limit = floor($num / 20);
+    $data1 = test_tct_name($num);
+    $data2 = test_mysql_name($num);
+    global $debug;
+    if($debug) return ;
+    drawline2(&amp;quot;Mysql, TCT compare in get by name&amp;quot;, 
+        &amp;quot;Test case number&amp;quot;, 
+        &amp;quot;run time per $limit record(S)&amp;quot;, 
+        $data1, $data2
+    );
+}
+function test_sex($num) {
+    $limit = floor($num / 20);
+    $data1 = test_tct_sex($num);
+    $data2 = test_mysql_sex($num);
+    global $debug;
+    if($debug) return ;
+    drawline2(&amp;quot;Mysql, TCT compare in get by sex&amp;quot;, 
+        &amp;quot;Test case number&amp;quot;, 
+        &amp;quot;run time per $limit record(S)&amp;quot;, 
+        $data1, $data2
+    );
+}
+function test_location($num) {
+    $limit = floor($num / 20);
+    $data1 = test_tct_location($num);
+    $data2 = test_mysql_location($num);
+    global $debug;
+    if($debug) return ;
+    drawline2(&amp;quot;Mysql, TCT compare in get by location&amp;quot;, 
+        &amp;quot;Test case number&amp;quot;, 
+        &amp;quot;run time per $limit record(S)&amp;quot;, 
+        $data1, $data2
+    );
+}
+function test_all($num) {
+    $limit = floor($num / 20);
+    $data1 = test_tct_all($num);
+    $data2 = test_mysql_all($num);
+    global $debug;
+    if($debug) return ;
+    drawline2(&amp;quot;Mysql, TCT compare in get by all&amp;quot;, 
+        &amp;quot;Test case number&amp;quot;, 
+        &amp;quot;run time per $limit record(S)&amp;quot;, 
+        $data1, $data2
+    );
+}
+function test_regexp($num) {
+    $limit = floor($num / 20);
+    $data1 = test_tct_regexp($num);
+    $data2 = test_mysql_regexp($num);
+    global $debug;
+    if($debug) return ;
+    drawline2(&amp;quot;Mysql, TCT compare in get by name&amp;quot;, 
+        &amp;quot;Test case number&amp;quot;, 
+        &amp;quot;run time per $limit record(S)&amp;quot;, 
+        $data1, $data2
+    );
+}
+$current_test($num);
+?&amp;gt;
+</code></pre>
+
+<p>**
+<strong>TCH, TCB, TCT的内存压力写入测试</strong>
+**</p>
+
+<pre lang="php"><code>&amp;lt;?php
+set_time_limit(0);
+require &#39;basic_funcs.php&#39;;
+$current_test = $_GET[&#39;case&#39;];
+$num = $_GET[&#39;num&#39;];
+$length = $_GET[&#39;length&#39;];
+function getClientTch($host = &#39;localhost&#39;, $port = 9001) {
+    $tt = new TokyoTyrant();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientTcb($host = &#39;localhost&#39;, $port = 9002) {
+    $tt = new TokyoTyrant();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientTct($host = &#39;localhost&#39;, $port = 9003) {
+    $tt = new TokyoTyrantTable();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function test_tch($num, $length) {
+    $limit = floor($num / 20);
+    $value = createValue($length);
+    $client = getClientTch();
+    $times = array();
+    $mems = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;put($num, $value);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            array_push($mems, getCurrentMemory());
+            $total = 0;
+        }
+    }
+    drawline($times, &amp;quot;Time for &amp;quot;.$limit.&amp;quot; record.&amp;quot;, $mems, &amp;quot;Current memory used(M)&amp;quot;, &amp;quot;TCH test for full memory(&amp;quot;.(array_sum($times) / $tmp).&amp;quot;)&amp;quot;, &amp;quot;test case number&amp;quot;, &amp;quot;Time or MemoryUsed&amp;quot;);
+}
+function test_tcb($num, $length) {
+    $limit = floor($num / 20);
+    $value = createValue($length);
+    $client = getClientTcb();
+    $times = array();
+    $mems = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;put($num, $value);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            array_push($mems, getCurrentMemory());
+            $total = 0;
+        }
+    }
+    drawline($times, &amp;quot;Time for &amp;quot;.$limit.&amp;quot; record.&amp;quot;, $mems, &amp;quot;Current memory used(M)&amp;quot;, &amp;quot;TCB test for full memory(&amp;quot;.(array_sum($times) / $tmp).&amp;quot;)&amp;quot;, &amp;quot;test case number&amp;quot;, &amp;quot;Time or MemoryUsed&amp;quot;);
+}
+function test_tct($num, $length) {
+    $limit = floor($num / 20);
+    $value = array(&#39;value&#39; =&amp;gt; createValue($length));
+    $client = getClientTct();
+    $times = array();
+    $mems = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;put($num, $value);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            array_push($mems, getCurrentMemory());
+            $total = 0;
+        }
+    }
+    drawline($times, &amp;quot;Time for &amp;quot;.$limit.&amp;quot; record.&amp;quot;, $mems, &amp;quot;Current memory used(M)&amp;quot;, &amp;quot;TCT test for full memory(&amp;quot;.(array_sum($times) / $tmp).&amp;quot;)&amp;quot;, &amp;quot;test case number&amp;quot;, &amp;quot;Time or MemoryUsed&amp;quot;);
+}
+$current_test($num, $length);
+?&amp;gt;
+</code></pre>
+
+<p>**
+<strong>TCH, TCB, TCT的内存压力读取测试</strong>
+**</p>
+
+<pre lang="php"><code>&amp;lt;?php
+set_time_limit(0);
+require &#39;basic_funcs.php&#39;;
+$current_test = $_GET[&#39;case&#39;];
+$num = (int)$_GET[&#39;num&#39;];
+function getClientTch($host = &#39;localhost&#39;, $port = 9001) {
+    $tt = new TokyoTyrant();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientTcb($host = &#39;localhost&#39;, $port = 9002) {
+    $tt = new TokyoTyrant();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function getClientTct($host = &#39;localhost&#39;, $port = 9003) {
+    $tt = new TokyoTyrantTable();
+    $tt-&amp;gt;connect($host, $port);
+    return $tt;
+}
+function test_tch($num) {
+    $limit = floor($num / 20);
+    $client = getClientTch();
+    $times = array();
+    $mems = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;get($num);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            array_push($mems, getCurrentMemory());
+            $total = 0;
+        }
+    }
+    drawline($times, &amp;quot;Time for &amp;quot;.$limit.&amp;quot; record.&amp;quot;, $mems, &amp;quot;Current memory used(M)&amp;quot;, &amp;quot;TCH test for full memory(&amp;quot;.(array_sum($times) / $tmp).&amp;quot;)&amp;quot;, &amp;quot;test case number&amp;quot;, &amp;quot;Time or MemoryUsed&amp;quot;);
+}
+function test_tcb($num) {
+    $limit = floor($num / 20);
+    $client = getClientTcb();
+    $times = array();
+    $mems = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;get($num);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            array_push($mems, getCurrentMemory());
+            $total = 0;
+        }
+    }
+    drawline($times, &amp;quot;Time for &amp;quot;.$limit.&amp;quot; record.&amp;quot;, $mems, &amp;quot;Current memory used(M)&amp;quot;, &amp;quot;TCB test for full memory(&amp;quot;.(array_sum($times) / $tmp).&amp;quot;)&amp;quot;, &amp;quot;test case number&amp;quot;, &amp;quot;Time or MemoryUsed&amp;quot;);
+}
+function test_tct($num) {
+    $limit = floor($num / 20);
+    $client = getClientTct();
+    $times = array();
+    $mems = array();
+    $tmp = $num;
+    $total = 0;
+    while($num -- &amp;gt;= 0) {
+        $begin = microtime(true);
+        $client-&amp;gt;get($num);
+        $end = microtime(true);
+        $total += $end - $begin;
+        if(!($num % $limit)) {
+            array_push($times, $total);
+            array_push($mems, getCurrentMemory());
+            $total = 0;
+        }
+    }
+    drawline($times, &amp;quot;Time for &amp;quot;.$limit.&amp;quot; record.&amp;quot;, $mems, &amp;quot;Current memory used(M)&amp;quot;, &amp;quot;TCT test for full memory(&amp;quot;.(array_sum($times) / $tmp).&amp;quot;)&amp;quot;, &amp;quot;test case number&amp;quot;, &amp;quot;Time or MemoryUsed&amp;quot;);
+}
+$current_test($num);
+?&amp;gt;
+</code></pre>
+
+<p>**
+*<em>Mysql并发测试(ab -n 10000 -c 10000 http://localhost/concurrent_mysql.php)
+*</em></p>
+
+<pre lang="php"><code>#! /usr/local/bin/php
+&amp;lt;?php
+function test($num) {
+    $times = array();
+    while($num -- &amp;gt; 0) {
+        $begin = microtime(true);
+        $conn = mysql_connect(&#39;localhost&#39;, &#39;root&#39;, &#39;root&#39;, &#39;test&#39;);
+        mysql_select_db(&#39;test&#39;, $conn);
+        mysql_set_charset(&#39;GBK&#39;, $conn);
+        $end = microtime(true);
+        $times[&#39;open&#39;] += $end - $begin;
+
+        $begin = microtime(true);
+        mysql_query(&amp;quot;UPDATE userinfo SET name = &#39;hello&#39; WHERE id &amp;lt;= 10&amp;quot;);
+        $end = microtime(true);
+        $times[&#39;update&#39;] += $end - $begin;
+
+        $begin = microtime(true);
+        mysql_query(&amp;quot;SELECT * FROM userinfo LIMIT 0, 10&amp;quot;);
+        $end = microtime(true);
+        $times[&#39;query&#39;] += $end - $begin;
+
+        $begin = microtime(true);
+        mysql_query(&amp;quot;INSERT INTO userinfo VALUES(NULL, &#39;hello&#39;, &#39;m&#39;, &#39;A&#39;, &#39;x&#39;&amp;quot;);
+        $end = microtime(true);
+        $times[&#39;insert&#39;] += $end - $begin;
+
+        $begin = microtime(true);
+        mysql_close($conn);
+        $end = microtime(true);
+        $times[&#39;close&#39;] += $end - $begin;
+    }
+    echo &amp;quot;{open: &amp;quot;.$times[&#39;open&#39;].&amp;quot;, update: &amp;quot;.$times[&#39;update&#39;].&amp;quot;, query: &amp;quot;.$times[&#39;query&#39;].&amp;quot;, insert: &amp;quot;.$times[&#39;insert&#39;].&amp;quot;, close: &amp;quot;.$times[&#39;close&#39;].&amp;quot;}&amp;quot;;
+}
+test($_GET[&#39;num&#39;] ? $_GET[&#39;num&#39;] : 100000);
+?&amp;gt;
+</code></pre>
+
+          </section>
+
+          
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
+<noscript><a href="http://www.51.la/?18906058" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18906058.asp" style="border:none" /></a></noscript>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.all.min.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/custom.js"></script>
+
+  </body>
+</html>

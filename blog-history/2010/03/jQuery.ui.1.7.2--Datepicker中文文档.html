@@ -1,0 +1,2218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="goosman-lei的博客">
+    <meta name="keywords" content="PHP Web开发,PHP,PHP 框架,高可用,分布式">
+
+    <title>jQuery.ui.1.7.2--Datepicker中文文档- By Goosman-lei(goosman.lei@gmail.com</title>
+
+    <!-- Styles -->
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="http://static-cdn.tec-inf.com/apple-touch-icon.png">
+    <link rel="icon" href="http://static-cdn.tec-inf.com/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="">Goosman.lei</a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+                              <li class=""><a href="/ice">Ice</a></li>
+                              <li class=" active"><a href="/blog-history">CSDN-BLOG</a></li>
+                              <li class="hero"><a href="mailto:goosman.lei@gmail.com">Contact</a></li>
+                          </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+      
+    </header>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+
+<!-- TODO 解递归当场遍历出树结构菜单 -->
+<ul class="sidenav">
+  <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">2016年</a>
+  <ul>
+    <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">[分享]面向中大型应用的PHPWeb开发框架Ice</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">2013年</a>
+  <ul>
+    <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html">[翻译][php扩展开发和嵌入式]第19章-设置宿主环境</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html">[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html">[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">[翻译][php扩展开发和嵌入式]第16章-有趣的流</a>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html">[翻译][php扩展开发和嵌入式]第15章-php中流的实现</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">[翻译][php扩展开发和嵌入式]第14章-php中流的访问</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html">[翻译][php扩展开发和嵌入式]第13章-php的INI设置</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html">[翻译][php扩展开发和嵌入式]第12章-php的启动过程</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html">[翻译][php扩展开发和嵌入式]第11章-php5对象</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html">[翻译][php扩展开发和嵌入式]第10章-php4的对象</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">[翻译][php扩展开发和嵌入式]第9章-资源数据类型</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html">[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html">[翻译][php扩展开发和嵌入式]第7章-接受参数</a>
+      <li><a href="/blog-history/2013/03/从1.5k到18k,一个程序员的5年成长之路.html">从1.5k到18k,一个程序员的5年成长之路</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">[翻译][php扩展开发和嵌入式]第6章-返回值</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html">[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html">[翻译][php扩展开发和嵌入式]第4章-安装构建环境</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">[翻译][php扩展开发和嵌入式]第3章-内存管理</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html">[翻译][php扩展开发和嵌入式]第2章-变量的里里外外</a>
+      <li><a href="/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump.html">[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html">[翻译][php扩展开发和嵌入式]第1章-php的生命周期</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html">[翻译][php扩展开发和嵌入式]第0章-译序</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">2012年</a>
+  <ul>
+    <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">从N个数中选取最大的前10个[堆排序版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[php版].html">从N个数中选取最大的前10个[php版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html">从N个数中选取最大的前10个[C语言版]</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">php截取字符串保留完整xml标签</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">[mysql-manual-5.5]7.1优化概览</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html">php-mysql扩展mysql_querymysql_unbuffered_query对比</a>
+      <li><a href="/blog-history/2012/10/简单游戏场景用户模拟.html">简单游戏场景用户模拟</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html">php-mysql扩展的mysql_connectmysql_pconnect比较</a>
+      <li><a href="/blog-history/2012/10/模拟新浪微博自动登陆.html">模拟新浪微博自动登陆</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">php-curl封装[避免上传文件二义性Bug]</a>
+      <li><a href="/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html">[漏洞]ThinkSNS严重漏洞--将全站崩溃</a>
+      <li><a href="/blog-history/2012/09/无限递归树展示.html">无限递归树展示</a>
+      <li><a href="/blog-history/2012/09/[快速记忆]C语言php的运算符优先级结合性.html">[快速记忆]C语言php的运算符优先级结合性</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">[软件工程]一个故事,分析陷入焦油坑的软件项目</a>
+      <li><a href="/blog-history/2012/06/输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1.html">输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1</a>
+      <li><a href="/blog-history/2012/06/算法分析从N条成绩单信息选择M位不重复同学发奖.html">算法分析从N条成绩单信息选择M位不重复同学发奖</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">ThinkPHPCore3.0源代码review文档</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">2011年</a>
+  <ul>
+    <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">正则表达式分析提取XMLXHTML标签属性</a>
+      <li><a href="/blog-history/2011/12/封装的一个mysql_lib.php,主要是一个分页模型.html">封装的一个mysql_lib.php,主要是一个分页模型</a>
+      <li><a href="/blog-history/2011/12/爱因斯坦的思考题.html">爱因斯坦的思考题</a>
+      <li><a href="/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html">从浏览器操作系统市场占有率分析国人</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">[php内核]----文件系统函数用于普通文件时的一些情况</a>
+      <li><a href="/blog-history/2011/10/某地自动评论脚本备份.html">某地自动评论脚本备份</a>
+      <li><a href="/blog-history/2011/10/使用alarm配合信号实现sleep.html">使用alarm配合信号实现sleep</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现.html">libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html">libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析</a>
+      <li><a href="/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html">由信号集联想----位域授权模式的不限长扩展</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">PHP位域操作函数封装</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">基于dup实现linux的dup2函数APUE练习题3.2</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">日志分析工具（二分法分段查找处理）</a>
+      <li><a href="/blog-history/2011/07/从dl函数分析PHP模块开发.html">从dl函数分析PHP模块开发</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/04/php中的引用传值分析.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2011/04/php中的引用传值分析.html">php中的引用传值分析</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">phppcre正则表达式完全教程----pcre官方文档</a>
+      <li><a href="/blog-history/2011/03/Ubuntu中利用Grub2修复移动硬盘引导.html">Ubuntu中利用Grub2修复移动硬盘引导</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结</a>
+      <li><a href="/blog-history/2011/02/javascript中的继承,找回丢失的constructor.html">javascript中的继承,找回丢失的constructor</a>
+      <li><a href="/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定.html">浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定</a>
+      <li><a href="/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html">PHP操作符优先级列表及一个优先级带来的灵异事件</a>
+      <li><a href="/blog-history/2011/02/PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升.html">PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">php5.3新增的闭包语法介绍functionuse{}</a>
+      <li><a href="/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html">与PHP5.3.5的战斗----记php5.3.5安装过程</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">2010年</a>
+  <ul>
+    <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2010/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2010/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2010/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2010/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2010/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2010/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html" class="active">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2010/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2010/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2010/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2010/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2010/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2010/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2010/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2010/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">2009年</a>
+  <ul>
+    <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2009/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2009/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2009/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2009/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2009/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2009/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html" class="active">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2009/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2009/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2009/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2009/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2009/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2009/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2009/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2009/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+</ul>
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1></h1>
+            <p></p>
+<ol class="toc">
+</li></ol>
+
+          </header>
+
+          <section>
+<p>这是Datepicker部分的翻译, 有时间的朋友可以加到那份完整的里面...方面查阅.
+ 
+ </p>
+
+<pre lang="xhtml"><code>&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;
+&amp;lt;!-- 
+注意事项:
+    1. 以下格式为既定的格式, 为了统一性, 需要修改时, 大家商议
+    2. 格式中的所有项都是选填, 如果没有, 不写就是了.
+    3. 由于是XML格式的, 所以, 所有标签中间填写文本的地方(最重要是代码, 一定要加, 不然以后解析有困难), 都需要加上&amp;lt;!--[CDATA[这中间写内容]]&amp;gt;
+    4. 翻译过程中, 一块对应的是一个&amp;lt;translate /&amp;gt;标签.
+    5. 希望大家工作愉快.
+ --&amp;gt;
+&amp;lt;project&amp;gt;
+    &amp;lt;translate item=&quot;droppable&quot; version=&quot;7.1&quot;&amp;gt;
+        &amp;lt;translators&amp;gt;
+            &amp;lt;translator nickname=&quot;selfimpr&quot; name=&quot;雷果国&quot; mail=&quot;goosman.lei@gmail.com&quot; homepage=&quot;http://blog.csdn.net/lgg201&quot; qq=&quot;285821471&quot; /&amp;gt;
+        &amp;lt;/translators&amp;gt;
+        &amp;lt;relatives&amp;gt;
+            &amp;lt;depend isitem=&quot;false&quot;&amp;gt;
+                &amp;lt;name&amp;gt;&amp;lt;![CDATA[jquery]]&amp;gt;&amp;lt;/name&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[jquery的核心库]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;url&amp;gt;&amp;lt;![CDATA[http://docs.jquery.com]]&amp;gt;&amp;lt;/url&amp;gt;
+            &amp;lt;/depend&amp;gt;
+            &amp;lt;depend isitem=&quot;false&quot;&amp;gt;
+                &amp;lt;name&amp;gt;&amp;lt;![CDATA[jquery.ui.core]]&amp;gt;&amp;lt;/name&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[jquery.ui的核心库]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;url&amp;gt;&amp;lt;![CDATA[http://jqueryui.com/demos]]&amp;gt;&amp;lt;/url&amp;gt;
+            &amp;lt;/depend&amp;gt;
+        &amp;lt;/relatives&amp;gt;
+        &amp;lt;overview&amp;gt;
+            &amp;lt;original&amp;gt;&amp;lt;![CDATA[
+jquery.ui.datepicker是一个高度可配置的用来添加日期选择功能的插件. 可以自定义日期的格式和语言, 可以限制能够选择的日期的范围, 添加按钮或其他的一些方便的导航选项.
+默认情况下, datepicker日历在一个小框中打开并得到焦点(focus), 并且它在失去焦点(blur)或被选择了一个有效时间之后自动关闭.  对于一个行内日历而言, 简单的把datepicker贴附到div或span上就可以了.
+可以使用键盘的快捷键来操作datepicker:
+PAGE UP/DOWN(上一页, 下一页键): 前/后一月
+CTRL + PAGE UP/DOWN(): 前/后一年
+CTRL + HOME: 当前月或者在其关闭之后重新打开
+CTRL + LEFT/RIGHT: 前/后一天
+CTRL + UP/DOWN: 前/后一周
+ENTER: 接受一个选择的日期
+CTRL + END: 关闭
+ESCAPE: 关闭datepicker但不清除已经选择的日期
+
+下面是datepicker提供的公用函数:
+$.datepicker.setDefaults(settings): 设置当前所有的datepicker的共同属性. settings是一个options的对象, 其中可以配置的属性, 和普通的option相同
+$.datepicker.formatDate(format, date, settings): 按照format指定的格式, 将一个日期格式化成一个字符串的值
+    format: 可以接受的格式化字符串, 接受的格式定义如下
+        d: day, 多少号的意思, 如果是一位的比如1号, 不加0
+        dd: day, 也是多少号的一是, 如果是一位的, 前面加0, 也就是说1号格式化后是01
+        o: 不加0的一天是一年中的第多少天
+        oo: 加零(固定是3位)的一天是一年中的第多少天
+        D: 星期几的缩写
+        DD: 星期几的全写
+        m: 月份数字, 不加0
+        mm: 月份数字, 不足两位前面加0
+        M: 月份简写, 比如Feb(二月)
+        MM: 月份全写
+        y: 两位的年份, 比如09
+        yy: 四位的年费, 比如2009
+        @: unix 时间戳
+        &#39;...&#39;: 原文输出
+        &#39;&#39;: 由于单引号是特殊字符, 所以, 需要两个单引号来匹配一个单引号.
+        任何其他文本: 原文输出
+
+        下面是一些预定义的标准日期格式, 可以直接通过$.datepicker.ATOM这样的方式获得, 他们本身就是一些普通的字符串, 只不过是预定义常量而已.  在页面中引入datepicker然后alert($.datepicker.ISO_8601)就可以揭开面纱了.
+        ATOM: &#39;yy-mm-dd&#39;
+        COOKIE: &#39;D, dd M yy&#39;
+        ISO_8601: &#39;yy-mm-dd&#39;
+        RFC_822: &#39;D, d M y&#39;
+        RFC_850: &#39;DD, dd-M-y&#39;
+        RFC_1036: &#39;D, d M y&#39;
+        RFC_1123: &#39;D, d M yy&#39;
+        RFC_2822: &#39;D, d M yy&#39;
+        RSS: &#39;D, d M y&#39;
+        TIMESTAMP: &#39;@&#39;
+        W3C: &#39;yy-mm-dd&#39;
+    date: 这个参数就是一个正常的javascript Date对象.
+    settings: 这个参数是一个自定义的对象, 其中装载一些配置信息. 比如老外称星期四做Thu, 我们叫它周四, 那么: 
+        alert(
+            $.datepicker.formatDate(
+                $.datepicker.COOKIE, 
+                new Date(), 
+                {dayNamesShort: [&#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;, &#39;周日&#39;]}
+            )
+        );, 
+        这个参数就是用来配置一些这样的类似国际化的信息, 可以配置的属性有:
+            dayNamesShort(长度为7的string类型的数组): 星期的缩写的配置, 从星期日开始.
+            dayNames(长度为7的string类型数组): 星期的全写的配置, 从星期日开始.
+            monthNamesShort(长度为12的string类型数组): 月份的缩写的配置, 从一月开始.
+            monthNames(长度为12的string类型数组): 月份的全写的配置, 从一月开始.
+$.datepicker.iso8601Week(date): 接受一个日期, 直接返回该天是那一年的第多少周.
+$.datepicker.parseDate(format, value, settings): 将一个给定字符串解析根据给定格式解析成一个javascript Date对象......
+    format: 和$.datepicker.formatDate函数中介绍的format一样, 但是使用这个函数, 可能会有一些异常抛出: 
+        &#39;Invalid arguments&#39;: format或value参数为null
+        &#39;Missing number at position nn&#39;: format指定格式需要的数值在value中没有发现
+        &#39;Unknown name at position nn&#39;: format指定格式中的星期或月份的名称形式没有在value中发现
+        &#39;Unexpected literal at position nn&#39;: format指定格式中的原文输出的部分没有在value中发现.
+        &#39;Invalid date&#39;: 无效的日期: 比如: 2009年18月98号.
+    value: 要转换的字符串
+    settings: 和$.datepicker.formatDate函数介绍的settings一样, 但是, 在这里多了一个shortYearCutoff属性, 
+        shortYearCutoff属性用来设置在使用两位的年份时, 认为应该从0-99中的哪个年份来分割世纪表示法. 也就是解决你给一个值55, 应该是1955年或者2055年的问题.
+        shortYearCutoff在jquery.ui 1.7.2中默认值是&#39;+10&#39;, 译者认为这个值应该设置为当前年.
+        下面是这个问题的处理源码:
+            year += new Date().getFullYear() - new Date().getFullYear() % 100 +
+                (year &amp;lt;= shortYearCutoff ? 0 : -100);
+            new Date().getFullYear() - new Date().getFullYear() % 100获取到了当前的整世纪四位年份, 比如现在获取到就是2000,  (year &amp;lt;= shortYearCutoff ? 0 : -100) 当value中给定的年份小于等于shortYearCutoff的时候, 就认为是当前世纪的, 如果value中给定的年费大于shortYearCutoff, 那么就认为是上世纪的.
+            所以, 以下示例代码:
+            alert($.datepicker.parseDate(&#39;dd M y&#39;, &#39;26 Nov 18&#39;, {shortYearCutoff: 20}));
+            alert($.datepicker.parseDate(&#39;dd M y&#39;, &#39;26 Nov 20&#39;, {shortYearCutoff: 20}));
+            alert($.datepicker.parseDate(&#39;dd M y&#39;, &#39;26 Nov 21&#39;, {shortYearCutoff: 20}));
+            得到的输出中年份分别是2018, 2020, 1921.
+            ]]&amp;gt;&amp;lt;/original&amp;gt;
+        &amp;lt;/overview&amp;gt;
+        &amp;lt;options&amp;gt;
+            &amp;lt;option name=&quot;altField&quot; default=&quot;空字符串&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;选择器&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+用来指定一个要修改的域.
+译者推断: 在选定一个日期之后, 是通过value这个属性来把值设置到一个目标field上的.
+altField就是指要将值设置到的那个目标field, 也就是说它必须有有效的value属性.
+但是, 如果将一个自身有value属性的field渲染成一个datepicker控件控制端. 那么它自己也是自己的一个特殊的altField, value是随选择改变的, 但是format却不受altFormat选项的指定受影响...
+另外一方面, 只要是altField指定选择器选择到的field, 并且对方有value属性, 那么在选择日期之后, 都会改变的.
+详细见第四个demo
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ altField: &#39;#actualDate&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var altField = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;altField&#39;);
+]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;altField&#39;, &#39;#actualDate&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 注意观察没有value属性的div渲染成datepicker控件之后和有value属性的input[type=button]渲染之后的不同之处]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+    &amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+    $(function() {
+        $(&quot;#datepicker&quot;).datepicker({
+            altField: &#39;#altField&#39;
+        });
+        $(&#39;#self_altField&#39;).datepicker({
+            altField: &#39;input[name=altFiled]&#39;
+        });
+    });
+
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div id=&quot;datepicker&quot; style=&quot;border: 1px solid red;&quot; mce_style=&quot;border: 1px solid red;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;input type=&quot;button&quot; id=&quot;altField&quot; /&amp;gt;
+
+&amp;lt;input type=&quot;button&quot; id=&quot;self_altField&quot; value=&quot;选择日期&quot; /&amp;gt;
+&amp;lt;input type=&quot;button&quot; name=&quot;altFiled&quot; value=&quot;被动改变&quot; /&amp;gt;
+&amp;lt;input type=&quot;button&quot; name=&quot;altFiled&quot; value=&quot;被动改变&quot; /&amp;gt;
+&amp;lt;div name=&quot;altField&quot; style=&quot;width: 80px; height: 80px; border: 1px solid black;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;altFormat&quot; default=&quot;空字符串&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot; /&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[用来指定所有altField的日期显示格式.  具体的格式控制见概览中的介绍.    这里可以使用datepicker预定义的一些日期格式字符串(见概览)
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ altFormat: &#39;yy-mm-dd&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var altFormat = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;altFormat&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;altFormat&#39;, &#39;yy-mm-dd&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 给altField的第四个demo中的datepicker分别加上altFormat选项, 注意观察可以发现, 渲染到input[type=button]上的datepicker在日期改变的时候, 格式其实只影响明确指定的altField, 而不会影响自身button上的值的格式.]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+$(&quot;#datepicker&quot;).datepicker({
+    altField: &#39;#altField&#39;, 
+    altFormat: &#39;yy-mm-dd&#39;
+});
+$(&#39;#self_altField&#39;).datepicker({
+    altField: &#39;input[name=altFiled]&#39;, 
+    altFormat: &#39;yy-mm-dd&#39;
+});
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;appendText&quot; default=&quot;空字符串&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+追加到datepicker控制field的后面的文本, 多用于提示信息., 比如指定需要的格式
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).resizable({ animateDuration: 500 });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var animateDuration = $(&#39;.selector&#39;).resizable(&#39;option&#39;, &#39;animateDuration&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).resizable(&#39;option&#39;, &#39;animateDuration&#39;, 500);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 我测试, 这东西只有datepicker控制field是有value的那种field才可以, 比如你设置一个div渲染得到的datepicker的appendText选项是无效的, 如下]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $(&quot;#datepicker&quot;).datepicker({
+        altField: &#39;#altField&#39;, 
+        altFormat: &#39;yy-mm-dd&#39;, 
+        appendText: &#39;(yy-mm-dd)&#39;
+    });
+    $(&#39;#self_altField&#39;).datepicker({
+        altField: &#39;input[name=altFiled]&#39;, 
+        altFormat: &#39;yy-mm-dd&#39;, 
+        appendText: &#39;(yy-mm-dd)&#39;
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div id=&quot;datepicker&quot; style=&quot;width: 200px; height: 200px; border: 1px solid red;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;input type=&quot;button&quot; id=&quot;altField&quot; /&amp;gt;
+
+&amp;lt;input type=&quot;button&quot; id=&quot;self_altField&quot; value=&quot;选择日期&quot; /&amp;gt;
+&amp;lt;input type=&quot;button&quot; name=&quot;altFiled&quot; value=&quot;被动改变&quot; /&amp;gt;
+&amp;lt;input type=&quot;button&quot; name=&quot;altFiled&quot; value=&quot;被动改变&quot; /&amp;gt;
+&amp;lt;div name=&quot;altField&quot; style=&quot;width: 80px; height: 80px; border: 1px solid black;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;buttonImage&quot; default=&quot;空字符串&quot;&amp;gt;
+                &amp;lt;relatives&amp;gt;
+                    &amp;lt;innerrelative item=&quot;datepicker&quot; type=&quot;option&quot; name=&quot;buttonText&quot;&amp;gt;&amp;lt;![CDATA[设置了图片之后, buttonText指定的文本将以alt的方式出现, 也就是鼠标放到按钮上时显示.]]&amp;gt;&amp;lt;/innerrelative&amp;gt;
+                    &amp;lt;innerrelative item=&quot;datepicker&quot; type=&quot;option&quot; name=&quot;buttonImageOnly&quot;&amp;gt;&amp;lt;![CDATA[设置了buttonImageOnly后仅渲染指定的buttonImage而不会渲染按钮]]&amp;gt;&amp;lt;/innerrelative&amp;gt;
+                    &amp;lt;innerrelative item=&quot;datepicker&quot; type=&quot;option&quot; name=&quot;showOn&quot;&amp;gt;&amp;lt;![CDATA[需要使用showOn指定了与按钮有关的值(button或both)这里指定的button相关属性才会给渲染.]]&amp;gt;&amp;lt;/innerrelative&amp;gt;
+                &amp;lt;/relatives&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[ 设定button按钮的背景图片路径.  也就是常见的日历控件后面加的那个用来点击招出日历的小图片]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[(&#39;.selector&#39;).datepicker({ buttonImage: &#39;/images/datepicker.gif&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var buttonImage = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;buttonImage&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;buttonImage&#39;, &#39;/images/datepicker.gif&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 下面例子中, buttonText指定的文本在鼠标放到图片上时显示. 并且只有点击图片才可以招出日历, 另外一点是只显示了图片自身(可以将buttonImageOnly改成false看看效果.)   测试时候请将图片替换成自己有的图片]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $(&#39;#self_altField&#39;).datepicker({
+        appendText: &#39;(yy-mm-dd)&#39;, 
+        buttonImage: &#39;images/calendar.gif&#39;, 
+        buttonImageOnly: true, 
+        buttonText: &#39;选择日期&#39;, 
+        showOn: &#39;button&#39;
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;button&quot; id=&quot;self_altField&quot; value=&quot;选择日期(无效)&quot; /&amp;gt;
+&amp;lt;input type=&quot;button&quot; name=&quot;altFiled&quot; value=&quot;被动改变&quot; /&amp;gt;
+&amp;lt;input type=&quot;button&quot; name=&quot;altFiled&quot; value=&quot;被动改变&quot; /&amp;gt;
+&amp;lt;div name=&quot;altField&quot; style=&quot;width: 80px; height: 80px; border: 1px solid black;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;buttonImageOnly&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔值&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[用来设定field后面招出日历的按钮的是否仅仅显示背景图片而不渲染整个按钮的样式]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ buttonImageOnly: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var buttonImageOnly = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;buttonImageOnly&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;buttonImageOnly&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;buttonText&quot; default=&quot;...&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+用来设定field后面招出日历的按钮上的文本.
+当设置了buttonImageOnly的时候, 这里设定的文本将以按钮的alt属性的文本来显示.
+决定是否要显示那个按钮的选项是showOn.....当showOn值为&#39;button&#39;或&#39;both&#39;的时候, 按钮才会被渲染
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ buttonText: &#39;Choose&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var buttonText = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;buttonText&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;buttonText&#39;, &#39;Choose&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;changeMonth&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔值&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设定是否允许使用一个select下拉选择框的方式选择月份. 
+                译者注: 建议设置为true, 因为日历控件本来就是为了方便选择日期, 而不用手动输入,  所以, 尽可能提供给用户一个快速选择到需要日期的路径.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ changeMonth: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var changeMonth = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;changeMonth&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;changeMonth&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;changeYear&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔值&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设定是否允许使用一个select下拉选择框的方式选择年份. 
+                译者注: 建议设置为true, 因为日历控件本来就是为了方便选择日期, 而不用手动输入,  所以, 尽可能提供给用户一个快速选择到需要日期的路径.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ changeYear: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var changeYear = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;changeYear&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;changeYear&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;closeText&quot; default=&quot;Done&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历控件渲染出来之后的关闭按钮上的文本.   需要设置showButtonPanel选项为true才会显示日历控件的辅助按钮.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ closeText: &#39;X&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var closeText = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;closeText&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;closeText&#39;, &#39;X&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 这个没啥说的, 看看示例就明白了.]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $(&#39;#self_altField&#39;).datepicker({
+        closeText: &#39;关闭咯&#39;, 
+        showButtonPanel: true
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;button&quot; id=&quot;self_altField&quot; value=&quot;选择日期&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;constrainInput&quot; default=&quot;true&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔值&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置是否约束输入, 默认为true表示不能自己输入时间, 设置为false后, 可以手动输入时间(输入无效格式或字符会忽略).]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ constrainInput: false });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var constrainInput = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;constrainInput&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;constrainInput&#39;, false);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;currentText&quot; default=&quot;Today&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历控件渲染出来之后的返回当天按钮上的文本.   需要设置showButtonPanel选项为true才会显示日历控件的辅助按钮.   
+                译者注: 可以指定描述日期格式的字符串以显示代表的日期.但是这样设置的时候, 还必须设置navigationAsDateFormat为true,  比如
+                $(&#39;.selector&#39;).datepicker({ 
+                    currentText: &#39;yy-mm-dd&#39;, 
+                    navigationAsDateFormat: true
+                });    
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ currentText: &#39;Now&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var currentText = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;currentText&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;currentText&#39;, &#39;Now&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;dateFormat&quot; default=&quot;mm/dd/yy&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[指定一个字符串形式的日期格式, 这里可以使用datepicker中预定义的那些字符串, 见第四个示例]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+如果渲染为datepicker的field本身是有value的, 该设置会影响它的日期显示格式.
+如果指定了altField但是没有指定altFormat, 该设置同时会应向altField的日期显示格式
+如果指定了altField同时指定了altFormat, 那么altFormat指定的日期格式会影响altField的日期, 而dateFormat只会影响自己.  见第四个示例
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ dateFormat: &#39;yy-mm-dd&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var dateFormat = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;dateFormat&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;dateFormat&#39;, &#39;yy-mm-dd&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 这里演示的是dateFormat和altFormat同时存在时候的工作方式.
+                        ]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $(&#39;#self_altField&#39;).datepicker({
+        dateFormat: $.datepicker.ATO, 
+        altField: &#39;#altField&#39;, 
+        altFormat: $.datepicker.ISO_8601
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;self_altField&quot; value=&quot;选择日期&quot; /&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;altField&quot; /&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;dayNames&quot; default=&quot;[&#39;Sunday&#39;, &#39;Monday&#39;, &#39;Tuesday&#39;, &#39;Wednesday&#39;, &#39;Thursday&#39;, &#39;Friday&#39;, &#39;Saturday&#39;]&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数组&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[长度为7的数组, 从星期一开始.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置格式中使用星期的全名的时候使用的名称.   主要用来配置国际化.
+                译者注: 一个程序一般而言, 对于同一个用户而言, 这些东西是只需要使用一种的, 没有必要给中国人同时显示中文和英文.  所以, 多数时候, 使用概览中介绍的$.datepicker.setDefaults()设置就可以了, 而不用具体到每个日历中去设置.  具体见第四个示例
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ dayNames: [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;]});]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var dayNames = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;dayNames&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;dayNames&#39;, [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;]);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 尽量采用推荐的在全局去做这类属性的设置.]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $.datepicker.setDefaults({
+        dayNames: [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;]
+    });
+    //上面是推荐的做法.  而且,在一般的web开发中, 应该都会存在一个公共的页面, 大家都去引用, 所以, 上面的代码一般都应该写在那个公共的页面中, 具体描述功能的页面中使用时就不需要再每个都去指定这种全局的东西.
+    //如果一定要在每个页面单独加入, 那么直接设置该属性就可以了.
+    $(&#39;#self_altField&#39;).datepicker({
+        dateFormat: $.datepicker.ATO, 
+        altField: &#39;#altField&#39;, 
+        altFormat: &#39;yy-mm-dd DD&#39;
+        //, dayNames: [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;]
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;self_altField&quot; value=&quot;选择日期&quot; /&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;altField&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;dayNamesMin&quot; default=&quot;[&#39;Su&#39;, &#39;Mo&#39;, &#39;Tu&#39;, &#39;We&#39;, &#39;Th&#39;, &#39;Fr&#39;, &#39;Sa&#39;]&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数组&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[长度为7的数组, 从星期一开始.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历控件显示的时候, 每列的列头上的显示文本, 具体的设置和dayNames相同. 也推荐全局设置.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ dayNamesMin: [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;]});]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var dayNames = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;dayNamesMin&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;dayNamesMin&#39;, [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;]);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;dayNamesShort&quot; default=&quot;[&#39;Sun&#39;, &#39;Mon&#39;, &#39;Tue&#39;, &#39;Wed&#39;, &#39;Thu&#39;, &#39;Fri&#39;, &#39;Sat&#39;]&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数组&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[长度为7的数组, 从星期一开始.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日期格式显示中的简写的星期名称.  对应格式化字符串中的D]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ dayNamesShort: [&#39;周日&#39;, &#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;]});]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var dayNames = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;dayNamesShort&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;dayNamesShort&#39;, [&#39;周日&#39;, &#39;周一&#39;, &#39;周二&#39;, &#39;周三&#39;, &#39;周四&#39;, &#39;周五&#39;, &#39;周六&#39;]);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;defaultDate&quot; default=&quot;null&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;日期&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[原生的javascript日期]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;数字&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[描述从本地当前时间的偏移天数, 比如-9就是9天前.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+&#39;1y +3m -5d&#39;的方式指定, y代表年, m代表月, d代表天, w代表周
+描述的是相对本地当前时间, 年, 月, 日分别产生指定偏移后的时间.
+比如今天是2009年11月26日.   那么&#39;1y +3m -5d&#39;指的就是2011年2月21日.  注意, 由于当前11月, 再加3月后, 是14月, 此时, 会再将年份加1, 然后月份取余得到2月.   
+如果同时设置了minDate或maxDate限定了日历可描述的日期范围, 当指定的defaultDate超出范围时, 就会显示到对应的左/右边界的那一天.
+                        ]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置刚打开日历的时候, 高亮的默认日期.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ defaultDate: +7 });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var defaultDate = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;defaultDate&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;defaultDate&#39;, +7);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;duration&quot; default=&quot;normal&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数字&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[开始打开到完全打开的毫秒数]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                        &amp;lt;option&amp;gt;
+                            &amp;lt;value&amp;gt;&amp;lt;![CDATA[slow]]&amp;gt;&amp;lt;/value&amp;gt;
+                            &amp;lt;comment&amp;gt;&amp;lt;![CDATA[慢速打开]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;/option&amp;gt;
+                        &amp;lt;option&amp;gt;
+                            &amp;lt;value&amp;gt;&amp;lt;![CDATA[normal]]&amp;gt;&amp;lt;/value&amp;gt;
+                            &amp;lt;comment&amp;gt;&amp;lt;![CDATA[中速打开]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;/option&amp;gt;
+                        &amp;lt;option&amp;gt;
+                            &amp;lt;value&amp;gt;&amp;lt;![CDATA[fast]]&amp;gt;&amp;lt;/value&amp;gt;
+                            &amp;lt;comment&amp;gt;&amp;lt;![CDATA[快速打开]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;/option&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历控件打开的一个延时特效.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ duration: &#39;slow&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var duration = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;duration&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;duration&#39;, &#39;slow&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;firstDay&quot; default=&quot;0&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数字&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[0代表星期天, 1代表星期一, 以此类推]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[描述日历控件中星期几是第一天.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ firstDay: 1 });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var firstDay = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;firstDay&#39;);
+]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;firstDay&#39;, 1);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;gotoCurrent&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔型&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+如果设置为true, 在选择了一个日期之后, 辅助按钮中的Today按钮的功能(跳转到本地时间今天)被替换成跳转到当前选中的日期.  如果没有选中的, 则还是跳转到本地时间的今天.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ gotoCurrent: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var gotoCurrent = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;gotoCurrent&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;gotoCurrent&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;hideIfNoPrevNext&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔型&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[默认当由于设定的minDate/maxDate设置的日历可控制的日期范围之后, 日历翻到边界的时候, 向前/向后的按钮依旧是显示的, 设置这个属性为true之后, 在到达边界之后, 就可以把前/后按钮也隐藏了.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[描述日历控件中星期几是第一天.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ hideIfNoPrevNext: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var hideIfNoPrevNext = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;hideIfNoPrevNext&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;hideIfNoPrevNext&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;isRTL&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔型&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[有些国家是从右向左的阅读顺序, 比如中国古代??呵呵, 设置了这个选项为true之后, 日历控件就是从右向左的顺序了.  ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ isRTL: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var isRTL = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;isRTL&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;isRTL&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;maxDate&quot; default=&quot;null&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;日期&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[原生的javascript日期]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;数字&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[描述从本地当前时间的偏移天数, 比如-9就是9天前.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+&#39;1y +3m -5d&#39;的方式指定, y代表年, m代表月, d代表天, w代表周
+描述的是相对本地当前时间, 年, 月, 日分别产生指定偏移后的时间.
+比如今天是2009年11月26日.   那么&#39;1y +3m -5d&#39;指的就是2011年2月21日.  注意, 由于当前11月, 再加3月后, 是14月, 此时, 会再将年份加1, 然后月份取余得到2月.  
+                        ]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历可以描述的最大日期, 也就是日历的最后一天.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ maxDate: &#39;+1m +1w&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var maxDate = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;maxDate&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;maxDate&#39;, &#39;+1m +1w&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;minDate&quot; default=&quot;null&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;日期&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[原生的javascript日期]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;数字&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[描述从本地当前时间的偏移天数, 比如-9就是9天前.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+&#39;1y +3m -5d&#39;的方式指定, y代表年, m代表月, d代表天, w代表周
+描述的是相对本地当前时间, 年, 月, 日分别产生指定偏移后的时间.
+比如今天是2009年11月26日.   那么&#39;1y +3m -5d&#39;指的就是2011年2月21日.  注意, 由于当前11月, 再加3月后, 是14月, 此时, 会再将年份加1, 然后月份取余得到2月.  
+                        ]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历可以描述的最小日期, 也就是日历的可以描述的最早的一天.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ minDate: new Date(2007, 1 - 1, 1) });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var minDate = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;minDate&#39;);
+]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;minDate&#39;, new Date(2007, 1 - 1, 1));]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;monthNames&quot; default=&quot;[&#39;January&#39;, &#39;February&#39;, &#39;March&#39;, &#39;April&#39;, &#39;May&#39;, &#39;June&#39;, &#39;July&#39;, &#39;August&#39;, &#39;September&#39;, &#39;October&#39;, &#39;November&#39;, &#39;December&#39;]&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数组&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[长度为12的数组, 从一月开始.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置格式中使用月份的全名的时候使用的名称.   主要用来配置国际化.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ monthNames: [&#39;一月份&#39;, &#39;二月份&#39;, &#39;三月份&#39;, &#39;四月份&#39;, &#39;五月份&#39;, &#39;六月份&#39;, &#39;七月份&#39;, &#39;八月份&#39;, &#39;九月份&#39;, &#39;十月份&#39;, &#39;十一月份&#39;, &#39;十二月份&#39;]});]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var monthNames = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;monthNames&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;monthNames&#39;, [&#39;一月份&#39;, &#39;二月份&#39;, &#39;三月份&#39;, &#39;四月份&#39;, &#39;五月份&#39;, &#39;六月份&#39;, &#39;七月份&#39;, &#39;八月份&#39;, &#39;九月份&#39;, &#39;十月份&#39;, &#39;十一月份&#39;, &#39;十二月份&#39;]);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;monthNamesShort&quot; default=&quot;[&#39;Jan&#39;, &#39;Feb&#39;, &#39;Mar&#39;, &#39;Apr&#39;, &#39;May&#39;, &#39;Jun&#39;, &#39;Jul&#39;, &#39;Aug&#39;, &#39;Sep&#39;, &#39;Oct&#39;, &#39;Nov&#39;, &#39;Dec&#39;]&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数组&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[长度为12的数组, 从一月开始.]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置格式中使用月份的简写名的时候使用的名称.   主要用来配置国际化.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ monthNamesShort: [&#39;一月&#39;, &#39;二月&#39;, &#39;三月&#39;, &#39;四月&#39;, &#39;五月&#39;, &#39;六月&#39;, &#39;七月&#39;, &#39;八月&#39;, &#39;九月&#39;, &#39;十月&#39;, &#39;十一月&#39;, &#39;十二月&#39;]});]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var monthNamesShort = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;monthNamesShort&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;monthNamesShort&#39;, [&#39;一月&#39;, &#39;二月&#39;, &#39;三月&#39;, &#39;四月&#39;, &#39;五月&#39;, &#39;六月&#39;, &#39;七月&#39;, &#39;八月&#39;, &#39;九月&#39;, &#39;十月&#39;, &#39;十一月&#39;, &#39;十二月&#39;]);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;navigationAsDateFormat&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔型&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置prevText, nextText, currentText选项设置的文本是否使用格式化日期的方式显示文本.  也就是说指定一个格式串然后显示对应的日期.   
+                译者注: 具体见第四个demo]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ navigationAsDateFormat: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var navigationAsDateFormat = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;navigationAsDateFormat&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;navigationAsDateFormat&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[
+译者注: 运行代码后, 注意看Today的那个按钮显示的内容, 还有前/后翻日历的按钮的alt文本(鼠标放上面会显示)
+                        ]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $(&#39;#datepicker&#39;).datepicker({
+        showButtonPanel: true, 
+        gotoCurrent: true, 
+        currentText: &#39;yy-mm-dd&#39;, 
+        prevText: &#39;mm月&#39;, 
+        nextText: &#39;m月&#39;, 
+        navigationAsDateFormat: true
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;datepicker&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;nextText&quot; default=&quot;Next&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置控件中向后翻一月的按钮的alt文本]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ nextText: &#39;Later&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var nextText = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;nextText&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;nextText&#39;, &#39;Later&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;numberOfMonths&quot; default=&quot;1&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数字&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;数组&quot;&amp;gt;
+                        &amp;lt;description&amp;gt;&amp;lt;![CDATA[两个整数类型的元素, 第一个指定的是行数, 第二个指定的是列数]]&amp;gt;&amp;lt;/description&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置一次显示几个月.  慎用, 一次显示多个会造成用户体验降低. 因为一次渲染多个耗时比较长.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ numberOfMonths: [2, 3] });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var numberOfMonths = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;numberOfMonths&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;numberOfMonths&#39;, [2, 3]);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;prevText&quot; default=&quot;Prev&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置控件中向前翻一月的按钮的alt文本]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ prevText: &#39;Earlier&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var prevText = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;prevText&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;prevText&#39;, &#39;Earlier&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;shortYearCutoff&quot; default=&quot;+10&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数字&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[描述使用两位的年份表示的格式中提供一个0-99的年份之后, 具体是指哪一年的问题.    详细使用参见概览中$.datepicker.parseDate方法中关于shortYearCutoff的解释.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ shortYearCutoff: 50 });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var shortYearCutoff = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;shortYearCutoff&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;shortYearCutoff&#39;, 50);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;showAnim&quot; default=&quot;show&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历控件出现的特效. 
+按照源码中的实现来看, 应该会有对应的隐藏特效, 并且, 源码中有相应的代码, 但是, 我没有测试出来隐藏特效.&#39;blind&#39;, &#39;bounce&#39;, &#39;clip&#39;, &#39;drop&#39;, &#39;explode&#39;, &#39;fold&#39;, &#39;highlight&#39;, &#39;puff&#39;, &#39;pulsate&#39;, &#39;scale&#39;, &#39;shake&#39;, &#39;size&#39;, &#39;slide&#39;, &#39;transfer&#39;.等所有的特效都可以接受.  使用特效就需要引入相关的js文件.  或者使用整体的js.    具体每个特效的参数使用选项showOptions设置.  至于每个选项的具体含义参见effects部分.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ showAnim: &#39;fold&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var showAnim = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showAnim&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showAnim&#39;, &#39;fold&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;showButtonPanel&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔型&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置是否渲染日历控件中的辅助操作按钮面板..]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ showButtonPanel: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var showButtonPanel = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showButtonPanel&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showButtonPanel&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;showCurrentAtPos&quot; default=&quot;0&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;数字&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+译者注: 
+理解该属性首先要理解多月显示的模式. 在numberOfMonths选项中, 可以看到它的默认值是1, 也就是说默认情况下我们看到的其实就是多月模式, 只不过是1个月而已.
+另外一点, 我们选择一个日期的时候, 当前日历的选中日期就是那一天.
+显示出来的第一个月的序号看作是0
+showCurrentAtPos说的就是当前选中日期所在那个月相对显示出来的月份中的第一个月份之间的偏移数.   这个值是可以设置的比numberOfMonths大的, 由于超出来显示的月份, 所以, 是不会显示的, 但是偏移值是正确的.   这个值也可以设置为负值, 但是我测试设置为负值之后, 跨年会有bug.
+另外一方面, 如果是用数组方式指定的numberOfMonths, 那么, 对应的顺序是先从左到右, 然后自上而下.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ showCurrentAtPos: 3 });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var showCurrentAtPos = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showCurrentAtPos&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showCurrentAtPos&#39;, 3);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;showMonthAfterYear&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔型&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历控件显示中, 每月的头信息部分, 月份在年份后面]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ showMonthAfterYear: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var showMonthAfterYear = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showMonthAfterYear&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showMonthAfterYear&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;showOn&quot; default=&quot;focus&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                            &amp;lt;option&amp;gt;
+                                &amp;lt;value&amp;gt;&amp;lt;![CDATA[focus]]&amp;gt;&amp;lt;/value&amp;gt;
+                                &amp;lt;comment&amp;gt;&amp;lt;![CDATA[得到焦点的时候]]&amp;gt;&amp;lt;/comment&amp;gt;
+                            &amp;lt;/option&amp;gt;
+                            &amp;lt;option&amp;gt;
+                                &amp;lt;value&amp;gt;&amp;lt;![CDATA[button]]&amp;gt;&amp;lt;/value&amp;gt;
+                                &amp;lt;comment&amp;gt;&amp;lt;![CDATA[后面追加的按钮点击后]]&amp;gt;&amp;lt;/comment&amp;gt;
+                            &amp;lt;/option&amp;gt;
+                            &amp;lt;option&amp;gt;
+                                &amp;lt;value&amp;gt;&amp;lt;![CDATA[both]]&amp;gt;&amp;lt;/value&amp;gt;
+                                &amp;lt;comment&amp;gt;&amp;lt;![CDATA[得到焦点或后面追加的按钮点击后]]&amp;gt;&amp;lt;/comment&amp;gt;
+                            &amp;lt;/option&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历渲染的时机.  
+                译者注: 设置为button, 或both的时候, 就会给field后面追加一个按钮. 也只有这样, 对button相关的设置才是有效的.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ showOn: &#39;both&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var showOn = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showOn&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showOn&#39;, &#39;both&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;showOptions&quot; default=&quot;{}&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;对象&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[根据showAnim设定的特效类型, 设置对应的特效options, 具体每种特效有哪些options参见特效部分]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ showOptions: {direction: &#39;up&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var showOptions = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showOptions&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showOptions&#39;, {direction: &#39;up&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 这里做一个size的特效作为示例, 这个属性的设置主要还是依赖于特效那一块..]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $(&#39;#datepicker&#39;).datepicker({
+        showAnim: &#39;size&#39;, 
+        showOptions: {
+            from: {
+                width: 80, 
+                height: 80
+            }, 
+            to: {
+                width: 200, 
+                height: 200
+            }
+        }, 
+        duration: 2000
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;datepicker&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;showOtherMonths&quot; default=&quot;false&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;布尔型&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[由于日历控件中的每月都是以表格形式显示, 所以总会导致一个表格能够描述的日期总会在之前或之后有上一月或下一月的几天, 设置这个属性为true之后, 就会显示那些不属于本月但又从逻辑上来讲应该在日历上的days]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ showOtherMonths: true });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var showOtherMonths = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showOtherMonths&#39;);
+]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;showOtherMonths&#39;, true);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;stepMonths&quot; default=&quot;1&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;整数&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[用来设置前/后翻日历的按钮一次翻过几个月.   建议在使用多月显示的时候, 设置这个stepMonths提高用户体验.  详细见第四个demo]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ stepMonths: 3 });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var stepMonths = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;stepMonths&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;stepMonths&#39;, 3);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 一次显示3个月, 那么就需要一次翻过3个月(一般情况)]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $(&#39;#datepicker&#39;).datepicker({
+        numberOfMonths: 3, 
+        stepMonths: 3
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;datepicker&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+            &amp;lt;option name=&quot;yearRange&quot; default=&quot;-10:10&quot;&amp;gt;
+                &amp;lt;types&amp;gt;
+                    &amp;lt;type name=&quot;字符串&quot;&amp;gt;
+                    &amp;lt;/type&amp;gt;
+                &amp;lt;/types&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[当设置了changeYear选项为true的时候, 需要用yearRange来设置可以选择哪些年份.  这里, yearRange就是设置范围的.
+                方式1: -number1:+number2    表示以当前年份为中间, 向前可以选择到之前的number1年, 向后可以选择到number2年.
+                方式2: year1: year2   表示从year1 到year2, 可以是任意整数
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker({ yearRange: &#39;2000:2010&#39; });]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[获取属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[var yearRange = $(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;yearRange&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[设置属性值]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&#39;.selector&#39;).datepicker(&#39;option&#39;, &#39;yearRange&#39;, &#39;2000:2010&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/option&amp;gt;
+        &amp;lt;/options&amp;gt;
+        &amp;lt;events&amp;gt;
+            &amp;lt;event name=&quot;beforeShow&quot;&amp;gt;
+                &amp;lt;trigger&amp;gt;&amp;lt;![CDATA[datepicker显示之前]]&amp;gt;&amp;lt;/trigger&amp;gt;
+                &amp;lt;arguments&amp;gt;
+                    &amp;lt;argument name=&quot;input&quot;&amp;gt;
+                        &amp;lt;![CDATA[已经经过jquery处理的原生HTML DOM元素对象, 就是被自己渲染成datepicker的那个元素. 比如$(&#39;#datepicker&#39;).datepicker();渲染之后, 那么它的beforeShow事件响应函数接受到的input参数就是id为datepicker的那个元素]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                &amp;lt;/arguments&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[该事件的响应函数必须返回一个对象, 返回的对象实际上就是一个options选项的配置....datepicker插件会根据返回的options去渲染日历插件.  详细见第二个demo]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化时设置事件]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+$(&#39;.selector&#39;).datepicker({
+   beforeShow: function(input) { ... }
+});
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[当我们需要根据文本框中的值不同给出不同的日历控件的时候, 就可以使用这个事件
+                        示例中, 如果文本框中没有值, 就显示一个普通的datepicker, 如果里面的值在当前时间之前, 显示一个2行3列的日历, 如果里面的值在当前时间之后, 显示一个3行2列的日历.
+                        ]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+var i = 0;
+$(function() {
+    $(&#39;#datepicker&#39;).datepicker({
+        beforeShow: function(input) {
+            var current = $(input).val();
+            current = $.datepicker.parseDate(&#39;mm/dd/yy&#39;, current);
+            if(!current) {
+                return {};
+            } else if(current &amp;lt; new Date()) {
+                return {numberOfMonths: [2, 3]};
+            } else {
+                return {numberOfMonths: [3, 2]};
+            }
+        }
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;datepicker&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/event&amp;gt;
+            &amp;lt;event name=&quot;beforeShowDay&quot;&amp;gt;
+                &amp;lt;trigger&amp;gt;&amp;lt;![CDATA[每渲染一个Day触发一次.]]&amp;gt;&amp;lt;/trigger&amp;gt;
+                &amp;lt;arguments&amp;gt;
+                    &amp;lt;argument name=&quot;date&quot;&amp;gt;
+                        &amp;lt;![CDATA[当前渲染的日期]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                &amp;lt;/arguments&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+这个事件的响应函数接受一个参数, 就是当前正在渲染的日期, 必须返回一个数组, 并且, 数组的第一个元素是一个布尔值, 用来指示当前渲染的日期是否是选中的, 第二个元素是CSS样式名称, 用来指定这一天用哪个样式来渲染, 如果不指定样式, 就指定为空字符串&#39;&#39;, 第三个参数是一个文本, 该文本是鼠标移到这一天之后显示的文本, 也就是常说的alt文本.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化时设置事件]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+$(&#39;.selector&#39;).datepicker({
+   beforeShowDay: function(date) { ... }
+});
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[
+译者注: 下面的示例中, 就通过beforeShowDay事件作出了周末加背景色的效果, 并且选择本地时间当天, 鼠标移到每天之后, 显示是哪年哪月哪日.
+                        ]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:style type=&quot;text/css&quot;&amp;gt;&amp;lt;!--
+.weekday{background: red;}
+--&amp;gt;&amp;lt;/mce:style&amp;gt;&amp;lt;style type=&quot;text/css&quot; mce_bogus=&quot;1&quot;&amp;gt;.weekday{background: red;}&amp;lt;/style&amp;gt;
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+var i = 0;
+$(function() {
+    $(&#39;#datepicker&#39;).datepicker({
+        beforeShowDay: function(date) {
+            var;
+            var css_style = &#39;&#39;;
+            if(date.getDate() == new Date().getDate()) {
+                selected = true;
+            }
+            if(date.getDay() == 0 || date.getDay() == 6) {
+                css_style = &#39;weekday&#39;;
+            }
+            var tooltip = $.datepicker.formatDate(&#39;yy年mm月dd日&#39;, date);
+            return [selected, css_style, tooltip];
+        }
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div id=&quot;msg&quot; style=&quot;color: red;&quot; mce_style=&quot;color: red;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;datepicker&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/event&amp;gt;
+            &amp;lt;event name=&quot;onChangeMonthYear&quot;&amp;gt;
+                &amp;lt;trigger&amp;gt;&amp;lt;![CDATA[日历的年份或月份发生变化后触发]]&amp;gt;&amp;lt;/trigger&amp;gt;
+                &amp;lt;arguments&amp;gt;
+                    &amp;lt;argument name=&quot;year&quot;&amp;gt;
+                        &amp;lt;![CDATA[变化之后的年份.]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                    &amp;lt;argument name=&quot;month&quot;&amp;gt;
+                        &amp;lt;![CDATA[变化之后的月份]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                    &amp;lt;argument name=&quot;inst&quot;&amp;gt;
+                        &amp;lt;![CDATA[当前的datepicker对象实例.]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                &amp;lt;/arguments&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+允许通过这个事件来处理一些需要自己扩展的事件功能.
+在事件响应函数中, this引用的是渲染了datepicker输入框.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化时设置事件]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+$(&#39;.selector&#39;).datepicker({
+   onChangeMonthYear: function(year, month, inst) { ... }
+});
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[
+译者注: 下面的处理仅仅是对整个日历控件加了一个click事件.  需要的话, 可以对照datepicker的DOM模型随意添加自己的事件.  inst.dpDiv可以获取到日历控件对象整体的经过jquery包装的DOM对象
+以示例中代码形成的datepicker为例, 其DOM模型代码如下:
+&amp;lt;div class=&quot;ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible&quot;&amp;gt;
+    &amp;lt;div class=&quot;ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all&quot;&amp;gt;
+        &amp;lt;a title=&quot;Prev&quot; class=&quot;ui-datepicker-prev ui-corner-all&quot;&amp;gt;
+            &amp;lt;span class=&quot;ui-icon ui-icon-circle-triangle-w&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;/a&amp;gt;
+        &amp;lt;a title=&quot;Next&quot; class=&quot;ui-datepicker-next ui-corner-all&quot;&amp;gt;
+            &amp;lt;span class=&quot;ui-icon ui-icon-circle-triangle-e&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;/a&amp;gt;
+        &amp;lt;div class=&quot;ui-datepicker-title&quot;&amp;gt;
+            &amp;lt;span class=&quot;ui-datepicker-month&quot;&amp;gt;&amp;lt;/span&amp;gt;
+            &amp;lt;span class=&quot;ui-datepicker-year&quot;&amp;gt;&amp;lt;/span&amp;gt;
+        &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;table class=&quot;ui-datepicker-calendar&quot;&amp;gt;
+        &amp;lt;thead&amp;gt;
+            &amp;lt;tr&amp;gt;
+                &amp;lt;th class=&quot;ui-datepicker-week-end&quot;&amp;gt;
+                    &amp;lt;span title=&quot;Sunday&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;
+                    &amp;lt;span title=&quot;Monday&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;
+                    &amp;lt;span title=&quot;Tuesday&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;
+                    &amp;lt;span title=&quot;Wednesday&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;
+                    &amp;lt;span title=&quot;Thursday&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;
+                    &amp;lt;span title=&quot;Friday&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/th&amp;gt;
+                &amp;lt;th class=&quot;ui-datepicker-week-end&quot;&amp;gt;
+                    &amp;lt;span title=&quot;Saturday&quot;&amp;gt;&amp;lt;/span&amp;gt;
+                &amp;lt;/th&amp;gt;
+            &amp;lt;/tr&amp;gt;
+        &amp;lt;/thead&amp;gt;
+        &amp;lt;!-- tbody里面显示的就是每一天的表格. --&amp;gt;
+        &amp;lt;tbody&amp;gt;
+            &amp;lt;tr&amp;gt;
+                &amp;lt;!-- 上一月或下一月的日期, 如果没有设置showOtherMonths选项就不会被渲染, 所以, 这个td里面没有a标签 --&amp;gt;
+                &amp;lt;td class=&quot; ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled&quot;&amp;gt;
+                &amp;lt;/td&amp;gt;&amp;lt;!-- 这个是需要渲染的日期, 里面用a标签来实现. --&amp;gt;
+                &amp;lt;td class=&quot; ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled&quot;&amp;gt;
+                    &amp;lt;a class=&quot;ui-state-default&quot;&amp;gt;&amp;lt;/a&amp;gt;
+                &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+        &amp;lt;/tbody&amp;gt;
+    &amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;
+                        ]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+var i = 0;
+$(function() {
+    $(&#39;#datepicker&#39;).datepicker({
+        onChangeMonthYear: function(year, month, inst) {
+            inst.dpDiv.bind(&#39;click&#39;, function(event) {alert(&#39;没事不要乱点我, 要罚款的哦~~!~&#39;);});
+        }
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div id=&quot;msg&quot; style=&quot;color: red;&quot; mce_style=&quot;color: red;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;datepicker&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/event&amp;gt;
+            &amp;lt;event name=&quot;onClose&quot;&amp;gt;
+                &amp;lt;trigger&amp;gt;&amp;lt;![CDATA[日历控件被关闭的时候.]]&amp;gt;&amp;lt;/trigger&amp;gt;
+                &amp;lt;arguments&amp;gt;
+                    &amp;lt;argument name=&quot;dateText&quot;&amp;gt;
+                        &amp;lt;![CDATA[选择的日期被格式化后的文本形式.]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                    &amp;lt;argument name=&quot;inst&quot;&amp;gt;
+                        &amp;lt;![CDATA[日历控件对象实例]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                &amp;lt;/arguments&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+允许通过这个事件来处理一些需要自己扩展的事件功能.
+在事件响应函数中, this引用的是渲染了datepicker输入框.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化时设置事件]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+$(&#39;.selector&#39;).datepicker({
+   onClose: function(dateText, inst) { ... }
+});
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 下面的示例中, 实现的是不通过设置altField, 但是同样在关闭的时候, 将选择了的日期文本显示到指定位置.]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+var i = 0;
+$(function() {
+    $(&#39;#datepicker&#39;).datepicker({
+        onClose: function(dateText, inst) {
+            $(&#39;#msg&#39;).text(dateText);
+        }
+    });
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;div id=&quot;msg&quot; style=&quot;color: red;&quot; mce_style=&quot;color: red;&quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;input type=&quot;text&quot; id=&quot;datepicker&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/event&amp;gt;
+            &amp;lt;event name=&quot;onSelect&quot;&amp;gt;
+                &amp;lt;trigger&amp;gt;&amp;lt;![CDATA[选择了一个日期之后]]&amp;gt;&amp;lt;/trigger&amp;gt;
+                &amp;lt;arguments&amp;gt;
+                    &amp;lt;argument name=&quot;dateText&quot;&amp;gt;
+                        &amp;lt;![CDATA[选择的日期被格式化后的文本形式.]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                    &amp;lt;argument name=&quot;inst&quot;&amp;gt;
+                        &amp;lt;![CDATA[日历控件对象实例]]&amp;gt;
+                    &amp;lt;/argument&amp;gt;
+                &amp;lt;/arguments&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[
+允许通过这个事件来处理一些需要自己扩展的事件功能.
+在事件响应函数中, this引用的是渲染了datepicker输入框.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[初始化时设置事件]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+$(&#39;.selector&#39;).datepicker({
+   onSelect: function(dateText, inst) { ... }
+});
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/event&amp;gt;
+        &amp;lt;/events&amp;gt;
+        &amp;lt;methods&amp;gt;
+            &amp;lt;method name=&quot;destroy&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[完全移除一个datepicker控件, 使其回退到该元素被初始化成datepicker控件之前的状态.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&quot;.selector&quot;).datepicker(&#39;destroy&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;disable&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[将可datepicker控件样式改变成为失效, 与enable对应.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&quot;.selector&quot;).datepicker(&#39;disable&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;enable&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[将datepicker控件样式改变为允许, 与disable对应.]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&quot;.selector&quot;).datepicker(&#39;enable&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;option&quot;&amp;gt;
+                &amp;lt;arguments&amp;gt;
+                    &amp;lt;argument name=&quot;optionName &quot; type=&quot;字符串&quot;&amp;gt;&amp;lt;![CDATA[选项一节中列举的所有选项名都可用]]&amp;gt;&amp;lt;/argument&amp;gt;
+                    &amp;lt;argument name=&quot;value&quot; type=&quot;任意&quot;&amp;gt;&amp;lt;![CDATA[该选项可以接受的任意数据值.]]&amp;gt;&amp;lt;/argument&amp;gt;
+                &amp;lt;/arguments&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[获取或设置datepicker控件的选项, 第二个参数是选项名, 第三个参数是值.  如果不指定值, 就是获取, 指定值, 就是设置.  ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&quot;.selector&quot;).datepicker(&#39;option&#39;, optionName[, value]);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;dialog&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[在一个指定的元素内渲染一个datepicker控件.
+译者注: 由于直接渲染会添加一个莫名的input输入框, 所以可以加入$(&#39;.ui-datepicker&#39;).next().hide();把那个input输入框给去掉.
+                ]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;arguments&amp;gt;
+                    &amp;lt;argument name=&quot;dateText&quot; type=&quot;字符串&quot;&amp;gt;&amp;lt;![CDATA[指定默认的时间]]&amp;gt;&amp;lt;/argument&amp;gt;
+                    &amp;lt;argument name=&quot;onSelect&quot; type=&quot;函数&quot;&amp;gt;&amp;lt;![CDATA[在新渲染出来的日历中选择了一天之后的事件, 该事件和datepicker的onSelect的处理方式一样, 也接受dateText和日历控件的实例两个参数]]&amp;gt;&amp;lt;/argument&amp;gt;
+                    &amp;lt;argument name=&quot;settings&quot; type=&quot;对象&quot;&amp;gt;&amp;lt;![CDATA[和普通创建一个datepicker对象时配置的options对象同理]]&amp;gt;&amp;lt;/argument&amp;gt;
+                    &amp;lt;argument name=&quot;pos&quot; type=&quot;数字&quot;&amp;gt;&amp;lt;![CDATA[[x, y]的一个数组, 描述的是新渲染出来的日历的左上角相对于浏览器窗口内容区域的左上角的位置.]]&amp;gt;&amp;lt;/argument&amp;gt;
+                &amp;lt;/arguments&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 下面的代码就是将一个日历控件渲染到一个目标按钮中, 但是, 该日历第二次显示会有错误. 原因不明.]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    display = function() {
+        $(&#39;#datepicker&#39;).datepicker(
+            &#39;dialog&#39;, 
+            $.datepicker.formatDate(&#39;mm/dd/yy&#39;, new Date()), 
+            function(dateText, inst) {
+                alert(dateText);
+            }, 
+            {showButtonPanel: true}, 
+            [12, 32]
+        );
+        $(&#39;.ui-datepicker&#39;).next().hide();
+    }
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;button&quot; id=&quot;datepicker&quot; style=&quot;color: black; width: 200px; height: 230px; border: 1px solid black;&quot;&amp;gt;
+&amp;lt;/input&amp;gt;
+&amp;lt;input type=&quot;button&quot; value=&quot;display&quot; onclick=&quot;display();&quot; style=&quot;background: #88EECC&quot; mce_style=&quot;background: #88EECC&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;isDisabled&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[判断指定的datepicker是否是disabled的]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[译者注: 下面的代码展示了isDisabled的一个小bug, 在这里如果通过disable方法, 设置了datepicker1是disable的, 弹出的true, 设置了datepicker2是disable的, 则会弹出false, 这就说明在使用isDisabled方法判断时, 如果给定的选择器可以选择到多个元素, 那么会按照顺序取第一个进行判断, 而不管其他的是否设置了disable]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[
+&amp;lt;mce:script type=&quot;text/javascript&quot;&amp;gt;&amp;lt;!--
+$(function() {
+    $(&#39;#datepicker1&#39;).datepicker();
+    $(&#39;#datepicker2&#39;).datepicker();
+    //$(&#39;#datepicker1&#39;).datepicker(&#39;disable&#39;);
+    $(&#39;#datepicker2&#39;).datepicker(&#39;disable&#39;);
+    alert($(&#39;input&#39;).datepicker(&#39;isDisabled&#39;));
+});
+// --&amp;gt;&amp;lt;/mce:script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;input type=&quot;button&quot; id=&quot;datepicker1&quot; style=&quot;color: black; width: 200px; height: 230px; border: 1px solid black;&quot;&amp;gt;
+&amp;lt;/input&amp;gt;
+&amp;lt;input type=&quot;button&quot; id=&quot;datepicker2&quot; value=&quot;display&quot; style=&quot;background: #88EECC&quot; mce_style=&quot;background: #88EECC&quot; /&amp;gt;
+&amp;lt;/body&amp;gt;
+                        ]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;hide&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[将指定的datepicker隐藏]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;comment&amp;gt;&amp;lt;![CDATA[speed是可选参数, 指定隐藏共使用的时间.]]&amp;gt;&amp;lt;/comment&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&quot;.selector&quot;).datepicker(&#39;hide&#39;[, speed]);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;show&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[显示指定的datepicker]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&quot;.selector&quot;).datepicker(&#39;show&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;getDate&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[获取日历控件当前选中的日期.  如果没有选中的, 返回null,]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&quot;.selector&quot;).datepicker(&#39;getDate&#39;);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+            &amp;lt;method name=&quot;setDate&quot;&amp;gt;
+                &amp;lt;description&amp;gt;&amp;lt;![CDATA[设置日历控件选中日期, 可以使用defaultDate选项中的那种&#39;+5y -5d&#39;的方式设置一个相对本地当前时间的一个偏移]]&amp;gt;&amp;lt;/description&amp;gt;
+                &amp;lt;demos&amp;gt;
+                    &amp;lt;demo&amp;gt;
+                        &amp;lt;code&amp;gt;&amp;lt;![CDATA[$(&quot;.selector&quot;).datepicker(&#39;setDate&#39;, date);]]&amp;gt;&amp;lt;/code&amp;gt;
+                    &amp;lt;/demo&amp;gt;
+                &amp;lt;/demos&amp;gt;
+            &amp;lt;/method&amp;gt;
+        &amp;lt;/methods&amp;gt;
+        &amp;lt;theme&amp;gt;&amp;lt;![CDATA[
+jquery.ui.datepicker插件使用了jquery.ui的css框架样式使它看起来更舒服, 包含一些颜色和背景等, 推荐使用jquery的在线样式定制来修改主题.
+如果需要深层次的自定义样式, 可以修改ui.datepicker.css这个样式表来达到预期效果.
+下面代码是一个最终生成的最简单的datepicker控件的DOM代码, 这些代码可以帮助理解整个datepicker控件的结构以便更方便的修改css.
+&amp;lt;div id=&quot;ui-datepicker-div&quot; class=&quot;ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all ui-helper-hidden-accessible&quot;&amp;gt;
+   &amp;lt;div class=&quot;ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all&quot;&amp;gt;
+      &amp;lt;a class=&quot;ui-datepicker-prev ui-corner-all&quot;&amp;gt;title=&quot;Prev&quot;&amp;gt;&amp;lt;span class=&quot;ui-icon ui-icon-circle-triangle-w&quot;&amp;gt;Prev&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+      &amp;lt;a class=&quot;ui-datepicker-next ui-corner-all&quot; title=&quot;Next&quot;&amp;gt;&amp;lt;span class=&quot;ui-icon ui-icon-circle-triangle-e&quot;&amp;gt;Next&amp;lt;/span&amp;gt;&amp;lt;/a&amp;gt;
+      &amp;lt;div class=&quot;ui-datepicker-title&quot;&amp;gt;
+         &amp;lt;span class=&quot;ui-datepicker-month&quot;&amp;gt;January&amp;lt;/span&amp;gt;&amp;lt;span class=&quot;ui-datepicker-year&quot;&amp;gt;2009&amp;lt;/span&amp;gt;
+      &amp;lt;/div&amp;gt;
+   &amp;lt;/div&amp;gt;
+   &amp;lt;table class=&quot;ui-datepicker-calendar&quot;&amp;gt;
+      &amp;lt;thead&amp;gt;
+      &amp;lt;tr&amp;gt;
+         &amp;lt;th class=&quot;ui-datepicker-week-end&quot;&amp;gt;&amp;lt;span title=&quot;Sunday&quot;&amp;gt;Su&amp;lt;/span&amp;gt;&amp;lt;/th&amp;gt;
+         ...
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;/thead&amp;gt;
+      &amp;lt;tbody&amp;gt;&amp;lt;tr&amp;gt;
+         &amp;lt;td class=&quot;ui-datepicker-week-end ui-datepicker-other-month &quot;&amp;gt; 1 &amp;lt;/td&amp;gt;
+         ...
+      &amp;lt;/tr&amp;gt;
+      &amp;lt;/tbody&amp;gt;
+   &amp;lt;/table&amp;gt;
+   &amp;lt;div class=&quot;ui-datepicker-buttonpane ui-widget-content&quot;&amp;gt;
+      &amp;lt;button type=&quot;button&quot; class=&quot;ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all&quot;&amp;gt;Today&amp;lt;/button&amp;gt;
+      &amp;lt;button type=&quot;button&quot; class=&quot;ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all&quot;&amp;gt;Done&amp;lt;/button&amp;gt;
+   &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+        ]]&amp;gt;&amp;lt;/theme&amp;gt;
+        &amp;lt;summarize&amp;gt;&amp;lt;![CDATA[
+altField, altFormat: 设置联动改变的输入框相关信息
+appendText: field后面追加的提示文本
+buttonImage, buttonImageOnly, buttonText: 设置打开日历的按钮的相关属性
+changeMonth, changeYear, yearRange: 设置可以选择的月份和年份及其相关
+closeText, currentText, nextText, prevText, navigationAsDateFormat, showButtonPanel: 设置辅助按钮及其相关
+constrainInput: 设置是否允许用户输入日期
+dateFormat, showMonthAfterYear: 设置相关位置的日期格式
+dayNames, dayNamesMin, dayNamesShort, monthNames, monthNamesShort: 设置相关的本地化信息.
+defaultDate, firstDay: 设置日历控件的一些初始属性
+duration, showAnim, showOptions: 设置日历控件渲染时的一些动作特效
+gotoCurrent: 设定跳转到当前选中天数可用
+hideIfNoPrevNext, showOtherMonths, stepMonths: 设置使日期控件逻辑上更健壮的一些属性, 
+isRTL: 适应一些特殊语种
+maxDate, minDate: 设定日历表述的范围
+numberOfMonths, showCurrentAtPos: 多月模式相关设定
+shortYearCutoff: 强化两位年的描述能力
+showOn: 设定日历控件的显示的触发条件
+        ]]--&amp;gt;&amp;lt;/summarize&amp;gt;
+    &amp;lt;/translate&amp;gt;
+&amp;lt;/project&amp;gt;
+</code></pre>
+
+          </section>
+
+          
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
+<noscript><a href="http://www.51.la/?18906058" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18906058.asp" style="border:none" /></a></noscript>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.all.min.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/custom.js"></script>
+
+  </body>
+</html>

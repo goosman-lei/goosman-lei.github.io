@@ -1,0 +1,1373 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="goosman-lei的博客">
+    <meta name="keywords" content="PHP Web开发,PHP,PHP 框架,高可用,分布式">
+
+    <title>[翻译][php扩展开发和嵌入式]第15章-php中流的实现- By Goosman-lei(goosman.lei@gmail.com</title>
+
+    <!-- Styles -->
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="http://static-cdn.tec-inf.com/apple-touch-icon.png">
+    <link rel="icon" href="http://static-cdn.tec-inf.com/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="">Goosman.lei</a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+                              <li class=""><a href="/ice">Ice</a></li>
+                              <li class=" active"><a href="/blog-history">CSDN-BLOG</a></li>
+                              <li class="hero"><a href="mailto:goosman.lei@gmail.com">Contact</a></li>
+                          </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+      
+    </header>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+
+<!-- TODO 解递归当场遍历出树结构菜单 -->
+<ul class="sidenav">
+  <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">2016年</a>
+  <ul>
+    <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">[分享]面向中大型应用的PHPWeb开发框架Ice</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">2013年</a>
+  <ul>
+    <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html">[翻译][php扩展开发和嵌入式]第19章-设置宿主环境</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html">[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html">[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">[翻译][php扩展开发和嵌入式]第16章-有趣的流</a>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html" class="active">[翻译][php扩展开发和嵌入式]第15章-php中流的实现</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">[翻译][php扩展开发和嵌入式]第14章-php中流的访问</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html">[翻译][php扩展开发和嵌入式]第13章-php的INI设置</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html">[翻译][php扩展开发和嵌入式]第12章-php的启动过程</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html">[翻译][php扩展开发和嵌入式]第11章-php5对象</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html">[翻译][php扩展开发和嵌入式]第10章-php4的对象</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">[翻译][php扩展开发和嵌入式]第9章-资源数据类型</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html">[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html">[翻译][php扩展开发和嵌入式]第7章-接受参数</a>
+      <li><a href="/blog-history/2013/03/从1.5k到18k,一个程序员的5年成长之路.html">从1.5k到18k,一个程序员的5年成长之路</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">[翻译][php扩展开发和嵌入式]第6章-返回值</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html">[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html">[翻译][php扩展开发和嵌入式]第4章-安装构建环境</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">[翻译][php扩展开发和嵌入式]第3章-内存管理</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html">[翻译][php扩展开发和嵌入式]第2章-变量的里里外外</a>
+      <li><a href="/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump.html">[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html">[翻译][php扩展开发和嵌入式]第1章-php的生命周期</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html">[翻译][php扩展开发和嵌入式]第0章-译序</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">2012年</a>
+  <ul>
+    <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">从N个数中选取最大的前10个[堆排序版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[php版].html">从N个数中选取最大的前10个[php版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html">从N个数中选取最大的前10个[C语言版]</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">php截取字符串保留完整xml标签</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">[mysql-manual-5.5]7.1优化概览</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html">php-mysql扩展mysql_querymysql_unbuffered_query对比</a>
+      <li><a href="/blog-history/2012/10/简单游戏场景用户模拟.html">简单游戏场景用户模拟</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html">php-mysql扩展的mysql_connectmysql_pconnect比较</a>
+      <li><a href="/blog-history/2012/10/模拟新浪微博自动登陆.html">模拟新浪微博自动登陆</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">php-curl封装[避免上传文件二义性Bug]</a>
+      <li><a href="/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html">[漏洞]ThinkSNS严重漏洞--将全站崩溃</a>
+      <li><a href="/blog-history/2012/09/无限递归树展示.html">无限递归树展示</a>
+      <li><a href="/blog-history/2012/09/[快速记忆]C语言php的运算符优先级结合性.html">[快速记忆]C语言php的运算符优先级结合性</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">[软件工程]一个故事,分析陷入焦油坑的软件项目</a>
+      <li><a href="/blog-history/2012/06/输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1.html">输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1</a>
+      <li><a href="/blog-history/2012/06/算法分析从N条成绩单信息选择M位不重复同学发奖.html">算法分析从N条成绩单信息选择M位不重复同学发奖</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">ThinkPHPCore3.0源代码review文档</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">2011年</a>
+  <ul>
+    <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">正则表达式分析提取XMLXHTML标签属性</a>
+      <li><a href="/blog-history/2011/12/封装的一个mysql_lib.php,主要是一个分页模型.html">封装的一个mysql_lib.php,主要是一个分页模型</a>
+      <li><a href="/blog-history/2011/12/爱因斯坦的思考题.html">爱因斯坦的思考题</a>
+      <li><a href="/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html">从浏览器操作系统市场占有率分析国人</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">[php内核]----文件系统函数用于普通文件时的一些情况</a>
+      <li><a href="/blog-history/2011/10/某地自动评论脚本备份.html">某地自动评论脚本备份</a>
+      <li><a href="/blog-history/2011/10/使用alarm配合信号实现sleep.html">使用alarm配合信号实现sleep</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现.html">libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html">libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析</a>
+      <li><a href="/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html">由信号集联想----位域授权模式的不限长扩展</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">PHP位域操作函数封装</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">基于dup实现linux的dup2函数APUE练习题3.2</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">日志分析工具（二分法分段查找处理）</a>
+      <li><a href="/blog-history/2011/07/从dl函数分析PHP模块开发.html">从dl函数分析PHP模块开发</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/04/php中的引用传值分析.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2011/04/php中的引用传值分析.html">php中的引用传值分析</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">phppcre正则表达式完全教程----pcre官方文档</a>
+      <li><a href="/blog-history/2011/03/Ubuntu中利用Grub2修复移动硬盘引导.html">Ubuntu中利用Grub2修复移动硬盘引导</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结</a>
+      <li><a href="/blog-history/2011/02/javascript中的继承,找回丢失的constructor.html">javascript中的继承,找回丢失的constructor</a>
+      <li><a href="/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定.html">浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定</a>
+      <li><a href="/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html">PHP操作符优先级列表及一个优先级带来的灵异事件</a>
+      <li><a href="/blog-history/2011/02/PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升.html">PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">php5.3新增的闭包语法介绍functionuse{}</a>
+      <li><a href="/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html">与PHP5.3.5的战斗----记php5.3.5安装过程</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">2010年</a>
+  <ul>
+    <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2010/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2010/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2010/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2010/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2010/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2010/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2010/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2010/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2010/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2010/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2010/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2010/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2010/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2010/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">2009年</a>
+  <ul>
+    <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2009/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2009/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2009/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2009/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2009/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2009/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2009/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2009/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2009/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2009/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2009/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2009/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2009/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2009/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+</ul>
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1></h1>
+            <p></p>
+<ol class="toc">
+</li></ol>
+
+          </header>
+
+          <section>
+<p><strong>全部翻译内容pdf文档下载地址: </strong><a href="http://download.csdn.net/detail/lgg201/5107012"><strong>http://download.csdn.net/detail/lgg201/5107012</strong></a>
+本书目前在github上由laruence(<a href="http://www.laruence.com)%E5%92%8Cwalu(http://www.walu.cc)%E4%B8%A4%E4%BD%8D%E5%A4%A7%E7%89%9B%E7%BB%84%E7%BB%87%E7%BF%BB%E8%AF%91">http://www.laruence.com)和walu(http://www.walu.cc)两位大牛组织翻译</a>. 该翻译项目地址为: <a href="https://github.com/walu/phpbook">https://github.com/walu/phpbook</a>
+本书在github上的地址: <a href="https://github.com/goosman-lei/php-eae">https://github.com/goosman-lei/php-eae</a>
+未来本书将可能部分合并到phpbook项目中, 同时保留一份独立版本.</p>
+
+<p>原书名: <Extending and Embedding PHP>
+原作者: Sara Golemon
+译者: goosman.lei(雷果国)
+译者Email: <a href="mailto:goosman.lei@gmail.com">goosman.lei@gmail.com</a>
+译者Blog: <a href="http://blog.csdn.net/lgg201">http://blog.csdn.net/lgg201</a>
+<strong>权利声明</strong>
+此译本在不获利的情况下, 可以无限制自由传播.
+<strong>实现流</strong>
+php的流最强力的特性之一是它可以访问众多数据源: 普通文件, 压缩文件, 网络透明通道, 加密网络, 命名管道以及域套接字, 它们对于用户空间以及内部都是统一的API.
+<strong>php流的表象之下</strong>
+对于给定的流实例, 比如文件流和网络流, 它们的不同在于上一章你使用的流创建函数返回的php_stream结构体中的ops成员.</p>
+
+<pre lang="cpp"><code>typedef struct _php_stream {
+    ...
+    php_stream_ops *ops;
+    ...
+} php_stream;
+</code></pre>
+
+<p>php_stream_ops结构体定义的是一个函数指针集合以及一个描述标记.</p>
+
+<pre lang="cpp"><code>typedef struct _php_stream_ops {
+    size_t (*write)(php_stream *stream, const char *buf,
+                            size_t count TSRMLS_DC);
+    size_t (*read)(php_stream *stream, char *buf,
+                            size_t count TSRMLS_DC);
+    int    (*close)(php_stream *stream, int close_handle
+                            TSRMLS_DC);
+    int    (*flush)(php_stream *stream TSRMLS_DC);
+
+    const char *label;
+
+    int (*seek)(php_stream *stream, off_t offset, int whence,
+                            off_t *newoffset TSRMLS_DC);
+    int (*cast)(php_stream *stream, int castas, void **ret
+                            TSRMLS_DC);
+    int (*stat)(php_stream *stream, php_stream_statbuf *ssb
+                            TSRMLS_DC);
+    int (*set_option)(php_stream *stream, int option,int value,
+                            void *ptrparam TSRMLS_DC);
+} php_stream_ops;
+</code></pre>
+
+<p>当流访问函数比如php_stream_read()被调用时, 流包装层实际上解析调用了stream-&gt;ops中对应的函数, 这样实际调用的就是当前流类型特有的read实现. 比如, 普通文件的流ops结构体中的read函数实现如下(实际的该实现比下面的示例复杂一点):</p>
+
+<pre lang="cpp"><code>size_t php_stdio_read(php_stream *stream, char *buf,
+                                size_t count TSRMLS_DC)
+{
+    php_stdio_stream_data *data =
+                (php_stdio_stream_data*)stream-&gt;abstract;
+    return read(data-&gt;fd, buf, count);
+}
+</code></pre>
+
+<p>而compress.zlib流使用的ops结构体中则read则指向的是如下的函数:</p>
+
+<pre lang="cpp"><code>size_t php_zlib_read(php_stream *stream, char *buf,
+                                size_t count TSRMLS_DC)
+{
+    struct php_gz_stream_data_t *data =
+            (struct php_gz_stream_data_t *) stream-&gt;abstract;
+
+    return gzread(data-&gt;gz_file, buf, count);
+}
+</code></pre>
+
+<p>这里第一点需要注意的是ops结构体指向的函数指针常常是对数据源真正的读取函数的一个瘦代理. 在上面两个例子中, 标准I/O流使用posix的read()函数, 而zlib流使用的是libz的gzread()函数.
+你可能还注意到了, 这里使用了stream-&gt;abstract元素. 这是流实现的一个便利指针, 它可以被用于获取各种相关的捆绑信息. 在上面的例子中, 指向自定义结构体的指针, 用于存储底层read函数要使用的文件描述符.
+还有一件你可能注意到的事情是php_stream_ops结构体中的每个函数都期望一个已有的流实例, 但是怎样得到实例呢? abstract成员是怎样设置的以及什么时候流指示使用哪个ops结构体? 答案就在你在上一章使用过的第一个打开流的函数(php_stream_open_wrapper())中.
+当这个函数被调用时, php的流包装层尝试基于传递的URL中的scheme://部分确定请求的是什么协议. 这样它就可以在已注册的php包装器中查找对应的php_stream_wrapper项. 每个php_stream_wrapper结构体都可以取到自己的ops元素, 它指向一个php_stream_wrapper_ops结构体:</p>
+
+<pre lang="cpp"><code>typedef struct _php_stream_wrapper_ops {
+    php_stream *(*stream_opener)(php_stream_wrapper *wrapper,
+                        char *filename, char *mode,
+                        int options, char **opened_path,
+                        php_stream_context *context
+                        STREAMS_DC TSRMLS_DC);
+    int (*stream_closer)(php_stream_wrapper *wrapper,
+                        php_stream *stream TSRMLS_DC);
+    int (*stream_stat)(php_stream_wrapper *wrapper,
+                        php_stream *stream,
+                        php_stream_statbuf *ssb
+                        TSRMLS_DC);
+    int (*url_stat)(php_stream_wrapper *wrapper,
+                        char *url, int flags,
+                        php_stream_statbuf *ssb,
+                        php_stream_context *context
+                        TSRMLS_DC);
+    php_stream *(*dir_opener)(php_stream_wrapper *wrapper,
+                        char *filename, char *mode,
+                        int options, char **opened_path,
+                        php_stream_context *context
+                        STREAMS_DC TSRMLS_DC);
+
+    const char *label;
+
+    int (*unlink)(php_stream_wrapper *wrapper, char *url,
+                        int options,
+                        php_stream_context *context
+                        TSRMLS_DC);
+
+    int (*rename)(php_stream_wrapper *wrapper,
+                        char *url_from, char *url_to,
+                        int options,
+                        php_stream_context *context
+                        TSRMLS_DC);
+
+
+    int (*stream_mkdir)(php_stream_wrapper *wrapper,
+                        char *url, int mode, int options,
+                        php_stream_context *context
+                        TSRMLS_DC);
+    int (*stream_rmdir)(php_stream_wrapper *wrapper, char *url,
+                        int options,
+                        php_stream_context *context
+                        TSRMLS_DC);
+} php_stream_wrapper_ops;
+</code></pre>
+
+<p>这里, 流包装层调用wrapper-&gt;ops-&gt;stream_opener(), 它将执行包装器特有的操作创建流实例, 赋值恰当的php_stream_ops结构体, 绑定相关的抽象数据.
+dir_opener()函数和stream_opener()提供相同的基础服务; 不过, 它是对php_stream_opendir()这个API调用的响应, 并且通常会绑定一个不同的php_stream_ops结构体到返回的实例. stat()和close()函数在这一层上是重复的, 这样做是为了给包装器的这些操作增加协议特有的逻辑.
+其他的函数则允许执行静态流操作而不用实际的创建流实例. 回顾这些流API调用, 它们并不实际返回php_stream对象, 你马上就会看到它们的细节.
+<em>尽管在php 4.3中引入流包装层时, url_stat在内部作为一个包装器的ops函数存在, 但直到php 5.0它才开始被使用. 此外, 最后的3个函数, rename(), stream_mkdir()以及stream_rmdir()一直到php 5.0才引入, 在这个版本之前, 它们并不在包装器的ops结构中.</em>
+<strong>包装器操作</strong>
+除了url_stat()函数, 包装器操作中在const char <em>label元素之前的每个操作都可以用于激活的流实例上. 每个函数的意义如下:
+stream_opener()实例化一个流实例. 当某个用户空间的fopen()函数被调用时, 这个函
+数将被调用. 这个函数返回的php_stream实例是fopen()函数返回的
+文件资源句柄的内部表示. 集成函数比如file(), file_get_contents(), 
+file_put_contents(), readfile()等等, 在请求包装资源时, 都使用这个包
+装器ops.
+stream_closer()当一个流实例结束其生命周期时这个函数被调用. stream_opener()时
+分配的所有资源都应该在这个函数中被释放.
+stream_stat()类似于用户空间的fstat()函数, 这个函数应该填充ssb结构体(实际上
+只包含一个struct statbuf sb结构体成员), 
+dir_opener()和stream_opener()行为一致, 不过它是调用opendir()一族的用户空间
+函数时被调用的. 目录流使用的底层流实现和文件流遵循相同的规则; 
+不过目录流只需要返回包含在打开的目录中找到的文件名的记录, 它
+的大小为struct dirent这个结构体的大小.
+*</em>静态包装器操作**
+包装器操作函数中的其他函数是在URI路径上执行原子操作, 具体取决于包装器协议. 在php4.3的php_stream_wrapper_ops结构体中只有url_stat()和unlink(); 其他的方式是到php 5.0后才定义的, 编码时应该适时的使用#ifdef块说明.
+url_stat()stat()族函数使用, 返回文件元数据, 比如访问授权, 大小, 类型; 以及
+访问, 修改,创建时间. 尽管这个函数是在php 4.3引入流包装层时出现
+在php_stream_wrapper_ops结构体中的, 但直到php 5.0才被用户空
+间的stat()函数使用.
+unlink()和posix文件系统的同名函数语义相同, 它执行文件删除. 如果对于当
+前的包装器删除没有意义, 比如内建的http://包装器, 这个函数应该被
+定义为NULL, 以便内核去引发适当的错误消息.
+rename()当用户空间的rename()函数的参数$from和$to参数指向的是相同的
+底层包装器实现, php则将这个重命名请求分发到包装器的rename函
+数.
+mkdir() &amp; rmdir()这两个函数直接映射到对应的用户空间函数.
+<strong>实现一个包装器</strong>
+为了演示包装器和流操作的内部工作原理, 我们需要重新实现php手册的stream_wrapper_register()一页示例中的var://包装器.
+此刻, 首先从下面功能完整的变量流包装实现开始. 构建他, 并开始检查每一块的工作原理.
+<em>译注: 为了方便大家阅读, 对代码的注释进行了适量补充调整, 此外, 由于phpapi的调整, 原著中的代码不能直接在译者使用的php-5.4.10中运行, 进行了适当的修改. 因此下面代码结构可能和原著略有不同, 请参考阅读.(下面opendir的例子也进行了相应的修改)</em>
+<strong>config.m4</strong></p>
+
+<pre lang="cpp"><code>PHP_ARG_ENABLE(varstream,whether to enable varstream support,
+[  enable-varstream      Enable varstream support])
+
+if test &quot;$PHP_VARSTREAM&quot; = &quot;yes&quot;; then
+  AC_DEFINE(HAVE_VARSTREAM,1,[Whether you want varstream])
+  PHP_NEW_EXTENSION(varstream, varstream.c, $ext_shared)
+fi
+</code></pre>
+
+<p><strong>php_varstream.h</strong></p>
+
+<pre lang="cpp"><code>#ifndef PHP_VARSTREAM_H
+#define PHP_VARSTREAM_H
+
+extern zend_module_entry varstream_module_entry;
+#define phpext_varstream_ptr &amp;varstream_module_entry
+
+#ifdef PHP_WIN32
+#   define PHP_VARSTREAM_API __declspec(dllexport)
+#elif defined(__GNUC__) &amp;&amp; __GNUC__ &gt;= 4
+#   define PHP_VARSTREAM_API __attribute__ ((visibility(&quot;default&quot;)))
+#else
+#   define PHP_VARSTREAM_API
+#endif
+
+#ifdef ZTS
+#include &quot;TSRM.h&quot;
+#endif
+
+PHP_MINIT_FUNCTION(varstream);
+PHP_MSHUTDOWN_FUNCTION(varstream);
+
+#define PHP_VARSTREAM_WRAPPER       &quot;var&quot;
+#define PHP_VARSTREAM_STREAMTYPE    &quot;varstream&quot;
+
+/* 变量流的抽象数据结构 */
+typedef struct _php_varstream_data {
+    off_t   position;
+    char    *varname;
+    int     varname_len;
+} php_varstream_data;
+
+#ifdef ZTS
+#define VARSTREAM_G(v) TSRMG(varstream_globals_id, zend_varstream_globals *, v)
+#else
+#define VARSTREAM_G(v) (varstream_globals.v)
+#endif
+
+#endif
+</code></pre>
+
+<p><strong>varstream.c</strong></p>
+
+<pre lang="cpp"><code>#ifdef HAVE_CONFIG_H
+#include &quot;config.h&quot;
+#endif
+
+#include &quot;php.h&quot;
+#include &quot;php_ini.h&quot;
+#include &quot;ext/standard/info.h&quot;
+#include &quot;ext/standard/url.h&quot;
+#include &quot;php_varstream.h&quot;
+
+static size_t php_varstream_write(php_stream *stream,
+                const char *buf, size_t count TSRMLS_DC)
+{
+    php_varstream_data *data = stream-&gt;abstract;
+    zval **var;
+    size_t newlen;
+
+    /* 查找变量 */
+    if (zend_hash_find(&amp;EG(symbol_table), data-&gt;varname,
+            data-&gt;varname_len + 1,(void**)&amp;var) == FAILURE) {
+        /* 变量不存在, 直接创建一个字符串类型的变量, 并保存新传递进来的内容 */
+       zval *newval;
+       MAKE_STD_ZVAL(newval);
+       ZVAL_STRINGL(newval, buf, count, 1); 
+       /* 将新的zval *放到变量中 */
+       zend_hash_add(&amp;EG(symbol_table), data-&gt;varname,
+           data-&gt;varname_len + 1, (void*)&amp;newval,
+           sizeof(zval*), NULL);
+       return count;
+    }   
+    /* 如果需要, 让变量可写. 这里实际上处理的是写时复制 */
+    SEPARATE_ZVAL_IF_NOT_REF(var);
+    /* 转换为字符串类型 */
+    convert_to_string_ex(var);
+    /* 重置偏移量(译注: 相比于正常的文件系统, 这里的处理实际上不支持文件末尾的空洞创建, 读者如果熟悉*nix文件系统, 应该了解译者所说, 否则请略过) */
+    if (data-&gt;position &gt; Z_STRLEN_PP(var)) {
+        data-&gt;position = Z_STRLEN_PP(var);
+    }   
+    /* 计算新的字符串长度 */
+    newlen = data-&gt;position + count;
+    if (newlen &lt; Z_STRLEN_PP(var)) {
+        /* 总长度不变 */
+        newlen = Z_STRLEN_PP(var);
+    } else if (newlen &gt; Z_STRLEN_PP(var)) {
+        /* 重新调整缓冲区大小以保存新内容 */
+        Z_STRVAL_PP(var) =erealloc(Z_STRVAL_PP(var),newlen+1);
+        /* 更新字符串长度 */
+        Z_STRLEN_PP(var) = newlen;
+        /* 确保字符串NULL终止 */
+        Z_STRVAL_PP(var)[newlen] = 0;
+    }   
+    /* 将数据写入到变量中 */
+    memcpy(Z_STRVAL_PP(var) + data-&gt;position, buf, count);
+    data-&gt;position += count;
+
+    return count;
+}
+
+static size_t php_varstream_read(php_stream *stream,
+                char *buf, size_t count TSRMLS_DC)
+{
+    php_varstream_data *data = stream-&gt;abstract;
+    zval **var, copyval;
+    int got_copied = 0;
+    size_t toread = count;
+
+    if (zend_hash_find(&amp;EG(symbol_table), data-&gt;varname,
+        data-&gt;varname_len + 1, (void**)&amp;var) == FAILURE) {
+        /* 变量不存在, 读不到数据, 返回0字节长度 */
+        return 0;
+    }   
+    copyval = **var;
+    if (Z_TYPE(copyval) != IS_STRING) {
+        /* 对于非字符串类型变量, 创建一个副本进行读, 这样对于只读的变量, 就不会改变其原始类型 */
+        zval_copy_ctor(©val);
+        INIT_PZVAL(©val);
+        got_copied = 1;
+    }   
+    if (data-&gt;position &gt; Z_STRLEN(copyval)) {
+        data-&gt;position = Z_STRLEN(copyval);
+    }   
+    if ((Z_STRLEN(copyval) - data-&gt;position) &lt; toread) {
+        /* 防止读取到变量可用缓冲区外的内容 */
+        toread = Z_STRLEN(copyval) - data-&gt;position;
+    }   
+    /* 设置缓冲区 */
+    memcpy(buf, Z_STRVAL(copyval) + data-&gt;position, toread);
+    data-&gt;position += toread;
+
+    /* 如果创建了副本, 则释放副本 */
+    if (got_copied) {
+        zval_dtor(©val);
+    }   
+
+    /* 返回设置到缓冲区的字节数 */
+    return toread;
+}
+
+static int php_varstream_closer(php_stream *stream,
+                            int close_handle TSRMLS_DC)
+{
+    php_varstream_data *data = stream-&gt;abstract;
+
+    /* 释放内部结构避免泄露 */
+    efree(data-&gt;varname);
+    efree(data);
+
+    return 0;
+}
+
+static int php_varstream_flush(php_stream *stream TSRMLS_DC)
+{
+    php_varstream_data *data = stream-&gt;abstract;
+    zval **var;
+
+    /* 根据不同情况, 重置偏移量 */
+    if (zend_hash_find(&amp;EG(symbol_table), data-&gt;varname,
+                    data-&gt;varname_len + 1, (void**)&amp;var)
+                    == SUCCESS) {
+        if (Z_TYPE_PP(var) == IS_STRING) {
+            data-&gt;position = Z_STRLEN_PP(var);
+        } else {
+            zval copyval = **var;
+            zval_copy_ctor(©val);
+            convert_to_string(©val);
+            data-&gt;position = Z_STRLEN(copyval);
+            zval_dtor(©val);
+        }
+    } else {
+        data-&gt;position = 0;
+    }
+
+    return 0;
+}
+
+static int php_varstream_seek(php_stream *stream, off_t offset,
+                    int whence, off_t *newoffset TSRMLS_DC)
+{
+    php_varstream_data *data = stream-&gt;abstract;
+
+    switch (whence) {
+        case SEEK_SET:
+            data-&gt;position = offset;
+            break;
+        case SEEK_CUR:
+            data-&gt;position += offset;
+            break;
+        case SEEK_END:
+        {
+            zval **var;
+           size_t curlen = 0;
+
+           if (zend_hash_find(&amp;EG(symbol_table),
+                   data-&gt;varname,    data-&gt;varname_len + 1,
+                   (void**)&amp;var) == SUCCESS) {
+              if (Z_TYPE_PP(var) == IS_STRING) {
+                  curlen = Z_STRLEN_PP(var);
+              } else {
+                  zval copyval = **var;
+                  zval_copy_ctor(©val);
+                  convert_to_string(©val);
+                  curlen = Z_STRLEN(copyval);
+                  zval_dtor(©val);
+              }
+           }
+
+           data-&gt;position = curlen + offset;
+           break;
+       }
+    }
+
+    /* 防止随机访问指针移动到缓冲区开始位置之前 */
+    if (data-&gt;position &lt; 0) {
+        data-&gt;position = 0;
+    }
+
+    if (newoffset) {
+        *newoffset = data-&gt;position;
+    }
+
+    return 0;
+}
+
+static php_stream_ops php_varstream_ops = {
+    php_varstream_write,
+    php_varstream_read,
+    php_varstream_closer,
+    php_varstream_flush,
+    PHP_VARSTREAM_STREAMTYPE,
+    php_varstream_seek,
+    NULL, /* cast */
+    NULL, /* stat */
+    NULL, /* set_option */
+};
+
+/* Define the wrapper operations */
+static php_stream *php_varstream_opener(
+            php_stream_wrapper *wrapper,
+            char *filename, char *mode, int options,
+            char **opened_path, php_stream_context *context
+            STREAMS_DC TSRMLS_DC)
+{
+    php_varstream_data *data;
+    php_url *url;
+
+    if (options &amp; STREAM_OPEN_PERSISTENT) {
+        /* 按照变量流的定义, 是不能持久化的
+         * 因为变量在请求结束后将被释放
+         */
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;Unable to open %s persistently&quot;,
+                                        filename);
+        return NULL;
+    }
+
+    /* 标准URL解析: scheme://user:pass@host:port/path?query#fragment */
+    url = php_url_parse(filename);
+    if (!url) {
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;Unexpected error parsing URL&quot;);
+        return NULL;
+    }
+    /* 检查是否有变量流URL必须的元素host, 以及scheme是否是var */
+    if (!url-&gt;host || (url-&gt;host[0] == 0) ||
+        strcasecmp(&quot;var&quot;, url-&gt;scheme) != 0) {
+        /* Bad URL or wrong wrapper */
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;Invalid URL, must be in the form: &quot;
+                     &quot;var://variablename&quot;);
+        php_url_free(url);
+        return NULL;
+    }
+
+    /* 创建一个数据结构保存协议信息(变量流协议重要是变量名, 变量名长度, 当前偏移量) */
+    data = emalloc(sizeof(php_varstream_data));
+    data-&gt;position = 0;
+    data-&gt;varname_len = strlen(url-&gt;host);
+    data-&gt;varname = estrndup(url-&gt;host, data-&gt;varname_len + 1);
+    /* 释放前面解析出来的url占用的内存 */
+    php_url_free(url);
+
+    /* 实例化一个流, 为其赋予恰当的流ops, 绑定抽象数据 */
+    return php_stream_alloc(&amp;php_varstream_ops, data, 0, mode);
+}
+
+static php_stream_wrapper_ops php_varstream_wrapper_ops = {
+    php_varstream_opener, /* 调用php_stream_open_wrapper(sprintf(&quot;%s://xxx&quot;, PHP_VARSTREAM_WRAPPER))时执行 */
+    NULL, /* stream_close */
+    NULL, /* stream_stat */
+    NULL, /* url_stat */
+    NULL, /* dir_opener */
+    PHP_VARSTREAM_WRAPPER,
+    NULL, /* unlink */
+#if PHP_MAJOR_VERSION &gt;= 5
+    /* PHP &gt;= 5.0 only */
+    NULL, /* rename */
+    NULL, /* mkdir */
+    NULL, /* rmdir */
+#endif
+};
+
+static php_stream_wrapper php_varstream_wrapper = {
+    &amp;php_varstream_wrapper_ops,
+    NULL, /* abstract */
+    0, /* is_url */
+};
+
+PHP_MINIT_FUNCTION(varstream)
+{
+    /* 注册流包装器:
+     * 1. 检查流包装器名字是否正确(符合这个正则: /^[a-zA-Z0-9+.-]+$/)
+     * 2. 将传入的php_varstream_wrapper增加到url_stream_wrappers_hash这个HashTable中, key为PHP_VARSTREAM_WRAPPER
+     */
+    if (php_register_url_stream_wrapper(PHP_VARSTREAM_WRAPPER,
+            &amp;php_varstream_wrapper TSRMLS_CC)==FAILURE) {
+        return FAILURE;
+    }
+    return SUCCESS;
+}
+
+PHP_MSHUTDOWN_FUNCTION(varstream)
+{
+    /* 卸载流包装器: 从url_stream_wrappers_hash中删除 */
+    if (php_unregister_url_stream_wrapper(PHP_VARSTREAM_WRAPPER
+                                TSRMLS_CC) == FAILURE) {
+        return FAILURE;
+    }
+    return SUCCESS;
+}
+
+zend_module_entry varstream_module_entry = {
+#if ZEND_MODULE_API_NO &gt;= 20010901
+    STANDARD_MODULE_HEADER,
+#endif
+    &quot;varstream&quot;,
+    NULL,
+    PHP_MINIT(varstream),
+    PHP_MSHUTDOWN(varstream),
+    NULL,
+    NULL,
+    NULL,
+#if ZEND_MODULE_API_NO &gt;= 20010901
+    &quot;0.1&quot;,
+#endif
+    STANDARD_MODULE_PROPERTIES
+};
+
+#ifdef COMPILE_DL_VARSTREAM
+ZEND_GET_MODULE(varstream)
+#endif
+</code></pre>
+
+<p>在构建加载扩展后, php就可以处理以var://开始的URL的请求, 它的行为和手册中用户空间实现的行为一致.
+<strong>内部实现</strong>
+首先你注意到的可能是这个扩展完全没有暴露用户空间函数. 它所做的只是在MINIT函数中调用了一个核心PHPAPI的钩子, 将var协议和我们定义的包装器关联起来:</p>
+
+<pre lang="cpp"><code>static php_stream_wrapper php_varstream_wrapper = {
+    &amp;php_varstream_wrapper_ops,
+    NULL, /* abstract */
+    0, /* is_url */
+}
+</code></pre>
+
+<p>很明显, 最重要的元素就是ops, 它提供了访问特定流包装器的创建以及检查函数. 你可以安全的忽略abstract属性, 它仅在运行时使用, 在初始化定义时, 它只是作为一个占位符. 第三个元素is_url, 它告诉php在使用这个包装器时是否考虑php.ini中的allow_url_fopen选项. 如果这个值非0, 并且将allow_url_fopen设置为false, 则这个包装器不能被脚本使用.
+在本章前面你已经知道, 调用用户空间函数比如fopen将通过这个包装器的ops元素得到php_varstream_wrapper_ops, 这样去调用流的打开函数php_varstream_opener.
+这个函数的第一块代码检查是否请求持久化的流:</p>
+
+<pre lang="cpp"><code>if (options &amp; STREAM_OPEN_PERSISTENT) {
+
+</code></pre>
+
+<p>对于很多包装器这样的请求是合法的. 然而目前的情况这个行为没有意义. 一方面用户空间变量的定义就是临时的, 另一方面, varstream的实例化代价很低, 这就使得持久化的优势很小.
+像流包装层报告错误很简单, 只需要返回一个NULL值而不是流实例即可. 流包装层透出到用户空间的失败消息并不会说明具体的错误, 只是说明不能打开URL. 要想给开发者暴露更多的错误信息, 可以在返回之前使用php_stream_wrapper_log_error()函数.</p>
+
+<pre lang="cpp"><code>php_stream_wrapper_log_error(wrapper, options
+    TSRMLS_CC, &quot;Unable to open %s persistently&quot;,
+                                filename);
+return NULL;
+
+</code></pre>
+
+<p><strong>URL解析</strong>
+实例化varstream的下一步需要一个人类可读的URL, 将它分块放入到一个易管理的结构体中. 幸运的是它使用了和用户空间url_parse()函数相同的机制. 如果URL成功解析, 将会分配一个php_url结构体并设置合适的值. 如果在URL中没有某些值, 在返回的php_url中对应的将被设置为NULL. 这个结构体必须在离开php_varstream_opener函数之前被显式释放, 否则它的内存将会泄露:</p>
+
+<pre lang="cpp"><code>typedef struct php_url {
+    /* scheme://user:pass@host:port/path?query#fragment */
+    char *scheme;
+    char *user;
+    char *pass;
+    char *host;
+    unsigned short port;
+    char *path;
+    char *query;
+    char *fragment;
+} php_url;
+</code></pre>
+
+<p>最后, varstream包装器创建了一个数据结构, 保存了流指向的变量名, 读取时的当前位置. 这个结构体将在流的读取和写入函数中用于获取变量, 并且将在流结束使用时由php_varstream_close函数释放.
+<strong>opendir()</strong>
+读写变量内容的实现可以再次进行扩展. 这里可以加入一个新的特性, 允许使用目录函数读取数组中的key. 在你的php_varstream_wrapper_ops结构体之前增加下面的代码:</p>
+
+<pre lang="cpp"><code>static size_t php_varstream_readdir(php_stream *stream,
+                char *buf, size_t count TSRMLS_DC)
+{
+    php_stream_dirent *ent = (php_stream_dirent*)buf;
+    php_varstream_dirdata *data = stream-&gt;abstract;
+    char *key;
+    int type, key_len;
+    long idx;
+
+    /* 查找数组中的key */
+    type = zend_hash_get_current_key_ex(Z_ARRVAL_P(data-&gt;arr),
+                    &amp;key, &amp;key_len, &amp;idx, 0, &amp;(data-&gt;pos));
+
+    /* 字符串key */
+    if (type == HASH_KEY_IS_STRING) {
+        if (key_len &gt;= sizeof(ent-&gt;d_name)) {
+            /* truncate long keys to maximum length */
+            key_len = sizeof(ent-&gt;d_name) - 1;
+        }
+        /* 设置到目录结构上 */
+        memcpy(ent-&gt;d_name, key, key_len);
+        ent-&gt;d_name[key_len] = 0;
+    /* 数值key */
+    } else if (type == HASH_KEY_IS_LONG) {
+        /* 设置到目录结构上 */
+        snprintf(ent-&gt;d_name, sizeof(ent-&gt;d_name), &quot;%ld&quot;,idx);
+    } else {
+        /* 迭代结束 */
+        return 0;
+    }
+    /* 移动数组指针(位置记录到流的抽象结构中) */
+    zend_hash_move_forward_ex(Z_ARRVAL_P(data-&gt;arr),
+                                        &amp;data-&gt;pos);
+    return sizeof(php_stream_dirent);
+}
+
+static int php_varstream_closedir(php_stream *stream,
+                            int close_handle TSRMLS_DC)
+{
+    php_varstream_dirdata *data = stream-&gt;abstract;
+
+    zval_ptr_dtor(&amp;(data-&gt;arr));
+    efree(data);
+    return 0;
+}
+
+static int php_varstream_dirseek(php_stream *stream,
+                    off_t offset, int whence,
+                    off_t *newoffset TSRMLS_DC)
+{
+    php_varstream_dirdata *data = stream-&gt;abstract;
+
+    if (whence == SEEK_SET &amp;&amp; offset == 0) {
+        /* 重置数组指针 */
+        zend_hash_internal_pointer_reset_ex(
+                    Z_ARRVAL_P(data-&gt;arr), &amp;(data-&gt;pos));
+        if (newoffset) {
+            *newoffset = 0;
+        }
+        return 0;
+    }
+    /* 不支持其他类型的随机访问 */
+    return -1;
+}
+
+static php_stream_ops php_varstream_dirops = {
+    NULL, /* write */
+    php_varstream_readdir,
+    php_varstream_closedir,
+    NULL, /* flush */
+    PHP_VARSTREAM_DIRSTREAMTYPE,
+    php_varstream_dirseek,
+    NULL, /* cast */
+    NULL, /* stat */
+    NULL, /* set_option */
+};
+
+static php_stream *php_varstream_opendir(
+            php_stream_wrapper *wrapper,
+            char *filename, char *mode, int options,
+            char **opened_path, php_stream_context *context
+            STREAMS_DC TSRMLS_DC)
+{
+    php_varstream_dirdata *data;
+    php_url *url;
+    zval **var;
+
+    /* 不支持持久化流 */
+    if (options &amp; STREAM_OPEN_PERSISTENT) {
+        php_stream_wrapper_log_error(wrapper, options
+                TSRMLS_CC, &quot;Unable to open %s persistently&quot;,
+                filename);
+        return NULL;
+    }
+
+    /* 解析URL */
+    url = php_url_parse(filename);
+    if (!url) {
+        php_stream_wrapper_log_error(wrapper, options
+                TSRMLS_CC, &quot;Unexpected error parsing URL&quot;);
+        return NULL;
+    }
+    /* 检查请求URL的正确性 */
+    if (!url-&gt;host || (url-&gt;host[0] == 0) ||
+            strcasecmp(&quot;var&quot;, url-&gt;scheme) != 0) {
+        /* Bad URL or wrong wrapper */
+        php_stream_wrapper_log_error(wrapper, options
+                TSRMLS_CC, &quot;Invalid URL, must be in the form: &quot;
+                &quot;var://variablename&quot;);
+        php_url_free(url);
+        return NULL;
+    }
+
+    /* 查找变量 */
+    if (zend_hash_find(&amp;EG(symbol_table), url-&gt;host,
+                strlen(url-&gt;host) + 1, (void**)&amp;var) == FAILURE) {
+        php_stream_wrapper_log_error(wrapper, options
+                TSRMLS_CC, &quot;Variable $%s not found&quot;, url-&gt;host);
+        php_url_free(url);
+        return NULL;
+    }
+
+    /* 检查变量类型 */
+    if (Z_TYPE_PP(var) != IS_ARRAY) {
+        php_stream_wrapper_log_error(wrapper, options
+                TSRMLS_CC, &quot;$%s is not an array&quot;, url-&gt;host);
+        php_url_free(url);
+        return NULL;
+    }
+    /* 释放前面分配的URL结构 */
+    php_url_free(url);
+
+    /* 分配抽象数据结构 */
+    data = emalloc(sizeof(php_varstream_dirdata));
+    if ( Z_ISREF_PP(var) &amp;&amp; Z_REFCOUNT_PP(var) &gt; 1) {
+        /* 全拷贝 */
+        MAKE_STD_ZVAL(data-&gt;arr);
+        *(data-&gt;arr) = **var;
+        zval_copy_ctor(data-&gt;arr);
+        INIT_PZVAL(data-&gt;arr);
+    } else {
+        /* 写时拷贝 */
+        data-&gt;arr = *var;
+        Z_SET_REFCOUNT_P(data-&gt;arr, Z_REFCOUNT_P(data-&gt;arr) + 1);
+    }
+    /* 重置数组指针 */
+    zend_hash_internal_pointer_reset_ex(Z_ARRVAL_P(data-&gt;arr),
+            &amp;data-&gt;pos);
+    return php_stream_alloc(&amp;php_varstream_dirops,data,0,mode);
+}
+</code></pre>
+
+<p>现在, 将你的php_varstream_wrapper_ops结构体中的dir_opener的NULL替换成你的php_varstream_opendir函数. 最后, 将下面新定义的类型放入到你的php_varstream.h文件的php_varstream_data定义下面:</p>
+
+<pre lang="cpp"><code>#define PHP_VARSTREAM_DIRSTREAMTYPE    &quot;varstream directory&quot;
+typedef struct _php_varstream_dirdata {
+    zval *arr;
+    HashPosition pos;
+} php_varstream_dirdata;
+</code></pre>
+
+<p>在你基于fopen()实现的varstream包装器中, 你直接使用持久变量名, 每次执行读写操作时从符号表中获取变量. 而这里, opendir()的实现中获取变量时处理了变量不存在或者类型错误的异常. 你还有一个数组变量的拷贝, 这就说明原数组的改变并不会影响后续的readdir()调用的结果. 原来存储变量名的方式也可以正常工作, 这里只是给出另外一种选择作为演示示例.
+由于目录访问是基于成块的目录条目, 而不是字符, 因此这里需要一套独立的流操作. 这个版本中, write没有意义, 因此保持它为NULL. read的实现使用zend_hash_get_current_key_ex()函数将数组映射到目录名. 而随机访问也只是对SEEK_SET有效, 用来响应rewinddir()跳转到数组开始位置.
+<em>实际上, 目录流并没有使用SEEK_CUR, SEEK_END, 或者除了0之外的偏移量. 在实现目录流操作时, 最好还是涉及你的函数能以某种方式处理这些情况, 以使得在流包装层变化时能够适应其目录随机访问.</em>
+<strong>操纵</strong>
+5个静态包装器操作中的4个用来处理不是基于I/O的流资源操作. 你已经看到过它们并了解它们的原型; 现在我们看看varstream包装器框架中它们的实现:
+<strong>unlink</strong>
+在你的wrapper_ops结构体中增加下面的函数, 它可以让unlink()通过varstream包装器, 拥有和unset()一样的行为:</p>
+
+<pre lang="cpp"><code>static int php_varstream_unlink(php_stream_wrapper *wrapper,
+                        char *filename, int options,
+                        php_stream_context *context
+                        TSRMLS_DC)
+{               
+    php_url *url;   
+
+    url = php_url_parse(filename);
+    if (!url) {         
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;Unexpected error parsing URL&quot;);
+        return -1;   
+    }       
+    if (!url-&gt;host || (url-&gt;host[0] == 0) ||
+        strcasecmp(&quot;var&quot;, url-&gt;scheme) != 0) {
+        /* URL不合法 */
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;Invalid URL, must be in the form: &quot;
+                     &quot;var://variablename&quot;);
+        php_url_free(url);
+        return -1;
+    }
+
+    /* 从符号表删除变量 */
+    //zend_hash_del(&amp;EG(symbol_table), url-&gt;host, strlen(url-&gt;host) + 1);
+    zend_delete_global_variable(url-&gt;host, strlen(url-&gt;host) + 1 TSRMLS_CC);
+
+    php_url_free(url);                                      
+    return 0;
+}
+</code></pre>
+
+<p>这个函数的编码量和php_varstream_opener差不多. 唯一的不同在于这里你需要传递变量名给zend_hash_del()去删除变量.
+<em>译注: 译者的php-5.4.10环境中, 使用unlink()删除变量后, 在用户空间再次读取该变量名的值会导致core dump. 因此上面代码中译者进行了修正, 删除变量时使用了zend_delete_global_variable(), 请读者参考阅读zend_delete_global_variable()函数源代码, 考虑为什么直接用zend_hash_del()删除, 会导致core dump. 下面是译者测试用的用户空间代码:</em></p>
+
+<pre lang="cpp"><code>&lt;?php
+$fp = fopen(&#39;var://hello&#39;, &#39;r&#39;);
+fwrite($fp, &#39;world&#39;);
+var_dump($hello);
+unlink(&#39;var://hello&#39;);
+$a  = $hello;
+</code></pre>
+
+<p>这个函数的代码量应该和php_varstream_opener差不多. 唯一的不同是这里是传递变量名给zend_hash_del()去删除变量.
+<strong>rename, mkdir, rmdir</strong>
+为了一致性, 下面给出rename, mkdir, rmdir函数的实现:</p>
+
+<pre lang="cpp"><code>static int php_varstream_rename(php_stream_wrapper *wrapper,
+        char *url_from, char *url_to, int options,
+        php_stream_context *context TSRMLS_DC)
+{
+    php_url *from, *to;
+    zval **var;
+
+    /* 来源URL解析 */
+    from = php_url_parse(url_from);
+    if (!from) {
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;Unexpected error parsing source&quot;);
+        return -1;
+    }
+    /* 查找变量 */
+    if (zend_hash_find(&amp;EG(symbol_table), from-&gt;host,
+                strlen(from-&gt;host) + 1,
+                (void**)&amp;var) == FAILURE) {
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;$%s does not exist&quot;, from-&gt;host);
+        php_url_free(from);
+        return -1;
+    }
+    /* 目标URL解析 */
+    to = php_url_parse(url_to);
+    if (!to) {
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;Unexpected error parsing dest&quot;);
+        php_url_free(from);
+        return -1;
+    }
+    /* 变量的改名 */
+    Z_SET_REFCOUNT_PP(var, Z_REFCOUNT_PP(var) + 1);
+    zend_hash_update(&amp;EG(symbol_table), to-&gt;host,
+                strlen(to-&gt;host) + 1, (void*)var,
+                sizeof(zval*), NULL);
+    zend_hash_del(&amp;EG(symbol_table), from-&gt;host,
+                strlen(from-&gt;host) + 1);
+    php_url_free(from);
+    php_url_free(to);
+    return 0;
+}
+
+static int php_varstream_mkdir(php_stream_wrapper *wrapper,
+                char *url_from, int mode, int options,
+                php_stream_context *context TSRMLS_DC)
+{
+    php_url *url;
+
+    /* URL解析 */
+    url = php_url_parse(url_from);
+    if (!url) {
+       php_stream_wrapper_log_error(wrapper, options
+           TSRMLS_CC, &quot;Unexpected error parsing URL&quot;);
+       return -1;
+    }
+
+    /* 检查变量是否存在 */
+    if (zend_hash_exists(&amp;EG(symbol_table), url-&gt;host,
+                    strlen(url-&gt;host) + 1)) {
+        php_stream_wrapper_log_error(wrapper, options
+            TSRMLS_CC, &quot;$%s already exists&quot;, url-&gt;host);
+        php_url_free(url);
+        return -1;
+    }
+    /* EG(uninitialized_zval_ptr)通常是IS_NULL的zval *, 引用计数无限大 */
+    zend_hash_add(&amp;EG(symbol_table), url-&gt;host,
+            strlen(url-&gt;host) + 1,
+            (void*)&amp;EG(uninitialized_zval_ptr),
+            sizeof(zval*), NULL);
+    php_url_free(url);
+    return 0;
+}
+
+static int php_varstream_rmdir(php_stream_wrapper *wrapper,
+                char *url, int options,
+                php_stream_context *context TSRMLS_DC)
+{
+    /* 行为等价于unlink() */
+    wrapper-&gt;wops-&gt;unlink(wrapper, url, options,
+                                context TSRMLS_CC);
+}
+</code></pre>
+
+<p><strong>检查</strong>
+并不是所有的流操作都涉及到资源的操纵. 有时候也需要查看活动的流在某个时刻的状态, 或检查潜在可打开的资源的状态.
+这一节流和包装器的ops函数都是在相同的数据结构php_stream_statbuf上工作的, 它只有一个元素: posix标准的struct statbuf. 当本节的某个函数被调用时, 将尝试填充尽可能多的statbuf元素的成员.
+<strong>stat</strong>
+如果设置, 当请求激活流实例的信息时, 将会调用wrapper-&gt;ops-&gt;stream_stat(). 如果没有设置, 则对应的stream-&gt;ops-&gt;stat()将会被调用. 无论哪个函数被调用, 都应该尽可能多的向返回的statbuf结构体ssb-&gt;sb中填充尽可能多流实例的有用信息. 在普通文件I/O的用法中, 它对应fstat()的标准I/O调用.
+<strong>url_stat</strong>
+在流实例外部调用wrapper-&gt;ops-&gt;url_stat()取到流资源的元数据. 通常来说, 符号链接和重定向都应该被解析, 直到找到一个真正的资源, 对其通过stat()系统调用这样的机制读取统计信息. url_stat的flags参数允许是下面PHP_STREAM_URL_STAT_<em>系列的常量值(省略PHP_STREAM_URL_STAT_前缀):
+LINK不解析符号链接和重定向. 而是报告它碰到的第一个节点的信息, 无论是连
+接还是真正的资源.
+QUIET不报告错误. 注意, 这和许多其他流函数中的REPORT_ERRORS逻辑恰恰
+相反.
+*</em>小结**
+无论是暴露远程网络I/O还是本地数据源的流资源, 都允许你的扩展在核心数据上挂在操纵函数的钩子, 避免重新实现单调的描述符管理和I/O缓冲区工作. 这使得它在用户空间环境中更加有用, 更加强大.
+下一章将通过对过滤器和上下文的学习结束流包装层的学习, 过滤器和上下文可以用于选择默认的流行为, 甚至过程中修改数据.</p>
+
+<p><a href="http://blog.csdn.net/lgg201/article/details/8493725">目录</a>上一章: <a href="http://blog.csdn.net/lgg201/article/details/8869066">php中流的访问</a>下一章: <a href="http://blog.csdn.net/lgg201/article/details/8923271">有趣的流</a></p>
+
+          </section>
+
+          
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
+<noscript><a href="http://www.51.la/?18906058" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18906058.asp" style="border:none" /></a></noscript>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.all.min.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/custom.js"></script>
+
+  </body>
+</html>

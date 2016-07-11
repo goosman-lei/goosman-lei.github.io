@@ -1,0 +1,1491 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="goosman-lei的博客">
+    <meta name="keywords" content="PHP Web开发,PHP,PHP 框架,高可用,分布式">
+
+    <title>[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作- By Goosman-lei(goosman.lei@gmail.com</title>
+
+    <!-- Styles -->
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="http://static-cdn.tec-inf.com/apple-touch-icon.png">
+    <link rel="icon" href="http://static-cdn.tec-inf.com/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="">Goosman.lei</a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+                              <li class=""><a href="/ice">Ice</a></li>
+                              <li class=" active"><a href="/blog-history">CSDN-BLOG</a></li>
+                              <li class="hero"><a href="mailto:goosman.lei@gmail.com">Contact</a></li>
+                          </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+      
+    </header>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+
+<!-- TODO 解递归当场遍历出树结构菜单 -->
+<ul class="sidenav">
+  <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">2016年</a>
+  <ul>
+    <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">[分享]面向中大型应用的PHPWeb开发框架Ice</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">2013年</a>
+  <ul>
+    <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html">[翻译][php扩展开发和嵌入式]第19章-设置宿主环境</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html">[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html">[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">[翻译][php扩展开发和嵌入式]第16章-有趣的流</a>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html">[翻译][php扩展开发和嵌入式]第15章-php中流的实现</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">[翻译][php扩展开发和嵌入式]第14章-php中流的访问</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html">[翻译][php扩展开发和嵌入式]第13章-php的INI设置</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html">[翻译][php扩展开发和嵌入式]第12章-php的启动过程</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html">[翻译][php扩展开发和嵌入式]第11章-php5对象</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html">[翻译][php扩展开发和嵌入式]第10章-php4的对象</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">[翻译][php扩展开发和嵌入式]第9章-资源数据类型</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html" class="active">[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html">[翻译][php扩展开发和嵌入式]第7章-接受参数</a>
+      <li><a href="/blog-history/2013/03/从1.5k到18k,一个程序员的5年成长之路.html">从1.5k到18k,一个程序员的5年成长之路</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">[翻译][php扩展开发和嵌入式]第6章-返回值</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html">[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html">[翻译][php扩展开发和嵌入式]第4章-安装构建环境</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">[翻译][php扩展开发和嵌入式]第3章-内存管理</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html">[翻译][php扩展开发和嵌入式]第2章-变量的里里外外</a>
+      <li><a href="/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump.html">[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html">[翻译][php扩展开发和嵌入式]第1章-php的生命周期</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html">[翻译][php扩展开发和嵌入式]第0章-译序</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">2012年</a>
+  <ul>
+    <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">从N个数中选取最大的前10个[堆排序版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[php版].html">从N个数中选取最大的前10个[php版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html">从N个数中选取最大的前10个[C语言版]</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">php截取字符串保留完整xml标签</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">[mysql-manual-5.5]7.1优化概览</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html">php-mysql扩展mysql_querymysql_unbuffered_query对比</a>
+      <li><a href="/blog-history/2012/10/简单游戏场景用户模拟.html">简单游戏场景用户模拟</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html">php-mysql扩展的mysql_connectmysql_pconnect比较</a>
+      <li><a href="/blog-history/2012/10/模拟新浪微博自动登陆.html">模拟新浪微博自动登陆</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">php-curl封装[避免上传文件二义性Bug]</a>
+      <li><a href="/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html">[漏洞]ThinkSNS严重漏洞--将全站崩溃</a>
+      <li><a href="/blog-history/2012/09/无限递归树展示.html">无限递归树展示</a>
+      <li><a href="/blog-history/2012/09/[快速记忆]C语言php的运算符优先级结合性.html">[快速记忆]C语言php的运算符优先级结合性</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">[软件工程]一个故事,分析陷入焦油坑的软件项目</a>
+      <li><a href="/blog-history/2012/06/输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1.html">输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1</a>
+      <li><a href="/blog-history/2012/06/算法分析从N条成绩单信息选择M位不重复同学发奖.html">算法分析从N条成绩单信息选择M位不重复同学发奖</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">ThinkPHPCore3.0源代码review文档</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">2011年</a>
+  <ul>
+    <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">正则表达式分析提取XMLXHTML标签属性</a>
+      <li><a href="/blog-history/2011/12/封装的一个mysql_lib.php,主要是一个分页模型.html">封装的一个mysql_lib.php,主要是一个分页模型</a>
+      <li><a href="/blog-history/2011/12/爱因斯坦的思考题.html">爱因斯坦的思考题</a>
+      <li><a href="/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html">从浏览器操作系统市场占有率分析国人</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">[php内核]----文件系统函数用于普通文件时的一些情况</a>
+      <li><a href="/blog-history/2011/10/某地自动评论脚本备份.html">某地自动评论脚本备份</a>
+      <li><a href="/blog-history/2011/10/使用alarm配合信号实现sleep.html">使用alarm配合信号实现sleep</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现.html">libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html">libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析</a>
+      <li><a href="/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html">由信号集联想----位域授权模式的不限长扩展</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">PHP位域操作函数封装</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">基于dup实现linux的dup2函数APUE练习题3.2</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">日志分析工具（二分法分段查找处理）</a>
+      <li><a href="/blog-history/2011/07/从dl函数分析PHP模块开发.html">从dl函数分析PHP模块开发</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/04/php中的引用传值分析.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2011/04/php中的引用传值分析.html">php中的引用传值分析</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">phppcre正则表达式完全教程----pcre官方文档</a>
+      <li><a href="/blog-history/2011/03/Ubuntu中利用Grub2修复移动硬盘引导.html">Ubuntu中利用Grub2修复移动硬盘引导</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结</a>
+      <li><a href="/blog-history/2011/02/javascript中的继承,找回丢失的constructor.html">javascript中的继承,找回丢失的constructor</a>
+      <li><a href="/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定.html">浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定</a>
+      <li><a href="/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html">PHP操作符优先级列表及一个优先级带来的灵异事件</a>
+      <li><a href="/blog-history/2011/02/PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升.html">PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">php5.3新增的闭包语法介绍functionuse{}</a>
+      <li><a href="/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html">与PHP5.3.5的战斗----记php5.3.5安装过程</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">2010年</a>
+  <ul>
+    <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2010/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2010/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2010/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2010/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2010/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2010/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2010/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2010/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2010/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2010/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2010/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2010/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2010/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2010/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">2009年</a>
+  <ul>
+    <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2009/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2009/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2009/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2009/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2009/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2009/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2009/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2009/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2009/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2009/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2009/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2009/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2009/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2009/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+</ul>
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1></h1>
+            <p></p>
+<ol class="toc">
+</li></ol>
+
+          </header>
+
+          <section>
+<p><strong>全部翻译内容pdf文档下载地址: </strong><a href="http://download.csdn.net/detail/lgg201/5107012"><strong>http://download.csdn.net/detail/lgg201/5107012</strong></a>
+本书目前在github上由laruence(<a href="http://www.laruence.com)%E5%92%8Cwalu(http://www.walu.cc)%E4%B8%A4%E4%BD%8D%E5%A4%A7%E7%89%9B%E7%BB%84%E7%BB%87%E7%BF%BB%E8%AF%91">http://www.laruence.com)和walu(http://www.walu.cc)两位大牛组织翻译</a>. 该翻译项目地址为: <a href="https://github.com/walu/phpbook">https://github.com/walu/phpbook</a>
+本书在github上的地址: <a href="https://github.com/goosman-lei/php-eae">https://github.com/goosman-lei/php-eae</a>
+未来本书将可能部分合并到phpbook项目中, 同时保留一份独立版本.</p>
+
+<p>原书名: <Extending and Embedding PHP>
+原作者: Sara Golemon
+译者: goosman.lei(雷果国)
+译者Email: <a href="mailto:goosman.lei@gmail.com">goosman.lei@gmail.com</a>
+译者Blog: <a href="http://blog.csdn.net/lgg201">http://blog.csdn.net/lgg201</a>
+<strong>在数组和哈希表上工作</strong>
+在C语言中, 有两种不同的基础方法用来在一个结构体中存储任意数量的独立数据元素. 两种方法都有赞成者和反对者.
+<strong>向量 Vs. 链表</strong>
+应用的编写通常基于特定类型数据的特性的选择, 需要存储多少数据, 以及需要多快速度的检索. 为了能够有对等的认知, 我们先来看看简单的看看这些存储机制.
+<strong>向量</strong>
+向量是一块连续的内存空间, 它们包含的数据有规律的间隔. 向量最常见的例子就是字符串变量(char *或char []), 它包含了一个接着一个的字符(字节)序列.</p>
+
+<pre lang="cpp"><code>char foo[4] = &quot;bar&quot;;
+
+</code></pre>
+
+<p>这里, foo[0]包含了字符&#39;b&#39;; 紧接着, 你将在foo[1]中找到字符&#39;a&#39;, 最后在foo[3]中是一个空字符&#39;\0&#39;.
+将指向其他结构的指针存储到向量中的用法几乎是无所不在的, 比如在上一章, 使用zend_get_parameters_array_ex()函数时, 就使用了一个zval的向量. 那里, 我们看到var_dump()定义了一个zval **<em>的函数变量, 接着为它分配空间用来存储zval *</em>指针(最终的数据来自zend_get_parameters_ex()调用)</p>
+
+<pre lang="cpp"><code>zval ***args = safe_emalloc(ZEND_NUM_ARGS(), sizeof(zval**), 0);
+
+</code></pre>
+
+<p>和访问字符串中的数组一样, var_dump()实现中使用args[i]依次传递每个zval <strong>元素到内部函数php_var_dump().
+向量最大的优点在于运行时单个元素的访问速度. args[i]这样的变量引用, 可以很快的计算出它的数据地址(args + i * sizeof(args[0]). 这个索引结构的空间分配和释放是在单次, 高效的调用中完成的.
+**链表</strong>
+另外一种常见的存储数据的方式是链表. 对于链表而言, 每个数据元素都是一个至少有两个属性的结构体: 一个指向链表中的下一个节点, 一个则是实际的数据. 考虑下面假设的数据结构:</p>
+
+<pre lang="cpp"><code>typedef struct _namelist namelist;
+struct {
+    struct namelist *next;
+    char *name;
+} _namelist;
+</code></pre>
+
+<p>使用这个数据结构的引用需要定义一个变量:</p>
+
+<pre lang="cpp"><code>static namelist *people;
+
+</code></pre>
+
+<p>链表中的第一个名字可以通过检查people变量的name属性得到: people-&gt;name; 第二个名字则访问next属性: people-&gt;next-&gt;name, 依此类推: people-&gt;next-&gt;next-&gt;name等等, 直到next为NULL表示链表中已经没有其他名字了. 更常见的用法是使用循环迭代链表:</p>
+
+<pre lang="cpp"><code>void name_show(namelist *p)
+{
+    while (p) {
+        printf(&quot;Name: %s\n&quot;, p-&gt;name);
+        p = p-&gt;next;
+    }
+}
+</code></pre>
+
+<p>这种链表非常适合于FIFO的链式结构, 新的数据被追加到链表的末尾, 从另外一端线性的消耗数据:</p>
+
+<pre lang="cpp"><code>static namelist *people = NULL, *last_person = NULL;
+void name_add(namelist *person)
+{
+    person-&gt;next = NULL;
+    if (!last_person) {
+        /* 链表中没有数据 */
+        people = last_person = person;
+        return;
+    }
+    /* 向链表末尾增加新的数据 */
+    last_person-&gt;next = person;
+
+    /* 更新链表尾指针 */
+    last_person = person;
+}
+namelist *name_pop(void)
+{
+    namelist *first_person = people;
+    if (people) {
+    people = people-&gt;next;
+    }
+    return first_person;
+}
+</code></pre>
+
+<p>新的namelist结构可以从这个链表中多次插入或弹出, 而不用调整结构的大小或在某些位置间块拷贝元素.
+前面你看到的链表只是一个单链表, 虽然它有一些有趣的特性, 但它有致命的缺点. 给出链表中一项的指针, 将它从链中剪切出来并确保前面的元素正确的链接上下一个元素就变得比较困难.
+为了知道它的前一个元素, 就需要遍历整个链表直到找到一个元素的next指针指向要被删除的元素. 对于大的链表, 这可能需要可观的CPU时间. 一个简单的相对廉价的解决方案是双链表.
+对于双链表而言, 每个元素增加了一个指针元素, 它指向链表中的前一个元素:</p>
+
+<pre lang="cpp"><code>typedef struct _namelist namelist;
+struct {
+    namelist *next, *prev;
+    char *name;
+} _namelist;
+</code></pre>
+
+<p>一个元素被添加到双链表的时候, 这两个指针相应的都被更新:</p>
+
+<pre lang="cpp"><code>void name_add(namelist *person)
+{
+    person-&gt;next = NULL;
+    if (!last_person) {
+        /* 链表中没有元素 */
+        people = last_person = person;
+        person-&gt;prev = NULL;
+        return;
+    }
+    /* 在链表尾增加一个新元素 */
+    last_person -&gt;next = person;
+    person-&gt;prev = last_person;
+
+    /* 更新链表尾指针 */
+    last_person = person;
+}
+</code></pre>
+
+<p>迄今为止, 你还没有看到这种数据结构的任何优势, 但是现在你可以想想, 给出people链表中间的一条任意的namelist记录, 怎样删除它. 对于单链表, 你需要这样做:</p>
+
+<pre lang="cpp"><code>void name_remove(namelist *person)
+{
+    namelist *p;
+    if (person == people) {
+        /* 要删除链表头指针 */
+        people = person-&gt;next;
+        if (last_person == person) {
+            /* 要删除的节点同时还是尾指针 */
+            last_person = NULL;
+        }
+        return;
+    }
+    /* 搜索要删除节点的前一个节点 */
+    p = people;
+    while (p) {
+        if (p-&gt;next == person) {
+            /* 删除 */
+            p-&gt;next = person-&gt;next;
+            if (last_person == person) {
+                /* 要删除的节点是头指针 */
+                last_person = p;
+            }
+            return;
+        }
+        p = p-&gt;next;
+    }
+    /* 链表中没有找到对应元素 */
+}
+</code></pre>
+
+<p>现在和双链表的代码比较一下:</p>
+
+<pre lang="cpp"><code>void name_remove(namelist *person)
+{
+    if (people == person) {
+        people = person-&gt;next;
+    }
+    if (last_person == person) {
+        last_person = person-&gt;prev;
+    }
+    if (person-&gt;prev) {
+
+        person-&gt;prev-&gt;next = person-&gt;next;
+    }
+    if (person-&gt;next) {
+        person-&gt;next-&gt;prev = person-&gt;prev;
+    }
+}
+</code></pre>
+
+<p>不是很长, 也没有循环, 从链表中删除一个元素只需要简单的执行条件语句中的重新赋值语句. 与此过程相逆的过程就可以同样高效的将元素插入到链表的任意点.
+<strong>最好的是HashTable</strong>
+虽然在你的应用中你完全可以使用向量或链表, 但有另外一种集合数据类型, 最终你可能会更多的使用: HashTable.
+HashTable是一种特殊的双链表, 它增加了前面看到的向量方式的高效查找. HashTable在Zend引擎和php内核中使用的非常多, 整个ZendAPI都子例程都主要在处理这些结构.
+如你在第2章&quot;变量的里里外外&quot;中所见, 所有的用户空间变量都存储在一个zval <em>指针的HashTable中. 后面章节中你可以看到Zend引擎使用HashTable存储用户空间函数, 类, 资源, 自动全局标记以及其他结构.
+回顾第2章, Zend引擎的HashTable可以原文存储任意大小的任意数据片. 比如, 函数存储了完整的结构. 自动全局变量只是很少几个字节的元素, 然而其他的结构, 比如php5的类定义则只是简单的存储了指针.
+本章后面我们将学习构成Zend Hash API的函数调用, 你可以在你的扩展中使用这些函数.
+*</em>Zend Hash API**
+Zend Hash API被分为几个基本的打雷, 除了几个特殊的, 这些函数通常都返回SUCCESS或FAILURE.
+<strong>创建</strong>
+每个HashTable都通过一个公用的构造器初始化:</p>
+
+<pre lang="cpp"><code>int zend_hash_init(HashTable *ht, uint nSize,
+    hash_func_t pHashFunction,
+    dtor_func_t pDestructor, zend_bool persistent)
+</code></pre>
+
+<p>ht是一个指向HashTable变量的指针, 它可以定义为直接值形式, 也可以通过emalloc()/pemalloc()动态分配, 或者更常见的是使用ALLOC_HASHTABLE(ht). ALLOC_HASHTABLE()宏使用了一个特定内存池的预分配块来降低内存分配所需的时间, 相比于ht = emalloc(sizeof(HashTable));它通常是首选.
+nSize应该被设置为HashTable期望存储的最大元素个数. 如果向这个HashTable中尝试增加多于这个数的元素, 它将会自动增长, 不过有一点需要注意的是, 这里Zend重建整个新扩展的HashTable的索引的过程需要耗费不少的处理时间. 如果nSize不是2的幂, 它将被按照下面公式扩展为下一个2的幂:</p>
+
+<pre lang="cpp"><code>nSize = pow(2, ceil(log(nSize, 2)));
+
+</code></pre>
+
+<p>pHashFunction是旧版本Zend引擎的遗留参数, 它不在使用, 因此这个值应该被设置为NULL. 在早期的Zend引擎中, 这个值指向一个用以替换标准的DJBX33A(一种常见的抗碰撞哈希算法, 用来将任意字符串key转换到可重演的整型值)的可选哈希算法.
+pDestructor指向当从HashTable删除元素时应该被调用的函数, 比如当使用zend_hash_del()删除或使用zend_hash_update()替换. 析构器函数的原型如下:</p>
+
+<pre lang="cpp"><code>void method_name(void *pElement);
+
+</code></pre>
+
+<p>pElement指向指向要从HashTable中删除的元素.
+最后一个选项是persistent, 它只是一个简单的标记, 引擎会直接传递给在第3章&quot;内存管理&quot;中学习的pemalloc()函数. 所有需要保持跨请求可用的HashTable都必须设置这个标记, 并且必须调用pemalloc()分配.
+这个方法的使用在所有php请求周期开始的时候都可以看到: EG(symbol_table)全局变量的初始化:</p>
+
+<pre lang="cpp"><code>zend_hash_init(&amp;EG(symbol_table), 50, NULL, ZVAL_PTR_DTOR, 0);
+
+</code></pre>
+
+<p>这里, 你可以看到, 当从符号表删除一个元素时, 比如可能是对unset($foo)的处理; 在HashTable中存储的zval <em>指针都会被发送给zval_ptr_dtor()(ZVAL_PTR_DTOR展开就是它.).
+因为50并不是2的幂, 因此实际初始化的全局符号表是2的下一个幂64.
+*</em>填充**
+有4个主要的函数用于插入和更新HashTable的数据:</p>
+
+<pre lang="cpp"><code>int zend_hash_add(HashTable *ht, char *arKey, uint nKeyLen,
+                void **pData, uint nDataSize, void *pDest);
+
+int zend_hash_update(HashTable *ht, char *arKey, uint nKeyLen,
+                void *pData, uint nDataSize, void **pDest);
+int zend_hash_index_update(HashTable *ht, ulong h,
+                void *pData, uint nDataSize, void **pDest);
+int zend_hash_next_index_insert(HashTable *ht,
+                void *pData, uint nDataSize, void **pDest);
+</code></pre>
+
+<p>这里的前两个函数用于新增关联索引数据, 比如$foo[&#39;bar&#39;] = &#39;baz&#39;;对应的C语言代码如下:</p>
+
+<pre lang="cpp"><code>zend_hash_add(fooHashTbl, &quot;bar&quot;, sizeof(&quot;bar&quot;), &amp;barZval, sizeof(zval*), NULL);
+
+</code></pre>
+
+<p>zend_hash_add()和zend_hash_update()唯一的区别是如果key存在, zend_hash_add()将会失败.
+接下来的两个函数以类似的方式处理数值索引的HashTable. 这两行之间的区别在于是否指定索引 或者说是否自动赋值为下一个可用索引.
+如果需要存储使用zend_hash_next_index_insert()插入的元素的索引值, 可以调用zend_hash_next_free_element()函数获得:</p>
+
+<pre lang="cpp"><code>ulong nextid = zend_hash_next_free_element(ht);
+zend_hash_index_update(ht, nextid, &amp;data, sizeof(data), NULL);
+
+</code></pre>
+
+<p>对于上面这些插入和更新函数, 如果给pDest传递了值, 则pDest指向的void <em>数据元素将被填充为指向被拷贝数据的指针. 这个参数和你已经见到过的zend_hash_find()的pData参数是相同的用法(也会有相同的结果).
+*译注: 下面的例子及输出可能对理解pDest有帮助</em></p>
+
+<pre lang="cpp"><code>/* 拷贝自Zend/zend_hash.c */
+void zend_hash_display_string(const HashTable *ht)
+{
+    Bucket *p; 
+    uint i;
+
+    if (UNEXPECTED(ht-&gt;nNumOfElements == 0)) {
+        zend_output_debug_string(0, &quot;The hash is empty&quot;);
+        return;
+    }   
+    for (i = 0; i &lt; ht-&gt;nTableSize; i++) {
+        p = ht-&gt;arBuckets[i];
+        while (p != NULL) {
+            zend_output_debug_string(0, &quot;%s[0x%lX] &lt;==&gt; %s&quot;, p-&gt;arKey, p-&gt;h, (char *)p-&gt;pData);
+            p = p-&gt;pNext;
+        }   
+    }   
+
+    p = ht-&gt;pListTail;
+    while (p != NULL) {
+        zend_output_debug_string(0, &quot;%s[hash = 0x%lX, pointer = %p] &lt;==&gt; %s[pointer = %p]&quot;, p-&gt;arKey, p-&gt;h, p-&gt;arKey, (char *)p-&gt;pData, p-&gt;pData);
+        p = p-&gt;pListLast;
+    }   
+}
+PHP_FUNCTION(sample_ht)
+{
+    HashTable   *ht0;
+    char        *key;
+    char        *value;
+    void        *pDest;
+
+    key     = emalloc(16);
+    value   = emalloc(32);
+
+    ALLOC_HASHTABLE(ht0);
+    zend_hash_init(ht0, 50, NULL, NULL, 0); 
+
+    strcpy(key, &quot;ABCDEFG&quot;);
+    strcpy(value, &quot;0123456789&quot;);
+
+    printf(&quot;key: %p %s\n&quot;, key, key);
+    printf(&quot;value: %p %s\n&quot;, value, value);
+
+    zend_hash_add(ht0, key, 8, value, 11, &amp;pDest);
+
+    printf(&quot;pDest: %p\n&quot;, pDest);
+
+    zend_hash_display_string(ht0);
+
+    zend_hash_destroy(ht0);
+    FREE_HASHTABLE(ht0);
+
+    efree(value);
+    efree(key);
+
+    RETURN_NULL();
+}
+</code></pre>
+
+<p><em>译注: 在sample.c以及php_sample.h中增加对应的php_sample_functions条目及声明, 重新编译这个扩展. 执行下面命令:</em></p>
+
+<pre lang="cpp"><code>php -d extension=sample.so -r &#39;sample_ht();&#39;
+
+</code></pre>
+
+<p><em>译注: 得到如下输出</em>
+**</p>
+
+<pre lang="cpp"><code>key: 0x7feef4d17bd8 ABCDEFG
+value: 0x7feef4d15aa0 0123456789
+pDest: 0x7feef4d17da0
+ABCDEFG[0x1AE58CF22D2E61] &lt;==&gt; 0123456789
+ABCDEFG[hash = 0x1AE58CF22D2E61, pointer = 0x7feef4d17d38] &lt;==&gt; 0123456789[pointer = 0x7feef4d17da0]
+
+</code></pre>
+
+<p><strong>找回</strong>
+因为HashTable有两种不同的方式组织索引, 因此就相应的有两种方法提取数据:</p>
+
+<pre lang="cpp"><code>int zend_hash_find(HashTable *ht, char *arKey, uint nKeyLength,
+                                        void **pData);
+int zend_hash_index_find(HashTable *ht, ulong h, void **pData);
+
+</code></pre>
+
+<p>你可能已经猜到了, 第一种用来维护关联索引的数组, 第二种用于数字索引. 回顾第2章, 当数据被增加到HashTable时, 为它分配一块新的内存并将数据拷贝到其中; 当提取数据的时候, 这个数据指针将被返回. 下面的代码片段向HashTable增加了data1, 接着在程序的末尾提取它, <em>data2包含了和</em>data1相同的内容, 虽然它们指向不同的内存地址.</p>
+
+<pre lang="cpp"><code>void hash_sample(HashTable *ht, sample_data *data1)
+
+{
+   sample_data *data2;
+   ulong targetID = zend_hash_next_free_element(ht);
+   if (zend_hash_index_update(ht, targetID,
+           data1, sizeof(sample_data), NULL) == FAILURE) {
+       /* 应该不会发生 */
+       return;
+   }
+   if(zend_hash_index_find(ht, targetID, (void **)&amp;data2) == FAILURE) {
+       /* 同样不太可能, 因为我们只是增加了一个元素 */
+       return;
+   }
+   /* data1 != data2, however *data1 == *data2 */
+}
+</code></pre>
+
+<p>通常, 取回存储的数据和检查它是否存在一样重要; 有两个函数用于检查是否存在:</p>
+
+<pre lang="cpp"><code>int zend_hash_exists(HashTable *ht, char *arKey, uint nKeyLen);
+int zend_hash_index_exists(HashTable *ht, ulong h);
+
+</code></pre>
+
+<p>这两个函数并不会返回SUCCESS/FAILURE, 而是返回1标识请求的key/index存在, 0标识不存在, 下面代码片段的执行等价于isset($foo):</p>
+
+<pre lang="cpp"><code>if (zend_hash_exists(EG(active_symbol_table),
+                                &quot;foo&quot;, sizeof(&quot;foo&quot;))) {
+    /* $foo is set */
+} else {
+    /* $foo does not exist */
+}
+
+</code></pre>
+
+<p><strong>快速的填充和取回</strong></p>
+
+<pre lang="cpp"><code>ulong zend_get_hash_value(char *arKey, uint nKeyLen);
+
+</code></pre>
+
+<p>在相同的关联key上执行多次操作时, 可以先使用zend_get_hash_value()计算出哈希值. 它的结果可以被传递给一组&quot;快速&quot;的函数, 它们的行为与对应的非快速版本一致, 但是使用预先计算好的哈希值, 而不是每次重新计算.</p>
+
+<pre lang="cpp"><code>int zend_hash_quick_add(HashTable *ht,
+    char *arKey, uint nKeyLen, ulong hashval,
+    void *pData, uint nDataSize, void **pDest);
+int zend_hash_quick_update(HashTable *ht,
+    char *arKey, uint nKeyLen, ulong hashval,
+    void *pData, uint nDataSize, void **pDest);
+int zend_hash_quick_find(HashTable *ht,
+    char *arKey, uint nKeyLen, ulong hashval, void **pData);
+int zend_hash_quick_exists(HashTable *ht,
+    char *arKey, uint nKeyLen, ulong hashval);
+</code></pre>
+
+<p>奇怪的是没有zend_hash_quick_del(). 下面的代码段从hta(zval *的HashTable)拷贝一个特定的元素到htb, 它演示了&quot;快速&quot;版本的哈希函数使用:</p>
+
+<pre lang="cpp"><code>void php_sample_hash_copy(HashTable *hta, HashTable *htb,
+                    char *arKey, uint nKeyLen TSRMLS_DC)
+{
+    ulong hashval = zend_get_hash_value(arKey, nKeyLen);
+    zval **copyval;
+
+    if (zend_hash_quick_find(hta, arKey, nKeyLen,
+                hashval, (void**)©val) == FAILURE) {
+        /* arKey不存在 */
+        return;
+    }
+    /* zval现在同时被另外一个哈希表持有引用 */
+    (*copyval)-&gt;refcount++;
+    zend_hash_quick_update(htb, arKey, nKeyLen, hashval,
+                copyval, sizeof(zval*), NULL);
+}
+</code></pre>
+
+<p><em>译注: 下面的例子是译者对上面例子的修改, 应用在数组上, 对外暴露了用户空间接口.</em></p>
+
+<pre lang="cpp"><code>/* php_sample.h中定义的arg info */
+#ifdef ZEND_ENGINE_2
+ZEND_BEGIN_ARG_INFO(sample_array_copy_arginfo, 0)
+    ZEND_ARG_ARRAY_INFO(1, &quot;a&quot;, 0)
+    ZEND_ARG_ARRAY_INFO(1, &quot;b&quot;, 0)
+    ZEND_ARG_PASS_INFO(0)
+ZEND_END_ARG_INFO()
+#else
+static unsigned char    sample_array_copy_arginfo[] =
+    {3, BYREF_FORCE, BYREF_FORCE, 0};
+#endif
+PHP_FUNCTION(sample_array_copy);
+
+/* sample.c中在php_sample_functions中增加的对外暴露接口说明 */
+PHP_FE(sample_array_copy, sample_array_copy_arginfo)
+
+/* 函数逻辑实现 */
+PHP_FUNCTION(sample_array_copy)
+{
+    zval    *a1, *a2, **z;
+    char    *key;
+    int     key_len;
+    ulong   h;  
+
+    if ( zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, &quot;aas&quot;, &amp;a1, &amp;a2, &amp;key, &amp;key_len) == FAILURE ) { 
+        RETURN_FALSE;
+    }   
+
+    h   = zend_get_hash_value(key, key_len + 1); 
+
+    if ( zend_hash_quick_find(Z_ARRVAL_P(a1), key, key_len + 1, h, (void **)&amp;z) == FAILURE ) { 
+        RETURN_FALSE;
+    }   
+
+    Z_SET_REFCOUNT_PP(z, Z_REFCOUNT_PP(z) + 1); 
+    Z_SET_ISREF_PP(z); /* 这里设置为引用类型, 读者可以注释这一行比较结果, 增强对变量引用的理解. */
+    zend_hash_quick_update(Z_ARRVAL_P(a2), key, key_len + 1, h, z, sizeof(zval *), NULL);
+
+    RETURN_TRUE;
+}
+</code></pre>
+
+<p><strong>拷贝和合并</strong>
+前面的任务是从一个HashTable拷贝一个元素到另一个HashTable, 这是很常见的, 并且通常都是批量去做. 为了避免重复的取回和设置值的循环操作, 有3个帮助函数:</p>
+
+<pre lang="cpp"><code>typedef void (*copy_ctor_func_t)(void *pElement);
+void zend_hash_copy(HashTable *target, HashTable *source,
+            copy_ctor_func_t pCopyConstructor,
+            void *tmp, uint size);
+</code></pre>
+
+<p>source中的每个元素都会被拷贝到target中, 接着通过pCopyConstructor函数处理. 对于用户空间数组变量这样的HashTable, 这里提供了增加引用计数的机会, 因此当zval *从一个HashTable中移除的时候, 它并不会被提前销毁. 如果在目标HashTable中已经存在了相同的元素, 将使用新元素覆盖. 其他已有的没有被覆盖的元素也不会被隐式的移除.
+tmp应该是一个指针, 它指向的内存区域将被zend_hash_copy()函数在执行过程中作为临时空间使用. php 4.0.3之后, 这个临时空间不再使用. 如果确认你的扩展不会在4.0.3之前的php中使用, 就将它设置为NULL.
+size是每个成员元素所占的字节数. 对于用户空间变量Hash的情况, 它应该是sizeof(zval *).</p>
+
+<pre lang="cpp"><code>void zend_hash_merge(HashTable *target, HashTable *source,
+            copy_ctor_func_t pCopyConstructor,
+            void *tmp, uint size, int overwrite);
+</code></pre>
+
+<p>zend_hash_merge()与zend_hash_copy()唯一的不同在于最后的overwrite参数. 当将它设置为非0值时, zend_hash_merge()的行为和zend_hash_copy()一致. 当它设置为0时, 跳过已经存在的元素.</p>
+
+<pre lang="cpp"><code>typedef zend_bool (*merge_checker_func_t)(HashTable *target_ht,
+    void *source_data, zend_hash_key *hash_key, void *pParam);
+void zend_hash_merge_ex(HashTable *target, HashTable *source,
+            copy_ctor_func_t pCopyConstructor, uint size,
+            merge_checker_func_t pMergeSource, void *pParam);
+</code></pre>
+
+<p>这一组函数中的最后一个, 允许使用一个合并检查函数有选择的拷贝. 下面的例子展示了zend_hash_merge_ex()用于仅拷贝源HashTable中关联索引成员的例子:</p>
+
+<pre lang="cpp"><code>zend_bool associative_only(HashTable *ht, void *pData,
+            zend_hash_key *hash_key, void *pParam)
+{
+    /* True if there&#39;s a key, false if there&#39;s not */
+    return (hash_key-&gt;arKey &amp;&amp; hash_key-&gt;nKeyLength);
+}
+void merge_associative(HashTable *target, HashTable *source)
+{
+    zend_hash_merge_ex(target, source, zval_add_ref,
+                sizeof(zval*), associative_only, NULL);
+}
+
+</code></pre>
+
+<p><strong>使用Hash Apply迭代</strong>
+就像用户空间一样, 有多种方式去迭代数据集合. 首先, 最简单的方法就是类似于用户空间的foreach()结构, 使用回调系统. 系统涉及两个部分, 一部分是你要编写的回调函数, 它扮演的角色相当于foreach循环内嵌的代码, 另一部分则是对3个Hash应用API函数的调用.</p>
+
+<pre lang="cpp"><code>typedef int (*apply_func_t)(void *pDest TSRMLS_DC);
+void zend_hash_apply(HashTable *ht,
+        apply_func_t apply_func TSRMLS_DC);
+</code></pre>
+
+<p>Hash apply族函数中最简单的格式是通过迭代ht, 将当前迭代到的元素指针作为参数pDest传递, 调用apply_func.</p>
+
+<pre lang="cpp"><code>typedef int (*apply_func_arg_t)(void *pDest,
+                            void *argument TSRMLS_DC);
+void zend_hash_apply_with_argument(HashTable *ht,
+        apply_func_arg_t apply_func, void *data TSRMLS_DC);
+
+</code></pre>
+
+<p>下一种Hash apply的格式是与迭代元素一起传递另外一个参数. 这通常用于多目的的Hash apply函数, 它的行为依赖于额外的参数而不同.
+回调函数并不关心使用哪个迭代函数, 它只有3种可能的返回值:</p>
+
+<p><strong>常量</strong>
+<strong>含义</strong>
+ZEND_HASH_APPLY_KEEP
+返回这个值将完成当前循环,并继续迭代HashTable中的下一个值.这等价于在foreach()控制块中执行continue;
+ZEND_HASH_APPLY_STOP
+返回这个值将中断迭代,等价于在foreach()控制块中执行break;
+ZEND_HASH_APPLY_REMOVE
+类似于ZEND_HASH_APPLY_KEEP,这个返回值将跳到下一次迭代.不过,这个返回值同时会导致从目标HashTable中删除当前元素.</p>
+
+<p>下面是一个简单的用户空间foreach()循环:</p>
+
+<pre lang="php"><code>&lt;?php
+foreach($arr as $val) {
+    echo &quot;The value is: $val\n&quot;;
+}
+?&gt;
+
+</code></pre>
+
+<p>它被翻译成对应的C代码如下:</p>
+
+<pre lang="cpp"><code>int php_sample_print_zval(zval **val TSRMLS_DC)
+{
+    /* 复制一份zval, 使得原来的结构不被破坏 */
+    zval tmpcopy = **val;
+
+    zval_copy_ctor(&amp;tmpcopy);
+    /* 重置引用计数并进行类型转换 */
+    INIT_PZVAL(&amp;tmpcopy);
+    convert_to_string(&amp;tmpcopy);
+    /* 输出 */
+
+    php_printf(&quot;The value is: &quot;);
+    PHPWRITE(Z_STRVAL(tmpcopy), Z_STRLEN(tmpcopy));
+    php_printf(&quot;\n&quot;);
+    /* 释放拷贝 */
+    zval_dtor(&amp;tmpcopy);
+    /* 继续下一个 */
+    return ZEND_HASH_APPLY_KEEP;
+}
+</code></pre>
+
+<p>我们使用下面的函数进行迭代:</p>
+
+<pre lang="cpp"><code>zend_hash_apply(arrht, php_sample_print_zval TSRMLS_CC);
+
+</code></pre>
+
+<p><em>虽然函数的调用只使用一级间访, 但它定义的参数仍然是zval *</em>, 这是因为变量在HashTable中存储时, 实际上只拷贝了zval 的指针, 而HashTable自身并没有触及zval的内容. 如果还不清楚为什么这样做, 请参考第2章.*
+**</p>
+
+<pre lang="cpp"><code>typedef int (*apply_func_args_t)(void *pDest,
+        int num_args, va_list args, zend_hash_key *hash_key);
+void zend_hash_apply_with_arguments(HashTable *ht,
+        apply_func_args_t apply_func, int numargs, ...);
+</code></pre>
+
+<p>为了在循环过程中和值一起接受key, 就必须使用zend_hash_apply()的第三种格式. 例如, 扩展上面的理智, 支持key的输出:</p>
+
+<pre lang="php"><code>&lt;?php
+foreach($arr as $key =&gt; $val) {
+    echo &quot;The value of $key is: $val\n&quot;;
+}
+?&gt;
+</code></pre>
+
+<p>当前的迭代回调无法处理$key的获取. 切换到zend_hash_apply_with_arguments(), 回调函数的原型和实现修改如下:</p>
+
+<pre lang="cpp"><code>int php_sample_print_zval_and_key(zval **val,
+        int num_args, va_list args, zend_hash_key *hash_key)
+{
+    /* 复制zval以使原来的内容不被破坏 */
+    zval tmpcopy = **val;
+    /* 输出函数需要tsrm_ls */
+    TSRMLS_FETCH();
+
+    zval_copy_ctor(&amp;tmpcopy);
+    /* 重置引用计数并进行类型转换 */
+    INIT_PZVAL(&amp;tmpcopy);
+    convert_to_string(&amp;tmpcopy);
+    /* 输出 */
+    php_printf(&quot;The value of &quot;);
+    if (hash_key-&gt;nKeyLength) {
+        /* 关联类型的key */
+        PHPWRITE(hash_key-&gt;arKey, hash_key-&gt;nKeyLength);
+    } else {
+        /* 数值key */
+        php_printf(&quot;%ld&quot;, hash_key-&gt;h);
+    }
+    php_printf(&quot; is: &quot;);
+    PHPWRITE(Z_STRVAL(tmpcopy), Z_STRLEN(tmpcopy));
+    php_printf(&quot;\n&quot;);
+    /* 释放拷贝 */
+    zval_dtor(&amp;tmpcopy);
+    /* 继续 */
+    return ZEND_HASH_APPLY_KEEP;
+}
+</code></pre>
+
+<p><em>译注: 译者使用的php-5.4.9中不需要TSRMLS_FETCH()一行, 回调原型中已经定义了TSRMLS_DC.</em>
+使用下面的函数调用进行迭代:</p>
+
+<pre lang="cpp"><code>zend_hash_apply_with_arguments(arrht,
+                    php_sample_print_zval_and_key, 0);
+
+</code></pre>
+
+<p><em>这个示例比较特殊, 不需要传递参数; 对于从va_list args中提取可变参数, 请参考POSIX文档的va_start(), va_arg(), va_end().</em>
+<em>注意用于测试一个key是否是关联类型的, 使用的是nKeyLength, 而不是arKey. 这是因为在Zend HashTable的实现中, 可能会在arKey中遗留数据. 同时, nKeyLength还可以安全的处理空字符串的key(比如$foo[&#39;&#39;] = &#39;bar&#39;;), 因为nKeyLength包含了末尾的NULL字节.</em>
+<strong>向前推移的迭代</strong>
+我们也可以不使用回调进行HashTable的迭代. 此时, 你就需要记得HashTable中一个常常被忽略的概念: 内部指针.
+在用户空间, 函数reset(), key(), current(), next(), prev(), each(), end()可以用于访问数组内的元素, 它们依赖于一个不可访问的&quot;当前&quot;位置.</p>
+
+<pre lang="php"><code>&lt;?php
+    $arr = array(&#39;a&#39;=&gt;1, &#39;b&#39;=&gt;2, &#39;c&#39;=&gt;3);
+    reset($arr);
+    while (list($key, $val) = each($arr)) {
+        /* Do something with $key and $val */
+    }
+    reset($arr);
+    $firstkey = key($arr);
+    $firstval = current($arr);
+    $bval = next($arr);
+    $cval = next($arr);
+?&gt;
+</code></pre>
+
+<p>这些函数都是对同名的Zend Hash API函数的封装.</p>
+
+<pre lang="cpp"><code>/* reset() */
+void zend_hash_internal_pointer_reset(HashTable *ht);
+/* key() */
+int zend_hash_get_current_key(HashTable *ht,
+        char **strIdx, unit *strIdxLen,
+        ulong *numIdx, zend_bool duplicate);
+/* current() */
+int zend_hash_get_current_data(HashTable *ht, void **pData);
+/* next()/each() */
+int zend_hash_move_forward(HashTable *ht);
+/* prev() */
+int zend_hash_move_backwards(HashTable *ht);
+/* end() */
+void zend_hash_internal_pointer_end(HashTable *ht);
+/* Other... */
+int zend_hash_get_current_key_type(HashTable *ht);
+int zend_hash_has_more_elements(HashTable *ht);
+
+</code></pre>
+
+<p><em>next(), prev(), end()三个用户空间语句实际上映射到的是内部的向前/向后移动, 接着调用zend_hash_get_current_data(). each()执行和next()相同的步骤, 但是同时调用zend_hash_get_current_key()并返回.</em>
+通过向前移动的方式实现的迭代实际上和foreach()循环更加相似, 下面是对前面print_zval_and_key示例的再次实现:</p>
+
+<pre lang="cpp"><code>void php_sample_print_var_hash(HashTable *arrht)
+{
+
+    for(zend_hash_internal_pointer_reset(arrht);
+    zend_hash_has_more_elements(arrht) == SUCCESS;
+    zend_hash_move_forward(arrht)) {
+        char *key;
+        uint keylen;
+        ulong idx;
+        int type;
+        zval **ppzval, tmpcopy;
+
+        type = zend_hash_get_current_key_ex(arrht, &amp;key, &amp;keylen,
+                                                  &amp;idx, 0, NULL);
+        if (zend_hash_get_current_data(arrht, (void**)&amp;ppzval) == FAILURE) {
+            /* 应该永远不会失败, 因为key是已知存在的. */
+            continue;
+        }
+        /* 复制zval以使原来的内容不被破坏 */
+        tmpcopy = **ppzval;
+        zval_copy_ctor(&amp;tmpcopy);
+        /* 重置引用计数, 并进行类型转换 */
+        INIT_PZVAL(&amp;tmpcopy);
+        convert_to_string(&amp;tmpcopy);
+        /* 输出 */
+        php_printf(&quot;The value of &quot;);
+        if (type == HASH_KEY_IS_STRING) {
+            /* 关联类型, 输出字符串key. */
+            /* 译注: 这里传递给PHPWRITE的keylen应该要减1才合适, 因为HashTable中的key长度包含
+             * 末尾的NULL字节, 而正常的php字符串长度不包含这个NULL字节, 不过这里打印通常不会有
+             * 问题, 因为NULL字节一般打印出是空的 */
+            PHPWRITE(key, keylen);
+        } else {
+            /* 数值key */
+            php_printf(&quot;%ld&quot;, idx);
+        }
+        php_printf(&quot; is: &quot;);
+        PHPWRITE(Z_STRVAL(tmpcopy), Z_STRLEN(tmpcopy));
+        php_printf(&quot;\n&quot;);
+        /* 释放拷贝 */
+        zval_dtor(&amp;tmpcopy);
+    }
+}
+</code></pre>
+
+<p>这个代码片段对你来说应该是比较熟悉的了. 没有接触过的是zend_hash_get_current_key()的返回值. 调用时, 这个函数可能返回下表中3个返回值之一:</p>
+
+<p><strong>常量</strong>
+<strong>含义</strong>
+HASH_KEY_IS_STRING
+当前元素是关联索引的;因此,指向元素key名字的指针将会被设置到strIdx中,它的长度被设置到stdIdxLen中.如果指定了duplicate标记,
+ key的值将在设置到strIdx之前使用estrndup()复制一份.这样做,调用方就需要显式的释放这个复制出来的字符串.
+HASH_KEY_IS_LONG
+当前元素是数值索引的,索引的数值将被设置到numIdx中
+HASH_KEY_NON_EXISTANT
+内部指针到达了HashTable内容的末尾.此刻已经没有其他key或数据可用了.</p>
+
+<p><strong>保留内部指针</strong>
+在迭代HashTable时, 尤其是当它包含用户空间变量时, 少数情况下会碰到循环引用或者说自交的循环. 如果一个迭代上下文的循环开始后, HashTable的内部指针被调整, 接着内部启动了对同一个HashTable的迭代循环, 它就会擦掉原有的当前内部指针位置, 内部的迭代将导致外部的迭代被异常终止.
+对于使用zend_hash_apply样式的实现以及自定义的向前移动的用法, 均可以通过外部的HashPosition变量的方式来解决这个问题.
+前面列出的zend_hash_<em>()函数均有对应的zend_hash_</em>_ex()实现, 它们可以接受一个HashPosition类型的参数. 因为HashPosition变量很少在短生命周期的循环之外使用, 因此将它定义为直接变量就足够了. 接着可以取地址进行使用, 如下示例:</p>
+
+<pre lang="cpp"><code>void php_sample_print_var_hash(HashTable *arrht)
+{
+    HashPosition pos;
+    for(zend_hash_internal_pointer_reset_ex(arrht, &amp;pos);
+    zend_hash_has_more_elements_ex(arrht, &amp;pos) == SUCCESS;
+    zend_hash_move_forward_ex(arrht, &amp;pos)) {
+        char *key;
+        uint keylen;
+        ulong idx;
+        int type;
+
+        zval **ppzval, tmpcopy;
+
+        type = zend_hash_get_current_key_ex(arrht,
+                                &amp;key, &amp;keylen,
+                                &amp;idx, 0, &amp;pos);
+        if (zend_hash_get_current_data_ex(arrht,
+                    (void**)&amp;ppzval, &amp;pos) == FAILURE) {
+            /* 应该永远不会失败, 因为key已知是存在的 */
+            continue;
+        }
+        /* 复制zval防止原来的内容被破坏 */
+        tmpcopy = **ppzval;
+        zval_copy_ctor(&amp;tmpcopy);
+        /* 重置引用计数并进行类型转换 */
+        INIT_PZVAL(&amp;tmpcopy);
+        convert_to_string(&amp;tmpcopy);
+        /* 输出 */
+        php_printf(&quot;The value of &quot;);
+        if (type == HASH_KEY_IS_STRING) {
+            /* 关联方式的字符串key */
+            PHPWRITE(key, keylen);
+        } else {
+            /* 数值key */
+            php_printf(&quot;%ld&quot;, idx);
+        }
+        php_printf(&quot; is: &quot;);
+        PHPWRITE(Z_STRVAL(tmpcopy), Z_STRLEN(tmpcopy));
+        php_printf(&quot;\n&quot;);
+        /* 释放拷贝 */
+        zval_dtor(&amp;tmpcopy);
+    }
+}
+</code></pre>
+
+<p>通过这些轻微的修改, HashTable真正的内部指针将被保留, 它就可以保持为刚刚进入函数时的状态不变. 在用户空间变量的HashTable(数组)上工作时, 这些额外的步骤很可能就是决定脚本执行结果是否与预期一致的关键点.
+<strong>析构</strong>
+你需要关注的析构函数只有4个. 前两个用于从一个HashTable中移除单个元素:</p>
+
+<pre lang="cpp"><code>int zend_hash_del(HashTable *ht, char *arKey, uint nKeyLen);
+int zend_hash_index_del(HashTable *ht, ulong h);
+</code></pre>
+
+<p>你应该可以猜到, 这里体现了HashTable独立的索引设计, 它为关联和数值方式的索引元素分别提供了删除函数. 两者均应该返回SUCCESS或FAILURE.
+回顾前面, 当一个元素从HashTable中移除时, HashTable的析构函数将被调用, 传递的参数是指向元素的指针.</p>
+
+<pre lang="cpp"><code>void zend_hash_clean(HashTable *ht);
+
+</code></pre>
+
+<p>要完全清空HashTable时, 最快的方式是调用zend_hash_clean(), 它将迭代所有的元素调用zend_hash_del():</p>
+
+<pre lang="cpp"><code>void zend_hash_destroy(HashTable *ht);
+
+</code></pre>
+
+<p>通常, 清理HashTable时, 你会希望将它整个都清理掉. 调用zend_hash_destroy()将会执行zend_hash_clean()的所有步骤, 同时还会释放zend_hash_init()分配的其他结构.
+下面的代码演示了一个完整的HashTable生命周期:</p>
+
+<pre lang="cpp"><code>int sample_strvec_handler(int argc, char **argv TSRMLS_DC)
+{
+    HashTable *ht;
+    /* 分配一块内存用于HashTable结构 */
+    ALLOC_HASHTABLE(ht);
+    /* 初始化HashTable的内部状态 */
+    if (zend_hash_init(ht, argc, NULL,
+                        ZVAL_PTR_DTOR, 0) == FAILURE) {
+        FREE_HASHTABLE(ht);
+        return FAILURE;
+    }
+    /* 将传入的字符串数组, 顺次以字符串的zval *放入到HashTable中 */
+    while (argc) {
+        zval *value;
+        MAKE_STD_ZVAL(value);
+        ZVAL_STRING(value, argv[argc], 1);
+        argv++;
+        if (zend_hash_next_index_insert(ht, (void**)&amp;value,
+                            sizeof(zval*)) == FAILURE) {
+            /* 添加失败则静默的跳过 */
+            zval_ptr_dtor(&amp;value);
+        }
+    }
+    /* 执行一些其他工作(业务) */
+    process_hashtable(ht);
+    /* 销毁HashTable, 释放所有需要释放的zval */
+    zend_hash_destroy(ht);
+
+    /* 释放HashTable自身 */
+    FREE_HASHTABLE(ht);
+    return SUCCESS;
+}
+</code></pre>
+
+<p><strong>排序, 比较</strong>
+在Zend Hash API中还存在其他一些回调. 第一个是用来处理同一个HashTable中两个元素或者不同HashTable相同位置元素的比较的:</p>
+
+<pre lang="cpp"><code>typedef int (*compare_func_t)(void *a, void *b TSRMLS_DC);
+
+</code></pre>
+
+<p>就像用户空间的usort()回调一样, 这个函数期望你使用自己的逻辑比较两个值a和b, 返回-1表示a小于b, 返回1表示b小于a, 返回0表示两者相等.</p>
+
+<pre lang="cpp"><code>int zend_hash_minmax(HashTable *ht, compare_func_t compar,
+                        int flag, void **pData TSRMLS_DC);
+</code></pre>
+
+<p>使用这个回调的最简单的API函数是zend_hash_minmax(), 顾名思义, 它将基于多次对比较回调的调用, 最终返回HashTable的最大值/最小值元素. flag为0时返回最小值, flag非0时返回最大值.
+下面的例子中, 对已注册的用户空间函数以函数名排序, 并返回(函数名)最小和最大的函数(大小写不敏感):</p>
+
+<pre lang="cpp"><code>int fname_compare(zend_function *a, zend_function *b TSRMLS_DC)
+{
+    return strcasecmp(a-&gt;common.function_name, b-&gt;common.function_name);
+}
+void php_sample_funcname_sort(TSRMLS_D)
+{
+    zend_function *fe;
+    if (zend_hash_minmax(EG(function_table), fname_compare,
+                0, (void **)&amp;fe) == SUCCESS) {
+        php_printf(&quot;Min function: %s\n&quot;, fe-&gt;common.function_name);
+    }
+    if (zend_hash_minmax(EG(function_table), fname_compare,
+                1, (void **)&amp;fe) == SUCCESS) {
+        php_printf(&quot;Max function: %s\n&quot;, fe-&gt;common.function_name);
+    }
+}
+</code></pre>
+
+<p><em>译注: 原书中的示例在译者的环境(php-5.4.9)中不能运行, 经过跟踪检查, 发现zend_hash_minmax传递给fname_compare的两个参数类型是Bucket *</em>, 而非这里的zend_function <em>, 为了避免读者疑惑, 下面给出译者修改后的示例供参考.</em></p>
+
+<pre lang="cpp"><code>static int sample_fname_compare(Bucket **p1, Bucket **p2 TSRMLS_DC) {
+    zend_function   *zf1, *zf2;    zf1 = (zend_function *)(*p1)-&gt;pData;
+    zf2 = (zend_function *)(*p2)-&gt;pData;
+    return strcasecmp(zf1-&gt;common.function_name, zf2-&gt;common.function_name);
+}
+PHP_FUNCTION(sample_funcname_sort)
+{
+    zend_function   *zf;
+
+    if ( zend_hash_minmax(EG(function_table), (compare_func_t)sample_fname_compare, 0, (void **)&amp;zf TSRMLS_CC) == SUCCESS )
+        php_printf(&quot;Min function: %s\n&quot;, zf-&gt;common.function_name);    if ( zend_hash_minmax(EG(function_table), (compare_func_t)sample_fname_compare, 1, (void **)&amp;zf TSRMLS_CC) == SUCCESS )
+        php_printf(&quot;Max function: %s\n&quot;, zf-&gt;common.function_name);
+
+    RETURN_TRUE;
+}
+</code></pre>
+
+<p>哈希比较函数还会用于zend_hash_compare()中, 它会评估两个HashTable中的每个元素进行比较. 如果hta大于htb, 返回1, 如果htb大于hta, 返回-1, 如果两者相等, 返回0.</p>
+
+<pre lang="cpp"><code>int zend_hash_compare(HashTable *hta, HashTable *htb,
+        compare_func_t compar, zend_bool ordered TSRMLS_DC);
+
+</code></pre>
+
+<p>这个函数首先会比较两个HashTable的元素个数. 如果其中一个元素个数多于另外一个, 则直接认为它比另外一个大, 快速返回.
+接下来, 循环遍历hta. 如果设置了ordered标记, 它将hta的第一个元素和htb的第一个元素的key长度进行比较, 接着使用memcmp()二进制安全的比较key内容. 如果key相等, 则使用提供的compar回调函数比较两个元素的值.
+如果没有设置ordered标记, 则遍历hta得到一个元素后, 从htb中查找key/index相等的元素, 如果存在, 对它们的值调用传入的compar回调函数, 否则, 则认为hta比htb大, 直接返回1.
+如果上面的处理结束后, hta和htb一致都被认为是相等的, 则从hta中遍历下一个元素重复上面过程, 直到找到不同, 或者所有的元素耗尽, 此时认为它们相等返回0.
+这一族的回调函数中第二个是排序函数:</p>
+
+<pre lang="cpp"><code>typedef void (*sort_func_t)(void **Buckets, size_t numBuckets,
+            size_t sizBucket, compare_func_t comp TSRMLS_DC);
+</code></pre>
+
+<p>这个回调将被触发一次, 它以向量方式接受HashTable中所有Bucket(元素)的指针. 这些Bucket可以在向量内部按照排序函数自己的逻辑(与是否使用比较回调无关)进行交换. 实际上, sizBucket总是等于sizeof(Bucket *)
+除非你计划实现自己的冒泡或其他排序算法, 否则不需要自己实现排序函数. php内核中已经有一个预定义的排序函数: zend_qsort, 它可以作为zend_hash_sort()的回调函数, 这样, 你就只需要实现比较函数.</p>
+
+<pre lang="cpp"><code>int zend_hash_sort(HashTable *ht, sort_func_t sort_func,
+        compare_func_t compare_func, int renumber TSRMLS_DC);
+
+</code></pre>
+
+<p>zend_hash_sort()的最后一个参数被设置后, 将会导致在排序后, 原来的关联key以及数值下表都被按照排序结果重置为数值索引. 用户空间的sort()实现就以下面的方式使用了zend_hash_sort():</p>
+
+<pre lang="cpp"><code>zend_hash_sort(target_hash, zend_qsort,
+                        array_data_compare, 1 TSRMLS_CC);
+</code></pre>
+
+<p>不过, array_data_compare只是一个简单的compare_func_t实现, 它只是依据HashTable中zval <em>的值进行排序.
+*</em>zval <em>数组API</em>*
+你在开发php扩展时, 95%以上的HashTable引用都是用于存储和检索用户空间变量的. 反过来说, 你的多数HashTable自身都将被包装在zval中.
+<strong>简单的数组创建</strong>
+为了辅助这些常见的HashTable的创建和操作, PHP API暴露了一些简单的宏和辅助函数, 我们从array_init(zval *arrval)开始看. 这个函数分配了一个HashTable, 以适用于用户空间变量哈希的参数调用zend_hash_init(), 并将新创建的结构设置到zval *中.
+这里不需要特殊的析构函数, 因为在zval最后一个refcount失去后, 通过调用zval_dtor()/zval_ptr_dtor(), 引擎会自动的调用zend_hash_destroy()和FREE_HASHTABLE().
+联合array_init()方法和第6章&quot;返回值&quot;中已经学习的从函数返回值的技术:</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_array)
+{
+    array_init(return_value);
+}
+</code></pre>
+
+<p>因为return_value是一个预分配的zval <em>, 因此不需要在它上面做其他工作. 并且由于它唯一的引用就是你的函数返回, 因此不要担心它的清理.
+*</em>简单的数组构造**
+和所有的HashTable一样, 你需要迭代增加元素来构造数组. 由于用户空间变量的特殊性, 你需要回到你已经知道的C语言中的基础数据类型. 有3种格式的函数: add_assoc_<em>(), add_index_</em>(), add_next_index_<em>(), 对于已知的ZVAL_</em>(), RETVAL_<em>(), RETURN_</em>()宏所支持的每种数据类型, 都有对应的这3种格式的函数. 例如:</p>
+
+<pre lang="cpp"><code>add_assoc_long(zval *arrval, char *key, long lval);
+add_index_long(zval *arrval, ulong idx, long lval);
+add_next_index_long(zval *arrval, long lval);
+
+</code></pre>
+
+<p>每种情况中, 数组zval <em>都是第一个参数, 接着是关联key名或数值下标, 或者对于next_index变种来说, 两者都不需要. 最后是数据元素自身, 最终它将被包装为一个新分配的zval *, 并使用zend_hash_update(), zend_hash_index_update(), zend_hash_next_index_insert()增加到数组中.
+add_assoc_</em>()函数变种以及它们的函数原型如下. 其他两种格式则将assoc替换为index或next_index, 并对应调整key/index参数即可.</p>
+
+<pre lang="cpp"><code>add_assoc_null(zval *aval, char *key);
+add_assoc_bool(zval *aval, char *key, zend_bool bval);
+add_assoc_long(zval *aval, char *key, long lval);
+add_assoc_double(zval *aval, char *key, double dval);
+add_assoc_string(zval *aval, char *key, char *strval, int dup);
+add_assoc_stringl(zval *aval, char *key,
+                    char *strval, uint strlen, int dup);
+add_assoc_zval(zval *aval, char *key, zval *value);
+
+</code></pre>
+
+<p>这些函数的最后一个版本允许你自己准备一个任意类型(包括资源, 对象, 数组)的zval, 将它增加到数组中. 现在尝试在你的sample_array()函数中做一些额外的工作.</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample_array)
+{
+    zval *subarray;
+
+    array_init(return_value);
+    /* 增加一些标量值 */
+    add_assoc_long(return_value, &quot;life&quot;, 42);
+    add_index_bool(return_value, 123, 1);
+    add_next_index_double(return_value, 3.1415926535);
+    /* 增加一个静态字符串, 由php去复制 */
+    add_next_index_string(return_value, &quot;Foo&quot;, 1);
+    /* 手动复制的字符串 */
+    add_next_index_string(return_value, estrdup(&quot;Bar&quot;), 0);
+
+    /* 创建一个子数组 */
+    MAKE_STD_ZVAL(subarray);
+    array_init(subarray);
+    /* 增加一些数值 */
+    add_next_index_long(subarray, 1);
+    add_next_index_long(subarray, 20);
+    add_next_index_long(subarray, 300);
+    /* 将子数组放入到父数组中 */
+    add_index_zval(return_value, 444, subarray);
+}
+</code></pre>
+
+<p>如果在这个函数的返回值上调用var_dump()将得到下面输出:</p>
+
+<pre lang="cpp"><code>$ php -r &#39;var_dump(sample_array());&#39;
+array(6) {
+  [&quot;life&quot;]=&gt;
+  int(42)
+  [123]=&gt;
+  bool(true)
+  [124]=&gt;
+  float(3.1415926535)
+  [125]=&gt;
+  string(3) &quot;Foo&quot;
+  [126]=&gt;
+  string(3) &quot;Bar&quot;
+  [444]=&gt;
+  array(3) {
+    [0]=&gt;
+    int(1)
+    [1]=&gt;
+    int(20)
+    [2]=&gt;
+    int(300)
+  }
+}
+</code></pre>
+
+<p>这些add_<em>()函数还可以用于简单对象的内部公共属性. 在第10章&quot;php 4对象&quot;中我们可以看到它们.
+*</em>小结**
+你已经花费了一些时间学习了很长的一章, 本章介绍了Zend引擎和php内核中仅次于zval *的通用数据结构. 本章还比较了不同的数据存储机制, 并介绍了很多未来将多次使用的API.
+现在你已经有了足够的积累, 可以实现一些相当一部分标准扩展了. 后面的几章将完成剩余的zval数据类型(资源和对象)的学习.</p>
+
+<p><a href="http://blog.csdn.net/lgg201/article/details/8493725">目录</a>上一章: <a href="http://blog.csdn.net/lgg201/article/details/8632498">接受参数</a>下一章: <a href="http://blog.csdn.net/lgg201/article/details/8713316">资源数据类型</a></p>
+
+          </section>
+
+          
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
+<noscript><a href="http://www.51.la/?18906058" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18906058.asp" style="border:none" /></a></noscript>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.all.min.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/custom.js"></script>
+
+  </body>
+</html>

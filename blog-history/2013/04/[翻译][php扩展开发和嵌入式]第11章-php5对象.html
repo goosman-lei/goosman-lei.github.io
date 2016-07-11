@@ -1,0 +1,1060 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="goosman-lei的博客">
+    <meta name="keywords" content="PHP Web开发,PHP,PHP 框架,高可用,分布式">
+
+    <title>[翻译][php扩展开发和嵌入式]第11章-php5对象- By Goosman-lei(goosman.lei@gmail.com</title>
+
+    <!-- Styles -->
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="http://static-cdn.tec-inf.com/apple-touch-icon.png">
+    <link rel="icon" href="http://static-cdn.tec-inf.com/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="">Goosman.lei</a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+                              <li class=""><a href="/ice">Ice</a></li>
+                              <li class=" active"><a href="/blog-history">CSDN-BLOG</a></li>
+                              <li class="hero"><a href="mailto:goosman.lei@gmail.com">Contact</a></li>
+                          </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+      
+    </header>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+
+<!-- TODO 解递归当场遍历出树结构菜单 -->
+<ul class="sidenav">
+  <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">2016年</a>
+  <ul>
+    <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">[分享]面向中大型应用的PHPWeb开发框架Ice</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">2013年</a>
+  <ul>
+    <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html">[翻译][php扩展开发和嵌入式]第19章-设置宿主环境</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html">[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html">[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">[翻译][php扩展开发和嵌入式]第16章-有趣的流</a>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html">[翻译][php扩展开发和嵌入式]第15章-php中流的实现</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">[翻译][php扩展开发和嵌入式]第14章-php中流的访问</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html">[翻译][php扩展开发和嵌入式]第13章-php的INI设置</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html">[翻译][php扩展开发和嵌入式]第12章-php的启动过程</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html" class="active">[翻译][php扩展开发和嵌入式]第11章-php5对象</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html">[翻译][php扩展开发和嵌入式]第10章-php4的对象</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">[翻译][php扩展开发和嵌入式]第9章-资源数据类型</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html">[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html">[翻译][php扩展开发和嵌入式]第7章-接受参数</a>
+      <li><a href="/blog-history/2013/03/从1.5k到18k,一个程序员的5年成长之路.html">从1.5k到18k,一个程序员的5年成长之路</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">[翻译][php扩展开发和嵌入式]第6章-返回值</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html">[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html">[翻译][php扩展开发和嵌入式]第4章-安装构建环境</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">[翻译][php扩展开发和嵌入式]第3章-内存管理</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html">[翻译][php扩展开发和嵌入式]第2章-变量的里里外外</a>
+      <li><a href="/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump.html">[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html">[翻译][php扩展开发和嵌入式]第1章-php的生命周期</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html">[翻译][php扩展开发和嵌入式]第0章-译序</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">2012年</a>
+  <ul>
+    <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">从N个数中选取最大的前10个[堆排序版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[php版].html">从N个数中选取最大的前10个[php版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html">从N个数中选取最大的前10个[C语言版]</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">php截取字符串保留完整xml标签</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">[mysql-manual-5.5]7.1优化概览</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html">php-mysql扩展mysql_querymysql_unbuffered_query对比</a>
+      <li><a href="/blog-history/2012/10/简单游戏场景用户模拟.html">简单游戏场景用户模拟</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html">php-mysql扩展的mysql_connectmysql_pconnect比较</a>
+      <li><a href="/blog-history/2012/10/模拟新浪微博自动登陆.html">模拟新浪微博自动登陆</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">php-curl封装[避免上传文件二义性Bug]</a>
+      <li><a href="/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html">[漏洞]ThinkSNS严重漏洞--将全站崩溃</a>
+      <li><a href="/blog-history/2012/09/无限递归树展示.html">无限递归树展示</a>
+      <li><a href="/blog-history/2012/09/[快速记忆]C语言php的运算符优先级结合性.html">[快速记忆]C语言php的运算符优先级结合性</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">[软件工程]一个故事,分析陷入焦油坑的软件项目</a>
+      <li><a href="/blog-history/2012/06/输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1.html">输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1</a>
+      <li><a href="/blog-history/2012/06/算法分析从N条成绩单信息选择M位不重复同学发奖.html">算法分析从N条成绩单信息选择M位不重复同学发奖</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">ThinkPHPCore3.0源代码review文档</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">2011年</a>
+  <ul>
+    <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">正则表达式分析提取XMLXHTML标签属性</a>
+      <li><a href="/blog-history/2011/12/封装的一个mysql_lib.php,主要是一个分页模型.html">封装的一个mysql_lib.php,主要是一个分页模型</a>
+      <li><a href="/blog-history/2011/12/爱因斯坦的思考题.html">爱因斯坦的思考题</a>
+      <li><a href="/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html">从浏览器操作系统市场占有率分析国人</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">[php内核]----文件系统函数用于普通文件时的一些情况</a>
+      <li><a href="/blog-history/2011/10/某地自动评论脚本备份.html">某地自动评论脚本备份</a>
+      <li><a href="/blog-history/2011/10/使用alarm配合信号实现sleep.html">使用alarm配合信号实现sleep</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现.html">libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html">libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析</a>
+      <li><a href="/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html">由信号集联想----位域授权模式的不限长扩展</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">PHP位域操作函数封装</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">基于dup实现linux的dup2函数APUE练习题3.2</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">日志分析工具（二分法分段查找处理）</a>
+      <li><a href="/blog-history/2011/07/从dl函数分析PHP模块开发.html">从dl函数分析PHP模块开发</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/04/php中的引用传值分析.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2011/04/php中的引用传值分析.html">php中的引用传值分析</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">phppcre正则表达式完全教程----pcre官方文档</a>
+      <li><a href="/blog-history/2011/03/Ubuntu中利用Grub2修复移动硬盘引导.html">Ubuntu中利用Grub2修复移动硬盘引导</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结</a>
+      <li><a href="/blog-history/2011/02/javascript中的继承,找回丢失的constructor.html">javascript中的继承,找回丢失的constructor</a>
+      <li><a href="/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定.html">浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定</a>
+      <li><a href="/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html">PHP操作符优先级列表及一个优先级带来的灵异事件</a>
+      <li><a href="/blog-history/2011/02/PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升.html">PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">php5.3新增的闭包语法介绍functionuse{}</a>
+      <li><a href="/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html">与PHP5.3.5的战斗----记php5.3.5安装过程</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">2010年</a>
+  <ul>
+    <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2010/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2010/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2010/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2010/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2010/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2010/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2010/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2010/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2010/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2010/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2010/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2010/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2010/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2010/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">2009年</a>
+  <ul>
+    <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2009/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2009/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2009/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2009/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2009/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2009/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2009/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2009/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2009/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2009/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2009/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2009/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2009/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2009/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+</ul>
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1></h1>
+            <p></p>
+<ol class="toc">
+</li></ol>
+
+          </header>
+
+          <section>
+<p><strong>全部翻译内容pdf文档下载地址: </strong><a href="http://download.csdn.net/detail/lgg201/5107012"><strong>http://download.csdn.net/detail/lgg201/5107012</strong></a>
+本书目前在github上由laruence(<a href="http://www.laruence.com)%E5%92%8Cwalu(http://www.walu.cc)%E4%B8%A4%E4%BD%8D%E5%A4%A7%E7%89%9B%E7%BB%84%E7%BB%87%E7%BF%BB%E8%AF%91">http://www.laruence.com)和walu(http://www.walu.cc)两位大牛组织翻译</a>. 该翻译项目地址为: <a href="https://github.com/walu/phpbook">https://github.com/walu/phpbook</a>
+本书在github上的地址: <a href="https://github.com/goosman-lei/php-eae">https://github.com/goosman-lei/php-eae</a>
+未来本书将可能部分合并到phpbook项目中, 同时保留一份独立版本.</p>
+
+<p>原书名: <Extending and Embedding PHP>
+原作者: Sara Golemon
+译者: goosman.lei(雷果国)
+译者Email: <a href="mailto:goosman.lei@gmail.com">goosman.lei@gmail.com</a>
+译者Blog: <a href="http://blog.csdn.net/lgg201">http://blog.csdn.net/lgg201</a></p>
+
+<p><strong>php5对象</strong>
+将php5的对象和它的先辈php4对象进行比较实在有些不公平, 不过php5对象使用的API函数还是遵循php4的API构建的. 如果你已经阅读了第10章&quot;php4对象&quot;, 你将会对本章内容多少有些熟悉. 在开始本章之前, 可以像第10章开始时一样, 重命名扩展为sample3并清理多余的代码, 只保留扩展的骨架代码.
+<strong>进化史</strong>
+在php5对象变量中有两个关键的组件. 第一个是一个数值的标识, 它和第9章&quot;资源数据类型&quot;中介绍的数值资源ID非常相似, 扮演了一个用来在对应表中查找对象实例的key的角色. 在这个实例表中的元素包含了到zend_class_entry的引用以及内部的属性表.
+第二个元素是对象变量的句柄表, 使用它可以自定义Zend引擎对实例的处理方式. 在本章后面你将看到这个句柄表.
+<strong>zend_class_entry</strong>
+类条目是你在用户空间定义的类的内部表示. 正如你在前一章所见, 这个结构通过调用INIT_CLASS_ENTRY()初始化, 参数为类名和它的函数表. 接着在MINIT阶段使用zend_register_internal_class()注册.</p>
+
+<pre lang="cpp"><code>zend_class_entry *php_sample3_sc_entry;
+#define PHP_SAMPLE3_SC_NAME &quot;Sample3_SecondClass&quot;
+static function_entry php_sample3_sc_functions[] = {
+    { NULL, NULL, NULL }
+};
+
+PHP_MINIT_FUNCTION(sample3)
+{
+    zend_class_entry ce;
+    INIT_CLASS_ENTRY(ce, PHP_SAMPLE3_SC_NAME,
+                            php_sample3_sc_functions);
+    php_sample3_sc_entry =
+                zend_register_internal_class(&amp;ce TSRMLS_CC);
+    return SUCCESS;
+}
+</code></pre>
+
+<p><strong>方法</strong>
+如果你已经阅读了上一章, 你可能就会想&quot;到现在为止看起来几乎一样啊?&quot;, 到现在为止, 你是对的. 现在我们开始定义一些对象方法. 你将开始看到一些非常确定的并且大受欢迎的不同.</p>
+
+<pre lang="cpp"><code>PHP_METHOD(Sample3_SecondClass, helloWorld)
+{
+    php_printf(&quot;Hello World\n&quot;);
+}
+</code></pre>
+
+<p>在Zend引擎2中引入了PHP_METHOD()宏, 它是对PHP_FUNCTION()宏的封装, 将类名和方法名联合起来, 不用像php4中手动定义方法名了. 通过使用这个宏, 在扩展中你的代码和其他维护者的代码的名字空间解析规范就保持一致了.
+<strong>定义</strong>
+定义一个方法的实现, 和其他函数一样, 只不过是将它连接到类的函数表中. 除了用于实现的PHP_METHOD()宏, 还有一些新的宏可以用在函数列表的定义中.</p>
+
+<ul>
+<li>PHP_ME(classname, methodname, arg_info, flags)</li>
+</ul>
+
+<p>PHP_ME()相比于第5章&quot;你的第一个扩展&quot;中介绍的PHP_FE()宏, 增加了一个classname参数, 以及末尾的一个flags参数(用来提供public, protected, private, static等访问控制, 以及abstract和其他一些选项). 比如要定义helloWorld方法, 就可以如下定义:</p>
+
+<pre lang="cpp"><code>PHP_ME(Sample3_SecondClass,helloWorld,NULL,ZEND_ACC_PUBLIC)
+
+</code></pre>
+
+<ul>
+<li>PHP_MALIAS(classname, name, alias, arg_info, flags)</li>
+</ul>
+
+<p>和PHP_FALIAS()宏很像, 这个宏允许你给alias参数描述的方法(同一个类中的)实现提供一个name指定的新名字. 例如, 要复制你的helloWorld方法则可以如下定义</p>
+
+<pre lang="cpp"><code>PHP_MALIAS(Sample3_SecondClass, sayHi, helloWorld,
+                            NULL, ZEND_ACC_PUBLIC)
+
+</code></pre>
+
+<ul>
+<li>PHP_ABSTRACT_ME(classname, methodname, arg_info)</li>
+</ul>
+
+<p>内部类中的抽象方法很像用户空间的抽象方法. 在父类中它只是一个占位符, 期望它的子类提供真正的实现. 你将在接口一节中使用这个宏, 接口是一种特殊的class_entry.</p>
+
+<ul>
+<li>PHP_ME_MAPPING(methodname, functionname, arg_info)</li>
+</ul>
+
+<p>最后一种方法定义的宏是针对同时暴露OOP和非OOP接口的扩展(比如mysqli既有过程化的mysqli_query(), 也有面向对象的MySQLite::query(), 它们都使用了相同的实现.)的. 假定你已经有了一个过程化函数, 比如第5章写的sample_hello_world(), 你就可以使用这个宏以下面的方式将它附加为一个类的方法(要注意, 映射的方法总是public, 非static, 非final的):</p>
+
+<pre lang="cpp"><code>PHP_ME_MAPPING(hello, sample_hello_world, NULL)
+
+</code></pre>
+
+<p>现在为止, 你看到的方法定义都使用了ZEND_ACC_PUBLIC作为它的flags参数. 实际上, 这个值可以是下面两张表的任意值的位域运算组合, 并且它还可以和本章后面&quot;特殊方法&quot;一节中要介绍的一个特殊方法标记使用位域运算组合.</p>
+
+<p><strong>类型标记</strong>
+<strong>含义</strong>
+ZEND_ACC_STATIC
+方法可以静态调用.实际上,这就表示,方法如果通过实例调用,
+ $this或者更确切的说this_ptr,并不会被设置到实例作用域中
+ZEND_ACC_ABSTRACT
+方法并不是真正的实现.当前方法应该在被直接调用之前被子类覆写.
+ZEND_ACC_FINAL
+方法不能被子类覆写</p>
+
+<p><strong>可见性标记</strong>
+<strong>含义</strong>
+ZEND_ACC_PUBLIC
+可以在对象外任何作用域调用.这和php4方法的可见性是一样的
+ZEND_ACC_PROTECTED
+只能在类中或者它的子类中调用
+ZEND_ACC_PRIVATE
+只能在类中调用</p>
+
+<p>比如, 由于你前面定义的Sample3_SecondClass::helloWorld()方法不需要对象实例, 你就可以将它的定义从简单的ZEND_ACC_PUBLIC修改为ZEND_ACC_PUBLIC | ZEND_ACC_STATIC, 这样引擎知道了就不会去提供(实例)了.
+<strong>魔术方法</strong>
+除了ZE1的魔术方法外, ZE2新增了很多魔术方法, 如下表(或者可以在<a href="http://www.php.net/language.oop5.magic%E4%B8%AD%E6%89%BE%E5%88%B0">http://www.php.net/language.oop5.magic中找到</a>)</p>
+
+<p><strong>方法</strong>
+<strong>用法</strong>
+__construct(...)
+可选的自动调用的对象构造器(之前定义的是和类名一致的方法).如果__construct()和classname()两种实现都存在,在实例化的过程中,将优先调用__construct()
+__destruct()
+当实例离开作用域,或者请求整个终止,都将导致隐式的调用实例的__destruct()方法去处理一些清理工作,比如关闭文件或网络句柄.
+__clone()
+默认情况下,所有的实例都是真正的引用传值.在php5中,要想真正的拷贝一个对象实例,就要使用clone关键字.当在一个对象实例上调用clone关键字时,
+ __clone()方法就会隐含的被执行,它允许对象去复制一些需要的内部资源数据.
+__toString()
+在用文本表示一个对象时,比如当直接在对象上使用echo或print语句时,
+ __toString()方法将自动的被引擎调用.类如果实现这个魔术方法,应该返回一个包含描述对象的当前状态的字符串.
+__get($var)
+如果脚本中请求一个对象不可见的属性(不存在或者由于访问控制导致不可见)时,
+ __get()魔术方法将被调用,唯一的参数是所请求的属性名.实现可以使用它自己的内部逻辑去确定最合理的返回值返回.
+__set($var, $value)
+和__get()很像,
+ __set()提供了与之相反的能力,它用来处理赋值给对象的不可见属性时的逻辑.__set()的实现可以选择隐式的在标准属性表中创建这些变量,以其他存储机制设置值,或者直接抛出错误并丢弃值.
+__call($fname, $args)
+调用对象的未定义方法时可以通过使用__call()魔术方法实现漂亮的处理.这个方法接受两个参数:被调用的方法名,包含调用时传递的所有实参的数值索引的数组.
+__isset($varname)
+php5.1.0之后, isset($obj-&gt;prop)的调用不仅是检查$obj中是否有prop这个属性,它还会调用$obj中定义的__isset()方法,动态的评估尝试使用动态的__get()和__set()方法是否能成功读写属性
+__unset($varname)
+类似于__isset(), php 5.1.0为unset()函数引入了一个简单的OOP接口,它可以用于对象属性,虽然这个属性可能在对象的标准属性表中并不存在,但它可能对于__get()和__set()的动态属性空间是有意义的,因此引入__unset()来解决这个问题.</p>
+
+<p><em>还有其他的魔术方法功能, 它们可以通过某些接口来使用, 比如ArrayAccess接口以及一些SPL接口.</em>
+在一个内部对象的实现中, 每个这样的&quot;魔术方法&quot;都可以和其他方法一样实现, 只要在对象的方法列表中正确的定义PHP_ME()以及PUBLIC访问修饰符即可.对于 __get(), __set(), __call(), __isset()以及__unset(), 它们要求传递参数, 你必须定义恰当的arg_info结构来指出方法需要一个或两个参数. 下面的代码片段展示了这些木梳函数的arg_info和它们对应的PHP_ME()条目:</p>
+
+<pre lang="cpp"><code>static
+    ZEND_BEGIN_ARG_INFO_EX(php_sample3_one_arg, 0, 0, 1)
+    ZEND_END_ARG_INFO()
+static
+    ZEND_BEGIN_ARG_INFO_EX(php_sample3_two_args, 0, 0, 2)
+    ZEND_END_ARG_INFO()
+static function_entry php_sample3_sc_functions[] = {
+    PHP_ME(Sample3_SecondClass, __construct, NULL,
+                        ZEND_ACC_PUBLIC|ZEND_ACC_CTOR)
+    PHP_ME(Sample3_SecondClass, __destruct, NULL,
+                        ZEND_ACC_PUBLIC|ZEND_ACC_DTOR)
+    PHP_ME(Sample3_SecondClass, __clone, NULL,
+                        ZEND_ACC_PUBLIC|ZEND_ACC_CLONE)
+    PHP_ME(Sample3_SecondClass, __toString, NULL,
+                        ZEND_ACC_PUBLIC)
+    PHP_ME(Sample3_SecondClass, __get, php_sample3_one_arg,
+                        ZEND_ACC_PUBLIC)
+    PHP_ME(Sample3_SecondClass, __set, php_sample3_two_args,
+                        ZEND_ACC_PUBLIC)
+    PHP_ME(Sample3_SecondClass, __call, php_sample3_two_args,
+                        ZEND_ACC_PUBLIC)
+    PHP_ME(Sample3_SecondClass, __isset, php_sample3_one_arg,
+                        ZEND_ACC_PUBLIC)
+    PHP_ME(Sample3_SecondClass, __unset, php_sample3_one_arg,
+                        ZEND_ACC_PUBLIC)
+    { NULL, NULL, NULL }
+};
+</code></pre>
+
+<p>要注意__construct, __destruct, __clone使用位域运算符增加了额外的常量. 这三个访问修饰符对于方法而言是特殊的, 它们不能被用于其他地方.
+<strong>属性</strong>
+php5中对象属性的访问控制与方法的可见性有所不同. 在标准属性表中定义一个公开属性时, 就像你通常期望的, 你可以使用zend_hash_add()或add_property_*()族函数.
+对于受保护的和私有的属性, 则需要使用新的ZEND_API函数:</p>
+
+<pre lang="cpp"><code>void zend_mangle_property_name(char **dest, int *dest_length,
+                        char *class, int class_length,
+                        char *prop, int prop_length,
+                        int persistent)
+
+</code></pre>
+
+<p>这个函数会分配一块新的内存, 构造一个&quot;\0classname\0propname&quot;格式的字符串. 如果类名是特定的类名, 比如Sample3_SecondClass, 则属性的可见性为private, 只能在Sample3_SecondClass对象实例内部可见.
+如果类名指定为*, 则属性的可见性是protected, 它可以被对象实例所属类的所有祖先和后辈访问. 实际上, 属性可以以下面方式增加到对象上:</p>
+
+<pre lang="cpp"><code>void php_sample3_addprops(zval *objvar)
+{
+    char *propname;
+    int propname_len;
+    /* public */
+    add_property_long(objvar, &quot;Chapter&quot;, 11);
+    /* protected */
+    zend_mangle_property_name(&amp;propname, &amp;propname_len,
+        &quot;*&quot;, 1, &quot;Title&quot;, sizeof(&quot;Title&quot;)-1, 0);
+    add_property_string_ex(objvar, propname, propname_len,
+        &quot;PHP5 Objects&quot;, 1 TSRMLS_CC);
+    efree(propname);
+    /* Private */
+    zend_mangle_property_name(&amp;propname, &amp;propname_len,
+        &quot;Sample3_SecondClass&quot;,sizeof(&quot;Sample3_SecondClass&quot;)-1,
+        &quot;Section&quot;, sizeof(&quot;Section&quot;)-1, 0);
+    add_property_string_ex(objvar, propname, propname_len,
+        &quot;Properties&quot;, 1 TSRMLS_CC);
+    efree(propname);
+}
+</code></pre>
+
+<p>通过<em>ex()版的add_property</em><em>()族函数, 可以明确标记属性名的长度. 这是需要的, 因为在protected和private属性名中会包含NULL字节, 而strlen()认为NULL字节是字符串终止标记, 这样将导致属性名被认为是空. 要注意的是<em>ex()版本的add_property</em></em>()函数还要求显式的传递TSRMLS_CC. 而通常它是通过宏扩展隐式的传递的.
+定义类常量和定义类属性非常相似. 两者的关键不同点在于它们的持久性, 因为属性的生命周期是伴随的实例的, 它发生在请求中, 而常量是和类定义在一起的, 只能在MINIT阶段定义.
+由于标准的zval *维护宏的函数假定了非持久性, 所以你需要手动写不少代码. 考虑下面的函数:</p>
+
+<pre lang="cpp"><code>void php_sample3_register_constants(zend_class_entry *ce)
+{
+    zval *constval;
+
+
+    /* 基本的标量值可以使用Z_*()去设置它们的值 */
+    constval = pemalloc(sizeof(zval), 1);
+    INIT_PZVAL(constval);
+    ZVAL_DOUBLE(constval, 2.7182818284);
+    zend_hash_add(&amp;ce-&gt;constants_table, &quot;E&quot;, sizeof(&quot;E&quot;),
+                    (void*)&amp;constval, sizeof(zval*), NULL);
+
+    /* 字符串需要额外的空间分配 */
+    constval = pemalloc(sizeof(zval), 1);
+    INIT_PZVAL(constval);
+    Z_TYPE_P(constval) = IS_STRING;
+    Z_STRLEN_P(constval) = sizeof(&quot;Hello World&quot;) - 1;
+    Z_STRVAL_P(constval) = pemalloc(Z_STRLEN_P(constval)+1, 1);
+    memcpy(Z_STRVAL_P(constval), &quot;Hello World&quot;,
+                            Z_STRLEN_P(constval) + 1);
+    zend_hash_add(&amp;ce-&gt;constants_table,
+                    &quot;GREETING&quot;, sizeof(&quot;GREETING&quot;),
+                    (void*)&amp;constval, sizeof(zval*), NULL);
+
+
+    /* Objects, Arrays, and Resources can&#39;t be constants */
+}
+PHP_MINIT_FUNCTION(sample3)
+{
+    zend_class_entry ce;
+    INIT_CLASS_ENTRY(ce, PHP_SAMPLE3_SC_NAME,
+                            php_sample3_sc_functions);
+    php_sample3_sc_entry =
+                zend_register_internal_class(&amp;ce TSRMLS_CC);
+    php_sample3_register_constants(php_sample3_sc_entry);
+    return SUCCESS;
+}
+</code></pre>
+
+<p>在这之下, 这些类常量就可以访问了, 分别是: Sample3_SecondClass::E和Sample3_SecondClass::GREETING.
+<strong>接口</strong>
+接口的定义和类的定义除了几个差异外基本一致. 首先是所有的方法都定义为抽象的, 这可以通过PHP_ABSTRACT_ME()宏来完成.</p>
+
+<pre lang="cpp"><code>static function_entry php_sample3_iface_methods[] = {
+    PHP_ABSTRACT_ME(Sample3_Interface, workerOne, NULL)
+    PHP_ABSTRACT_ME(Sample3_Interface, workerTwo, NULL)
+    PHP_ABSTRACT_ME(Sample3_Interface, workerThree, NULL)
+    { NULL, NULL, NULL }
+};
+</code></pre>
+
+<p>由于这些方法是抽象的, 所以不需要实现. 接下来的第二个差异就是注册. 和一个实际的类注册类似, 首先调用INIT_CLASS_ENTRY和zend_register_internal_class.
+当类(zend_class_entry)可用时, 最后一部就是标记这个类是接口, 实现方法如下:</p>
+
+<pre lang="cpp"><code>zend_class_entry *php_sample3_iface_entry;
+PHP_MINIT_FUNCTION(sample3)
+{
+    zend_class_entry ce;
+    INIT_CLASS_ENTRY(ce, &quot;Sample3_Interface&quot;,
+                        php_sample3_iface_methods);
+    php_sample3_iface_entry =
+                zend_register_internal_class(&amp;ce TSRMLS_CC);
+    php_sample3_iface_entry-&gt;ce_flags|= ZEND_ACC_INTERFACE;
+
+</code></pre>
+
+<p><strong>实现接口</strong>
+假设你想让Sample3_SecondClass这个类实现Sample3_Interface这个接口, 就需要实现这个接口定义的所有抽象方法:</p>
+
+<pre lang="cpp"><code>PHP_METHOD(Sample3_SecondClass,workerOne)
+{
+    php_printf(&quot;Working Hard.\n&quot;);
+}
+PHP_METHOD(Sample3_SecondClass,workerTwo)
+{
+    php_printf(&quot;Hardly Working.\n&quot;);
+}
+PHP_METHOD(Sample3_SecondClass,workerThree)
+{
+    php_printf(&quot;Going wee-wee-wee all the way home.\n&quot;);
+}
+</code></pre>
+
+<p>接着在php_sample3_sc_functions列表中定义它们:</p>
+
+<pre lang="cpp"><code>PHP_ME(Sample3_SecondClass,workerOne,NULL,ZEND_ACC_PUBLIC)
+PHP_ME(Sample3_SecondClass,workerTwo,NULL,ZEND_ACC_PUBLIC)
+PHP_ME(Sample3_SecondClass,workerThree,NULL,ZEND_ACC_PUBLIC)
+
+</code></pre>
+
+<p>最后, 定义你新注册的类实现php_sample3_iface_entry接口:</p>
+
+<pre lang="cpp"><code>PHP_MINIT_FUNCTION(sample3)
+{
+    zend_class_entry ce;
+    /* 注册接口 */
+    INIT_CLASS_ENTRY(ce, &quot;Sample3_Interface&quot;,
+                        php_sample3_iface_methods);
+
+    php_sample3_iface_entry =
+                zend_register_internal_class(&amp;ce TSRMLS_CC);
+    php_sample3_iface_entry-&gt;ce_flags|= ZEND_ACC_INTERFACE;
+    /* 注册实现接口的类 */
+    INIT_CLASS_ENTRY(ce, PHP_SAMPLE3_SC_NAME,
+                            php_sample3_sc_functions);
+    php_sample3_sc_entry =
+                zend_register_internal_class(&amp;ce TSRMLS_CC);
+    php_sample3_register_constants(php_sample3_sc_entry);
+    /* 声明实现关系 */
+    zend_class_implements(php_sample3_sc_entry TSRMLS_CC,
+                1, php_sample3_iface_entry);
+    return SUCCESS;
+}
+</code></pre>
+
+<p>如果Sample3_SecondClass实现了其他接口, 比如ArrayAccess, 就需要将对应的类(zend_class_entry)作为附加参数增加到zend_class_implements()调用中, 并将现在传递为数字1的参数值相应的增大为2:</p>
+
+<pre lang="cpp"><code>zend_class_implements(php_sample3_sc_entry TSRMLS_CC,
+            2, php_sample3_iface_entry, php_other_interface_entry);
+</code></pre>
+
+<p><strong>句柄</strong>
+ZE2并没有把所有的对象实例看做是相同的, 它为每个对象实例关联了句柄表. 当在一个对象上执行特定的操作时, 引擎调用执行对象的句柄表中自定义的行为.
+<strong>标准句柄</strong>
+默认情况下, 每个对象都被赋予了std_object_handlers这个内建句柄表. std_object_handlers中对应的句柄方法以及它们的行为定义如下:</p>
+
+<ul>
+<li>void add_ref(zval *object TSRMLS_DC)</li>
+</ul>
+
+<p>当对象值的refcount增加时被调用, 比如, 当一个对象变量赋值给新的变量时. add_ref和del_ref函数的默认行为都是调整内部对象存储的refcount.</p>
+
+<ul>
+<li>void del_ref(zval *object TSRMLS_DC)</li>
+</ul>
+
+<p>和add_ref类似, 这个方法也在修改refcount时调用, 通常是在unset()对象变量时发生的.</p>
+
+<ul>
+<li>zend_object_value clone_obj(zval *object TSRMLS_DC)</li>
+</ul>
+
+<p>用于利用已有的对象实例创建一个新的实例. 默认行为是创建一个新的对象实例, 将它和原来的句柄表关联, 拷贝属性表, 如果该对象的类定义了__clone()方法, 则调用它让新的对象执行一些附加的复制工作.</p>
+
+<ul>
+<li>zval *read_property(zval *obj, zval *prop, int type TSRMLS_DC)</li>
+<li>void write_property(zval *obj, zval *prop, zval *value TSRMLS_DC)</li>
+</ul>
+
+<p>在用户空间尝试以$obj-&gt;prop方式访问, 去读写对象的属性时, read_property/write_property对应的被调用. 默认的处理是首先在标准属性表中查找属性. 如果属性没有定义, 则检查是否存在__get()或__set()魔术方法, 如果有则调用该方法.</p>
+
+<ul>
+<li>zval **get_property_ptr_ptr(zval *obj, zval *value TSRMLS_DC)</li>
+</ul>
+
+<p>get_property_ptr_ptr()是read_property()的一个变种, 它的含义是允许调用作用域直接将当前的zval *替换为新的. 默认的行为是返回标准属性表中该属性的指针地址. 如果不存在, 并且没有__get()/__set()魔术方法, 则隐式创建并返回指针. 如果存在__get()或__set()方法, 则导致这个句柄失败, 使得引擎转而依靠单独的read_property和write_property调用.</p>
+
+<ul>
+<li>zval *read_dimension(zval *obj, zval *idx, int type TSRMLS_DC)</li>
+<li>void write_dimension(zval *obj, zval *idx, zval *value TSRMLS_DC)</li>
+</ul>
+
+<p>read_dimension()和write_dimension()类似于对应的read_property()和write_property();  不过它们在使用$obj[&#39;idx&#39;]方式将对象作为数组访问时被触发. 如果对象的类没有实现ArrayAccess接口, 默认的行为是触发一个错误; 否则它就会调用魔术方法offsetget($idx)或offsetset($idx, $value).</p>
+
+<ul>
+<li>zval *get(zval *obj TSRMLS_DC)</li>
+<li>void set(zval *obj, zval *value TSRMLS_DC)</li>
+</ul>
+
+<p>在设置或取回对象的值时, 则会在对象上调用get()或set()方法. 对象自身作为第一个参数被传递. 对于set, 新的值作为第二个参数传递; 实际上, 这些方法被用于算数运算中. 这些操作没有默认处理器.</p>
+
+<ul>
+<li>int has_property(zval *obj, zval *prop, int chk_type TSRMLS_DC)</li>
+</ul>
+
+<p>当在一个对象属性上调用isset()时, 这个句柄被调用. 默认情况下标准的处理器会检查prop指定的属性名, 在php 5.1.0中如果没有找到这个属性, 并且定义了__isset()方法, 则会调用这个方法. chk_type参数的值如果是2则仅需要属性存在, 如果chk_type值为0, 则必须存在并且不能是IS_NULL的值, 如果chk_type值为1, 则属性必须存在并且必须是非FALSE的值. 注意: 在php 5.0.x中,
+ chk_type的含义和has_dimension的chk_type一致.</p>
+
+<ul>
+<li>int has_dimension(zval *obj, zval *idx, int chk_type TSRMLS_DC)</li>
+</ul>
+
+<p>当将对象看做数组调用isset()时(比如isset($obj[&#39;idx&#39;])), 使用这个处理器. 默认的标准处理器会检查对象是否实现了ArrayAccess接口, 如果实现了, 则调用offsetexists($idx)方法. 如果没有找到(指调用offsetexists()), 则和没有实现offsetexists()方法一样, 返回0. 否则, 如果chk_type为0, 直接返回true(1). chk_type为1标识它必须调用对象的offsetget($idx)方法并测试返回值,
+ 检查值是非FALSE才返回TRUE(1).</p>
+
+<ul>
+<li>void unset_property(zval *obj, zval *prop TSRMLS_DC)</li>
+<li>void unset_dimension(zval *obj, zval *idx TSRMLS_DC)</li>
+</ul>
+
+<p>这两个方法在尝试卸载对象属性时(或将对象以数组方式应用调用unset()时)被调用. unset_property()处理器要么从标准属性表删除属性(如果存在), 要么就尝试调用实现的__unset($prop)方法(php 5.1.0中), unset_dimension()则在类实现了ArrayAccess时, 调用offsetunset($idx)方法.</p>
+
+<ul>
+<li>HashTable *get_properties(zval *obj TSRMLS_DC)</li>
+</ul>
+
+<p>当内部函数使用Z_OBJPROP()宏从标准属性表中读取属性时, 实际上是调用了这个处理器. php对象的默认处理器是解开并返回Z_OBJ_P(object)-&gt;properties, 它是真正的标准属性表.</p>
+
+<ul>
+<li>union _zend_function <em>get_method(zval *</em>obj_ptr char *method_name, int methodname_len TSRMLS_DC)</li>
+</ul>
+
+<p>这个处理器在解析类的function_table中的对象方法时被调用. 如果在主的function_table中不存在方法, 则默认的处理器返回一个指向对对象的__call($name, $args)方法包装的zend_function *指针.</p>
+
+<ul>
+<li>int call_method(char *method, INTERNAL_FUNCTION_PARAMETERS)</li>
+</ul>
+
+<p>定义为ZEND_OVERLOADED_FUNCTION类型的函数将以call_method处理器的方式执行. 默认情况下, 这个处理器是未定义的.</p>
+
+<ul>
+<li>union _zend_function *get_constructor(zval *obj TSRMLS_DC)</li>
+</ul>
+
+<p>类似于get_method()处理器, 这个处理器返回一个对对应对象方法的引用. 类的zend_class_entry中构造器是特殊方式存储的, 这使得它比较特殊. 对这个方法的重写非常少见.</p>
+
+<ul>
+<li>zend_class_entry *get_class_entry(zval *obj TSRMLS_DC)</li>
+</ul>
+
+<p>和get_constructor()类似, 这个处理器也很少被重写. 它的目的是将一个对象实例映射回它原来的类定义.</p>
+
+<ul>
+<li>int get_class_name(zval <em>object, char *</em>name zend_uint *len, int parent TSRMLS_DC)</li>
+</ul>
+
+<p>get_class_entry()就是get_class_name()其中的一步, 在得到对象的zend_object后, 它将对象的类名或它的父类名(这依赖于参数parent的值)复制一份返回. 返回的类名拷贝必须使用非持久化存储(emalloc()).</p>
+
+<ul>
+<li>int compare_objects(zval *obj1, zval *obj2 TSRMLS_DC)</li>
+</ul>
+
+<p>当比较操作符(比如: ==, !=, &lt;=, &lt;, &gt;, &gt;=)用在两个对象上时, 在操作数(参与比较的两个对象)上调用compare_objects()就是这个工作的第一部分. 它的返回值通常是1, 0, -1, 分别代表大于, 等于, 小于.默认 情况下, 对象是基于它们的标准属性表比较的, 使用的比较规则和第8章&quot;在数组和HashTable上工作&quot;中学习的数组比较规则一样.</p>
+
+<ul>
+<li>int cast_object(zval *src, zval *dst, int type, int should_free TSRMLS_DC)</li>
+</ul>
+
+<p>当尝试将对象转换为其他数据类型时, 会触发这个处理器. 如果将should_free设置为非0值, zval_dtor()将会在dst上调用, 首先释放内部的资源. 总之, 处理器应该尝试将src中的对象表示为dst给出的zval *的类型中. 这个处理器默认是未定义的, 但当有它的时候, 应该返回SUCCESS或FAILURE.</p>
+
+<ul>
+<li>int count_elements(zval *obj, long *count TSRMLS_DC)</li>
+</ul>
+
+<p>实现了数组访问的对象应该定义这个处理器, 它将设置当前的元素数量到count中并返回SUCCESS. 如果当前实例没有实现数组访问, 则它应该返回FAILURE, 以使引擎回头去检查标准属性表.
+<em>译注: 上面的句柄表和译者使用的php-5.4.9中已经不完全一致, 读者在学习这一部分的时候, 可以参考Zend/zend_object_handlers.c中最下面的标准处理器句柄表.</em>
+<strong>魔术方法第二部分</strong>
+使用前面看到的对象句柄表的自定义版本, 可以让内部类提供与在用户空间基于对象或类的__xxx()魔术方法相比, 相同或更多的能力.将这些自定义的句柄设置到对象实例上首先要求创建一个新的句柄表. 因为你通常不会覆写所有的句柄, 因此首先将标准句柄表拷贝到你的自定义句柄表中再去覆写你想要修改的句柄就很有意义了:</p>
+
+<pre lang="cpp"><code>static zend_object_handlers php_sample3_obj_handlers;
+int php_sample3_has_dimension(zval *obj, zval *idx,
+                        int chk_type TSRMLS_DC)
+{
+    /* 仅在php版本&gt;=1.0时使用 */
+    if (chk_type == 0) {
+       /* 重新映射chk_type的值 */
+       chk_type = 2;
+    }
+    /* 当chk_type值为1时保持不变. 接着使用标准的hash_property方法执行逻辑 */
+    return php_sample3_obj_handlers.has_property(obj,
+                            idx, chk_type TSRMLS_CC);
+}
+PHP_MINIT_FUNCTION(sample3)
+{
+    zend_class_entry ce;
+    zend_object_handlers *h = &amp;php_sample3_obj_handlers;
+
+
+    /* 注册接口 */
+    INIT_CLASS_ENTRY(ce, &quot;Sample3_Interface&quot;,
+                        php_sample3_iface_methods);
+    php_sample3_iface_entry =
+                zend_register_internal_class(&amp;ce TSRMLS_CC);
+    php_sample3_iface_entry-&gt;ce_flags = ZEND_ACC_INTERFACE;
+    /* 注册SecondClass类 */
+    INIT_CLASS_ENTRY(ce, PHP_SAMPLE3_SC_NAME,
+                            php_sample3_sc_functions);
+    php_sample3_sc_entry =
+                zend_register_internal_class(&amp;ce TSRMLS_CC);
+    php_sample3_register_constants(php_sample3_sc_entry);
+
+
+    /* 实现AbstractClass接口 */
+    zend_class_implements(php_sample3_sc_entry TSRMLS_CC,
+                1, php_sample3_iface_entry);
+
+
+    /* 创建自定义句柄表 */
+    php_sample3_obj_handlers = *zend_get_std_object_handlers();
+
+
+    /* 这个句柄表的目的是让$obj[&#39;foo&#39;]的行为等价于$obj-&gt;foo */
+    h-&gt;read_dimension = h-&gt;read_property;
+    h-&gt;write_dimension = h-&gt;write_property;
+    h-&gt;unset_dimension = h-&gt;unset_property;
+#if PHP_MAJOR_VERSION &gt; 5 || \
+            (PHP_MAJOR_VERSION == 5 &amp;&amp; PHP_MINOR_VERSION &gt; 0)
+    /* php-5.1.0中, has_property和has_dimension的chk_type含义不同, 为使它们行为一致, 自己包装一个函数 */
+    h-&gt;has_dimension = php_sample3_has_dimension;
+
+#else
+    /* php 5.0.x的has_property和has_dimension行为一致 */
+    h-&gt;has_dimension = h-&gt;has_property;
+#endif
+
+
+    return SUCCESS;
+}
+</code></pre>
+
+<p>要将这个句柄表应用到对象上, 你有两种选择. 最简单也是最具代表性的就是实现一个构造器方法, 并在其中重新赋值变量的句柄表.</p>
+
+<pre lang="cpp"><code>PHP_METHOD(Sample3_SecondClass,__construct)
+{
+    zval *objptr = getThis();
+
+
+    if (!objptr) {
+        php_error_docref(NULL TSRMLS_CC, E_WARNING,
+                    &quot;Constructor called statically!&quot;);
+        RETURN_FALSE;
+    }
+    /* 执行正常的构造器任务... */
+    /* 覆写句柄表 */
+    Z_OBJ_HT_P(objptr) = &amp;php_sample3_obj_handlers;
+}
+</code></pre>
+
+<p>当构造器返回时, 对象就有了新的句柄表以及对应的自定义行为. 还有一种更加受欢迎的方法是覆写类的对象创建函数.</p>
+
+<pre lang="cpp"><code>zend_object_value php_sample3_sc_create(zend_class_entry *ce
+                                        TSRMLS_DC)
+{
+    zend_object *object;
+    zend_object_value retval;
+
+
+    /* 返回Zend创建的对象 */
+    retval = zend_objects_new(&amp;object, ce TSRMLS_CC);
+    /* 覆写create_object时, 属性表必须手动初始化 */
+    ALLOC_HASHTABLE(object-&gt;properties);
+    zend_hash_init(object-&gt;properties, 0, NULL,
+                                    ZVAL_PTR_DTOR, 0);
+    /* 覆写默认句柄表 */
+    retval.handlers = &amp;php_sample3_obj_handlers;
+    /* 这里可能会执行其他对象初始化工作 */
+    return retval;
+}
+</code></pre>
+
+<p>这样就可以在MINIT阶段注册类(zend_class_entry)之后直接将自定义句柄表附加上去.</p>
+
+<pre lang="cpp"><code>INIT_CLASS_ENTRY(ce, PHP_SAMPLE3_SC_NAME,
+                        php_sample3_sc_functions);
+php_sample3_sc_entry =
+            zend_register_internal_class(&amp;ce TSRMLS_CC);
+php_sample3_sc_entry-&gt;create_object= php_sample3_sc_create;
+php_sample3_register_constants(php_sample3_sc_entry);
+zend_class_implements(php_sample3_sc_entry TSRMLS_CC,
+            1, php_sample3_iface_entry);
+</code></pre>
+
+<p>这两种方法唯一可预见的不同是它们发生的时机不同. 引擎在碰到new Sample3_SecondClass后会在处理构造器及它的参数之前调用create_object. 通常, 你计划覆盖的各个点使用的方法(create_object Vs. __construct)应该一致.
+<em>译注: php-5.4.9中, xxx_property/xxx_dimension这一组句柄的原型是不一致的, 因此, 按照原著中的示例, 直接将xxx_property/xxx_dimension进行映射已经不能工作, 要完成上面的功能, 需要对4个句柄均包装一个函数去映射. 由于译者没有详细跟踪具体在哪一个版本发生了这些改变, 因此这里不给出译者测试的示例(没有做兼容性处理检查), 如果读者碰到这个问题, 请检查自己所使用php版本中两组句柄原型的差异并进行相应修正.</em>
+<strong>小结</strong>
+毋庸置疑, php5/ZE2的对象模型比它的前辈php4/ZE1中的对象模型更加复杂. 在看完本章中介绍的所有特性和实现细节后, 你可能已经被它的所包含的信息量搞得手足无措. 幸运的是, php中在OOP之上有一层可以让你选择你的任务所需的部分而不关心其他部分. 找到复杂性之上一个舒适的层级开始工作, 剩下的都会顺起来的.
+现在已经看完了所有的php内部数据类型, 是时候回到之前的主题了: 请求生命周期. 接下来的两章, 将在你的扩展中使用线程安全全局变量增加内部状态, 定义自定义的ini设置, 定义常量, 以及向使用你扩展的用户空间脚本提供超级全局变量.</p>
+
+<p><a href="http://blog.csdn.net/lgg201/article/details/8493725">目录</a>上一章: <a href="http://blog.csdn.net/lgg201/article/details/8748785">php4对象</a>下一章: <a href="http://blog.csdn.net/lgg201/article/details/8806828">php的启动过程</a></p>
+
+          </section>
+
+          
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
+<noscript><a href="http://www.51.la/?18906058" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18906058.asp" style="border:none" /></a></noscript>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.all.min.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/custom.js"></script>
+
+  </body>
+</html>

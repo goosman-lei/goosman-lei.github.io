@@ -1,0 +1,933 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="goosman-lei的博客">
+    <meta name="keywords" content="PHP Web开发,PHP,PHP 框架,高可用,分布式">
+
+    <title>[翻译][php扩展开发和嵌入式]第16章-有趣的流- By Goosman-lei(goosman.lei@gmail.com</title>
+
+    <!-- Styles -->
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.all.min.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/theDocs.css" rel="stylesheet">
+    <link href="http://static-cdn.tec-inf.com/css/custom.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="http://static-cdn.tec-inf.com/apple-touch-icon.png">
+    <link rel="icon" href="http://static-cdn.tec-inf.com/img/favicon.ico">
+
+    <!-- Github Buttons. Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+
+      <!-- Top navbar & branding -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+          <!-- Toggle buttons and brand -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="glyphicon glyphicon-option-vertical"></span>
+            </button>
+
+            <button type="button" class="navbar-toggle for-sidebar" data-toggle="offcanvas">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="">Goosman.lei</a>
+          </div>
+          <!-- END Toggle buttons and brand -->
+
+          <!-- Top navbar -->
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+            <ul class="nav navbar-nav navbar-right">
+                              <li class=""><a href="/ice">Ice</a></li>
+                              <li class=" active"><a href="/blog-history">CSDN-BLOG</a></li>
+                              <li class="hero"><a href="mailto:goosman.lei@gmail.com">Contact</a></li>
+                          </ul>
+          </div>
+          <!-- END Top navbar -->
+
+        </div>
+      </nav>
+      <!-- END Top navbar & branding -->
+      
+    </header>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Sidebar -->
+        <aside class="col-md-3 col-sm-3 sidebar">
+<a class="github-button" href="https://github.com/goosman-lei" data-style="mega" data-count-href="/goosman-lei/followers" data-count-api="/users/goosman-lei#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @goosman-lei on GitHub">Follow @goosman-lei</a><br />
+
+<!-- TODO 解递归当场遍历出树结构菜单 -->
+<ul class="sidenav">
+  <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">2016年</a>
+  <ul>
+    <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html">[分享]面向中大型应用的PHPWeb开发框架Ice</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">2013年</a>
+  <ul>
+    <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html">[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html">[翻译][php扩展开发和嵌入式]第19章-设置宿主环境</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html">[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成</a>
+      <li><a href="/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html">[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html" class="active">[翻译][php扩展开发和嵌入式]第16章-有趣的流</a>
+      <li><a href="/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html">[翻译][php扩展开发和嵌入式]第15章-php中流的实现</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html">[翻译][php扩展开发和嵌入式]第14章-php中流的访问</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html">[翻译][php扩展开发和嵌入式]第13章-php的INI设置</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html">[翻译][php扩展开发和嵌入式]第12章-php的启动过程</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html">[翻译][php扩展开发和嵌入式]第11章-php5对象</a>
+      <li><a href="/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html">[翻译][php扩展开发和嵌入式]第10章-php4的对象</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html">[翻译][php扩展开发和嵌入式]第9章-资源数据类型</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html">[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作</a>
+      <li><a href="/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html">[翻译][php扩展开发和嵌入式]第7章-接受参数</a>
+      <li><a href="/blog-history/2013/03/从1.5k到18k,一个程序员的5年成长之路.html">从1.5k到18k,一个程序员的5年成长之路</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html">[翻译][php扩展开发和嵌入式]第6章-返回值</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html">[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展</a>
+      <li><a href="/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html">[翻译][php扩展开发和嵌入式]第4章-安装构建环境</a>
+    </ul></li>
+    <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html">[翻译][php扩展开发和嵌入式]第3章-内存管理</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html">[翻译][php扩展开发和嵌入式]第2章-变量的里里外外</a>
+      <li><a href="/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump.html">[php内核bug]动态链接方式编译的扩展,扩展全局空间dtor导致coredump</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html">[翻译][php扩展开发和嵌入式]第1章-php的生命周期</a>
+      <li><a href="/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html">[翻译][php扩展开发和嵌入式]第0章-译序</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">2012年</a>
+  <ul>
+    <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html">从N个数中选取最大的前10个[堆排序版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[php版].html">从N个数中选取最大的前10个[php版]</a>
+      <li><a href="/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html">从N个数中选取最大的前10个[C语言版]</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2012/11/php截取字符串保留完整xml标签.html">php截取字符串保留完整xml标签</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2012/10/[mysql-manual-5.5]7.1优化概览.html">[mysql-manual-5.5]7.1优化概览</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html">php-mysql扩展mysql_querymysql_unbuffered_query对比</a>
+      <li><a href="/blog-history/2012/10/简单游戏场景用户模拟.html">简单游戏场景用户模拟</a>
+      <li><a href="/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html">php-mysql扩展的mysql_connectmysql_pconnect比较</a>
+      <li><a href="/blog-history/2012/10/模拟新浪微博自动登陆.html">模拟新浪微博自动登陆</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html">php-curl封装[避免上传文件二义性Bug]</a>
+      <li><a href="/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html">[漏洞]ThinkSNS严重漏洞--将全站崩溃</a>
+      <li><a href="/blog-history/2012/09/无限递归树展示.html">无限递归树展示</a>
+      <li><a href="/blog-history/2012/09/[快速记忆]C语言php的运算符优先级结合性.html">[快速记忆]C语言php的运算符优先级结合性</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2012/07/基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页.html">基于mysql的分页程序完全解决方案含普通分页分段分页原始分页微博的since_id类分页</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2012/06/[软件工程]一个故事,分析陷入焦油坑的软件项目.html">[软件工程]一个故事,分析陷入焦油坑的软件项目</a>
+      <li><a href="/blog-history/2012/06/输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1.html">输出整数类型边界值及其大小K&RTheCprogramminglanguage习题2-1</a>
+      <li><a href="/blog-history/2012/06/算法分析从N条成绩单信息选择M位不重复同学发奖.html">算法分析从N条成绩单信息选择M位不重复同学发奖</a>
+    </ul></li>
+    <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2012/04/ThinkPHPCore3.0源代码review文档.html">ThinkPHPCore3.0源代码review文档</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">2011年</a>
+  <ul>
+    <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html">正则表达式分析提取XMLXHTML标签属性</a>
+      <li><a href="/blog-history/2011/12/封装的一个mysql_lib.php,主要是一个分页模型.html">封装的一个mysql_lib.php,主要是一个分页模型</a>
+      <li><a href="/blog-history/2011/12/爱因斯坦的思考题.html">爱因斯坦的思考题</a>
+      <li><a href="/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html">从浏览器操作系统市场占有率分析国人</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html">[php内核]----文件系统函数用于普通文件时的一些情况</a>
+      <li><a href="/blog-history/2011/10/某地自动评论脚本备份.html">某地自动评论脚本备份</a>
+      <li><a href="/blog-history/2011/10/使用alarm配合信号实现sleep.html">使用alarm配合信号实现sleep</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现.html">libmemcached一致性hash算法详解2----简化版的libmemcached一致性hash算法实现</a>
+      <li><a href="/blog-history/2011/10/libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html">libmemcached一致性hash算法详解1----php-memcached客户端一致性哈希与crc算法共用产生的bug分析</a>
+      <li><a href="/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html">由信号集联想----位域授权模式的不限长扩展</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2011/09/PHP位域操作函数封装.html">PHP位域操作函数封装</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2011/08/基于dup实现linux的dup2函数APUE练习题3.2.html">基于dup实现linux的dup2函数APUE练习题3.2</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html">日志分析工具（二分法分段查找处理）</a>
+      <li><a href="/blog-history/2011/07/从dl函数分析PHP模块开发.html">从dl函数分析PHP模块开发</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/04/php中的引用传值分析.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2011/04/php中的引用传值分析.html">php中的引用传值分析</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2011/03/phppcre正则表达式完全教程----pcre官方文档.html">phppcre正则表达式完全教程----pcre官方文档</a>
+      <li><a href="/blog-history/2011/03/Ubuntu中利用Grub2修复移动硬盘引导.html">Ubuntu中利用Grub2修复移动硬盘引导</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2011/02/PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结.html">PHP包含文件requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx分析总结</a>
+      <li><a href="/blog-history/2011/02/javascript中的继承,找回丢失的constructor.html">javascript中的继承,找回丢失的constructor</a>
+      <li><a href="/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定.html">浏览器市场份额--世界范围IE大幅下滑,国内IE小幅下滑,chrome涨势稳定</a>
+      <li><a href="/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html">PHP操作符优先级列表及一个优先级带来的灵异事件</a>
+      <li><a href="/blog-history/2011/02/PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升.html">PHP中requirePKrequire_once,构建自己的高效require_once10倍的性能提升</a>
+    </ul></li>
+    <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2011/01/php5.3新增的闭包语法介绍functionuse{}.html">php5.3新增的闭包语法介绍functionuse{}</a>
+      <li><a href="/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html">与PHP5.3.5的战斗----记php5.3.5安装过程</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">2010年</a>
+  <ul>
+    <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2010/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2010/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2010/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2010/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2010/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2010/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2010/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2010/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2010/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2010/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2010/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2010/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2010/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2010/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2010/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2010/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2010/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2010/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2010/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2010/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2010/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2010/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2010/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2010/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2010/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2010/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+  <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">2009年</a>
+  <ul>
+    <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">12月</a>
+    <ul>
+      <li><a href="/blog-history/2009/12/PHP在线实现工具linux下可用,windows未测试.html">PHP在线实现工具linux下可用,windows未测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">11月</a>
+    <ul>
+      <li><a href="/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html">PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端memcache，memcached比较.html">PHPMemcached客户端memcache，memcached比较</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached扩展安装.html">PHPMemcached扩展安装</a>
+      <li><a href="/blog-history/2009/11/PHPMemcached客户端官方文档翻译.html">PHPMemcached客户端官方文档翻译</a>
+      <li><a href="/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html">PHP中利用pcntl进行多进程并发控制</a>
+      <li><a href="/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html">PHP中的uniqid在高并发下的重复问题</a>
+      <li><a href="/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html">jQuery及jQueryUI内存泄漏问题修复</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">10月</a>
+    <ul>
+      <li><a href="/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html">完善eclipse+pdt作php开发中的代码提示能力</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵2.html">输出指定格式的数字矩阵2</a>
+      <li><a href="/blog-history/2009/10/输出指定格式的数字矩阵.html">输出指定格式的数字矩阵</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">09月</a>
+    <ul>
+      <li><a href="/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html">sessvars插件源代码解析----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html">sessvars插件中文文档----一款用window.name产生前台session存储的js插件</a>
+      <li><a href="/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html">php中Apc和memcache缓存数据性能对比</a>
+      <li><a href="/blog-history/2009/09/递归删除utf8文件的bom头该bom头可能导致php产生意外输出.html">递归删除utf8文件的bom头该bom头可能导致php产生意外输出</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">08月</a>
+    <ul>
+      <li><a href="/blog-history/2009/08/性能测试从零开始--读书笔记.html">性能测试从零开始--读书笔记</a>
+      <li><a href="/blog-history/2009/08/PHP扩展pcntl进程控制以及信号处理中文文档.html">PHP扩展pcntl进程控制以及信号处理中文文档</a>
+      <li><a href="/blog-history/2009/08/PHP中利用pcntl实现多进程模拟多线程实例.html">PHP中利用pcntl实现多进程模拟多线程实例</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">07月</a>
+    <ul>
+      <li><a href="/blog-history/2009/07/Mysql主从复制的配置双机互为主从.html">Mysql主从复制的配置双机互为主从</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试测试脚本</a>
+      <li><a href="/blog-history/2009/07/基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试.html">基于PHP客户端的TokyoTyrantTCH,TCB,TCT,Memcache,Mysql性能测试</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">06月</a>
+    <ul>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译12----编码APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译11----文件操作APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译10----其他APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译09----内存池对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译08----内存树数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译07----内存HASH数据库APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译06----OrderedTree对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译05----HashMap对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译04----列表对象APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译03----可扩充字符串APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译02----基础APITokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列.html">TC官方文档翻译01----TokyoCabinet简介TokyoCabinetTokyoTyarnt文档系列</a>
+      <li><a href="/blog-history/2009/06/IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决.html">IE7中onpropertychange引发的Stackoverflowatlinexxx问题解决</a>
+      <li><a href="/blog-history/2009/06/让jQuery的load方法可以接受ajax选项解决缓存等问题.html">让jQuery的load方法可以接受ajax选项解决缓存等问题</a>
+      <li><a href="/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html">正则表达式中的贪婪与非贪婪的性能问题</a>
+      <li><a href="/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html">PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">05月</a>
+    <ul>
+      <li><a href="/blog-history/2009/05/扩展Javascript的String原型,添加汉字截取.html">扩展Javascript的String原型,添加汉字截取</a>
+      <li><a href="/blog-history/2009/05/input标签的汉字长度限制.html">input标签的汉字长度限制</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">04月</a>
+    <ul>
+      <li><a href="/blog-history/2009/04/HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark.html">HighPerformanceMySQL作者对TokyoTyrant做的性能测试benchmark</a>
+      <li><a href="/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档PECL.html">PHP的TokyoTyrant扩展接口API文档PECL</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">03月</a>
+    <ul>
+      <li><a href="/blog-history/2009/03/jQuery实现的Dialog支持模态和拖动.html">jQuery实现的Dialog支持模态和拖动</a>
+      <li><a href="/blog-history/2009/03/css滤镜之light实现的灯光效果..html">css滤镜之light实现的灯光效果.</a>
+      <li><a href="/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html">CSS滤镜笔记------包含Light滤镜方法的使用</a>
+      <li><a href="/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html">基于jQuery实现的焦点轮换效果</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2中文文档官方文档翻译.html">jQuery.ui.1.7.2中文文档官方文档翻译</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html">jQuery.ui.1.7.2-selectable中文文档</a>
+      <li><a href="/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html">jQuery.ui.1.7.2--Datepicker中文文档</a>
+      <li><a href="/blog-history/2009/03/JavaScript中的正则替换.html">JavaScript中的正则替换</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">02月</a>
+    <ul>
+      <li><a href="/blog-history/2009/02/Java-UrlRewrite中文官方文档.html">Java-UrlRewrite中文官方文档</a>
+      <li><a href="/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html">Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8</a>
+      <li><a href="/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html">Javascript中可以接受参数的延时函数回调</a>
+      <li><a href="/blog-history/2009/02/python的闭包3.0之前及之后.html">python的闭包3.0之前及之后</a>
+      <li><a href="/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器非的BUG修正.html">Sitemesh整合struts2使用多个装饰器非的BUG修正</a>
+    </ul></li>
+    <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">01月</a>
+    <ul>
+      <li><a href="/blog-history/2009/01/SiteMesh官方文档翻译含Freemarker但不包括velocity部分.html">SiteMesh官方文档翻译含Freemarker但不包括velocity部分</a>
+      <li><a href="/blog-history/2009/01/通用的分页模型实现..html">通用的分页模型实现.</a>
+      <li><a href="/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码解决中文乱码.html">Servlet中通过过滤器实现统一的手动编码解决中文乱码</a>
+      <li><a href="/blog-history/2009/01/struts2的请求处理过程源码分析.html">struts2的请求处理过程源码分析</a>
+      <li><a href="/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html">Struts2中ActionMapping对象的构建过程</a>
+      <li><a href="/blog-history/2009/01/IOC的简单实现及其意义..html">IOC的简单实现及其意义.</a>
+      <li><a href="/blog-history/2009/01/C语言中的offsetof宏定义在stddef.h头中.html">C语言中的offsetof宏定义在stddef.h头中</a>
+      <li><a href="/blog-history/2009/01/生产者消费者问题之Java线程实现.html">生产者消费者问题之Java线程实现</a>
+      <li><a href="/blog-history/2009/01/涂鸦你的CSDN博客.html">涂鸦你的CSDN博客</a>
+    </ul></li>
+  </ul></li>
+</ul>
+        </aside>
+        <!-- END Sidebar -->
+
+
+        <!-- Main content -->
+        <article class="col-md-9 col-sm-9 main-content" role="main">
+          
+          <header>
+            <h1></h1>
+            <p></p>
+<ol class="toc">
+</li></ol>
+
+          </header>
+
+          <section>
+<p><strong>全部翻译内容pdf文档下载地址: </strong><a href="http://download.csdn.net/detail/lgg201/5107012"><strong>http://download.csdn.net/detail/lgg201/5107012</strong></a>
+本书目前在github上由laruence(<a href="http://www.laruence.com)%E5%92%8Cwalu(http://www.walu.cc)%E4%B8%A4%E4%BD%8D%E5%A4%A7%E7%89%9B%E7%BB%84%E7%BB%87%E7%BF%BB%E8%AF%91">http://www.laruence.com)和walu(http://www.walu.cc)两位大牛组织翻译</a>. 该翻译项目地址为: <a href="https://github.com/walu/phpbook">https://github.com/walu/phpbook</a>
+本书在github上的地址: <a href="https://github.com/goosman-lei/php-eae">https://github.com/goosman-lei/php-eae</a>
+未来本书将可能部分合并到phpbook项目中, 同时保留一份独立版本.</p>
+
+<p>原书名: <Extending and Embedding PHP>
+原作者: Sara Golemon
+译者: goosman.lei(雷果国)
+译者Email: <a href="mailto:goosman.lei@gmail.com">goosman.lei@gmail.com</a>
+译者Blog: <a href="http://blog.csdn.net/lgg201">http://blog.csdn.net/lgg201</a>
+<strong>权利声明</strong>
+此译本在不获利的情况下, 可以无限制自由传播.
+<strong>有趣的流</strong>
+php常被提起的一个特性是流上下文. 这个可选的参数甚至在用户空间大多数流创建相关的函数中都可用, 它作为一个泛化的框架用于向给定包装器或流实现传入/传出额外的信息.
+<strong>上下文</strong>
+每个流的上下文包含两种内部消息类型. 首先最常用的是上下文选项. 这些值被安排在上下文中一个二维数组中, 通常用于改变流包装器的初始化行为. 还有一种则是上下文参数, 它对于包装器是未知的, 当前提供了一种方式用于在流包装层内部的事件通知.</p>
+
+<pre lang="cpp"><code>php_stream_context *php_stream_context_alloc(void);
+
+</code></pre>
+
+<p>通过这个API调用可以创建一个上下文, 它将分配一些存储空间并初始化用于保存上下文选项和参数的HashTable. 还会自动的注册为一个请求终止后将被清理的资源.
+<strong>设置选项</strong>
+设置上下文选项的内部API和用户空间的API是等同的:</p>
+
+<pre lang="cpp"><code>int php_stream_context_set_option(php_stream_context *context,
+            const char *wrappername, const char *optionname,
+            zval *optionvalue);
+</code></pre>
+
+<p>下面是用户空间的原型:</p>
+
+<pre lang="cpp"><code>bool stream_context_set_option(resource $context,
+            string $wrapper, string $optionname,
+            mixed $value);
+</code></pre>
+
+<p>它们的不同仅仅是用户空间和内部需要的数据类型不同.下面的例子就是使用这两个API调用, 通过内建包装器发起一个HTTP请求, 并通过一个上下文选项覆写了user_agent设置.</p>
+
+<pre lang="cpp"><code>php_stream  *php_varstream_get_homepage(const char *alt_user_agent TSRMLS_DC)
+{
+    php_stream_context  *context;
+    zval    tmpval;
+
+    context = php_stream_context_alloc(TSRMLS_C);
+    ZVAL_STRING(&amp;tmpval, alt_user_agent, 0); 
+    php_stream_context_set_option(context, &quot;http&quot;, &quot;user_agent&quot;, &amp;tmpval);
+    return php_stream_open_wrapper_ex(&quot;http://www.php.net&quot;, &quot;rb&quot;, REPORT_ERRORS | ENFORCE_SAFE_MODE, NULL, context);
+}
+
+</code></pre>
+
+<p><em>译者使用的php-5.4.10中php_stream_context_alloc()增加了线程安全控制, 因此相应的对例子进行了修改, 请读者测试时注意.</em>
+<em>这里要注意的是tmpval并没有分配任何持久性的存储空间, 它的字符串值是通过复制设置的. php_stream_context_set_option()会自动的对传入的zval内容进行一次拷贝.</em>
+<strong>取回选项</strong>
+用于取回上下文选项的API调用正好是对应的设置API的镜像:</p>
+
+<pre lang="cpp"><code>int php_stream_context_get_option(php_stream_context *context,
+            const char *wrappername, const char *optionname,
+            zval ***optionvalue);
+</code></pre>
+
+<p>回顾前面, 上下文选项存储在一个嵌套的HashTable中, 当从一个HashTable中取回值时, 一般的方法是传递一个指向zval **的指针给zend_hash_find(). 当然, 由于php_stream_context_get_option()是zend_hash_find()的一个特殊代理, 它们的语义是相同的.
+下面是内建的http包装器使用php_stream_context_get_option()设置user_agent的简化版示例:</p>
+
+<pre lang="cpp"><code>zval **ua_zval;
+char *user_agent = &quot;PHP/5.1.0&quot;;
+if (context &amp;&amp;
+    php_stream_context_get_option(context, &quot;http&quot;,
+                &quot;user_agent&quot;, &amp;ua_zval) == SUCCESS &amp;&amp;
+                Z_TYPE_PP(ua_zval) == IS_STRING) {
+    user_agent = Z_STRVAL_PP(ua_zval);
+}
+</code></pre>
+
+<p>这种情况下, 非字符串值将会被丢弃, 因为对用户代理字符串而言, 数值是没有意义的. 其他的上下文选项, 比如max_redirects, 则需要数字值, 由于在字符串的zval中存储数字值并不通用, 所以需要执行一个类型转换以使设置合法.
+不幸的是这些变量是上下文拥有的, 因此它们不能直接转换; 而需要首先进行隔离再进行转换, 最终如果需要还要进行销毁:</p>
+
+<pre lang="cpp"><code>long max_redirects = 20;
+zval **tmpzval;
+if (context &amp;&amp;
+    php_stream_context_get_option(context, &quot;http&quot;,
+            &quot;max_redirects&quot;, &amp;tmpzval) == SUCCESS) {
+    if (Z_TYPE_PP(tmpzval) == IS_LONG) {
+        max_redirects = Z_LVAL_PP(tmpzval);
+    } else {
+        zval copyval = **tmpzval;
+        zval_copy_ctor(©val);
+        convert_to_long(©val);
+        max_redirects = Z_LVAL(copyval);
+        zval_dtor(©val);
+    }
+}
+</code></pre>
+
+<p><em>实际上, 在这个例子中, zval_dtor()并不是必须的. IS_LONG的变量并不需要zval容器之外的存储空间, 因此zval_dtor()实际上不会有真正的操作. 在这个例子中包含它是为了完整性考虑, 对于字符串, 数组, 对象, 资源以及未来可能的其他类型, 就需要这个调用了.</em>
+<strong>参数</strong>
+虽然用户空间API中看起来参数和上下文选项是类似的, 但实际上在语言内部的php_stream_context结构体中它们被定义为不同的成员.
+目前只支持一个上下文参数: 通知器. php_stream_context结构体中的这个元素可以指向下面的php_stream_notifier结构体:</p>
+
+<pre lang="cpp"><code>typedef struct {
+    php_stream_notification_func func;
+    void (*dtor)(php_stream_notifier *notifier);
+    void *ptr;
+    int mask;
+    size_t progress, progress_max;
+} php_stream_notifier;
+</code></pre>
+
+<p>当将一个php_stream_notifier结构体赋值给context-&gt;notifier时, 它将提供一个回调函数func, 在特定的流上发生下表中的PHP_STREAM_NOTIFY_<em>代码表示的事件时被触发. 每个事件将会对应下面第二张表中的PHP_STREAM_NOTIFY_SEVERITY_</em>的级别:</p>
+
+<p><strong>事件代码</strong>
+<strong>含义</strong>
+RESOLVE
+主机地址解析完成.多数基于套接字的包装器将在连接之前执行这个查询.
+CONNECT
+套接字流连接到远程资源完成.
+AUTH_REQUIRED
+请求的资源不可用,原因是访问控制以及缺失授权
+MIME_TYPE_IS
+远程资源的mime-type不可用
+FILE_SIZE_IS
+远程资源当前可用大小
+REDIRECTED
+原来的URL请求导致重定向到其他位置
+PROGRESS
+由于额外数据的传输导致php_stream_notifier结构体的progress以及(可能的)progress_max元素被更新(进度信息,请参考php手册curl_setopt的CURLOPT_PROGRESSFUNCTION和CURLOPT_NOPROGRESS选项)
+COMPLETED
+流上没有更多的可用数据
+FAILURE
+请求的URL资源不成功或未完成
+AUTH_RESULT
+远程系统已经处理了授权认证</p>
+
+<p><strong>安全码</strong></p>
+
+<p>INFO
+信息更新.等价于一个E_NOTICE错误
+WARN
+小的错误条件.等价于一个E_WARNING错误
+ERR
+中断错误条件.等价于一个E_ERROR错误.</p>
+
+<p>通知器实现提供了一个便利指针*ptr用于存放额外数据. 这个指针指向的空间必须在上下文析构时被释放, 因此必须指定一个dtor函数, 在上下文的最后一个引用离开它的作用域时调用这个dtor进行释放.
+mask元素允许事件触发限定特定的安全级别. 如果发生的事件没有包含在mask中, 则通知器函数不会被触发.
+最后两个元素progress和progress_max可以由流实现设置, 然而, 通知器函数应该避免使用这两个值, 除非它接收到PHP_STREAM_NOTIFY_PROGRESS或PHP_STREAM_NOTIFY_FILE_SIZE_IS事件通知.
+下面是一个php_stream_notification_func()回调原型的示例:</p>
+
+<pre lang="cpp"><code>void php_sample6_notifier(php_stream_context *context,
+        int notifycode, int severity, char *xmsg, int xcode,
+        size_t bytes_sofar, size_t bytes_max,
+        void *ptr TSRMLS_DC)
+{
+    if (notifycode != PHP_STREAM_NOTIFY_FAILURE) {
+        /* 忽略所有通知 */
+        return;
+    }
+    if (severity == PHP_STREAM_NOTIFY_SEVERITY_ERR) {
+        /* 分发到错误处理函数 */
+        php_sample6_theskyisfalling(context, xcode, xmsg);
+        return;
+    } else if (severity == PHP_STREAM_NOTIFY_SEVERITY_WARN) {
+        /* 日志记录潜在问题 */
+        php_sample6_logstrangeevent(context, xcode, xmsg);
+        return;
+    }
+}
+</code></pre>
+
+<p><strong>默认上下文</strong>
+在php5.0中, 当用户空间的流创建函数被调用时, 如果没有传递上下文参数, 请求一般会使用默认的上下文. 这个上下文变量存储在文件全局结构中: FG(default_context), 并且它可以和其他所有的php_stream_context变量一样访问. 当在用户空间脚本执行流的创建时, 更好的方式是允许用户指定一个上下文或者至少指定一个默认的上下文. 将用户空间的zval *解码得到php_stream_context可以使用php_steram_context_from_zval()宏完成,
+ 比如下面改编自第14章&quot;访问流&quot;的例子:</p>
+
+<pre lang="cpp"><code>PHP_FUNCTION(sample6_fopen)
+{
+    php_stream *stream;
+    char *path, *mode;
+    int path_len, mode_len;
+    int options = ENFORCE_SAFE_MODE | REPORT_ERRORS;
+    zend_bool use_include_path = 0;
+    zval *zcontext = NULL;
+    php_stream_context *context;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC,
+            &quot;ss|br&quot;, &amp;path, &amp;path_len, &amp;mode, &amp;mode_len,
+                &amp;use_include_path, &amp;zcontext) == FAILURE) {
+        return;
+    }
+    context = php_stream_context_from_zval(zcontext, 0);
+    if (use_include_path) {
+        options |= PHP_FILE_USE_INCLUDE_PATH;
+    }
+    stream = php_stream_open_wrapper_ex(path, mode, options,
+                                    NULL, context);
+    if (!stream) {
+        RETURN_FALSE;
+    }
+    php_stream_to_zval(stream, return_value);
+}
+</code></pre>
+
+<p>如果zcontext包含一个用户空间的上下文资源, 通过ZEND_FETCH_RESOURCE()调用获取到它关联的指针设置到context中. 否则, 如果zcontext为NULL并且php_stream_context_from_zval()的第二个参数设置为非0值, 这个宏则直接返回NULL. 这个例子以及几乎所有的核心流创建的用户空间函数中, 第二个参数都被设置为0, 此时将使用FG(default_context)的值.
+<strong>过滤器</strong>
+过滤器作为读写操作的流内容传输过程中的附加阶段. 要注意的是直到php 4.3中才加入了流过滤器, 在php 5.0对流过滤器的API设计做过较大的调整. 本章的内容遵循的是php 5的流过滤器规范.
+<strong>在流上应用已有的过滤器</strong>
+在一个打开的流上应用一个已有的过滤器只需要几行代码即可:</p>
+
+<pre lang="cpp"><code>php_stream *php_sample6_fopen_read_ucase(const char *path
+                                        TSRMLS_DC) {
+    php_stream_filter *filter;
+    php_stream *stream;
+
+    stream = php_stream_open_wrapper_ex(path, &quot;r&quot;,
+                        REPORT_ERRORS | ENFORCE_SAFE_MODE,
+                        NULL, FG(default_context));
+    if (!stream) {
+        return NULL;
+    }
+
+    filter = php_stream_filter_create(&quot;string.toupper&quot;, NULL,
+                                        0 TSRMLS_CC);
+    if (!filter) {
+        php_stream_close(stream);
+        return NULL;
+    }
+    php_stream_filter_append(&amp;stream-&gt;readfilters, filter);
+
+    return stream;
+}
+</code></pre>
+
+<p>首先来看看这里引入的API函数以及它的兄弟函数:</p>
+
+<pre lang="cpp"><code>php_stream_filter *php_stream_filter_create(
+                const char *filtername, zval *filterparams,
+                int persistent TSRMLS_DC);
+void php_stream_filter_prepend(php_stream_filter_chain *chain,
+                php_stream_filter *filter);
+void php_stream_filter_append(php_stream_filter_chain *chain,
+                php_stream_filter *filter);
+</code></pre>
+
+<p>php_stream_filter_create()的filterparams参数和用户空间对应的stream_filter_append()和stream_filter_prepend()函数的同名参数含义一致. 要注意, 所有传递到php_stream_filter_create()的zval <em>数据都不是过滤器所拥有的. 它们只是在过滤器创建期间被借用而已, 因此在调用作用域分配传入的所有内存空间都要手动释放.
+如果过滤器要被应用到一个持久化流, 则必须设置persistent参数为非0值. 如果你不确认你要应用过滤器的流是否持久化的, 则可以使用php_stream_is_persistent()宏进行检查, 它只接受一个php_stream *类型的参数.
+如在前面例子中看到的, 流过滤器被隔离到两个独立的链条中. 一个用于写操作中对php_stream_write()调用响应时的stream-&gt;ops-&gt;write()调用之前. 另外一个用于读操作中对stream-&gt;ops-&gt;read()取回的所有数据进行处理.
+在这个例子中你使用&amp;stream-&gt;readfilters指示读的链条. 如果你想要在写的链条上应用一个过滤器, 则可以使用&amp;stream-&gt;writefilters.
+*</em>定义一个过滤器实现**
+注册过滤器实现和注册包装器遵循相同的基础规则. 第一步是在MINIT阶段向php中引入你的过滤器, 与之匹配的是在MSHUTDOWN阶段移除它. 下面是需要调用的API原型以及两个注册过滤器工厂的示例:</p>
+
+<pre lang="cpp"><code>int php_stream_filter_register_factory(
+            const char *filterpattern,
+            php_stream_filter_factory *factory TSRMLS_DC);
+int php_stream_filter_unregister_factory(
+            const char *filterpattern TSRMLS_DC);
+
+PHP_MINIT_FUNCTION(sample6)
+{
+    php_stream_filter_register_factory(&quot;sample6&quot;,
+            &amp;php_sample6_sample6_factory TSRMLS_CC);
+    php_stream_filter_register_factory(&quot;sample.*&quot;,
+            &amp;php_sample6_samples_factory TSRMLS_CC);
+    return SUCCESS;
+}
+PHP_MSHUTDOWN_FUNCTION(sample6)
+{
+    php_stream_filter_unregister_factory(&quot;sample6&quot; TSRMLS_CC);
+    php_stream_filter_unregister_factory(&quot;sample.*&quot;
+                                        TSRMLS_CC);
+    return SUCCESS;
+}
+</code></pre>
+
+<p>这里注册的第一个工厂定义了一个具体的过滤器名sample6; 第二个则利用了流包装层内部的基本匹配规则. 为了进行演示, 下面的用户空间代码, 每行都将尝试通过不同的名字实例化php_sample6_samples_factory.</p>
+
+<pre lang="php"><code>&lt;?php
+    stream_filter_append(STDERR, &#39;sample.one&#39;);
+    stream_filter_append(STDERR, &#39;sample.3&#39;);
+    stream_filter_append(STDERR, &#39;sample.filter.thingymabob&#39;);
+    stream_filter_append(STDERR, &#39;sample.whatever&#39;);
+?&gt;
+</code></pre>
+
+<p>php_sample6_samples_factory的定义如下面代码, 你可以将这些代码放到你的MINIT块上面:</p>
+
+<pre lang="cpp"><code>#include &quot;ext/standard/php_string.h&quot;
+
+typedef struct {
+    char    is_persistent;
+    char    *tr_from;
+    char    *tr_to;
+    int     tr_len;
+} php_sample6_filter_data;
+
+/* 过滤逻辑 */
+static php_stream_filter_status_t php_sample6_filter(
+        php_stream *stream, php_stream_filter *thisfilter, 
+        php_stream_bucket_brigade *buckets_in, 
+        php_stream_bucket_brigade *buckets_out, 
+        size_t *bytes_consumed, int flags TSRMLS_DC) 
+{
+    php_stream_bucket       *bucket;
+    php_sample6_filter_data *data       = thisfilter-&gt;abstract;
+    size_t                  consumed    = 0;
+
+    while ( buckets_in-&gt;head ) { 
+        bucket      = php_stream_bucket_make_writeable(buckets_in-&gt;head TSRMLS_CC);
+        php_strtr(bucket-&gt;buf, bucket-&gt;buflen, data-&gt;tr_from, data-&gt;tr_to, data-&gt;tr_len);
+        consumed    += bucket-&gt;buflen;
+        php_stream_bucket_append(buckets_out, bucket TSRMLS_CC);
+    }   
+    if ( bytes_consumed ) { 
+        *bytes_consumed = consumed;
+    }   
+    return PSFS_PASS_ON;
+}
+
+/* 过滤器的释放 */
+static void php_sample6_filter_dtor(php_stream_filter *thisfilter TSRMLS_DC)
+{
+    php_sample6_filter_data *data   = thisfilter-&gt;abstract;
+    pefree(data, data-&gt;is_persistent);
+}
+
+/* 流过滤器操作表 */
+static php_stream_filter_ops php_sample6_filter_ops = { 
+    php_sample6_filter, 
+    php_sample6_filter_dtor, 
+    &quot;sample.*&quot;,
+};
+
+/* 字符翻译使用的表 */
+#define PHP_SAMPLE6_ALPHA_UCASE     &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;
+#define PHP_SAMPLE6_ALPHA_LCASE     &quot;abcdefghijklmnopqrstuvwxyz&quot;
+#define PHP_SAMPLE6_ROT13_UCASE     &quot;NOPQRSTUVWXYZABCDEFGHIJKLM&quot;
+#define PHP_SAMPLE6_ROT13_LCASE     &quot;nopqrstuvwxyzabcdefghijklm&quot;
+
+/* 创建流过滤器实例的过程 */
+static php_stream_filter *php_sample6_filter_create(
+        const char *name, zval *param, int persistent TSRMLS_DC)
+{
+    php_sample6_filter_data *data;
+    char                    *subname;
+
+    /* 安全性检查 */
+    if ( strlen(name) &lt; sizeof(&quot;sample.&quot;) || strncmp(name, &quot;sample.&quot;, sizeof(&quot;sample.&quot;) - 1) ) { 
+        return NULL;
+    }   
+
+    /* 分配流过滤器数据 */
+    data    = pemalloc(sizeof(php_sample6_filter_data), persistent);
+
+    if ( !data ) { 
+        return NULL;
+    }   
+
+    /* 设置持久性 */
+    data-&gt;is_persistent = persistent;
+
+    /* 根据调用时的名字, 对过滤器数据进行适当初始化 */
+    subname = (char *)name + sizeof(&quot;sample.&quot;) - 1;
+    if ( strcmp(subname, &quot;ucase&quot;) == 0 ) { 
+        data-&gt;tr_from   = PHP_SAMPLE6_ALPHA_LCASE;
+        data-&gt;tr_to     = PHP_SAMPLE6_ALPHA_UCASE;
+    } else if ( strcmp(subname, &quot;lcase&quot;) == 0 ) { 
+        data-&gt;tr_from   = PHP_SAMPLE6_ALPHA_UCASE;
+        data-&gt;tr_to     = PHP_SAMPLE6_ALPHA_LCASE;
+    } else if ( strcmp(subname, &quot;rot13&quot;) == 0 ) { 
+        data-&gt;tr_from   = PHP_SAMPLE6_ALPHA_LCASE
+                        PHP_SAMPLE6_ALPHA_UCASE;;
+        data-&gt;tr_to     = PHP_SAMPLE6_ROT13_LCASE
+                        PHP_SAMPLE6_ROT13_UCASE;
+    } else {
+        /* 不支持 */
+        pefree(data, persistent);
+        return NULL;
+    }   
+
+    /* 节省未来使用时每次的计算 */
+    data-&gt;tr_len    = strlen(data-&gt;tr_from);
+
+    /* 分配一个php_stream_filter结构并按指定参数初始化 */
+    return php_stream_filter_alloc(&amp;php_sample6_filter_ops, data, persistent);
+}
+
+/* 流过滤器工厂, 用于创建流过滤器实例(php_stream_filter_append/prepend的时候) */
+static php_stream_filter_factory php_sample6_samples_factory = { 
+    php_sample6_filter_create
+};
+</code></pre>
+
+<p><em>译注: 下面是译者对整个流程的分析</em>
+<em>1. MINIT阶段的register操作将在stream_filters_hash这个HashTable中注册一个php_stream_filter_factory结构, 它只有一个成员create_filter, 用来创建过滤器实例.</em>
+<em>2. 用户空间代码stream_filter_append(STDERR, &#39;sapmple.one&#39;);在内部的实现是apply_filter_to_stream()函数(ext/standard/streamsfuncs.c中), 这里有两步操作, 首先创建过滤器, 然后将过滤器按照参数追加到流的readfilters/writefilters相应链中;</em>
+<em>2.1 创建过滤器(php_stream_filter_create()): 首先直接按照传入的名字精确的从stream_filters_hash(或FG(stream_filters))中查找, 如果没有, 从右向左替换句点后面的内容为星号&quot;</em>&quot;进行查找, 直到找到注册的过滤器工厂或错误返回. 一旦找到注册的过滤器工厂, 就调用它的create_filter成员,
+ 创建流过滤器实例.*
+<em>2.2 直接按照参数描述放入流的readfilters/writefilters相应位置.</em>
+<em>3. 用户向该流进行写入或读取操作时(以写为例): 此时内部将调用_php_stream_write(), 在这个函数中, 如果流的writefilters非空, 则调用流过滤器的fops-&gt;filter()执行过滤, 并根据返回状态做相应处理.</em>
+<em>4. 当流的生命周期结束, 流被释放的时候, 将会检查流的readfilters/writefilters是否为空, 如果非空, 相应的调用php_stream_filter_remove()进行释放, 其中就调用了fops-&gt;fdtor对流过滤器进行释放.</em>
+上一章我们已经熟悉了流包装器的实现, 你可能能够识别这里的基本结构. 工厂函数(php_sample6_samples_filter_create)被调用分配一个过滤器实例, 并赋值给一个操作集合和抽象数据. 这上面的例子中, 你的工厂为所有的过滤器类型赋值了相同的ops结构, 但使用了不同的初始化数据.
+调用作用域将得到这里分配的过滤器, 并将它赋值给流的readfilters链或writefilters链. 接着, 当流的读/写操作被调用时, 过滤器链将数据放入到一个或多个php_stream_bucket结构体, 并将这些bucket组织到一个队列php_stream_bucket_brigade中传递给过滤器.
+这里, 你的过滤器实现是前面的php_sample6_filter, 它取出输入队列bucket中的数据, 使用php_sample6_filter_create中确定的字符表执行字符串翻译, 并将修改后的bucket放入到输出队列.
+由于这个过滤器的实现并没有其他内部缓冲, 因此几乎不可能出错, 因此它总是返回PSFS_PASS_ON, 告诉流包装层有数据被过滤器存放到了输出队列中. 如果过滤器执行了内部缓冲消耗了所有的输入数据而没有产生输出, 就需要返回PSFS_FEED_ME标识过滤器循环周期在没有其他输入数据时暂时停止. 如果过滤器碰到了关键性的错误, 它应该返回PSFS_ERR_FATAL, 它将指示流包装层, 过滤器链处于不稳定状态. 这将导致流被关闭.
+用于维护bucket和bucket队列的API函数如下:</p>
+
+<pre lang="cpp"><code>php_stream_bucket *php_stream_bucket_new(php_stream *stream,
+                      char *buf, size_t buflen, int own_buf,
+                      int buf_persistent TSRMLS_DC);
+</code></pre>
+
+<p>创建一个php_stream_bucket用于存放到输出队列. 如果own_buf被设置为非0值, 流包装层可以并且通常都会修改它的内容或在某些点释放分配的内存. buf_persistent的非0值标识buf使用的内存是否持久分配的:</p>
+
+<pre lang="cpp"><code>int php_stream_bucket_split(php_stream_bucket *in,
+        php_stream_bucket **left, php_stream_bucket **right,
+        size_t length TSRMLS_DC);
+</code></pre>
+
+<p>这个函数将in这个bucket的内容分离到两个独立的bucket对象中. left这个bucket将包含in中的前length个字符, 而right则包含剩下的所有字符.</p>
+
+<pre lang="cpp"><code>void php_stream_bucket_delref(php_stream_bucket *bucket
+                                                 TSRMLS_DC);
+void php_stream_bucket_addref(php_stream_bucket *bucket);
+</code></pre>
+
+<p>Bucket使用和zval以及资源相同的引用计数系统. 通常, 一个bucket仅属于一个上下文, 也就是它依附的队列.</p>
+
+<pre lang="cpp"><code>void php_stream_bucket_prepend(
+                    php_stream_bucket_brigade *brigade,
+                    php_stream_bucket *bucket TSRMLS_DC);
+void php_stream_bucket_append(
+        php_stream_bucket_brigade *brigade,
+        php_stream_bucket *bucket TSRMLS_DC);
+</code></pre>
+
+<p>这两个函数扮演了过滤器子系统的苦力, 用于附加bucket到队列的开始(prepend)或末尾(append)</p>
+
+<pre lang="cpp"><code>void php_stream_bucket_unlink(php_stream_bucket *bucket
+                                                 TSRMLS_DC);
+
+</code></pre>
+
+<p>在过滤器逻辑应用处理完成后, 旧的bucket必须使用这个函数从它的输入队列删除(unlink).</p>
+
+<pre lang="cpp"><code>php_stream_bucket *php_stream_bucket_make_writeable(
+        php_stream_bucket *bucket TSRMLS_DC);
+</code></pre>
+
+<p>将一个bucket从它所依附的队列中移除, 并且如果需要, 赋值bucket-&gt;buf的内部缓冲区, 这样就使得它的内容可修改. 在某些情况下, 比如当输入bucket的引用计数大于1时, 返回的bucket将会是不同的实例, 而不是传入的实例. 因此, 我们要保证在调用作用域使用的是返回的bucket, 而不是传入的bucket.
+<strong>小结</strong>
+过滤器和上下文可以让普通的流类型行为被修改, 或通过INI设置影响整个请求, 而不需要直接的代码修改. 使用本章设计的计数, 你可以使你自己的包装器实现更加强大, 并且可以对其他包装器产生的数据进行改变.
+接下来, 我们将离开PHPAPI背后的工作, 回到php构建系统的机制, 产生更加复杂的扩展链接到其他应用, 找到更加容易的方法, 使用工具集处理重复的工作.</p>
+
+<p><a href="http://blog.csdn.net/lgg201/article/details/8493725">目录</a>上一章: <a href="http://blog.csdn.net/lgg201/article/details/8923225">php中流的实现</a>下一章: <a href="http://blog.csdn.net/lgg201/article/details/9099407">配置和链接</a></p>
+
+          </section>
+
+          
+        </article>
+        <!-- END Main content -->
+      </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <a id="scroll-up" href="#"><i class="fa fa-angle-up"></i></a>
+
+        <div class="row">
+          <div class="col-md-6 col-sm-6">
+            <p>Copyright &copy; 2016. All right reserved(京ICP备11026137号-2)</p>
+          </div>
+          <div class="col-md-6 col-sm-6">
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/18906058.js"></script>
+<noscript><a href="http://www.51.la/?18906058" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/18906058.asp" style="border:none" /></a></noscript>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+    <!-- Scripts -->
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.all.min.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/theDocs.js"></script>
+    <script src="http://static-cdn.tec-inf.com/js/custom.js"></script>
+
+  </body>
+</html>
