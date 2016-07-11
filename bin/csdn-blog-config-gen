@@ -1,0 +1,83 @@
+#!/usr/bin/env php
+<?php
+$root_path = __DIR__ . '/..';
+$mark_down_path = $root_path . '/markdown/blog.csdn';
+
+$articles = array();
+
+$dp = opendir($mark_down_path);
+while ($fname = readdir($dp)) {
+	if ($fname == '.' || $fname == '..') {
+		continue;
+	}
+
+	if (!preg_match(';^(\d{4})-(\d{2})-\d{2};', $fname, $match)) {
+		continue;
+	}
+
+	@$articles[$match[1]][$match[2]][] = $fname;
+}
+
+krsort($articles, SORT_NUMERIC);
+foreach ($articles as $year => &$yarticles) {
+	krsort($yarticles, SORT_NUMERIC);
+	foreach ($yarticles as $month => &$marticles) {
+		arsort($marticles);
+	}
+}
+
+$sidenav = array();
+
+foreach ($articles as $year => $yarticles) {
+	$year_item = array(
+        'sn'   => "/$year",
+        'link' => null,
+        'text' => "{$year}年",
+        'class' => '',
+        'target' => '',
+		'children' => array(),
+    );
+
+	foreach ($yarticles as $month => $marticles) {
+		$month_item = array(
+			'sn'   => "/$year/$month",
+			'link' => null,
+			'text' => "{$month}月",
+			'class' => '',
+			'target' => '',
+			'children' => array(),
+		);
+
+		foreach ($marticles as $article) {
+			$title = preg_replace('; ;', '-', substr($article, 11));
+			$title = preg_replace(';\.md;', '', $title);
+            $item = array(
+                'sn'     => "/$article",
+                'link'   => "/blog-history/$year/$month/$title.html",
+                'text'   => $title,
+                'class'  => '',
+                'target' => '',
+                'page'   => array(
+                    'md' => "/blog.csdn/$article",
+                    'seo_title' => $title,
+                ),
+            );
+			echo "array('topnav' => 'blog-history', 'sidenav' => '/$article',              'dst_html' => '/blog-history/$year/$month/$title.html'),\n";
+
+			if (is_null($year_item['link'])) {
+				$year_item['link'] = "/blog-history/$year/$month/$title.html";
+			}
+			if (is_null($month_item['link'])) {
+				$month_item['link'] = "/blog-history/$year/$month/$title.html";
+			}
+
+			$month_item['children'][] = $item;
+		}
+
+		$year_item['children'][] = $month_item;
+	}
+
+	$sidenav[] = $year_item;
+}
+
+#var_export($sidenav);

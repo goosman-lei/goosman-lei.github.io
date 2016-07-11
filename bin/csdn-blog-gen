@@ -1,0 +1,299 @@
+#!/usr/bin/env php
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+define('ROOT_PATH', __DIR__ . '/..');
+define('MARKDOWN_PATH', ROOT_PATH . '/markdown');
+define('OUTPUT_PATH', ROOT_PATH . '/output');
+define('TMP_MARKDOWN_PATH', OUTPUT_PATH . '/markdown');
+
+define('TPL_COMPILER_PATH', OUTPUT_PATH . '/doc-smarty-template-compile');
+define('TPL_PATH', ROOT_PATH . '/tpl');
+
+define('HTML_OUTPUT_PATH', OUTPUT_PATH . '/html');
+
+$html_output_path = HTML_OUTPUT_PATH;
+$srcDir = ROOT_PATH . '/static';
+$dstDir = HTML_OUTPUT_PATH . '/static';
+`rm -rf $html_output_path`;
+`mkdir -p $html_output_path`;
+`cp -rf $srcDir $dstDir`;
+
+$render_list = array(
+	array('topnav' => 'blog-history', 'sidenav' => '/2016-06-30-[分享]面向中大型应用的PHPWeb开发框架Ice.md',              'dst_html' => '/blog-history/2016/06/[分享]面向中大型应用的PHPWeb开发框架Ice.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-06-15-[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.md',              'dst_html' => '/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第20章-php的高级嵌入式.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-06-15-[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.md',              'dst_html' => '/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第19章-设置宿主环境.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-06-15-[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.md',              'dst_html' => '/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第18章-php的扩展自动生成.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-06-15-[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.md',              'dst_html' => '/blog-history/2013/06/[翻译][php扩展开发和嵌入式]第17章-php源代码的配置和链接.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-05-13-[翻译][php扩展开发和嵌入式]第16章-有趣的流.md',              'dst_html' => '/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第16章-有趣的流.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-05-13-[翻译][php扩展开发和嵌入式]第15章-php中流的实现.md',              'dst_html' => '/blog-history/2013/05/[翻译][php扩展开发和嵌入式]第15章-php中流的实现.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-04-30-[翻译][php扩展开发和嵌入式]第14章-php中流的访问.md',              'dst_html' => '/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第14章-php中流的访问.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-04-23-[翻译][php扩展开发和嵌入式]第13章-php的INI设置.md',              'dst_html' => '/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第13章-php的INI设置.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-04-16-[翻译][php扩展开发和嵌入式]第12章-php的启动过程.md',              'dst_html' => '/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第12章-php的启动过程.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-04-08-[翻译][php扩展开发和嵌入式]第11章-php5对象.md',              'dst_html' => '/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第11章-php5对象.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-04-01-[翻译][php扩展开发和嵌入式]第10章-php4的对象.md',              'dst_html' => '/blog-history/2013/04/[翻译][php扩展开发和嵌入式]第10章-php4的对象.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-03-24-[翻译][php扩展开发和嵌入式]第9章-资源数据类型.md',              'dst_html' => '/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第9章-资源数据类型.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-03-12-[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.md',              'dst_html' => '/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第8章-在数组和哈希表上工作.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-03-04-[翻译][php扩展开发和嵌入式]第7章-接受参数.md',              'dst_html' => '/blog-history/2013/03/[翻译][php扩展开发和嵌入式]第7章-接受参数.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-03-02-从1.5k到18k, 一个程序员的5年成长之路.md',              'dst_html' => '/blog-history/2013/03/从1.5k到18k,-一个程序员的5年成长之路.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-02-27-[翻译][php扩展开发和嵌入式]第6章-返回值.md',              'dst_html' => '/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第6章-返回值.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-02-16-[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.md',              'dst_html' => '/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第5章-您的第一个扩展.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-02-04-[翻译][php扩展开发和嵌入式]第4章-安装构建环境.md',              'dst_html' => '/blog-history/2013/02/[翻译][php扩展开发和嵌入式]第4章-安装构建环境.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-01-29-[翻译][php扩展开发和嵌入式]第3章-内存管理.md',              'dst_html' => '/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第3章-内存管理.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-01-18-[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.md',              'dst_html' => '/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第2章-变量的里里外外.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-01-18-[php内核bug]动态链接方式编译的扩展, 扩展全局空间dtor导致core dump.md',              'dst_html' => '/blog-history/2013/01/[php内核bug]动态链接方式编译的扩展,-扩展全局空间dtor导致core-dump.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-01-11-[翻译][php扩展开发和嵌入式]第1章-php的生命周期.md',              'dst_html' => '/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第1章-php的生命周期.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2013-01-11-[翻译][php扩展开发和嵌入式]第0章-译序.md',              'dst_html' => '/blog-history/2013/01/[翻译][php扩展开发和嵌入式]第0章-译序.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-12-29-从N个数中选取最大的前10个[堆排序版].md',              'dst_html' => '/blog-history/2012/12/从N个数中选取最大的前10个[堆排序版].html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-12-28-从N个数中选取最大的前10个[php版].md',              'dst_html' => '/blog-history/2012/12/从N个数中选取最大的前10个[php版].html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-12-28-从N个数中选取最大的前10个[C语言版].md',              'dst_html' => '/blog-history/2012/12/从N个数中选取最大的前10个[C语言版].html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-11-07-php截取字符串保留完整xml标签.md',              'dst_html' => '/blog-history/2012/11/php截取字符串保留完整xml标签.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-10-31-[mysql-manual-5.5]7.1 优化概览.md',              'dst_html' => '/blog-history/2012/10/[mysql-manual-5.5]7.1-优化概览.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-10-29-php-mysql扩展mysql_querymysql_unbuffered_query对比.md',              'dst_html' => '/blog-history/2012/10/php-mysql扩展mysql_querymysql_unbuffered_query对比.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-10-26-简单游戏场景用户模拟.md',              'dst_html' => '/blog-history/2012/10/简单游戏场景用户模拟.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-10-24-php-mysql扩展的mysql_connectmysql_pconnect比较.md',              'dst_html' => '/blog-history/2012/10/php-mysql扩展的mysql_connectmysql_pconnect比较.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-10-09-模拟新浪微博自动登陆.md',              'dst_html' => '/blog-history/2012/10/模拟新浪微博自动登陆.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-09-20-php-curl封装[避免上传文件二义性Bug].md',              'dst_html' => '/blog-history/2012/09/php-curl封装[避免上传文件二义性Bug].html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-09-14-[漏洞]ThinkSNS严重漏洞--将全站崩溃.md',              'dst_html' => '/blog-history/2012/09/[漏洞]ThinkSNS严重漏洞--将全站崩溃.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-09-13-无限递归树展示.md',              'dst_html' => '/blog-history/2012/09/无限递归树展示.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-09-10-[快速记忆]C语言php的运算符优先级(结合性).md',              'dst_html' => '/blog-history/2012/09/[快速记忆]C语言php的运算符优先级(结合性).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-07-18-基于mysql的分页程序完全解决方案(含普通分页分段分页原始分页微博的since_id类分页).md',              'dst_html' => '/blog-history/2012/07/基于mysql的分页程序完全解决方案(含普通分页分段分页原始分页微博的since_id类分页).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-06-20-[软件工程]一个故事, 分析陷入焦油坑的软件项目.md',              'dst_html' => '/blog-history/2012/06/[软件工程]一个故事,-分析陷入焦油坑的软件项目.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-06-03-输出整数类型边界值及其大小(K&R The C programming language 习题 2-1).md',              'dst_html' => '/blog-history/2012/06/输出整数类型边界值及其大小(K&R-The-C-programming-language-习题-2-1).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-06-01-算法分析 从N条成绩单信息选择M位不重复同学发奖.md',              'dst_html' => '/blog-history/2012/06/算法分析-从N条成绩单信息选择M位不重复同学发奖.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2012-04-08-ThinkPHP Core 3.0源代码review文档.md',              'dst_html' => '/blog-history/2012/04/ThinkPHP-Core-3.0源代码review文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-12-27-正则表达式分析提取XMLXHTML标签属性.md',              'dst_html' => '/blog-history/2011/12/正则表达式分析提取XMLXHTML标签属性.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-12-12-封装的一个mysql_lib.php, 主要是一个分页模型.md',              'dst_html' => '/blog-history/2011/12/封装的一个mysql_lib.php,-主要是一个分页模型.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-12-11-爱因斯坦的思考题.md',              'dst_html' => '/blog-history/2011/12/爱因斯坦的思考题.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-12-09-从浏览器操作系统市场占有率分析国人.md',              'dst_html' => '/blog-history/2011/12/从浏览器操作系统市场占有率分析国人.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-10-27-[php内核]----文件系统函数用于普通文件时的一些情况.md',              'dst_html' => '/blog-history/2011/10/[php内核]----文件系统函数用于普通文件时的一些情况.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-10-15-某地自动评论脚本备份.md',              'dst_html' => '/blog-history/2011/10/某地自动评论脚本备份.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-10-13-使用alarm配合信号实现sleep.md',              'dst_html' => '/blog-history/2011/10/使用alarm配合信号实现sleep.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-10-09-libmemcached一致性hash算法详解(2)----简化版的libmemcached一致性hash算法实现.md',              'dst_html' => '/blog-history/2011/10/libmemcached一致性hash算法详解(2)----简化版的libmemcached一致性hash算法实现.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-10-09-libmemcached一致性hash算法详解(1)----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.md',              'dst_html' => '/blog-history/2011/10/libmemcached一致性hash算法详解(1)----php-memcached客户端一致性哈希与crc算法共用产生的bug分析.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-10-07-由信号集联想----位域授权模式的不限长扩展.md',              'dst_html' => '/blog-history/2011/10/由信号集联想----位域授权模式的不限长扩展.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-09-22-PHP位域操作函数封装.md',              'dst_html' => '/blog-history/2011/09/PHP位域操作函数封装.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-08-13-基于dup实现linux的dup2函数(APUE练习题3.2).md',              'dst_html' => '/blog-history/2011/08/基于dup实现linux的dup2函数(APUE练习题3.2).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-07-31-日志分析工具（二分法分段查找处理）.md',              'dst_html' => '/blog-history/2011/07/日志分析工具（二分法分段查找处理）.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-07-04-从dl(\'xxx.so\');函数分析PHP模块开发.md',              'dst_html' => '/blog-history/2011/07/从dl(\'xxx.so\');函数分析PHP模块开发.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-04-10-php中的引用传值分析.md',              'dst_html' => '/blog-history/2011/04/php中的引用传值分析.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-03-30-php pcre正则表达式完全教程----pcre官方文档.md',              'dst_html' => '/blog-history/2011/03/php-pcre正则表达式完全教程----pcre官方文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-03-01-Ubuntu中利用Grub 2修复移动硬盘引导.md',              'dst_html' => '/blog-history/2011/03/Ubuntu中利用Grub-2修复移动硬盘引导.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-02-24-PHP包含文件(requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx)分析总结.md',              'dst_html' => '/blog-history/2011/02/PHP包含文件(requireincluderequire_onceinclude_once__autoloadspl_autoload_xxx)分析总结.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-02-15-javascript中的继承, 找回丢失的constructor.md',              'dst_html' => '/blog-history/2011/02/javascript中的继承,-找回丢失的constructor.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-02-14-浏览器市场份额--世界范围IE大幅下滑, 国内IE小幅下滑, chrome涨势稳定.md',              'dst_html' => '/blog-history/2011/02/浏览器市场份额--世界范围IE大幅下滑,-国内IE小幅下滑,-chrome涨势稳定.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-02-14-PHP操作符优先级列表及一个优先级带来的灵异事件.md',              'dst_html' => '/blog-history/2011/02/PHP操作符优先级列表及一个优先级带来的灵异事件.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-02-14-PHP中require PK require_once, 构建自己的高效require_once(10倍的性能提升).md',              'dst_html' => '/blog-history/2011/02/PHP中require-PK-require_once,-构建自己的高效require_once(10倍的性能提升).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-01-10-php 5.3新增的闭包语法介绍function() use() {}.md',              'dst_html' => '/blog-history/2011/01/php-5.3新增的闭包语法介绍function()-use()-{}.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2011-01-09-与PHP5.3.5的战斗----记php5.3.5安装过程.md',              'dst_html' => '/blog-history/2011/01/与PHP5.3.5的战斗----记php5.3.5安装过程.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-12-31-PHP在线实现工具(linux下可用, windows未测试).md',              'dst_html' => '/blog-history/2010/12/PHP在线实现工具(linux下可用,-windows未测试).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-23-PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.md',              'dst_html' => '/blog-history/2010/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-13-PHP Memcached客户端memcache，memcached比较.md',              'dst_html' => '/blog-history/2010/11/PHP-Memcached客户端memcache，memcached比较.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-12-PHP Memcached扩展安装.md',              'dst_html' => '/blog-history/2010/11/PHP-Memcached扩展安装.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-11-PHP Memcached客户端官方文档翻译.md',              'dst_html' => '/blog-history/2010/11/PHP-Memcached客户端官方文档翻译.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-08-PHP中利用pcntl进行多进程并发控制.md',              'dst_html' => '/blog-history/2010/11/PHP中利用pcntl进行多进程并发控制.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-05-PHP中的uniqid在高并发下的重复问题.md',              'dst_html' => '/blog-history/2010/11/PHP中的uniqid在高并发下的重复问题.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-01-jQuery及jQueryUI内存泄漏问题修复.md',              'dst_html' => '/blog-history/2010/11/jQuery及jQueryUI内存泄漏问题修复.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-10-21-完善eclipse+pdt作php开发中的代码提示能力.md',              'dst_html' => '/blog-history/2010/10/完善eclipse+pdt作php开发中的代码提示能力.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-10-05-输出指定格式的数字矩阵2.md',              'dst_html' => '/blog-history/2010/10/输出指定格式的数字矩阵2.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-10-05-输出指定格式的数字矩阵.md',              'dst_html' => '/blog-history/2010/10/输出指定格式的数字矩阵.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-09-23-sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.md',              'dst_html' => '/blog-history/2010/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-09-23-sessvars插件中文文档----一款用window.name产生前台session存储的js插件.md',              'dst_html' => '/blog-history/2010/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-09-11-php中Apc和memcache缓存数据性能对比.md',              'dst_html' => '/blog-history/2010/09/php中Apc和memcache缓存数据性能对比.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-09-02-递归删除utf8文件的bom头(该bom头可能导致php产生意外输出).md',              'dst_html' => '/blog-history/2010/09/递归删除utf8文件的bom头(该bom头可能导致php产生意外输出).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-08-15-性能测试从零开始--读书笔记.md',              'dst_html' => '/blog-history/2010/08/性能测试从零开始--读书笔记.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-08-13-PHP扩展pcntl(进程控制以及信号处理)中文文档.md',              'dst_html' => '/blog-history/2010/08/PHP扩展pcntl(进程控制以及信号处理)中文文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-08-13-PHP中利用pcntl实现多进程(模拟多线程)实例.md',              'dst_html' => '/blog-history/2010/08/PHP中利用pcntl实现多进程(模拟多线程)实例.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-07-24-Mysql主从复制的配置(双机互为主从).md',              'dst_html' => '/blog-history/2010/07/Mysql主从复制的配置(双机互为主从).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-07-17-基于PHP客户端的TokyoTyrant(TCH, TCB, TCT), Memcache, Mysql性能测试.md',              'dst_html' => '/blog-history/2010/07/基于PHP客户端的TokyoTyrant(TCH,-TCB,-TCT),-Memcache,-Mysql性能测试.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-07-17-基于PHP客户端的TokyoTyrant(TCH, TCB, TCT), Memcache, Mysql性能测试(测试脚本).md',              'dst_html' => '/blog-history/2010/07/基于PHP客户端的TokyoTyrant(TCH,-TCB,-TCT),-Memcache,-Mysql性能测试(测试脚本).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-28-TC官方文档翻译12----编码API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译12----编码API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-28-TC官方文档翻译11----文件操作API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译11----文件操作API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-28-TC官方文档翻译10----其他API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译10----其他API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-27-TC官方文档翻译09----内存池对象API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译09----内存池对象API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-27-TC官方文档翻译08----内存树数据库API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译08----内存树数据库API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-27-TC官方文档翻译07----内存HASH数据库API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译07----内存HASH数据库API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-27-TC官方文档翻译06----Ordered Tree对象API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译06----Ordered-Tree对象API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译05----Hash Map对象API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译05----Hash-Map对象API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译04----列表对象API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译04----列表对象API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译03----可扩充字符串API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译03----可扩充字符串API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译02----基础API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译02----基础API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译01----TokyoCabinet简介(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2010/06/TC官方文档翻译01----TokyoCabinet简介(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-17-IE7中onpropertychange引发的Stack overflow at line xxx问题解决.md',              'dst_html' => '/blog-history/2010/06/IE7中onpropertychange引发的Stack-overflow-at-line-xxx问题解决.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-13-让jQuery的load方法可以接受ajax选项(解决缓存等问题).md',              'dst_html' => '/blog-history/2010/06/让jQuery的load方法可以接受ajax选项(解决缓存等问题).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-11-正则表达式中的贪婪与非贪婪的性能问题.md',              'dst_html' => '/blog-history/2010/06/正则表达式中的贪婪与非贪婪的性能问题.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-05-PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.md',              'dst_html' => '/blog-history/2010/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-05-28-扩展Javascript的String原型, 添加汉字截取.md',              'dst_html' => '/blog-history/2010/05/扩展Javascript的String原型,-添加汉字截取.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-05-28-input标签的汉字长度限制.md',              'dst_html' => '/blog-history/2010/05/input标签的汉字长度限制.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-04-30-High Performance MySQL作者对TokyoTyrant做的性能测试(benchmark).md',              'dst_html' => '/blog-history/2010/04/High-Performance-MySQL作者对TokyoTyrant做的性能测试(benchmark).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-04-28-PHP的TokyoTyrant扩展接口API文档(PECL).md',              'dst_html' => '/blog-history/2010/04/PHP的TokyoTyrant扩展接口API文档(PECL).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-18-jQuery实现的Dialog(支持模态和拖动).md',              'dst_html' => '/blog-history/2010/03/jQuery实现的Dialog(支持模态和拖动).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-09-css滤镜之light实现的灯光效果..md',              'dst_html' => '/blog-history/2010/03/css滤镜之light实现的灯光效果..html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-09-CSS滤镜笔记------包含Light滤镜方法的使用.md',              'dst_html' => '/blog-history/2010/03/CSS滤镜笔记------包含Light滤镜方法的使用.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-06-基于jQuery实现的焦点轮换效果.md',              'dst_html' => '/blog-history/2010/03/基于jQuery实现的焦点轮换效果.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-06-jQuery.ui.1.7.2中文文档(官方文档翻译).md',              'dst_html' => '/blog-history/2010/03/jQuery.ui.1.7.2中文文档(官方文档翻译).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-06-jQuery.ui.1.7.2-selectable中文文档.md',              'dst_html' => '/blog-history/2010/03/jQuery.ui.1.7.2-selectable中文文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-06-jQuery.ui.1.7.2--Datepicker中文文档.md',              'dst_html' => '/blog-history/2010/03/jQuery.ui.1.7.2--Datepicker中文文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-02-JavaScript中的正则替换.md',              'dst_html' => '/blog-history/2010/03/JavaScript中的正则替换.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-26-Java-UrlRewrite中文官方文档.md',              'dst_html' => '/blog-history/2010/02/Java-UrlRewrite中文官方文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-24-Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.md',              'dst_html' => '/blog-history/2010/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-22-Javascript中可以接受参数的延时函数回调.md',              'dst_html' => '/blog-history/2010/02/Javascript中可以接受参数的延时函数回调.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-08-python的闭包(3.0之前及之后).md',              'dst_html' => '/blog-history/2010/02/python的闭包(3.0之前及之后).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-04-Sitemesh整合struts2使用多个装饰器(非)的BUG修正.md',              'dst_html' => '/blog-history/2010/02/Sitemesh整合struts2使用多个装饰器(非)的BUG修正.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-30-SiteMesh官方文档翻译(含Freemarker但不包括velocity部分).md',              'dst_html' => '/blog-history/2010/01/SiteMesh官方文档翻译(含Freemarker但不包括velocity部分).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-29-通用的分页模型实现..md',              'dst_html' => '/blog-history/2010/01/通用的分页模型实现..html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-25-Servlet中通过过滤器实现统一的手动编码(解决中文乱码).md',              'dst_html' => '/blog-history/2010/01/Servlet中通过过滤器实现统一的手动编码(解决中文乱码).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-24-struts2的请求处理过程源码分析.md',              'dst_html' => '/blog-history/2010/01/struts2的请求处理过程源码分析.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-24-Struts2中ActionMapping对象的构建过程.md',              'dst_html' => '/blog-history/2010/01/Struts2中ActionMapping对象的构建过程.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-22-IOC的简单实现及其意义..md',              'dst_html' => '/blog-history/2010/01/IOC的简单实现及其意义..html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-19-C语言中的offsetof宏(定义在stddef.h头中).md',              'dst_html' => '/blog-history/2010/01/C语言中的offsetof宏(定义在stddef.h头中).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-16-生产者消费者问题之Java线程实现.md',              'dst_html' => '/blog-history/2010/01/生产者消费者问题之Java线程实现.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-04-涂鸦你的CSDN博客.md',              'dst_html' => '/blog-history/2010/01/涂鸦你的CSDN博客.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-12-31-PHP在线实现工具(linux下可用, windows未测试).md',              'dst_html' => '/blog-history/2009/12/PHP在线实现工具(linux下可用,-windows未测试).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-23-PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.md',              'dst_html' => '/blog-history/2009/11/PHP利用共享内存构建计数器完成自增数值id生成--适用于网页游戏携带区服号的数值id生成.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-13-PHP Memcached客户端memcache，memcached比较.md',              'dst_html' => '/blog-history/2009/11/PHP-Memcached客户端memcache，memcached比较.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-12-PHP Memcached扩展安装.md',              'dst_html' => '/blog-history/2009/11/PHP-Memcached扩展安装.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-11-PHP Memcached客户端官方文档翻译.md',              'dst_html' => '/blog-history/2009/11/PHP-Memcached客户端官方文档翻译.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-08-PHP中利用pcntl进行多进程并发控制.md',              'dst_html' => '/blog-history/2009/11/PHP中利用pcntl进行多进程并发控制.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-05-PHP中的uniqid在高并发下的重复问题.md',              'dst_html' => '/blog-history/2009/11/PHP中的uniqid在高并发下的重复问题.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-11-01-jQuery及jQueryUI内存泄漏问题修复.md',              'dst_html' => '/blog-history/2009/11/jQuery及jQueryUI内存泄漏问题修复.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-10-21-完善eclipse+pdt作php开发中的代码提示能力.md',              'dst_html' => '/blog-history/2009/10/完善eclipse+pdt作php开发中的代码提示能力.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-10-05-输出指定格式的数字矩阵2.md',              'dst_html' => '/blog-history/2009/10/输出指定格式的数字矩阵2.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-10-05-输出指定格式的数字矩阵.md',              'dst_html' => '/blog-history/2009/10/输出指定格式的数字矩阵.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-09-23-sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.md',              'dst_html' => '/blog-history/2009/09/sessvars插件源代码解析----一款用window.name产生前台session存储的js插件.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-09-23-sessvars插件中文文档----一款用window.name产生前台session存储的js插件.md',              'dst_html' => '/blog-history/2009/09/sessvars插件中文文档----一款用window.name产生前台session存储的js插件.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-09-11-php中Apc和memcache缓存数据性能对比.md',              'dst_html' => '/blog-history/2009/09/php中Apc和memcache缓存数据性能对比.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-09-02-递归删除utf8文件的bom头(该bom头可能导致php产生意外输出).md',              'dst_html' => '/blog-history/2009/09/递归删除utf8文件的bom头(该bom头可能导致php产生意外输出).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-08-15-性能测试从零开始--读书笔记.md',              'dst_html' => '/blog-history/2009/08/性能测试从零开始--读书笔记.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-08-13-PHP扩展pcntl(进程控制以及信号处理)中文文档.md',              'dst_html' => '/blog-history/2009/08/PHP扩展pcntl(进程控制以及信号处理)中文文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-08-13-PHP中利用pcntl实现多进程(模拟多线程)实例.md',              'dst_html' => '/blog-history/2009/08/PHP中利用pcntl实现多进程(模拟多线程)实例.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-07-24-Mysql主从复制的配置(双机互为主从).md',              'dst_html' => '/blog-history/2009/07/Mysql主从复制的配置(双机互为主从).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-07-17-基于PHP客户端的TokyoTyrant(TCH, TCB, TCT), Memcache, Mysql性能测试.md',              'dst_html' => '/blog-history/2009/07/基于PHP客户端的TokyoTyrant(TCH,-TCB,-TCT),-Memcache,-Mysql性能测试.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-07-17-基于PHP客户端的TokyoTyrant(TCH, TCB, TCT), Memcache, Mysql性能测试(测试脚本).md',              'dst_html' => '/blog-history/2009/07/基于PHP客户端的TokyoTyrant(TCH,-TCB,-TCT),-Memcache,-Mysql性能测试(测试脚本).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-28-TC官方文档翻译12----编码API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译12----编码API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-28-TC官方文档翻译11----文件操作API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译11----文件操作API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-28-TC官方文档翻译10----其他API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译10----其他API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-27-TC官方文档翻译09----内存池对象API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译09----内存池对象API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-27-TC官方文档翻译08----内存树数据库API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译08----内存树数据库API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-27-TC官方文档翻译07----内存HASH数据库API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译07----内存HASH数据库API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-27-TC官方文档翻译06----Ordered Tree对象API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译06----Ordered-Tree对象API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译05----Hash Map对象API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译05----Hash-Map对象API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译04----列表对象API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译04----列表对象API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译03----可扩充字符串API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译03----可扩充字符串API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译02----基础API(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译02----基础API(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-26-TC官方文档翻译01----TokyoCabinet简介(Tokyo CabinetTokyo Tyarnt 文档系列).md',              'dst_html' => '/blog-history/2009/06/TC官方文档翻译01----TokyoCabinet简介(Tokyo-CabinetTokyo-Tyarnt-文档系列).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-17-IE7中onpropertychange引发的Stack overflow at line xxx问题解决.md',              'dst_html' => '/blog-history/2009/06/IE7中onpropertychange引发的Stack-overflow-at-line-xxx问题解决.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-13-让jQuery的load方法可以接受ajax选项(解决缓存等问题).md',              'dst_html' => '/blog-history/2009/06/让jQuery的load方法可以接受ajax选项(解决缓存等问题).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-11-正则表达式中的贪婪与非贪婪的性能问题.md',              'dst_html' => '/blog-history/2009/06/正则表达式中的贪婪与非贪婪的性能问题.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-06-05-PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.md',              'dst_html' => '/blog-history/2009/06/PHP+Mysql+jQuery+fullcalendar实现的微型公司内部订餐系统.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-05-28-扩展Javascript的String原型, 添加汉字截取.md',              'dst_html' => '/blog-history/2009/05/扩展Javascript的String原型,-添加汉字截取.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-05-28-input标签的汉字长度限制.md',              'dst_html' => '/blog-history/2009/05/input标签的汉字长度限制.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-04-30-High Performance MySQL作者对TokyoTyrant做的性能测试(benchmark).md',              'dst_html' => '/blog-history/2009/04/High-Performance-MySQL作者对TokyoTyrant做的性能测试(benchmark).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-04-28-PHP的TokyoTyrant扩展接口API文档(PECL).md',              'dst_html' => '/blog-history/2009/04/PHP的TokyoTyrant扩展接口API文档(PECL).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-18-jQuery实现的Dialog(支持模态和拖动).md',              'dst_html' => '/blog-history/2009/03/jQuery实现的Dialog(支持模态和拖动).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-09-css滤镜之light实现的灯光效果..md',              'dst_html' => '/blog-history/2009/03/css滤镜之light实现的灯光效果..html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-09-CSS滤镜笔记------包含Light滤镜方法的使用.md',              'dst_html' => '/blog-history/2009/03/CSS滤镜笔记------包含Light滤镜方法的使用.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-06-基于jQuery实现的焦点轮换效果.md',              'dst_html' => '/blog-history/2009/03/基于jQuery实现的焦点轮换效果.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-06-jQuery.ui.1.7.2中文文档(官方文档翻译).md',              'dst_html' => '/blog-history/2009/03/jQuery.ui.1.7.2中文文档(官方文档翻译).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-06-jQuery.ui.1.7.2-selectable中文文档.md',              'dst_html' => '/blog-history/2009/03/jQuery.ui.1.7.2-selectable中文文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-06-jQuery.ui.1.7.2--Datepicker中文文档.md',              'dst_html' => '/blog-history/2009/03/jQuery.ui.1.7.2--Datepicker中文文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-03-02-JavaScript中的正则替换.md',              'dst_html' => '/blog-history/2009/03/JavaScript中的正则替换.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-26-Java-UrlRewrite中文官方文档.md',              'dst_html' => '/blog-history/2009/02/Java-UrlRewrite中文官方文档.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-24-Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.md',              'dst_html' => '/blog-history/2009/02/Struts2整合Json插件时的一个隐蔽BUG-----struts2-json-plugin-2.1.8.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-22-Javascript中可以接受参数的延时函数回调.md',              'dst_html' => '/blog-history/2009/02/Javascript中可以接受参数的延时函数回调.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-08-python的闭包(3.0之前及之后).md',              'dst_html' => '/blog-history/2009/02/python的闭包(3.0之前及之后).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-02-04-Sitemesh整合struts2使用多个装饰器(非)的BUG修正.md',              'dst_html' => '/blog-history/2009/02/Sitemesh整合struts2使用多个装饰器(非)的BUG修正.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-30-SiteMesh官方文档翻译(含Freemarker但不包括velocity部分).md',              'dst_html' => '/blog-history/2009/01/SiteMesh官方文档翻译(含Freemarker但不包括velocity部分).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-29-通用的分页模型实现..md',              'dst_html' => '/blog-history/2009/01/通用的分页模型实现..html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-25-Servlet中通过过滤器实现统一的手动编码(解决中文乱码).md',              'dst_html' => '/blog-history/2009/01/Servlet中通过过滤器实现统一的手动编码(解决中文乱码).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-24-struts2的请求处理过程源码分析.md',              'dst_html' => '/blog-history/2009/01/struts2的请求处理过程源码分析.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-24-Struts2中ActionMapping对象的构建过程.md',              'dst_html' => '/blog-history/2009/01/Struts2中ActionMapping对象的构建过程.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-22-IOC的简单实现及其意义..md',              'dst_html' => '/blog-history/2009/01/IOC的简单实现及其意义..html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-19-C语言中的offsetof宏(定义在stddef.h头中).md',              'dst_html' => '/blog-history/2009/01/C语言中的offsetof宏(定义在stddef.h头中).html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-16-生产者消费者问题之Java线程实现.md',              'dst_html' => '/blog-history/2009/01/生产者消费者问题之Java线程实现.html'),
+	array('topnav' => 'blog-history', 'sidenav' => '/2010-01-04-涂鸦你的CSDN博客.md',              'dst_html' => '/blog-history/2009/01/涂鸦你的CSDN博客.html'),
+);
+
+foreach ($render_list as $page) {
+    render_main_layout($page['topnav'], $page['sidenav'], HTML_OUTPUT_PATH . $page['dst_html']);
+}
+
+function render_main_layout($curr_topnav, $curr_sidenav, $target_file) {
+    $tpl_datas = get_layout_config('main');
+
+    $tpl_datas['curr_sidenav'] = $curr_sidenav;
+    $tpl_datas['curr_topnav'] = $curr_topnav;
+
+    $smarty = get_smarty();
+    $smarty->assign($tpl_datas);
+
+    if (!is_dir(dirname($target_file))) {
+        mkdir(dirname($target_file), 0777, TRUE);
+    }
+
+    file_put_contents($target_file, $smarty->fetch('main-layout.tpl'));
+}
+
+// 预处理markdown文件: 处理Header
+function prepare_markdown($md_file) {
+    $src_md_file = MARKDOWN_PATH . '/' . ltrim($md_file, '/');
+    $dst_md_file = TMP_MARKDOWN_PATH . '/' . ltrim($md_file, '/');
+
+    if (!is_dir(dirname($dst_md_file))) {
+        mkdir(dirname($dst_md_file), 0777, TRUE);
+    }
+
+    $prepare_command = ROOT_PATH . '/bin/prepare_markdown';
+    `$prepare_command $src_md_file $dst_md_file`;
+}
+// 渲染markdown文件为html
+function render_markdown($md_file) {
+    if (empty($md_file) || !is_file(MARKDOWN_PATH . '/' . ltrim($md_file, '/'))) {
+        return ;
+    }
+    prepare_markdown($md_file);
+    $md_file = TMP_MARKDOWN_PATH . '/' . ltrim($md_file, '/');
+    $html = `github-markup $md_file | awk '{
+    if (match($0, "^<pre><code(\\\\s+class=\\"([^\\"]+)\\")?>", matched) > 0) {
+        language = substr($0, matched[2, "start"], matched[2, "length"])
+        language_class = language ? "language-" language : ""
+
+        print "<pre class=\\"line-numbers " language_class "\\" data-language=\\"" language "\\">";
+        print "<span class=\\"language-name\\">" language "</span>";
+        print "<a class=\\"btn btn-sm btn-purple clipboard-copy\\" data-original-title=\\"Copied!\\">Copy</a>";
+        print "<code class=\\"" language_class "\\">";
+        print substr($0, matched[0, "length"] + 1);
+    } else {
+        print $0;
+    }
+}'`;
+    echo $html;
+}
+// 渲染markdown文件的目录
+function render_toc($md_file) {
+    if (empty($md_file) || !is_file(MARKDOWN_PATH . '/' . ltrim($md_file, '/'))) {
+        return ;
+    }
+    $md_file = MARKDOWN_PATH . '/' . ltrim($md_file, '/');
+    $toc_command = ROOT_PATH . '/bin/toc-gen';
+    $html = `$toc_command $md_file`;
+    echo $html;
+}
+
+
+function get_smarty() {
+    static $smarty;
+    if (!isset($smarty)) {
+        $smarty = new \SmartyBC();
+        $smarty->setTemplateDir(TPL_PATH);
+        $smarty->setCompileDir(TPL_COMPILER_PATH);
+        $smarty->left_delimiter = '{%';
+        $smarty->right_delimiter = '%}';
+    }
+    return $smarty;
+}
+
+function get_layout_config($name) {
+    include ROOT_PATH . '/config/csdn-blog-layout.php';
+    return $$name;
+}
