@@ -217,6 +217,18 @@ $sidenav = array(
                 ),
             ),
             array(
+                'sn'     => '/manual/base_model',
+                'link'   => '/ice/core-func-base-model.html',
+                'text'   => 'Model基础封装',
+                'class'  => '',
+                'target' => '',
+                'page'   => array(
+                    'md' => '/ice/core-func-base-model.md',
+                    'seo_title' => 'PHP Ice框架Model层封装',
+                    'seo_keywords' => 'PHP框架,PHP开发,PHP 数据库访问,数据库访问代码,mysql查询',
+                ),
+            ),
+            array(
                 'sn'     => '/manual/ut',
                 'link'   => '/ice/core-func-ut.html',
                 'text'   => '单元测试',
