@@ -52,12 +52,12 @@ $where = array(
     array(':between', 'score', 80, 100),
     array(':lt', 'score', 8.3),
     array(':eq', 'name', 'Jack'),
-    array(':like_literal', 'name', 'Jack%'),
-    array(':like_begin', 'name', 'Jack%'),
-    array(':like_end', 'name', 'Jack%'),
-    array(':like_entire', 'name', 'Jack%'),
+    array(':like_literal', 'name', "'%Jack%'"),
+    array(':like_begin', 'name', 'Jack'),
+    array(':like_end', 'name', 'Jack'),
+    array(':like_entire', 'name', 'Jack'),
     array(':or', array(
-        array(':notlike_literal', 'name', 'Jack_'),
+        array(':notlike_literal', 'name', "'%Jack_%'"),
         array(':notlike_begin', 'name', 'Jack_'),
         array(':notlike_end', 'name', 'Jack_'),
         array(':notlike_entire', 'name', 'Jack_'),
@@ -86,14 +86,15 @@ SELECT * FROM <TABLE>
          AND (`score` BETWEEN 80 AND 100)
          AND (`score` < 8)
          AND (`name` = 'Jack')
+         AND (`name` LIKE '%Jack%')
          AND (`name` LIKE 'Jack%')
-         AND (`name` LIKE 'Jack%'%)
-         AND (`name` LIKE %'Jack%')
-         AND (`name` LIKE %'Jack%'%)
+         AND (`name` LIKE '%Jack')
+         AND (`name` LIKE '%Jack%')
          OR ((`name` NOT LIKE 'Jack_')
-             AND (`name` NOT LIKE 'Jack_'%)
-             AND (`name` NOT LIKE %'Jack_')
-             AND (`name` NOT LIKE %'Jack_'%)
+             AND (`name` NOT LIKE '%Jack_%')
+             AND (`name` NOT LIKE 'Jack_%')
+             AND (`name` NOT LIKE '%Jack_')
+             AND (`name` NOT LIKE '%Jack_%')
              AND (`sex` IN ('man','woman'))
              AND (`color` NOT IN ('blue','black'))
          )
