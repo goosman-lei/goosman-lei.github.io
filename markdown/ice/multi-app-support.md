@@ -1,4 +1,4 @@
-#  Ice多APP支持
+##  Ice多APP支持
 ## 为什么需要多APP支持？
 
 * ice框架是为了服务化而设计，倾向于大型项目拆分为小型项目，独立服务部署，解决开发复杂度。
@@ -11,9 +11,10 @@
 * Ice的优点是可以支持Local, Remote, Internal调用，现有的许多服务已经使用了Ice开发，可以直接嵌入到新的
 * 项目中使用，另外Ice中的许多机制可以使用，如资源管理，数据库lib等
 
-#  实现步骤
+###  实现步骤
 * 说明: 我的项目命名空间: 'zeus\ares'
-1.将原来的action目录降两级，形成apps/appName/action目录,如下图:
+
+1. 将原来的action目录降两级，形成apps/appName/action目录,如下图:
 ```
 src/
 ├── apps
@@ -44,7 +45,9 @@ src/
 ├── service
 ── webroot
 ```
-2.修改conf/app.php文件
+
+2. 修改conf/app.php文件
+
 runner中注册不同的appName, 如www, admin， 并include相应app的配置进来
 ```
 <?php
@@ -86,7 +89,7 @@ $runner = array(
     ),
 );
 ```
-3.在每个app下面创建webroot/web.php
+3. 在每个app下面创建webroot/web.php
 ```
 <?php
 require_once __DIR__ . '/../../../../vendor/autoload.php';
@@ -98,7 +101,7 @@ $config = array(
 $runner = new \zeus\ares\Lib\WebRunner(__DIR__ . '/../../../conf/app.php', $config);
 $runner->run();
 ```
-4.在lib中添加lib/WebRunner.php
+4. 在lib中添加lib/WebRunner.php
 ```
 <?php
 namespace zeus\ares\Lib;
@@ -121,4 +124,4 @@ class WebRunner extends \Ice\Frame\Runner\Web{
     }
 }
 ```
-5.修改nginx，将web打到对应app的webroot下
+5. 修改nginx，将web打到对应app的webroot下
