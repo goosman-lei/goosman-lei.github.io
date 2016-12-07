@@ -240,6 +240,19 @@ $sidenav = array(
                     'seo_keywords' => 'PHP框架,PHP开发,PHP单元测试,PHP Unit,覆盖率',
                 ),
             ),
+            array(
+                'sn'     => '/manual/mapp',
+                'link'   => '/ice/multi-app-support.html',
+                'text'   => '多APP支持',
+                'class'  => '',
+                'target' => '',
+                'page'   => array(
+                    'md' => '/ice/multi-app-support.md',
+                    'seo_title' => '多APP支持',
+                    'seo_keywords' => '多APP支持',
+                ),
+            ),
+
         ),
     ),
     array(

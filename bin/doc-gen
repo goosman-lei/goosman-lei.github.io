@@ -35,6 +35,7 @@ $render_list = array(
     array('topnav' => 'ice', 'sidenav' => '/manual/db',             'dst_html' => '/ice/core-func-db.html'),
     array('topnav' => 'ice', 'sidenav' => '/manual/base_model',     'dst_html' => '/ice/core-func-base-model.html'),
     array('topnav' => 'ice', 'sidenav' => '/manual/ut',             'dst_html' => '/ice/core-func-ut.html'),
+    array('topnav' => 'ice', 'sidenav' => '/manual/mapp',           'dst_html' => '/ice/multi-app-support.html'),
     array('topnav' => 'ice', 'sidenav' => '/specification/develop', 'dst_html' => '/ice/specification-develop.html'),
     array('topnav' => 'ice', 'sidenav' => '/specification/name',    'dst_html' => '/ice/specification-name.html'),
     array('topnav' => 'ice', 'sidenav' => '/specification/doc',     'dst_html' => '/ice/specification-doc.html'),
