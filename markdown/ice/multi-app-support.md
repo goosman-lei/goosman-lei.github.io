@@ -14,7 +14,7 @@
 ###  实现步骤
 * 说明: 我的项目命名空间: 'zeus\ares'
 
-1. 将原来的action目录降两级，形成apps/appName/action目录,如下图:
+1.将原来的action目录降两级，形成apps/appName/action目录,如下图:
 ```
 src/
 ├── apps
@@ -46,7 +46,7 @@ src/
 ── webroot
 ```
 
-2. 修改conf/app.php文件
+2.修改conf/app.php文件
 
 runner中注册不同的appName, 如www, admin， 并include相应app的配置进来
 ```
@@ -89,7 +89,7 @@ $runner = array(
     ),
 );
 ```
-3. 在每个app下面创建webroot/web.php
+3.在每个app下面创建webroot/web.php
 ```
 <?php
 require_once __DIR__ . '/../../../../vendor/autoload.php';
@@ -101,7 +101,7 @@ $config = array(
 $runner = new \zeus\ares\Lib\WebRunner(__DIR__ . '/../../../conf/app.php', $config);
 $runner->run();
 ```
-4. 在lib中添加lib/WebRunner.php
+4.在lib中添加lib/WebRunner.php
 ```
 <?php
 namespace zeus\ares\Lib;
@@ -124,4 +124,4 @@ class WebRunner extends \Ice\Frame\Runner\Web{
     }
 }
 ```
-5. 修改nginx，将web打到对应app的webroot下
+5.修改nginx，将web打到对应app的webroot下
