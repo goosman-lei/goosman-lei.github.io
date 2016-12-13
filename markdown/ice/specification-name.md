@@ -21,6 +21,7 @@ PROJECT_NAMESPACE="$PROJECT_GROUP\\$PROJECT_NAME"
 # web runner
 # Action为入口, 代码位于src/action/Class/Action.php
 # 名字空间: PROJECT_GROUP\PROJECT_NAME\Action
+# class和action: 首字母大写，其他字母必须为小写或下划线 
 
 namespace PROJECT_GROUP\PROJECT_NAME\Action\Class;
 class Action extends \FW_Action {
@@ -32,6 +33,7 @@ class Action extends \FW_Action {
 # daemon runner
 # Daemon为入口, 代码位于src/daemon/Class/Daemon.php
 # 名字空间: PROJECT_GROUP\PROJECT_NAME\Daemon
+# class和action: 首字母大写，其他字母必须为小写或下划线 
 
 namespace PROJECT_GROUP\PROJECT_NAME\Daemon\Class;
 class Daemon extends \FD_Daemon {
