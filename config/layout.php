@@ -229,6 +229,18 @@ $sidenav = array(
                 ),
             ),
             array(
+                'sn'     => '/manual/helper',
+                'link'   => '/ice/core-func-helper.html',
+                'text'   => '辅助函数',
+                'class'  => '',
+                'target' => '',
+                'page'   => array(
+                    'md' => '/ice/core-func-helper.md',
+                    'seo_title' => 'PHP Ice框架辅助函数',
+                    'seo_keywords' => 'PHP框架,PHP开发,PHP 辅助函数',
+                ),
+            ),
+            array(
                 'sn'     => '/manual/ut',
                 'link'   => '/ice/core-func-ut.html',
                 'text'   => '单元测试',
