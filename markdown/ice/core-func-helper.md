@@ -34,6 +34,7 @@ array_dot()
 $array = array_dot(['foo' => ['bar' => 'baz']]);
 // ['foo.bar' => 'baz'];
 ```
+
 ### array_except()
 ```array_except()
 array_except()
@@ -108,7 +109,11 @@ $array = array_only($array, ['name', 'price']);
 ### array_last()
 ```array_last()
 array_last()
-
+$array = [100, 200, 300, 110];
+$value = array_last($array, function ($value, $key) {
+        return $value >= 150;
+});
+// 300
 ```
 
 ### array_pluck()
@@ -131,6 +136,12 @@ $array = array_pluck($array, 'developer.name', 'developer.id');
 
 ```array_prepend()
 array_prepend()
+will push an item onto the beginning of an array
+$array = ['one', 'two', 'three', 'four'];
+
+$array = array_prepend($array, 'zero');
+
+// $array: ['zero', 'one', 'two', 'three', 'four']
 ```
 
 ```array_pull()
@@ -239,108 +250,185 @@ $last = last($array);
 ## 路径
 ```app_path()
 app_path()
+returns the fully qualified path to the app directory. You may also use the  app_path function to generate a fully qualified path to a file relative to the application directory
+
+$path = app_path();
+$path = app_path('Http/Controllers/Controller.php');
 ```
 
 ```base_path()
 base_path()
+returns the fully qualified path to the project root. You may also use the  base_path function to generate a fully qualified path to a given file relative to the project root directory
+
+$path = base_path();
+$path = base_path('vendor/bin');
 ```
 
 ```config_path()
 config_path()
+returns the fully qualified path to the application configuration directory
+
+$path = config_path();
 ```
 
 ```database_path()
 database_path()
+
+returns the fully qualified path to the application's database directory
+
+$path = database_path();
 ```
 
 ```elixir()
 elixir()
+gets the path to a versioned Elixir file
+
+elixir($file);
 ```
 
 ```public_path()
 public_path()
+returns the fully qualified path to the public directory
+
+$path = public_path();
 ```
 
 ```resource_path()
 resource_path()
+
+returns the fully qualified path to the resources directory. You may also use the resource_path function to generate a fully qualified path to a given file relative to the storage directory
+
+$path = resource_path();
+$path = resource_path('assets/sass/app.scss');
 ```
 
 ```storage_path()
 storage_path()
+
+returns the fully qualified path to the storage directory. You may also use the storage_path function to generate a fully qualified path to a given file relative to the storage directory
+
+$path = storage_path();
+$path = storage_path('app/file.txt');
 ```
 
 ## 字符串
 
 ```camel_case()
 camel_case()
+给定字串转换为驼峰式
+
+$camel = camel_case('foo_bar');
+// fooBar
 ```
 
 ```class_basename()
 class_basename()
+返回删除了名字空间的类名
+
+$class = class_basename('Foo\Bar\Baz');
+// Baz
 ```
 
 ```e()
 e()
+为给定的字串调用 htmlentities 
+
+echo e('<html>foo</html>');
+// &lt;html&gt;foo&lt;/html&gt;
 ```
 
 ```ends_with()
 ends_with()
+判断字串是否以给定值结尾
+
+$value = ends_with('This is my name', 'name');
+// true
 ```
 
 ```snake_case()
 snake_case()
+将给定字串转换为蛇形式
+
+$snake = snake_case('fooBar');
+// foo_bar
 ```
 
 ```str_limit()
 str_limit()
+函数限制一个字符串的长度。该函数接收一个字符串作为第一个参数，最大长度作为第二个参数
+
+$value = str_limit('The PHP framework for web artisans.', 7);
+// The PHP...
 ```
 
 ```starts_with()
 starts_with()
+判断字串是否以给定值开头
+
+$value = starts_with('This is my name', 'This');
+// true
 ```
 
 ```str_contains()
 str_contains()
+判断字串是否包含给定值
+
+$value = str_contains('This is my name', 'my');
+// true
 ```
 
 ```str_finish()
 str_finish()
+为字串添加给定单例
+
+$string = str_finish('this/string', '/');
+// this/string/
 ```
 
 ```str_is()
 str_is()
-```
+判断字串是否匹配给定形式。星号表示通配符
 
-```str_plural()
-str_plural()
+$value = str_is('foo*', 'foobar');
+// true
+$value = str_is('baz*', 'foobar');
+// false
 ```
 
 ```str_random()
 str_random()
+生成指定长度的随机字符串
+
+$string = str_random(40);
 ```
 
 ```str_singular()
 str_singular()
+将字串转换为其单数形式。该函数目前仅支持英文
+
+$singular = str_singular('cars');
+// car
 ```
 
 ```str_slug()
 str_slug()
+将字串转换为URL友好型： function generates a URL friendly "slug" 
+
+$title = str_slug("Laravel 5 Framework", "-");
+// laravel-5-framework
 ```
 
 ```studly_case()
 studly_case()
+将字串转换为 StudlyCase 型
+
+$value = studly_case('foo_bar');
+// FooBar
 ```
 
 ```title_case()
 title_case()
-```
 
-```trans()
-trans()
-```
-
-```trans_choice()
-trans_choice()
 ```
 
 ## URLs
@@ -396,6 +484,15 @@ bcrypt()
 
 ```cache()
 cache()
+may be used to get values from the cache. If the given key does not exist in the cache, an optional default value will be returned
+
+$value = cache('key');
+$value = cache('key', 'default');
+
+You may add items to the cache by passing an array of key / value pairs to the function. You should also pass the number of minutes or duration the cached value should be considered valid
+
+cache(['key' => 'value'], 5);
+cache(['key' => 'value'], Carbon::now()->addSeconds(10));
 ```
 
 ```collect()
@@ -404,72 +501,80 @@ collect()
 
 ```config()
 config()
-```
+gets the value of a configuration variable. The configuration values may be accessed using "dot" syntax, which includes the name of the file and the option you wish to access. A default value may be specified and is returned if the configuration option does not exist
 
-```csrf_field()
-csrf_field()
-```
+$value = config('app.timezone');
+$value = config('app.timezone', $default);
 
-```csrf_token()
-csrf_token()
+The config helper may also be used to set configuration variables at runtime by passing an array of key / value pairs
+
+config(['app.debug' => true]);
 ```
 
 ```dd()
 dd()
-```
+dumps the given variables and ends execution of the script
 
-```dispatch()
-dispatch()
+dd($value);
+dd($value1, $value2, $value3, ...);
+
+If you do not want to halt the execution of your script, use the dump function instead
+dump($value);
 ```
 
 ```env()
 env()
-```
+gets the value of an environment variable or returns a default value
 
-```event()
-event()
+$env = env('APP_ENV');
+// Return a default value if the variable doesn't exist...
+$env = env('APP_ENV', 'production');
 ```
 
 ```factory()
 factory()
+creates a model factory builder for a given class, name, and amount. It can be used while testing or seeding
+
+$user = factory(App\User::class)->make();
 ```
 
 ```info()
 info()
+will write information to the log
+info('Some helpful information!');
+
+An array of contextual data may also be passed to the function
+info('User login attempt failed.', ['id' => $user->id]);
 ```
 
 ```logger()
 logger()
-```
+can be used to write a debug level message to the log
+logger('Debug message');
 
-```method_field()
-method_field()
-```
+An array of contextual data may also be passed to the function
+logger('User has logged in.', ['id' => $user->id]);
 
-```old()
-old()
-```
-
-```redirect()
-redirect()
+A logger instance will be returned if no value is passed to the function
+logger()->error('You are not allowed here.');
 ```
 
 ```request()
 request()
+returns the current request instance or obtains an input item
+
+$request = request();
+$value = request('key', $default = null)
 ```
 
 ```response()
 response()
-```
+creates a response instance or obtains an instance of the response factory
 
-```session()
-session()
+return response('Hello World', 200, $headers);
+return response()->json(['foo' => 'bar'], 200, $headers);
 ```
 
 ```value()
 value()
-```
-
-```view()
-view()
 ```
