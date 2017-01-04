@@ -458,14 +458,18 @@ url()
 ```
 
 ## 其他
+
+### abort()
 ```abort()
 abort()
 ```
 
+### abort_if()
 ```abort_if()
 abort_if()
 ```
 
+### abort_unless()
 ```abort_unless()
 abort_unless()
 ```
@@ -474,14 +478,17 @@ abort_unless()
 auth()
 ```
 
+### back()
 ```back()
 back()
 ```
 
+### bcrypt()
 ```bcrypt()
 bcrypt()
 ```
 
+### cache()
 ```cache()
 cache()
 may be used to get values from the cache. If the given key does not exist in the cache, an optional default value will be returned
@@ -495,10 +502,12 @@ cache(['key' => 'value'], 5);
 cache(['key' => 'value'], Carbon::now()->addSeconds(10));
 ```
 
+### collect()
 ```collect()
 collect()
 ```
 
+### config()
 ```config()
 config()
 gets the value of a configuration variable. The configuration values may be accessed using "dot" syntax, which includes the name of the file and the option you wish to access. A default value may be specified and is returned if the configuration option does not exist
@@ -511,6 +520,7 @@ The config helper may also be used to set configuration variables at runtime by 
 config(['app.debug' => true]);
 ```
 
+### dd()
 ```dd()
 dd()
 dumps the given variables and ends execution of the script
@@ -522,6 +532,7 @@ If you do not want to halt the execution of your script, use the dump function i
 dump($value);
 ```
 
+### env()
 ```env()
 env()
 gets the value of an environment variable or returns a default value
@@ -531,6 +542,7 @@ $env = env('APP_ENV');
 $env = env('APP_ENV', 'production');
 ```
 
+### factory()
 ```factory()
 factory()
 creates a model factory builder for a given class, name, and amount. It can be used while testing or seeding
@@ -538,6 +550,7 @@ creates a model factory builder for a given class, name, and amount. It can be u
 $user = factory(App\User::class)->make();
 ```
 
+### info()
 ```info()
 info()
 will write information to the log
@@ -547,6 +560,7 @@ An array of contextual data may also be passed to the function
 info('User login attempt failed.', ['id' => $user->id]);
 ```
 
+### logger()
 ```logger()
 logger()
 can be used to write a debug level message to the log
@@ -559,6 +573,7 @@ A logger instance will be returned if no value is passed to the function
 logger()->error('You are not allowed here.');
 ```
 
+### request()
 ```request()
 request()
 returns the current request instance or obtains an input item
@@ -567,6 +582,7 @@ $request = request();
 $value = request('key', $default = null)
 ```
 
+### response()
 ```response()
 response()
 creates a response instance or obtains an instance of the response factory
@@ -575,6 +591,7 @@ return response('Hello World', 200, $headers);
 return response()->json(['foo' => 'bar'], 200, $headers);
 ```
 
+### value()
 ```value()
 value()
 ```
