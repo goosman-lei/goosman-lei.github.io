@@ -2,7 +2,7 @@
 
 ## 数组
 
-### array_pluck() 从给定的数组中提取出键/值对
+### array_pluck() 从数组中提取出指定的键/值对
 ```
 $array = [
         ['developer' => ['id' => 1, 'name' => 'Taylor', 'gender' => 'male']],
@@ -12,18 +12,27 @@ $array = [
 
 //取出某一个指定的键/值对
 $array = array_pluck($array, 'developer.name');
+
 // ['Taylor', 'Abigail', 'Abigail2'];
+
 
 //取出某几个指定的键/值对
 $array = array_pluck($array, array('developer.name', 'developer.gender'));
+
 // [['name' => 'Taylor', 'gender' => 'male'], ['name' => 'Abigail', 'gender' => 'female'], ['name' => 'Abigail2', 'gender' => 'male']];
 
+
 //取出某几个指定的键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
+
 $array = array_pluck($array, ['developer.name', 'developer.gender'], 'developer.id');
+
 // [1 => ['name' => 'Taylor', 'gender' => 'male'], 2 => ['name' => 'Abigail', 'gender' => 'female']];
 
+
 //取出全部键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
+
 $array = array_pluck($array, false, 'developer.id');
+
 /*
 [ 
         1 => ['developer' => ['id' => 1, 'name' => 'Taylor', 'gender' => 'male']],
@@ -32,34 +41,43 @@ $array = array_pluck($array, false, 'developer.id');
 */
 ```
 
-### 用给定闭包过滤数组 array_where()
+### array_where() 用闭包函数过滤数组
 ```
 $array = [100, 200, 300, 400, 500];
+
 $array = array_where($array, function ($key, $value) {
         return $value > 200;
 });
+
 // [2 => 300, 3 => 400, 4 => 500];
 ```
 
-### 在数组指定位置插入一个单元 array_unshift_index()
+### array_unshift_index() 在数组指定位置插入一个单元
 ```
 $array = [100, 200, 300, 400, 500];
+
 array_unshift_index($array, 1, 150);
+
 // [100, 150, 200, 300, 400, 500];
 ```
 
-### 基于点号路径从一个深度嵌套的数组中取出值，可以指定默认值 array_get()
+### array_get() 基于点号路径从一个深度嵌套的数组中取出值，可以指定默认值
 ```
 $array = ['products' => ['desk' => ['price' => 100]]];
+
 $value = array_get($array, 'products.desk');
+
 // ['price' => 100]
 
+
 如果指定的键未找到，返回默认值
+
 $value = array_get($array, 'products.desk2', ['price' => 200]);
+
 // ['price' => 200]
 ```
 
-### 指定某个键/值对排序数组 array_sort()
+### array_sort() 根据某个值对数组进行排序
 ```
 $array = [
         ['name' => 'Desk', 'score' => 2],
@@ -67,25 +85,33 @@ $array = [
 ];
 
 //按score的值，以数字进行顺序排列
+
 $array = array_sort($array, 'score', 'num', false);
+
 /*
 [
         ['name' => 'Chair', 'score' => 1],
         ['name' => 'Desk', 'score' => 2],
 ]
  */
+
 
 //按score的值，以数字进行倒序排列
+
 $array = array_sort($array, 'score', 'num', true);
+
 /*
 [
         ['name' => 'Desk', 'score' => 2],
         ['name' => 'Chair', 'score' => 1],
 ]
  */
+
 
 //按name的值，以字符串进行顺序排列
+
 $array = array_sort($array, 'name', 'str', false);
+
 /*
 [
         ['name' => 'Chair', 'score' => 1],
@@ -94,19 +120,24 @@ $array = array_sort($array, 'name', 'str', false);
  */
 ```
 
-### 简单返回给定数组的第一个元素 array_head()
+### array_head() 返回数组的第一个元素
 ```
 $array = [100, 200, 300];
+
 $first = array_head($array);
+
 // 100
 ```
 
-### 返回给定数组的最后一个元素 array_last()
+### array_last() 返回数组的最后一个元素
 ```
 $array = [100, 200, 300];
+
 $last = last($array);
+
 // 300
 ```
+
 
 ## 字符串
 
