@@ -1,314 +1,111 @@
 # 辅助函数
-** 注意：本文档中的所有代码示例，仅为演示方法的使用，不代表实现功能的正确或合适方法 **
 
 ## 数组
-### array_add()
+
+### array_pluck() 从给定的数组中提取出键/值对
 ```
-array_add()
-向数组中添加一个键-值对(如果给定的键不存在)
-$array = array_add(['name' => 'Desk'], 'price', 100);
-// ['name' => 'Desk', 'price' => 100]
+$array = [
+        ['developer' => ['id' => 1, 'name' => 'Taylor', 'gender' => 'male']],
+        ['developer' => ['id' => 2, 'name' => 'Abigail', 'gender' => 'female']],
+        ['developer' => ['id' => 2, 'name' => 'Abigail2', 'gender' => 'male']],
+];
+
+//取出某一个指定的键/值对
+$array = array_pluck($array, 'developer.name');
+// ['Taylor', 'Abigail', 'Abigail2'];
+
+//取出某几个指定的键/值对
+$array = array_pluck($array, array('developer.name', 'developer.gender'));
+// [['name' => 'Taylor', 'gender' => 'male'], ['name' => 'Abigail', 'gender' => 'female'], ['name' => 'Abigail2', 'gender' => 'male']];
+
+//取出某几个指定的键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
+$array = array_pluck($array, ['developer.name', 'developer.gender'], 'developer.id');
+// [1 => ['name' => 'Taylor', 'gender' => 'male'], 2 => ['name' => 'Abigail', 'gender' => 'female']];
+
+//取出全部键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
+$array = array_pluck($array, false, 'developer.id');
+/*
+[ 
+        1 => ['developer' => ['id' => 1, 'name' => 'Taylor', 'gender' => 'male']],
+        2 => ['developer' => ['id' => 2, 'name' => 'Abigail', 'gender' => 'female']],
+];
+*/
 ```
 
-### array_collapse()
-```array_collapse()
-array_collapse()
-将一个数组的数组打散合并到一个单一数组
-$array = array_collapse([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
-// [1, 2, 3, 4, 5, 6, 7, 8, 9]
+### 用给定闭包过滤数组 array_where()
 ```
-
-### array_divide()
-```array_divide()
-array_divide()
-返回两个数组，一个包含原数组的所有键，另一个包含原数组的所有值
-list($keys, $values) = array_divide(['name' => 'Desk']);
-// $keys: ['name']
-// $values: ['Desk']
-```
-
-### array_dot()
-```array_dot()
-array_dot()
-将一个多维数组转换为一维数组，并使用点号指示深度
-$array = array_dot(['foo' => ['bar' => 'baz']]);
-// ['foo.bar' => 'baz'];
-```
-
-### array_except()
-```array_except()
-array_except()
-从一个数组中移除指定的键/值对
-$array = ['name' => 'Desk', 'price' => 100];
-$array = array_except($array, ['price']);
-// ['name' => 'Desk']
-```
-
-### array_first()
-```array_first()
-array_first()
-返回数组中第一个通过判断返回为真的元素
-$array = [100, 200, 300];
-$value = array_first($array, function ($key, $value) {
-        return $value >= 150;
+$array = [100, 200, 300, 400, 500];
+$array = array_where($array, function ($key, $value) {
+        return $value > 200;
 });
-// 200
-
-默认值可作为第三个参数传入。如果没有值通过判断，将返回默认值：
-$value = array_first($array, $callback, $default);
+// [2 => 300, 3 => 400, 4 => 500];
 ```
 
-### array_flatten()
-```array_flatten()
-array_flatten()
-将一个多维数组转换为一维数组
-$array = ['name' => 'Joe', 'languages' => ['PHP', 'Ruby']];
-$array = array_flatten($array);
-// ['Joe', 'PHP', 'Ruby'];
+### 在数组指定位置插入一个单元 array_unshift_index()
+```
+$array = [100, 200, 300, 400, 500];
+array_unshift_index($array, 1, 150);
+// [100, 150, 200, 300, 400, 500];
 ```
 
-### array_forget()
-```array_forget
-array_forget()
-基于点号路径从一个深度嵌套的数组中移除指定的键/值对
-$array = ['products' => ['desk' => ['price' => 100]]];
-array_forget($array, 'products.desk');
-// ['products' => []]
+### 基于点号路径从一个深度嵌套的数组中取出值，可以指定默认值 array_get()
 ```
-
-### array_get()
-```array_get()
-array_get()
-基于点号路径从一个深度嵌套的数组中取出值
 $array = ['products' => ['desk' => ['price' => 100]]];
 $value = array_get($array, 'products.desk');
 // ['price' => 100]
 
-也接受默认值，如果指定的键未找到，返回默认值
-$value = array_get($array, 'names.john', 'default');
+如果指定的键未找到，返回默认值
+$value = array_get($array, 'products.desk2', ['price' => 200]);
+// ['price' => 200]
 ```
 
-### array_has()
-```array_has()
-array_has() checks that a given item exists in an array using "dot" notation
-
-$array = ['products' => ['desk' => ['price' => 100]]];
-$hasDesk = array_has($array, ['products.desk']);
-// true
+### 指定某个键/值对排序数组 array_sort()
 ```
-
-### array_only()
-```array_only()
-array_only() 从给定的数组中返回指定的键/值对
-
-$array = ['name' => 'Desk', 'price' => 100, 'orders' => 10];
-$array = array_only($array, ['name', 'price']);
-// ['name' => 'Desk', 'price' => 100]
-```
-
-### array_last()
-```array_last()
-array_last()
-$array = [100, 200, 300, 110];
-$value = array_last($array, function ($value, $key) {
-        return $value >= 150;
-});
-// 300
-```
-
-### array_pluck()
-```array_pluck()
-array_pluck()
-从给定的数组中提取出键/值对
-
 $array = [
-        ['developer' => ['id' => 1, 'name' => 'Taylor']],
-        ['developer' => ['id' => 2, 'name' => 'Abigail']],
+        ['name' => 'Desk', 'score' => 2],
+        ['name' => 'Chair', 'score' => 1],
 ];
-$array = array_pluck($array, 'developer.name');
-// ['Taylor', 'Abigail'];
 
-You may also specify how you wish the resulting list to be keyed
-
-$array = array_pluck($array, 'developer.name', 'developer.id');
-// [1 => 'Taylor', 2 => 'Abigail'];
-```
-
-```array_prepend()
-array_prepend()
-will push an item onto the beginning of an array
-$array = ['one', 'two', 'three', 'four'];
-
-$array = array_prepend($array, 'zero');
-
-// $array: ['zero', 'one', 'two', 'three', 'four']
-```
-
-```array_pull()
-array_pull()
-从数组中移除并返回一个键/值对
-$array = ['name' => 'Desk', 'price' => 100];
-$name = array_pull($array, 'name');
-// $name: Desk
-// $array: ['price' => 100]
-```
-
-### array_set()
-```array_set()
-array_set()
-基于点号路径为一个深度嵌套的数组设置值
-$array = ['products' => ['desk' => ['price' => 100]]];
-array_set($array, 'products.desk.price', 200);
-// ['products' => ['desk' => ['price' => 200]]]
-```
-
-```array_sort()
-array_sort()
-依据给定闭包的返回值排序数组
-$array = [
-        ['name' => 'Desk'],
-        ['name' => 'Chair'],
-];
-$array = array_values(array_sort($array, function ($value) {
-        return $value['name'];
-}));
-
+//按score的值，以数字进行顺序排列
+$array = array_sort($array, 'score', 'num', false);
 /*
 [
-   ['name' => 'Chair'],
-   ['name' => 'Desk'],
+        ['name' => 'Chair', 'score' => 1],
+        ['name' => 'Desk', 'score' => 2],
+]
+ */
+
+//按score的值，以数字进行倒序排列
+$array = array_sort($array, 'score', 'num', true);
+/*
+[
+        ['name' => 'Desk', 'score' => 2],
+        ['name' => 'Chair', 'score' => 1],
+]
+ */
+
+//按name的值，以字符串进行顺序排列
+$array = array_sort($array, 'name', 'str', false);
+/*
+[
+        ['name' => 'Chair', 'score' => 1],
+        ['name' => 'Desk', 'score' => 2],
 ]
  */
 ```
 
-### array_sort_recursive()
-```array_sort_recursive()
-array_sort_recursive()
-用 sort 函数递归排序数组
-$array = [
-        [
-                'Roman',
-                'Taylor',
-                'Li',
-        ],
-        [
-                'PHP',
-                'Ruby',
-                'JavaScript',
-        ],
-];
-
-$array = array_sort_recursive($array);
-
-/*
-[
-   [
-        'Li',
-        'Roman',
-        'Taylor',
-   ],
-   [
-        'JavaScript',
-        'PHP',
-        'Ruby',
-   ]
-];
- */
+### 简单返回给定数组的第一个元素 array_head()
 ```
-
-### array_where()
-```array_where()
-array_where()
-用给定闭包过滤数组
-$array = [100, '200', 300, '400', 500];
-
-$array = array_where($array, function ($key, $value) {
-        return is_string($value);
-});
-
-// [1 => 200, 3 => 400]
-```
-
-### head()
-```head()
-head()
-简单返回给定数组的第一个元素
 $array = [100, 200, 300];
-$first = head($array);
+$first = array_head($array);
 // 100
 ```
 
-### last()
-```last()
-last()
-返回给定数组的最后一个元素
+### 返回给定数组的最后一个元素 array_last()
+```
 $array = [100, 200, 300];
 $last = last($array);
 // 300
-```
-
-## 路径
-```app_path()
-app_path()
-returns the fully qualified path to the app directory. You may also use the  app_path function to generate a fully qualified path to a file relative to the application directory
-
-$path = app_path();
-$path = app_path('Http/Controllers/Controller.php');
-```
-
-```base_path()
-base_path()
-returns the fully qualified path to the project root. You may also use the  base_path function to generate a fully qualified path to a given file relative to the project root directory
-
-$path = base_path();
-$path = base_path('vendor/bin');
-```
-
-```config_path()
-config_path()
-returns the fully qualified path to the application configuration directory
-
-$path = config_path();
-```
-
-```database_path()
-database_path()
-
-returns the fully qualified path to the application's database directory
-
-$path = database_path();
-```
-
-```elixir()
-elixir()
-gets the path to a versioned Elixir file
-
-elixir($file);
-```
-
-```public_path()
-public_path()
-returns the fully qualified path to the public directory
-
-$path = public_path();
-```
-
-```resource_path()
-resource_path()
-
-returns the fully qualified path to the resources directory. You may also use the resource_path function to generate a fully qualified path to a given file relative to the storage directory
-
-$path = resource_path();
-$path = resource_path('assets/sass/app.scss');
-```
-
-```storage_path()
-storage_path()
-
-returns the fully qualified path to the storage directory. You may also use the storage_path function to generate a fully qualified path to a given file relative to the storage directory
-
-$path = storage_path();
-$path = storage_path('app/file.txt');
 ```
 
 ## 字符串
@@ -595,3 +392,74 @@ return response()->json(['foo' => 'bar'], 200, $headers);
 ```value()
 value()
 ```
+
+
+
+
+
+
+## 路径
+```app_path()
+app_path()
+returns the fully qualified path to the app directory. You may also use the  app_path function to generate a fully qualified path to a file relative to the application directory
+
+$path = app_path();
+$path = app_path('Http/Controllers/Controller.php');
+```
+
+```base_path()
+base_path()
+returns the fully qualified path to the project root. You may also use the  base_path function to generate a fully qualified path to a given file relative to the project root directory
+
+$path = base_path();
+$path = base_path('vendor/bin');
+```
+
+```config_path()
+config_path()
+returns the fully qualified path to the application configuration directory
+
+$path = config_path();
+```
+
+```database_path()
+database_path()
+
+returns the fully qualified path to the application's database directory
+
+$path = database_path();
+```
+
+```elixir()
+elixir()
+gets the path to a versioned Elixir file
+
+elixir($file);
+```
+
+```public_path()
+public_path()
+returns the fully qualified path to the public directory
+
+$path = public_path();
+```
+
+```resource_path()
+resource_path()
+
+returns the fully qualified path to the resources directory. You may also use the resource_path function to generate a fully qualified path to a given file relative to the storage directory
+
+$path = resource_path();
+$path = resource_path('assets/sass/app.scss');
+```
+
+```storage_path()
+storage_path()
+
+returns the fully qualified path to the storage directory. You may also use the storage_path function to generate a fully qualified path to a given file relative to the storage directory
+
+$path = storage_path();
+$path = storage_path('app/file.txt');
+```
+
+
