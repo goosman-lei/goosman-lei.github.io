@@ -138,6 +138,8 @@ $last = last($array);
 // 300
 ```
 
+### 其他请使用系统函数 <http://php.net/manual/zh/book.array.php>
+
 
 ## 字符串
 
