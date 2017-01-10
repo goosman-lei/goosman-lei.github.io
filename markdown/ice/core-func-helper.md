@@ -10,12 +10,6 @@ $array = [
         ['developer' => ['id' => 2, 'name' => 'Abigail2', 'gender' => 'male']],
 ];
 
-//取出某一个指定的键/值对
-$array = array_pluck($array, 'developer.name');
-
-// ['Taylor', 'Abigail', 'Abigail2'];
-
-
 //取出某几个指定的键/值对
 $array = array_pluck($array, array('developer.name', 'developer.gender'));
 
@@ -168,6 +162,8 @@ $value = str_limit('The PHP framework for web artisans.', 7);
 ```
 $string = str_random(40);
 ```
+
+## 时间
 
 ## 常用
 
