@@ -11,6 +11,7 @@ array array_pluck ( array $array, mixed $value [, string $key = null] )
 如果指定了$key值，则返回的数组中将以数组中$key所对应的值作为键值
 
 
+
 * 范例: 取出某几个指定的键/值对
 
 ```demo
@@ -23,8 +24,10 @@ $array = [
 $array = array_pluck($array, array('developer.name', 'developer.gender'));
 
 var_dump($array);
+
 // [['name' => 'Taylor', 'gender' => 'male'], ['name' => 'Abigail', 'gender' => 'female'], ['name' => 'Abigail2', 'gender' => 'male']];
 ```
+
 
 
 * 范例: 取出某几个指定的键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
@@ -39,8 +42,10 @@ $array = [
 $array = array_pluck($array, ['developer.name', 'developer.gender'], 'developer.id');
 
 var_dump($array);
+
 // [1 => ['name' => 'Taylor', 'gender' => 'male'], 2 => ['name' => 'Abigail', 'gender' => 'female']];
 ```
+
 
 
 * 范例: 取出全部键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
@@ -53,6 +58,7 @@ $array = [
 ];
 
 $array = array_pluck($array, false, 'developer.id');
+
 var_dump($array);
 
 /*
