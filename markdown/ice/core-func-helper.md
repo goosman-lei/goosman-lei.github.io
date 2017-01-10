@@ -4,14 +4,16 @@
 
 ### array_pluck() — 返回数组中指定的键/值对
 
-```
+```func
 array array_pluck ( array $array, mixed $value [, string $key = null] )
 ```
 在$array中筛出指定$value指定的键/值对，$value支持字符串和数组，即可以返回多个键/值对
 如果指定了$key值，则返回的数组中将以数组中$key所对应的值作为键值
 
-范例1 取出某几个指定的键/值对
-```
+
+范例1: 取出某几个指定的键/值对
+
+```demo
 $array = [
         ['developer' => ['id' => 1, 'name' => 'Taylor', 'gender' => 'male']],
         ['developer' => ['id' => 2, 'name' => 'Abigail', 'gender' => 'female']],
@@ -20,12 +22,14 @@ $array = [
 
 $array = array_pluck($array, array('developer.name', 'developer.gender'));
 
+var_dump($array);
 // [['name' => 'Taylor', 'gender' => 'male'], ['name' => 'Abigail', 'gender' => 'female'], ['name' => 'Abigail2', 'gender' => 'male']];
 ```
 
 
-范例2 取出某几个指定的键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
-```
+范例2: 取出某几个指定的键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
+
+```demo
 $array = [
         ['developer' => ['id' => 1, 'name' => 'Taylor', 'gender' => 'male']],
         ['developer' => ['id' => 2, 'name' => 'Abigail', 'gender' => 'female']],
@@ -34,12 +38,14 @@ $array = [
 
 $array = array_pluck($array, ['developer.name', 'developer.gender'], 'developer.id');
 
+var_dump($array);
 // [1 => ['name' => 'Taylor', 'gender' => 'male'], 2 => ['name' => 'Abigail', 'gender' => 'female']];
 ```
 
 
 范例3 取出全部键/值对，指定某个键值做索引，重复key的值, 保留前面, 跳过后面
-```
+
+```demo
 $array = [
         ['developer' => ['id' => 1, 'name' => 'Taylor', 'gender' => 'male']],
         ['developer' => ['id' => 2, 'name' => 'Abigail', 'gender' => 'female']],
@@ -47,6 +53,7 @@ $array = [
 ];
 
 $array = array_pluck($array, false, 'developer.id');
+var_dump($array);
 
 /*
 [ 
@@ -55,6 +62,8 @@ $array = array_pluck($array, false, 'developer.id');
 ];
 */
 ```
+
+
 
 ### array_where() — 用闭包函数过滤数组
 ```
