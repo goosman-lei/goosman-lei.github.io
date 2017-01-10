@@ -80,7 +80,7 @@ $array = [
 
 //按score的值，以数字进行顺序排列
 
-$array = array_sort($array, 'score', 'num', false);
+$array = array_sort($array, 'score', 'numeric', false);
 
 /*
 [
@@ -92,7 +92,7 @@ $array = array_sort($array, 'score', 'num', false);
 
 //按score的值，以数字进行倒序排列
 
-$array = array_sort($array, 'score', 'num', true);
+$array = array_sort($array, 'score', 'numeric', true);
 
 /*
 [
@@ -104,7 +104,7 @@ $array = array_sort($array, 'score', 'num', true);
 
 //按name的值，以字符串进行顺序排列
 
-$array = array_sort($array, 'name', 'str', false);
+$array = array_sort($array, 'name', 'string', false);
 
 /*
 [
@@ -153,7 +153,7 @@ $value = str_is('baz*', 'foobar');
 
 ### str_limit() — 函数限制一个字符串的长度。该函数接收一个字符串作为第一个参数，最大长度作为第二个参数
 ```
-$value = str_limit('The PHP framework for web artisans.', 7);
+$value = str_limit('The PHP framework for web artisans.', 10);
 
 // The PHP...
 ```
@@ -192,17 +192,4 @@ $value = value(function () {
         return 'bar';
 });
 ```
-
-### dd() — 打印变量
-```dd()
-dd()
-dumps the given variables and ends execution of the script
-
-dd($value);
-dd($value1, $value2, $value3, ...);
-
-If you do not want to halt the execution of your script, use the dump function instead
-dump($value);
-```
-
 
