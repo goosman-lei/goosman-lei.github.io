@@ -8,12 +8,53 @@
 array array_pluck ( array $array, mixed $value [, string $key = null] )
 ```
 在$array中筛出指定$value指定的键/值对，$value支持字符串和数组，即可以返回多个键/值对
+
 如果指定了$key值，则返回的数组中将以数组中$key所对应的值作为键值
 
   
   
 
 * 范例: **取出某几个指定的键/值对**
+
+```demo
+$array = [
+        ['id' => 1, 'name' => 'Taylor', 'gender' => 'male'],
+        ['id' => 2, 'name' => 'Abigail', 'gender' => 'female'],
+        ['id' => 2, 'name' => 'Abigail2', 'gender' => 'male'],
+];
+
+$array = array_pluck($array, array('name', 'gender'));
+
+var_dump($array);
+
+/*
+array(3) {
+  [0]=>
+  array(2) {
+    ["name"]=>
+    string(6) "Taylor"
+    ["gender"]=>
+    string(4) "male"
+  }
+  [1]=>
+  array(2) {
+    ["name"]=>
+    string(7) "Abigail"
+    ["gender"]=>
+    string(6) "female"
+  }
+  [2]=>
+  array(2) {
+    ["name"]=>
+    string(8) "Abigail2"
+    ["gender"]=>
+    string(4) "male"
+  }
+}
+*/
+```
+
+* 范例: **取出某几个指定的键/值对，使用逗号分隔**
 
 ```demo
 $array = [
@@ -26,8 +67,34 @@ $array = array_pluck($array, array('developer.name', 'developer.gender'));
 
 var_dump($array);
 
-// [['name' => 'Taylor', 'gender' => 'male'], ['name' => 'Abigail', 'gender' => 'female'], ['name' => 'Abigail2', 'gender' => 'male']];
+/*
+array(3) {
+  [0]=>
+  array(2) {
+    ["developer.name"]=>
+    string(6) "Taylor"
+    ["developer.gender"]=>
+    string(4) "male"
+  }
+  [1]=>
+  array(2) {
+    ["developer.name"]=>
+    string(7) "Abigail"
+    ["developer.gender"]=>
+    string(6) "female"
+   }
+   [2]=>
+   array(2) {
+     ["developer.name"]=>
+     string(8) "Abigail2"
+     ["developer.gender"]=>
+     string(4) "male"
+   }
+}
+*/
 ```
+
+
 
   
   
@@ -45,7 +112,24 @@ $array = array_pluck($array, ['developer.name', 'developer.gender'], 'developer.
 
 var_dump($array);
 
-// [1 => ['name' => 'Taylor', 'gender' => 'male'], 2 => ['name' => 'Abigail', 'gender' => 'female']];
+/*
+array(2) {
+  [1]=>
+  array(2) {
+    ["developer.name"]=>
+    string(6) "Taylor"
+    ["developer.gender"]=>
+    string(4) "male"
+  }
+  [2]=>
+  array(2) {
+    ["developer.name"]=>
+    string(7) "Abigail"
+    ["developer.gender"]=>
+    string(6) "female"
+  }
+}
+*/
 ```
 
   
@@ -65,10 +149,32 @@ $array = array_pluck($array, false, 'developer.id');
 var_dump($array);
 
 /*
-[ 
-        1 => ['developer' => ['id' => 1, 'name' => 'Taylor', 'gender' => 'male']],
-        2 => ['developer' => ['id' => 2, 'name' => 'Abigail', 'gender' => 'female']],
-];
+array(2) {
+  [1]=>
+  array(1) {
+    ["developer"]=>
+    array(3) {
+      ["id"]=>
+      int(1)
+      ["name"]=>
+      string(6) "Taylor"
+      ["gender"]=>
+      string(4) "male"
+    }
+  }
+  [2]=>
+  array(1) {
+    ["developer"]=>
+    array(3) {
+      ["id"]=>
+      int(2)
+      ["name"]=>
+      string(7) "Abigail"
+      ["gender"]=>
+      string(6) "female"
+    }
+  }
+}
 */
 ```
 
